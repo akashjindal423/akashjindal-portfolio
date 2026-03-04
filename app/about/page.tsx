@@ -26,42 +26,43 @@ export default function AboutPage() {
             <div>
               <h2 className="text-xl font-semibold text-text-primary mb-3">My Background</h2>
               <p className="text-text-secondary leading-relaxed mb-4">
-                I have spent 8 years building digital products at the intersection of banking,
-                fintech, and technology. I started my career as a Business Analyst at Lloyds Banking
-                Group, where I quickly learned that the best product decisions come from deeply
-                understanding both user needs and organisational constraints.
+                I started my career at Infosys, delivering cross-industry transformation projects
+                for Fortune 500 clients across financial services, manufacturing, and agri-tech —
+                including GDPR-compliant cloud migrations and AI-led agriculture pilots. That
+                foundation gave me a strong grounding in enterprise delivery and technical thinking.
               </p>
               <p className="text-text-secondary leading-relaxed mb-4">
-                From Lloyds I moved into a Product Owner role at Barclays, leading digital
-                transformation across retail banking — shipping Open Banking compliance features,
-                redesigning the mobile app experience, and managing multi-workstream backlogs. That
-                experience shaped how I think about delivery in highly regulated environments.
+                From there I moved into product roles at Sony Interactive Entertainment (PlayStation
+                5 launch), SSE plc, and Dyson — where I pioneered the company&apos;s first Augmented
+                Reality experience and led New Product Innovation for the WashG1, Dyson&apos;s first
+                dedicated wet floor cleaner, collaborating across UK, Singapore, Malaysia, and China.
               </p>
               <p className="text-text-secondary leading-relaxed">
-                Today I am a Senior Product Owner at Monzo Bank, owning the lending product area
-                across 8M+ customers. I have grown from individual contributor to leading
-                cross-functional teams of 12, partnering with engineering, design, data, compliance,
-                and executive stakeholders to ship products that drive measurable outcomes.
+                Today I am a Data Product Owner at Lloyds Banking Group, leading regulatory data
+                initiatives, contributing to the AI Centre of Excellence, and driving cloud
+                transformation onto Google Cloud Platform. I partner with data engineers, compliance
+                teams, and executive stakeholders to deliver products that are both technically
+                sound and commercially impactful.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl font-semibold text-text-primary mb-3">How I Work</h2>
               <p className="text-text-secondary leading-relaxed">
-                I run discovery before every roadmap item, write acceptance criteria engineers
-                actually want to build against, and track impact obsessively post-launch. I am
-                comfortable integrating ML models into product flows, navigating FCA regulatory
-                constraints, and running structured prioritisation frameworks under ambiguity. I
-                speak the language of engineers without pretending to be one.
+                I run discovery before every roadmap item, write acceptance criteria that engineers
+                want to build against, and track impact obsessively post-launch. I am comfortable
+                working across data engineering, ML, cloud infrastructure, and UX — speaking the
+                language of each discipline without pretending to be a specialist in all of them.
+                SAFe at scale, Scrum at speed — I adapt to what the team needs.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl font-semibold text-text-primary mb-3">Outside Work</h2>
               <p className="text-text-secondary leading-relaxed">
-                When I am not writing PRDs, I enjoy long walks across London, exploring independent
-                coffee shops, and reading about behavioural economics. I am a serial note-taker and
-                occasional amateur cook.
+                Based in Bristol, I enjoy hiking, exploring independent coffee shops, and reading
+                about AI, behavioural economics, and the future of finance. I am a serial
+                note-taker and occasional amateur cook.
               </p>
             </div>
           </div>
@@ -91,8 +92,8 @@ export default function AboutPage() {
           <div>
             <p className="text-text-primary font-semibold mb-1">Currently Open To</p>
             <p className="text-text-secondary text-sm leading-relaxed mb-3">
-              Open to Senior PO / Lead PO roles in fintech, banking, or growth-stage tech.
-              London-based, open to hybrid.
+              Open to Senior / Lead Data Product Owner roles in fintech, banking, AI, or cloud-native tech.
+              Bristol / London, open to hybrid.
             </p>
             <Link
               href="/contact"

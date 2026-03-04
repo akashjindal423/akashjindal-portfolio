@@ -4,9 +4,9 @@ import Link from 'next/link'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import AnimatedEntry from '@/components/shared/AnimatedEntry'
 import TimelineItem from '@/components/experience/TimelineItem'
-import { getExperience } from '@/lib/content'
+import { getHomeExperience } from '@/lib/content'
 
-const items = getExperience().slice(0, 3)
+const items = getHomeExperience()
 
 export default function ExperienceHighlights() {
   return (

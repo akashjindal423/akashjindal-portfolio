@@ -7,7 +7,6 @@ import Link from 'next/link'
 import { Clock } from 'lucide-react'
 import { format } from 'date-fns'
 import { getBlogPostBySlug, getBlogPosts } from '@/lib/content'
-import { serializeMDX } from '@/lib/mdx'
 import Badge from '@/components/shared/Badge'
 import PostCard from '@/components/blog/PostCard'
 import MDXContent from '@/components/blog/MDXContent'
@@ -36,11 +35,11 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound()
 
   const mdxPath = path.join(process.cwd(), 'content/blog', `${slug}.mdx`)
-  let serialized = null
+  let mdxSource: string | null = null
   if (fs.existsSync(mdxPath)) {
     const raw = fs.readFileSync(mdxPath, 'utf-8')
     const { content } = matter(raw)
-    serialized = await serializeMDX(content)
+    mdxSource = content
   }
 
   const related = getBlogPosts()
@@ -69,7 +68,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <hr className="border-[#2A2A50] mt-8 mb-8" />
 
-      {serialized && <MDXContent content={serialized} />}
+      {mdxSource && <MDXContent source={mdxSource} />}
 
       <div className="mt-12 pt-8 border-t border-[#2A2A50]">
         <div className="flex flex-wrap gap-2 mb-6">

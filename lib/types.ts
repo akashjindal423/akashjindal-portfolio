@@ -10,6 +10,7 @@ export interface Experience {
   achievements: string[]
   tools: string[]
   order: number
+  note?: string
 }
 
 export interface Project {

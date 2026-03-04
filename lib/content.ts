@@ -40,31 +40,44 @@ export interface Testimonial {
 export function getTestimonials(): Testimonial[] {
   return [
     {
-      slug: 'sarah-chen',
-      quote: "Akash has a rare ability to hold the technical and business context simultaneously. He never loses sight of the user while managing complex engineering constraints — a quality that made him invaluable during our core banking migration.",
-      author: 'Sarah Chen',
-      role: 'Engineering Director',
-      company: 'Monzo Bank',
+      slug: 'dee-bolt',
+      quote: "I've worked with Akash on a multi-million pound project for the best part of a year and a half and I can say without hesitation he has been an asset to the project and team. Akash has prevented many issues reaching production through his dedicated and thorough QA approaches. In the latter stage of the project Akash stepped up and absorbed a project analysis and ownership stance to help drive the project and product forward, making sure everyone has a clear and concise goal. A true Swiss army knife in a project delivery team!",
+      author: 'Dee Bolt',
+      role: 'Identity Architect & IAM/CIAM Consultant',
+      company: 'Microsoft Entra Specialist',
+      relationship: 'Worked on same project',
+      linkedinUrl: 'https://www.linkedin.com/in/deebolt/',
+      featured: true,
+    },
+    {
+      slug: 'amit-goel',
+      quote: "Akash has a varied skillset and has shown a great learning curve in IoT, Cloud, and Mobility related technologies. He has worked with great intellectuality and flexibility which helped the project immensely. All his hard work has helped him get growth in a short stint which is hard to see. It's not a big deal for a person like Akash.",
+      author: 'Amit Goel',
+      role: 'Delivery Manager',
+      company: 'IBM',
       relationship: 'Direct Manager',
+      linkedinUrl: 'https://www.linkedin.com/in/goelamit2008/',
       featured: true,
     },
     {
-      slug: 'james-okafor',
-      quote: "Working with Akash on the Open Banking compliance programme was exceptional. He translated dense FCA requirements into clear, prioritised stories that the team could actually execute. Delivered on time, zero regulatory findings.",
-      author: 'James Okafor',
-      role: 'Head of Compliance',
-      company: 'Barclays',
-      relationship: 'Senior Stakeholder',
+      slug: 'nitin-kumar',
+      quote: "Akash is a gifted individual with a rare combination of technology, domain, and research specific skills. He scaled up in Enterprise Microservice Implementation and Brokered Architecture for B2B Integrations in no time with absolute professionalism. I've seen Akash go above and beyond — his 'Hunger For More' mindset means he's always eager to learn new business and tech. His talent and perseverance made him a valuable member of our team. I'm sure he'll be an asset to any team he joins.",
+      author: 'Nitin Kumar',
+      role: 'Senior Spatial AI Data & Cloud Engineer',
+      company: 'AWS / Kubernetes',
+      relationship: 'Mentor',
+      linkedinUrl: 'https://www.linkedin.com/in/visit-nitin-kumar/',
       featured: true,
     },
     {
-      slug: 'priya-sharma',
-      quote: "Akash is the kind of PO engineers love working with. He writes precise acceptance criteria, joins technical discussions without ego, and always has a clear rationale for prioritisation decisions. Highly recommend.",
-      author: 'Priya Sharma',
-      role: 'Senior Software Engineer',
-      company: 'Monzo Bank',
-      relationship: 'Team Member',
-      featured: true,
+      slug: 'arumoy-chakraborty',
+      quote: "Akash joined my team as a fresher but with a very different skillset than what our work needed. Surprisingly in a very short time it was evident that his runway is much shorter than we expected. He picked up very new skills, asked lots of important questions, and made himself valuable quickly. Be it conventional enterprise technologies or bleeding-edge ones like AR/VR, Akash has been an important and valuable person in the team all the way through.",
+      author: 'Arumoy Chakraborty',
+      role: 'Lead Developer',
+      company: 'Delta Air Lines',
+      relationship: 'Same team',
+      linkedinUrl: 'https://www.linkedin.com/in/arumoy/',
+      featured: false,
     },
   ]
 }
@@ -72,58 +85,102 @@ export function getTestimonials(): Testimonial[] {
 export function getExperience(): Experience[] {
   return [
     {
-      slug: 'senior-po-fintech',
-      role: 'Senior Product Owner',
-      company: 'Monzo Bank',
-      location: 'London, UK',
-      startDate: '2022-06',
+      slug: 'lloyds-data-po',
+      role: 'Data Product Owner',
+      company: 'Lloyds Banking Group',
+      location: 'Bristol, England · Hybrid',
+      startDate: '2023-08',
       current: true,
       summary:
-        'Owning the lending product area, driving strategy and delivery for personal loans and overdrafts across 8M+ customers.',
+        'Driving innovation at the intersection of data, compliance, and cloud transformation within one of the UK\'s leading financial institutions.',
       achievements: [
-        'Launched instant personal loans feature, contributing £18M additional revenue in 12 months',
-        'Reduced time-to-decision from 72 hours to under 4 minutes via ML credit scoring integration',
-        'Led a cross-functional team of 12 across engineering, design, data and compliance',
+        'Led strategic regulatory data initiatives — enhanced reporting accuracy, risk transparency, and compliance posture',
+        'Contributed to AI Centre of Excellence (AI CoE) — enabling scalable, AI-driven solutions across functions',
+        'Enabled cloud-led digital transformation — migrated key data assets from on-premise to Google Cloud Platform (GCP)',
+        'Streamlined product delivery across squads in SAFe environment — Epics, Stories, and delivery priorities',
       ],
-      tools: ['Jira', 'Confluence', 'Figma', 'Amplitude', 'SQL', 'Miro'],
+      tools: ['GCP', 'BigQuery', 'SAFe', 'Jira', 'Confluence', 'SQL', 'Data Engineering'],
       order: 1,
     },
     {
-      slug: 'po-barclays',
-      role: 'Product Owner',
-      company: 'Barclays',
-      location: 'London, UK',
-      startDate: '2019-09',
-      endDate: '2022-05',
+      slug: 'dyson-po-npi',
+      role: 'Software Product Owner — New Product Innovation',
+      company: 'Dyson',
+      location: 'Bristol, England · On-site (+ Singapore, Malaysia, China)',
+      startDate: '2022-09',
+      endDate: '2023-08',
       current: false,
       summary:
-        'Delivered digital transformation across retail banking, focusing on mobile app features and open banking compliance.',
+        'Shaped the future of home technology through cutting-edge product development and cross-functional execution across global teams.',
       achievements: [
-        'Shipped Open Banking PSD2 compliance features across 8 API endpoints ahead of FCA deadline',
-        'Grew mobile app engagement by 34% through redesigned account overview and notification system',
-        'Managed backlog for team of 8 engineers across 3 concurrent workstreams',
+        'Pioneered Dyson\'s first Augmented Reality experience — led end-to-end development of Dyson CleanTrace AR cleaning guidance tool across APAC',
+        'Spearheaded New Product Innovation (NPI) for Dyson WashG1 — first dedicated wet floor cleaner, from concept through prototype',
+        'Drove cross-functional collaboration across UK and APAC hubs under tight timelines',
+        'Championed Agile execution in SAFe — led ceremonies, backlog prioritisation, and stakeholder presentations at executive level',
       ],
-      tools: ['Jira', 'Confluence', 'SQL', 'Figma', 'Miro', 'Postman'],
+      tools: ['SAFe', 'Jira', 'Figma', 'Agile', 'Road Maps', 'UX Research'],
       order: 2,
     },
     {
-      slug: 'ba-accenture',
-      role: 'Business Analyst → Product Analyst',
-      company: 'Accenture',
-      location: 'London, UK',
-      startDate: '2017-08',
-      endDate: '2019-08',
+      slug: 'sse-po',
+      role: 'Product Owner',
+      company: 'SSE plc',
+      location: 'Reading, England · Hybrid',
+      startDate: '2021-04',
+      endDate: '2022-08',
       current: false,
       summary:
-        'Delivered requirements analysis, process mapping, and product analytics for FTSE 100 financial services clients.',
+        'Drove digital transformation projects within the energy sector, delivering scalable, customer-centric solutions.',
       achievements: [
-        'Led requirements workshops with 40+ stakeholders for a core banking migration project',
-        'Built SQL-based reporting suite reducing manual reporting effort by 15 hours/week',
+        'Defined product roadmaps balancing technical feasibility and user outcomes across transformation portfolio',
+        'Implemented SAFe frameworks, facilitated agile ceremonies, and prioritised backlogs across squads',
+        'Liaised across NPI Design Engineering, UX, and Tech teams to streamline digital tools delivery',
       ],
-      tools: ['SQL', 'Excel', 'Visio', 'Confluence', 'JIRA'],
+      tools: ['SAFe', 'Jira', 'Confluence', 'Agile', 'Road Maps'],
       order: 3,
     },
+    {
+      slug: 'sony-po',
+      role: 'Product Owner',
+      company: 'Sony Interactive Entertainment',
+      location: 'London · Hybrid',
+      startDate: '2020-04',
+      endDate: '2021-04',
+      current: false,
+      summary:
+        'Contributed to the successful PlayStation 5 launch by leading service delivery and tech product initiatives within the ITSM and ServiceNow ecosystem.',
+      achievements: [
+        'Delivered ITSM & ServiceNow enhancements — global collaboration across UX/UI, engineering, and research teams',
+        'Orchestrated planning and execution of key platform features aligned with PS5 launch timeline',
+        'Directed EPIC and Story backlog refinement for automation testing and quality assurance',
+      ],
+      tools: ['ServiceNow', 'Scrum', 'Jira', 'Microsoft Outlook', 'ITSM'],
+      order: 4,
+    },
+    {
+      slug: 'infosys-consultant',
+      role: 'Associate Consultant',
+      company: 'Infosys',
+      location: 'Bengaluru, India · Hybrid',
+      startDate: '2016-12',
+      endDate: '2020-04',
+      current: false,
+      summary:
+        'Delivered cross-industry transformation projects across financial services, manufacturing, and agri-tech for Fortune 500 clients.',
+      achievements: [
+        'Led GDPR-compliant migration of 400K+ legacy records including PII data into Azure cloud pipelines',
+        'Key contributor to Manufacturing & IoT Centre of Excellence — smart shopfloor for Toyota',
+        'Part of core team for Infosys Digi Agri Pilot — AI-led agriculture solution using cloud, IoT, and data analytics',
+        'Standardised operational workflows across three major business lines',
+      ],
+      tools: ['Azure', 'IoT', 'DevOps', 'SQL', 'Agile', 'Cloud Migration'],
+      order: 5,
+    },
   ]
+}
+
+export function getHomeExperience(): Experience[] {
+  return getExperience().slice(0, 2)
 }
 
 export function getFeaturedProjects(): Project[] {
@@ -246,10 +303,41 @@ export function getSkillGroups(): SkillGroup[] {
 
 export function getTraining(): Training[] {
   return [
-    { slug: 'pspo', title: 'Professional Scrum Product Owner I (PSPO I)', provider: 'Scrum.org', date: '2021-06', credentialUrl: '#', featured: true },
-    { slug: 'agilepm', title: 'AgilePM Foundation & Practitioner', provider: 'APMG International', date: '2020-03', credentialUrl: '#', featured: true },
-    { slug: 'aws-cp', title: 'AWS Certified Cloud Practitioner', provider: 'Amazon Web Services', date: '2022-11', credentialUrl: '#', featured: true },
-    { slug: 'google-analytics', title: 'Google Analytics Certification', provider: 'Google', date: '2023-02', credentialUrl: '#', featured: true },
+    { slug: 'google-gen-ai-leader', title: 'Generative AI Leader', provider: 'Google', date: '2025-10', credentialUrl: 'https://www.credly.com/go/R6C7fcRAz2J4Eums5Q6asg', featured: true },
+    { slug: 'google-digital-cloud-leader', title: 'Digital Cloud Leader', provider: 'Google', date: '2025-01', credentialUrl: 'https://www.credly.com/badges/9567e1e5-950c-4dfd-af5c-4f4d23617dad', featured: true },
+    { slug: 'google-ace', title: 'Associate Cloud Engineer', provider: 'Google', date: '2024-03', credentialUrl: 'https://google.accredible.com/e2edead5-c2c3-49dd-9e3d-aefa52630ecf', featured: true },
+    { slug: 'icagile-apo', title: 'Agile Product Ownership (ICP-APO)', provider: 'ICAgile', date: '2025-07', credentialUrl: 'https://www.credly.com/badges/67e490ae-9348-4a4a-b709-d36b06550f96', featured: true },
+    { slug: 'pspo-ii', title: 'Professional Scrum Product Owner II (PSPO II)', provider: 'Scrum.org', date: '2023-10', credentialUrl: 'https://www.credly.com/badges/29ae1c3a-189b-457a-a180-1f376d46f878', featured: true },
+    { slug: 'pspo-i', title: 'Professional Scrum Product Owner I (PSPO I)', provider: 'Scrum.org', date: '2022-03', credentialUrl: 'https://www.credly.com/badges/f39c0e55-dde0-4475-bd8d-2de13ad4df56', featured: true },
+    { slug: 'lloyds-data-storytelling', title: 'Data Storytelling — Proficient', provider: 'Lloyds Banking Group', date: '2025-02', credentialUrl: 'https://www.credly.com/earner/earned/badge/91235142-0fd0-4762-aef6-1560ce5da8f4', featured: false },
+    { slug: 'azure-az900', title: 'Azure Fundamentals (AZ-900)', provider: 'Microsoft', date: '2020-10', credentialUrl: 'https://www.youracclaim.com/badges/29b3483c-0ede-4081-a71e-95318819c1f5', featured: false },
+    { slug: 'ibm-devops', title: 'IBM Certified Solution Advisor — DevOps V1', provider: 'IBM', date: '2017-06', credentialUrl: 'https://www.youracclaim.com/badges/ab38acc8-6b36-4860-8870-dce5c331f68c', featured: false },
+  ]
+}
+
+export interface Education {
+  institution: string
+  degree: string
+  period: string
+  grade?: string
+  activities?: string
+}
+
+export function getEducation(): Education[] {
+  return [
+    {
+      institution: 'Chandigarh College of Engineering & Technology, Panjab University',
+      degree: "Bachelor's Degree, Mechanical Engineering",
+      period: 'Jun 2012 – Jul 2016',
+      grade: '75%',
+      activities: 'College President, NSS, Music Club, Rotaract, Student Council, Entrepreneurship Cell',
+    },
+    {
+      institution: 'Udacity',
+      degree: 'Nanodegree — iOS Development (Computer Science)',
+      period: 'Jun 2016 – Dec 2016',
+      grade: '9.5/10',
+    },
   ]
 }
 

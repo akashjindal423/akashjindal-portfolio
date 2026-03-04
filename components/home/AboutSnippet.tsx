@@ -23,14 +23,11 @@ export default function AboutSnippet() {
             <h2 className="text-3xl font-bold text-text-primary mb-6">
               Product thinking meets technical fluency
             </h2>
-            <p className="text-text-secondary leading-relaxed mb-4">
-              With 8+ years delivering digital products in banking and fintech,
-              I specialise in translating complex regulatory and technical constraints
-              into clear, actionable product roadmaps.
-            </p>
             <p className="text-text-secondary leading-relaxed">
-              I work best at the intersection of business strategy, user needs,
-              and engineering reality — ensuring what gets built actually gets shipped.
+              With 8+ years across fintech, energy, consumer tech, and consultancy,
+              I specialise in data products, AI-led innovation, and cloud transformation.
+              I have shipped AR products at Dyson, contributed to the PlayStation 5 launch at Sony,
+              and currently lead regulatory data product delivery at Lloyds Banking Group.
             </p>
             <Link
               href="/about"

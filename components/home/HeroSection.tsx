@@ -7,7 +7,7 @@ import { Download, ChevronDown } from 'lucide-react'
 const fadeUp = (delay: number) => ({
   initial: { y: 20, opacity: 0 },
   animate: { y: 0, opacity: 1 },
-  transition: { duration: 0.6, ease: 'easeOut', delay },
+  transition: { duration: 0.6, ease: 'easeOut' as const, delay },
 })
 
 export default function HeroSection() {
@@ -25,7 +25,7 @@ export default function HeroSection() {
           {...fadeUp(0)}
           className="block text-violet-400 text-sm uppercase tracking-[0.2em] font-medium mb-6"
         >
-          Technical Product Owner
+          Data Product Owner
         </motion.span>
 
         {/* H1 */}
@@ -41,8 +41,8 @@ export default function HeroSection() {
           {...fadeUp(0.3)}
           className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10"
         >
-          Bridging product strategy and technical delivery in banking and fintech.
-          I turn complex requirements into shipped products teams are proud of.
+          Bridging data, AI, and cloud to deliver compliant, high-impact products.
+          From AR at Dyson to regulatory data at Lloyds — I turn complex requirements into products teams are proud of.
         </motion.p>
 
         {/* CTA row */}
