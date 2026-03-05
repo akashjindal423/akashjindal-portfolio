@@ -12,9 +12,9 @@ const NAV_LINKS = [
 ]
 
 const CONNECT_LINKS = [
-  { label: 'LinkedIn', href: '#', icon: ExternalLink },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/akash--jindal/', icon: ExternalLink },
   { label: 'GitHub', href: '#', icon: Github },
-  { label: 'hello@akashjindal.dev', href: 'mailto:hello@akashjindal.dev', icon: Mail },
+  { label: 'akashjindal423@gmail.com', href: 'mailto:akashjindal423@gmail.com', icon: Mail },
 ]
 
 export default function Footer() {

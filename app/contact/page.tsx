@@ -31,7 +31,7 @@ export default function ContactPage() {
             </div>
 
             <a
-              href="https://linkedin.com/in/akashjindal"
+              href="https://www.linkedin.com/in/akash--jindal/"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#13132A] border border-[#2A2A50] hover:border-violet-500/30 rounded-xl p-6 flex items-start gap-4 transition group"
@@ -40,20 +40,20 @@ export default function ContactPage() {
               <div>
                 <p className="text-text-primary font-semibold text-sm mb-1">LinkedIn</p>
                 <p className="text-text-secondary text-sm group-hover:text-violet-400 transition-colors duration-200">
-                  linkedin.com/in/akashjindal
+                  linkedin.com/in/akash--jindal
                 </p>
               </div>
             </a>
 
             <a
-              href="mailto:hello@akashjindal.dev"
+              href="mailto:akashjindal423@gmail.com"
               className="bg-[#13132A] border border-[#2A2A50] hover:border-violet-500/30 rounded-xl p-6 flex items-start gap-4 transition group"
             >
               <Mail className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
               <div>
                 <p className="text-text-primary font-semibold text-sm mb-1">Email</p>
                 <p className="text-text-secondary text-sm group-hover:text-violet-400 transition-colors duration-200">
-                  hello@akashjindal.dev
+                  akashjindal423@gmail.com
                 </p>
               </div>
             </a>

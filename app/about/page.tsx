@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Briefcase } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
@@ -69,9 +70,14 @@ export default function AboutPage() {
 
           {/* Right: sticky photo + stats */}
           <div className="md:sticky md:top-8 md:self-start flex flex-col gap-6">
-            <div className="w-full aspect-square bg-[#13132A] border border-[#2A2A50] rounded-2xl flex items-center justify-center text-[#4F4D70] text-sm">
-              Photo coming soon
-            </div>
+            <Image
+              src="/profile.jpg"
+              alt="Akash Jindal"
+              width={500}
+              height={500}
+              className="w-full aspect-square object-cover rounded-2xl border border-[#2A2A50]"
+              priority
+            />
             {stats.map(({ value, label }) => (
               <div
                 key={value}
