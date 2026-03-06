@@ -22,7 +22,8 @@ export default async function ProjectPage({ params }: Props) {
   const project = getProjectBySlug(slug)
   if (!project) notFound()
 
-  const all = getProjects()
+  const { official, passion } = getProjects()
+  const all = [...official, ...passion]
   const idx = all.findIndex((p) => p.slug === slug)
   const prev = idx > 0 ? all[idx - 1] : null
   const next = idx < all.length - 1 ? all[idx + 1] : null
