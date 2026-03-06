@@ -48,7 +48,7 @@ export default function TestimonialsCarousel() {
 
       {/* Card */}
       <div
-        className="relative bg-[#13132A] border border-[#2A2A50] rounded-2xl p-8 md:p-12 max-w-4xl mx-auto overflow-hidden"
+        className="relative bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8 md:p-12 max-w-4xl mx-auto overflow-hidden"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
@@ -80,7 +80,7 @@ export default function TestimonialsCarousel() {
                 <p className="font-semibold text-text-primary">{t.author}</p>
                 <p className="text-text-secondary text-sm">{t.role}, {t.company}</p>
               </div>
-              <span className="ml-auto text-xs bg-[#0D0D1A] border border-[#2A2A50] px-3 py-1 rounded-full text-text-muted">
+              <span className="ml-auto text-xs bg-[var(--background)] border border-[var(--border)] px-3 py-1 rounded-full text-text-muted">
                 {t.relationship}
               </span>
             </div>
@@ -92,7 +92,7 @@ export default function TestimonialsCarousel() {
           <button
             onClick={prev}
             aria-label="Previous"
-            className="w-10 h-10 rounded-full border border-[#2A2A50] flex items-center justify-center text-text-secondary hover:border-violet-500/40 hover:text-violet-400 transition-all duration-200"
+            className="w-10 h-10 rounded-full border border-[var(--border)] flex items-center justify-center text-text-secondary hover:border-violet-500/40 hover:text-violet-400 transition-all duration-200"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -105,7 +105,7 @@ export default function TestimonialsCarousel() {
                 onClick={() => setCurrent(i)}
                 aria-label={`Go to testimonial ${i + 1}`}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  i === current ? 'bg-violet-600 w-4' : 'bg-[#2A2A50] w-2'
+                  i === current ? 'bg-violet-600 w-4' : 'bg-[var(--border)] w-2'
                 }`}
               />
             ))}
@@ -114,7 +114,7 @@ export default function TestimonialsCarousel() {
           <button
             onClick={next}
             aria-label="Next"
-            className="w-10 h-10 rounded-full border border-[#2A2A50] flex items-center justify-center text-text-secondary hover:border-violet-500/40 hover:text-violet-400 transition-all duration-200"
+            className="w-10 h-10 rounded-full border border-[var(--border)] flex items-center justify-center text-text-secondary hover:border-violet-500/40 hover:text-violet-400 transition-all duration-200"
           >
             <ChevronRight className="w-4 h-4" />
           </button>

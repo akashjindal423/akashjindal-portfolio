@@ -7,7 +7,7 @@ interface RoadmapPhaseProps {
 
 export default function RoadmapPhase({ phase, period, label, items }: RoadmapPhaseProps) {
   return (
-    <div className="bg-[#13132A] border border-[#2A2A50] rounded-2xl p-5">
+    <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5">
       <div className="mb-3">
         <div className="flex items-center justify-between mb-0.5">
           <span className="text-xs font-bold text-violet-400">{phase}</span>

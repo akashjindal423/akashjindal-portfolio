@@ -66,11 +66,11 @@ export default async function BlogPostPage({ params }: Props) {
         </span>
       </div>
 
-      <hr className="border-[#2A2A50] mt-8 mb-8" />
+      <hr className="border-[var(--border)] mt-8 mb-8" />
 
       {mdxSource && <MDXContent source={mdxSource} />}
 
-      <div className="mt-12 pt-8 border-t border-[#2A2A50]">
+      <div className="mt-12 pt-8 border-t border-[var(--border)]">
         <div className="flex flex-wrap gap-2 mb-6">
           {post.tags.map(tag => <Badge key={tag}>{tag}</Badge>)}
         </div>

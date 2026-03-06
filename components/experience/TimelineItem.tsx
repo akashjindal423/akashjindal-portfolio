@@ -25,7 +25,7 @@ export default function TimelineItem({ experience, isLast }: Props) {
     <div className="relative flex gap-8">
       {/* Timeline line */}
       {!isLast && (
-        <div className="absolute left-4 top-8 bottom-0 w-px bg-[#2A2A50]" />
+        <div className="absolute left-4 top-8 bottom-0 w-px bg-[var(--border)]" />
       )}
 
       {/* Dot */}
@@ -34,7 +34,7 @@ export default function TimelineItem({ experience, isLast }: Props) {
       </div>
 
       {/* Card */}
-      <div className="bg-[#13132A] border border-[#2A2A50] rounded-xl p-6 flex-1 mb-8">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex-1 mb-8">
         {/* Top row */}
         <div className="flex flex-wrap items-center gap-2">
           <span className="font-semibold text-lg text-text-primary">{role}</span>

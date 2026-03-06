@@ -63,14 +63,14 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="border-t border-[#2A2A50] mt-8 mb-8" />
+      <div className="border-t border-[var(--border)] mt-8 mb-8" />
 
       {/* Section 2 — Description & Tags */}
       <div className="mt-8">
         <p className="text-lg text-[#A09EC0] leading-relaxed">{project!.description}</p>
         <div className="flex flex-wrap gap-2 mt-6">
           {project!.tags.map((tag: string) => (
-            <span key={tag} className="text-xs bg-[#13132A] border border-[#2A2A50] text-[#6B69A0] px-3 py-1 rounded-full">
+            <span key={tag} className="text-xs bg-[var(--surface)] border border-[var(--border)] text-[#6B69A0] px-3 py-1 rounded-full">
               {tag}
             </span>
           ))}
@@ -82,7 +82,7 @@ export default async function ProjectPage({ params }: Props) {
         <h2 className="text-2xl font-bold text-text-primary border-l-4 border-violet-600 pl-4 mb-4">
           The Problem
         </h2>
-        <div className="bg-[#13132A] rounded-xl p-6 text-text-secondary leading-relaxed">
+        <div className="bg-[var(--surface)] rounded-xl p-6 text-text-secondary leading-relaxed">
           The existing system had grown organically over many years, resulting in significant technical debt, poor user experience, and a high rate of manual intervention. Stakeholders needed a clear, data-backed case for change before any discovery work could begin.
         </div>
       </section>
@@ -113,7 +113,7 @@ export default async function ProjectPage({ params }: Props) {
           ].map(({ stat, label }) => (
             <div
               key={label}
-              className="bg-[#13132A] border border-[#2A2A50] rounded-lg p-4 text-center flex-1 min-w-[120px]"
+              className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-4 text-center flex-1 min-w-[120px]"
             >
               <div className="text-emerald-400 text-2xl font-bold">{stat}</div>
               <div className="text-text-muted text-xs mt-1">{label}</div>
@@ -138,7 +138,7 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       {/* Section 7 — Footer nav */}
-      <div className="flex justify-between mt-16 pt-8 border-t border-[#2A2A50]">
+      <div className="flex justify-between mt-16 pt-8 border-t border-[var(--border)]">
         {prev ? (
           <Link href={`/projects/${prev.slug}`} className="text-violet-400 hover:text-violet-300 transition-colors duration-200 text-sm">
             ← {prev.title}

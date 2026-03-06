@@ -82,7 +82,7 @@ export default function FeaturedProjects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`relative rounded-2xl border ${project.border} bg-gradient-to-br ${project.companyColor} bg-[#13132A] p-6 flex flex-col h-full ${project.href ? 'hover:border-violet-500/30 hover:-translate-y-[2px] hover:shadow-glow transition-all duration-300 cursor-pointer' : ''}`}
+              className={`relative rounded-2xl border ${project.border} bg-gradient-to-br ${project.companyColor} bg-[var(--surface)] p-6 flex flex-col h-full ${project.href ? 'hover:border-violet-500/30 hover:-translate-y-[2px] hover:shadow-glow transition-all duration-300 cursor-pointer' : ''}`}
             >
               <div className="flex items-start justify-between mb-3">
                 <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${project.badgeColor}`}>
@@ -102,7 +102,7 @@ export default function FeaturedProjects() {
               <p className="text-sm text-[#A09EC0] leading-relaxed flex-1">{project.description}</p>
               <div className="flex flex-wrap gap-1.5 mt-4">
                 {project.tags.map(tag => (
-                  <span key={tag} className="text-[10px] bg-[#0D0D1F]/60 border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
+                  <span key={tag} className="text-[10px] bg-[var(--background)]/60 border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
                     {tag}
                   </span>
                 ))}

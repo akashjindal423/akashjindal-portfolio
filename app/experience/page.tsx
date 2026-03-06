@@ -33,7 +33,7 @@ export default function ExperiencePage() {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="sticky top-8 bg-[#13132A] border border-[#2A2A50] rounded-xl p-6">
+            <div className="sticky top-8 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6">
               <p className="text-violet-400 text-xs uppercase tracking-widest font-semibold mb-4">
                 Skills &amp; Tools
               </p>
@@ -50,11 +50,11 @@ export default function ExperiencePage() {
       <SectionWrapper>
         <div className="flex items-center gap-3 mt-16 mb-8">
           <span className="text-xs uppercase tracking-widest text-[#4F4D70]">Community &amp; Volunteering</span>
-          <div className="flex-1 h-px bg-[#2A2A50]" />
+          <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Toastmasters */}
-          <div className="bg-[#13132A] border border-[#2A2A50] rounded-2xl p-6">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <div className="flex items-start justify-between mb-3">
               <div>
                 <p className="text-xs text-[#4F4D70] mb-1">Apr 2024 – Oct 2024 · London · Remote</p>
@@ -79,13 +79,13 @@ export default function ExperiencePage() {
             </ul>
             <div className="flex flex-wrap gap-1.5 mt-4">
               {['Team Leadership', 'Marketing', 'Community Building', 'Onboarding'].map(tag => (
-                <span key={tag} className="text-[10px] bg-[#0D0D1F] border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">{tag}</span>
+                <span key={tag} className="text-[10px] bg-[var(--background)] border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">{tag}</span>
               ))}
             </div>
           </div>
 
           {/* SOCH NGO */}
-          <div className="bg-[#13132A] border border-[#2A2A50] rounded-2xl p-6">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <div className="flex items-start justify-between mb-3">
               <div>
                 <p className="text-xs text-[#4F4D70] mb-1">Dec 2019 – Jul 2023 · 3 yrs 8 mos</p>
@@ -109,7 +109,7 @@ export default function ExperiencePage() {
             </ul>
             <div className="flex flex-wrap gap-1.5 mt-4">
               {['Mentorship', 'Social Impact', 'Community Development', 'LGBTQIA+ Inclusion'].map(tag => (
-                <span key={tag} className="text-[10px] bg-[#0D0D1F] border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">{tag}</span>
+                <span key={tag} className="text-[10px] bg-[var(--background)] border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">{tag}</span>
               ))}
             </div>
           </div>

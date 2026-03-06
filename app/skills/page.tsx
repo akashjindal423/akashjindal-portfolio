@@ -41,7 +41,7 @@ export default function SkillsPage() {
         <h2 className="text-3xl font-bold text-text-primary mb-8">How I Work</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {howIWork.map(({ icon: Icon, title, body }) => (
-            <div key={title} className="bg-[#13132A] border border-[#2A2A50] rounded-xl p-6">
+            <div key={title} className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6">
               <Icon className="w-6 h-6 text-violet-400 mb-4" />
               <h3 className="font-semibold text-text-primary mb-2">{title}</h3>
               <p className="text-text-secondary text-sm leading-relaxed">{body}</p>

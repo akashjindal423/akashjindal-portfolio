@@ -44,33 +44,52 @@
 :root {
   --radius: 0.625rem;
 
-  /* Design system tokens */
-  --background: #0D0D1A;
-  --surface: #13132A;
-  --surface-raised: #1A1A38;
-  --border-subtle: #2A2A50;
+  /* Design system tokens — light (default) */
+  --background: #F8F7FF;
+  --surface: #FFFFFF;
+  --surface-secondary: #F0EFF9;
+  --border: #E2E0F0;
+  --text-primary: #0F0E1A;
+  --text-muted: #4A4869;
   --accent: #7C3AED;
-  --accent-light: #A78BFA;
-  --text-primary: #F8F8FF;
-  --text-secondary: #A09EC0;
-  --text-muted: #4F4D70;
 
-  /* shadcn/ui compatibility */
-  --foreground: #F8F8FF;
-  --card: #13132A;
-  --card-foreground: #F8F8FF;
-  --popover: #13132A;
-  --popover-foreground: #F8F8FF;
+  /* shadcn/ui compatibility — light */
+  --foreground: #0F0E1A;
+  --card: #FFFFFF;
+  --card-foreground: #0F0E1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F0E1A;
   --primary: #7C3AED;
   --primary-foreground: #F8F8FF;
-  --secondary: #1A1A38;
-  --secondary-foreground: #F8F8FF;
-  --muted: #1A1A38;
-  --muted-foreground: #A09EC0;
+  --secondary: #F0EFF9;
+  --secondary-foreground: #0F0E1A;
+  --muted: #F0EFF9;
+  --muted-foreground: #4A4869;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #2A2A50;
-  --input: #2A2A50;
+  --input: #E2E0F0;
   --ring: #7C3AED;
+}
+
+.dark {
+  --background: #0D0D1F;
+  --surface: #13132A;
+  --surface-secondary: #1A1A35;
+  --border: #2A2A50;
+  --text-primary: #F8F7FF;
+  --text-muted: #9B99BB;
+  --accent: #8B5CF6;
+
+  /* shadcn/ui compatibility — dark */
+  --foreground: #F8F7FF;
+  --card: #13132A;
+  --card-foreground: #F8F7FF;
+  --popover: #13132A;
+  --popover-foreground: #F8F7FF;
+  --secondary: #1A1A35;
+  --secondary-foreground: #F8F7FF;
+  --muted: #1A1A35;
+  --muted-foreground: #9B99BB;
+  --input: #2A2A50;
 }
 
 html {
@@ -87,7 +106,7 @@ html {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #13132A;
+  background: var(--surface);
 }
 ::-webkit-scrollbar-thumb {
   background: #7C3AED;
@@ -119,8 +138,8 @@ html {
   }
   body {
     @apply font-sans antialiased;
-    background-color: #0D0D1A;
+    background-color: var(--background);
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    color: #F8F8FF;
+    color: var(--text-primary);
   }
 }

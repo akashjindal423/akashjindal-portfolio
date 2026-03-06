@@ -115,7 +115,7 @@ export default function SkillIconGrid() {
                 key={skill.name}
                 className="flex flex-col items-center gap-2 group cursor-default"
               >
-                <div className="w-14 h-14 rounded-xl bg-[#0D0D1F] border border-[#2A2A50] flex items-center justify-center text-3xl group-hover:border-white/20 group-hover:bg-[#13132A] transition-all duration-200">
+                <div className="w-14 h-14 rounded-xl bg-[var(--background)] border border-[var(--border)] flex items-center justify-center text-3xl group-hover:border-white/20 group-hover:bg-[var(--surface)] transition-all duration-200">
                   {skill.icon}
                 </div>
                 <span className="text-[11px] font-medium text-[#A09EC0] text-center leading-tight group-hover:text-[#A09EC0] transition-colors px-0.5">

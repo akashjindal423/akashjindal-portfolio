@@ -3,6 +3,7 @@ import { Inter, Fraunces, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import { ThemeProvider } from '@/features/theme'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -52,12 +53,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
     >
-      <body suppressHydrationWarning className="bg-[#0D0D1A] text-[#F8F8FF] font-sans antialiased">
-        <Navbar />
-        {children}
-        <Footer />
+      <body suppressHydrationWarning className="bg-[var(--background)] text-[var(--text-primary)] font-sans antialiased">
+        <ThemeProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

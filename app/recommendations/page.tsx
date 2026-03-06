@@ -27,7 +27,7 @@ export default function RecommendationsPage() {
           {testimonials.map((t) => (
             <div
               key={t.slug}
-              className="bg-[#13132A] border border-[#2A2A50] rounded-2xl p-8"
+              className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8"
             >
               <span className="text-5xl text-violet-600 opacity-30 font-display leading-none">&ldquo;</span>
               <p className="italic text-[#A09EC0] leading-relaxed mt-2">{t.quote}</p>

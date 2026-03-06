@@ -15,7 +15,7 @@ export default function PersonaCard({ name, age, role, goals, frustrations, need
   ]
 
   return (
-    <div className="bg-[#13132A] border border-[#2A2A50] rounded-2xl p-6 flex flex-col gap-4">
+    <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex flex-col gap-4">
       <div>
         <p className="text-base font-bold text-violet-400">{name}, {age}</p>
         <p className="text-xs text-text-muted mt-0.5">{role}</p>

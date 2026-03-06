@@ -65,7 +65,7 @@ export default function AboutPage() {
               alt="Akash Jindal"
               width={500}
               height={500}
-              className="w-full aspect-square object-cover rounded-2xl border border-[#2A2A50]"
+              className="w-full aspect-square object-cover rounded-2xl border border-[var(--border)]"
               priority
             />
             <AboutStats />

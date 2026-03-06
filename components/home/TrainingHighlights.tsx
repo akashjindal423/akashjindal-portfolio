@@ -32,7 +32,7 @@ export default function TrainingHighlights() {
         {certs.map((cert) => (
           <div
             key={cert.slug}
-            className="flex-shrink-0 w-72 bg-[#13132A] border border-[#2A2A50] rounded-xl p-5"
+            className="flex-shrink-0 w-72 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5"
           >
             <Badge variant="accent">{cert.provider}</Badge>
             <p className="font-semibold text-sm text-text-primary mt-3 leading-snug line-clamp-2">

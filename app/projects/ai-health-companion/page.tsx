@@ -46,7 +46,7 @@ const moscowCols = [
   { label: 'Must', headingColor: 'text-violet-400', borderColor: 'border-violet-500/30', bg: 'bg-violet-500/5', items: ['Cultural onboarding', 'Culturally aware nutrition engine', 'Basic posture tracking', 'Wellness nudges', 'Apple Health integration'] },
   { label: 'Should', headingColor: 'text-amber-400', borderColor: 'border-amber-500/30', bg: 'bg-amber-500/5', items: ['Personalised meal planning', 'Progress dashboard', 'Form correction library', 'Adaptive difficulty'] },
   { label: 'Could', headingColor: 'text-emerald-400', borderColor: 'border-emerald-500/30', bg: 'bg-emerald-500/5', items: ['AI coach chat interface', 'Social accountability features', 'Gamification layer'] },
-  { label: "Won't (v1)", headingColor: 'text-text-muted', borderColor: 'border-[#2A2A50]', bg: 'bg-[#13132A]', items: ['Medical diagnosis', 'Guaranteed outcome claims', 'Live consultation'] },
+  { label: "Won't (v1)", headingColor: 'text-text-muted', borderColor: 'border-[var(--border)]', bg: 'bg-[var(--surface)]', items: ['Medical diagnosis', 'Guaranteed outcome claims', 'Live consultation'] },
 ]
 
 const journeySteps = [
@@ -133,7 +133,7 @@ export default function AIHealthCompanionPage() {
         </p>
       </section>
 
-      <div className="border-t border-[#2A2A50] mt-12" />
+      <div className="border-t border-[var(--border)] mt-12" />
 
       {/* OVERVIEW */}
       <section className="mt-16">
@@ -159,7 +159,7 @@ export default function AIHealthCompanionPage() {
             { title: 'No real-time physical feedback', body: 'Most apps give static exercise instructions with no live feedback. Poor form leads to injury, discouragement, and dropout — especially for beginners.' },
             { title: 'Reactive, not preventive', body: 'Existing tools log activity but do not connect lifestyle patterns to longer-term health trends. There is no guidance layer that says "you have been sedentary 5 days — here is what that means."' },
           ].map((card) => (
-            <div key={card.title} className="bg-[#13132A] border border-[#2A2A50] rounded-2xl p-6">
+            <div key={card.title} className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
               <h3 className="text-sm font-semibold text-text-primary mb-3 leading-snug">{card.title}</h3>
               <p className="text-sm text-text-secondary leading-relaxed">{card.body}</p>
             </div>
@@ -212,7 +212,7 @@ export default function AIHealthCompanionPage() {
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Core Features</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">What the product does</h2>
-        <div className="overflow-x-auto rounded-2xl border border-[#2A2A50]">
+        <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
           <table className="w-full text-sm min-w-[640px]">
             <thead>
               <tr className="bg-violet-600/20 border-b border-violet-500/30">
@@ -225,7 +225,7 @@ export default function AIHealthCompanionPage() {
             </thead>
             <tbody>
               {features.map((row, i) => (
-                <tr key={row.feature} className={`border-b border-[#2A2A50] ${i % 2 === 0 ? 'bg-[#0D0D1F]/50' : 'bg-[#13132A]/70'}`}>
+                <tr key={row.feature} className={`border-b border-[var(--border)] ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
                   <td className="px-4 py-3 font-medium text-text-primary align-top whitespace-nowrap">{row.feature}</td>
                   <td className="px-4 py-3 text-text-secondary align-top">{row.what}</td>
                   <td className="px-4 py-3 text-text-secondary align-top">{row.user}</td>
@@ -274,7 +274,7 @@ export default function AIHealthCompanionPage() {
               ))}
             </ul>
           </div>
-          <div className="bg-[#13132A] border border-[#2A2A50] rounded-2xl p-6">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <p className="text-[11px] uppercase tracking-widest text-text-muted font-semibold mb-4">Out of Scope</p>
             <ul className="space-y-2.5">
               {['Full wearable biometric analysis', 'Mental health layer', 'Community features', 'Live nutritionist consultation', 'Advanced diagnostics'].map((item) => (
@@ -318,7 +318,7 @@ export default function AIHealthCompanionPage() {
                   {item.step}
                 </div>
                 {i < journeySteps.length - 1 && (
-                  <div className="w-px flex-1 bg-[#2A2A50] my-1" style={{ minHeight: '1.5rem' }} />
+                  <div className="w-px flex-1 bg-[var(--border)] my-1" style={{ minHeight: '1.5rem' }} />
                 )}
               </div>
               <div className={`${i < journeySteps.length - 1 ? 'pb-6' : 'pb-0'} pt-1`}>
@@ -336,15 +336,15 @@ export default function AIHealthCompanionPage() {
         <h2 className="text-2xl font-bold text-text-primary mb-6">Epics and stories</h2>
         <div className="flex flex-wrap gap-2 mb-8">
           {['EP-01 Onboarding & Profile', 'EP-02 Cultural Nutrition Engine', 'EP-03 Movement & Posture', 'EP-04 Wellness Nudges', 'EP-05 Apple Health Integration', 'EP-06 Weekly Digest'].map((epic) => (
-            <span key={epic} className="text-xs bg-[#13132A] border border-[#2A2A50] text-[#6B69A0] px-3 py-1.5 rounded-lg font-mono">
+            <span key={epic} className="text-xs bg-[var(--surface)] border border-[var(--border)] text-[#6B69A0] px-3 py-1.5 rounded-lg font-mono">
               {epic}
             </span>
           ))}
         </div>
         <div className="space-y-4">
           {sampleStories.map((s) => (
-            <div key={s.epic} className="border border-[#2A2A50] rounded-2xl overflow-hidden">
-              <div className="bg-[#13132A] px-5 py-3 border-b border-[#2A2A50]">
+            <div key={s.epic} className="border border-[var(--border)] rounded-2xl overflow-hidden">
+              <div className="bg-[var(--surface)] px-5 py-3 border-b border-[var(--border)]">
                 <span className="text-[11px] uppercase tracking-widest text-violet-500 font-semibold">
                   Sample Story — {s.epic}
                 </span>
@@ -354,7 +354,7 @@ export default function AIHealthCompanionPage() {
                 <p className="text-[10px] uppercase tracking-widest text-text-muted font-semibold mb-2">
                   Acceptance Criteria
                 </p>
-                <div className="bg-[#0D0D1A] rounded-lg px-4 py-3 space-y-2">
+                <div className="bg-[var(--background)] rounded-lg px-4 py-3 space-y-2">
                   {s.ac.map((c) => (
                     <p key={c} className="text-sm text-[#A09EC0] font-mono leading-relaxed">
                       <span className="text-violet-500 mr-2">✓</span>{c}
@@ -380,10 +380,10 @@ export default function AIHealthCompanionPage() {
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Risks</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Known risks and mitigations</h2>
-        <div className="overflow-x-auto rounded-2xl border border-[#2A2A50]">
+        <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
           <table className="w-full text-sm min-w-[540px]">
             <thead>
-              <tr className="bg-[#13132A] border-b border-[#2A2A50]">
+              <tr className="bg-[var(--surface)] border-b border-[var(--border)]">
                 {['Risk', 'Impact', 'Mitigation'].map((h) => (
                   <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-[#4F4D70] font-semibold">
                     {h}
@@ -393,7 +393,7 @@ export default function AIHealthCompanionPage() {
             </thead>
             <tbody>
               {risks.map((row, i) => (
-                <tr key={row.risk} className={`border-b border-[#2A2A50] last:border-0 ${i % 2 === 0 ? 'bg-[#0D0D1F]/50' : 'bg-[#13132A]/70'}`}>
+                <tr key={row.risk} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
                   <td className="px-4 py-3 text-text-primary align-top">{row.risk}</td>
                   <td className={`px-4 py-3 font-semibold align-top whitespace-nowrap ${row.impactColor}`}>{row.impact}</td>
                   <td className="px-4 py-3 text-text-secondary align-top">{row.mitigation}</td>
@@ -452,7 +452,7 @@ export default function AIHealthCompanionPage() {
       </section>
 
       {/* Footer nav */}
-      <div className="flex justify-between mt-20 pt-8 border-t border-[#2A2A50]">
+      <div className="flex justify-between mt-20 pt-8 border-t border-[var(--border)]">
         <Link
           href="/projects"
           className="text-violet-400 hover:text-violet-300 transition-colors duration-200 text-sm"

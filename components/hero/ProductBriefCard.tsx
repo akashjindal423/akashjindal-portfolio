@@ -42,10 +42,10 @@ export default function ProductBriefCard() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.3 }}
-      className="relative w-full max-w-md rounded-2xl border border-[#2A2A50] bg-[#0A0A1B]/95 backdrop-blur-md shadow-2xl overflow-hidden"
+      className="relative w-full max-w-md rounded-2xl border border-[var(--border)] bg-[#0A0A1B]/95 backdrop-blur-md shadow-2xl overflow-hidden"
     >
       {/* Mac-style title bar */}
-      <div className="flex items-center gap-2 border-b border-[#2A2A50] bg-[#0D0D1F] px-4 py-3">
+      <div className="flex items-center gap-2 border-b border-[var(--border)] bg-[var(--background)] px-4 py-3">
         <div className="h-3 w-3 rounded-full bg-[#FF5F57]" />
         <div className="h-3 w-3 rounded-full bg-[#FEBC2E]" />
         <div className="h-3 w-3 rounded-full bg-[#28C840]" />

@@ -10,7 +10,7 @@ export default function ContactForm() {
   })
 
   const inputClass =
-    'w-full bg-[#13132A] border border-[#2A2A50] rounded-lg px-4 py-3 text-[#F8F8FF] placeholder-[#4F4D70] focus:outline-none focus:border-violet-500 transition'
+    'w-full bg-[var(--surface)] border border-[var(--border)] rounded-lg px-4 py-3 text-[#F8F8FF] placeholder-[#4F4D70] focus:outline-none focus:border-violet-500 transition'
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>

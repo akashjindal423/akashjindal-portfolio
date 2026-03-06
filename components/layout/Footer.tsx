@@ -19,7 +19,7 @@ const CONNECT_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0D0D1A] border-t border-[#2A2A50] py-12">
+    <footer className="bg-[var(--background)] border-t border-[var(--border)] py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 3-col grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -29,7 +29,7 @@ export default function Footer() {
               <span className="w-8 h-8 bg-violet-600 text-white font-bold text-sm flex items-center justify-center rounded shrink-0">
                 AJ
               </span>
-              <span className="font-medium text-[#F8F8FF]">Akash Jindal</span>
+              <span className="font-medium text-[var(--text-primary)]">Akash Jindal</span>
             </div>
             <p className="text-[#A09EC0] text-sm mt-2">Technical Product Owner</p>
             <p className="text-[#4F4D70] text-sm mt-3">
@@ -74,7 +74,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-[#2A2A50] mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-2 text-[#4F4D70] text-xs">
+        <div className="border-t border-[var(--border)] mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-2 text-[#4F4D70] text-xs">
           <span>© 2026 Akash Jindal. All rights reserved.</span>
           <span>Built with Next.js &amp; deployed on Vercel</span>
         </div>

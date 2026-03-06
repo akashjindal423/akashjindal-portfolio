@@ -10,7 +10,7 @@ interface BadgeProps {
 
 const variantStyles: Record<Variant, string> = {
   default:
-    'bg-[#13132A] text-[#A09EC0] border border-[#2A2A50] hover:border-violet-500/40 hover:text-violet-400 transition-colors duration-200',
+    'bg-[var(--surface)] text-[#A09EC0] border border-[var(--border)] hover:border-violet-500/40 hover:text-violet-400 transition-colors duration-200',
   accent:
     'bg-violet-600 text-white font-medium',
 }

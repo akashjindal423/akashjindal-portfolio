@@ -29,7 +29,7 @@ export default function ProjectsPage() {
       <div className="mt-12">
         <div className="flex items-center gap-3 mb-6">
           <span className="text-xs uppercase tracking-widest text-[#4F4D70]">Official Projects</span>
-          <div className="flex-1 h-px bg-[#2A2A50]" />
+          <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {official.map((project, i) => (
@@ -38,7 +38,7 @@ export default function ProjectsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className={`relative rounded-2xl border ${project.border} bg-gradient-to-br ${project.companyColor} bg-[#13132A] p-6 flex flex-col`}
+              className={`relative rounded-2xl border ${project.border} bg-gradient-to-br ${project.companyColor} bg-[var(--surface)] p-6 flex flex-col`}
             >
               <div className="flex items-start justify-between mb-3">
                 <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${project.badgeColor}`}>
@@ -60,7 +60,7 @@ export default function ProjectsPage() {
               <p className="text-sm text-[#A09EC0] leading-relaxed flex-1">{project.description}</p>
               <div className="flex flex-wrap gap-1.5 mt-4">
                 {project.tags.map(tag => (
-                  <span key={tag} className="text-[10px] bg-[#0D0D1F]/60 border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
+                  <span key={tag} className="text-[10px] bg-[var(--background)]/60 border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
                     {tag}
                   </span>
                 ))}
@@ -75,7 +75,7 @@ export default function ProjectsPage() {
       <div className="mt-14">
         <div className="flex items-center gap-3 mb-6">
           <span className="text-xs uppercase tracking-widest text-[#4F4D70]">Passion Projects</span>
-          <div className="flex-1 h-px bg-[#2A2A50]" />
+          <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {passion.map((project, i) => {
@@ -84,7 +84,7 @@ export default function ProjectsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + i * 0.1 }}
-                className={`rounded-2xl border border-dashed border-[#2A2A50] bg-[#0D0D1F]/50 p-6 flex flex-col transition-all duration-300 ${project.clickable ? 'hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[2px] cursor-pointer' : ''}`}
+                className={`rounded-2xl border border-dashed border-[var(--border)] bg-[var(--background)]/50 p-6 flex flex-col transition-all duration-300 ${project.clickable ? 'hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[2px] cursor-pointer' : ''}`}
               >
                 <span className={`text-xs px-2.5 py-1 rounded-full font-medium w-fit mb-3 ${resolveStatusColor(project.statusColor)}`}>
                   {project.status}
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
                 <p className="text-sm text-[#A09EC0] leading-relaxed flex-1">{project.description}</p>
                 <div className="flex flex-wrap gap-1.5 mt-4">
                   {project.tags.map(tag => (
-                    <span key={tag} className="text-[10px] bg-[#13132A] border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
+                    <span key={tag} className="text-[10px] bg-[var(--surface)] border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
                       {tag}
                     </span>
                   ))}

@@ -31,7 +31,7 @@ export default function TrainingPage() {
           {certs.map((cert) => (
             <div
               key={cert.slug}
-              className="bg-[#13132A] border border-[#2A2A50] rounded-xl p-5"
+              className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5"
             >
               <Badge variant="accent">{cert.provider}</Badge>
               <p className="font-semibold text-sm text-text-primary mt-3 leading-snug">
@@ -55,7 +55,7 @@ export default function TrainingPage() {
         {/* In Progress */}
         <p className="text-violet-400 text-xs uppercase tracking-widest mb-4">In Progress</p>
         <div className="max-w-sm">
-          <div className="bg-[#13132A] border border-dashed border-[#2A2A50] rounded-xl p-6">
+          <div className="bg-[var(--surface)] border border-dashed border-[var(--border)] rounded-xl p-6">
             <span className="inline-block bg-violet-600/20 text-violet-400 text-xs px-2 py-1 rounded-full mb-3">
               In Progress
             </span>

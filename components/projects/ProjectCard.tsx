@@ -5,7 +5,7 @@ import { Project } from '@/lib/types'
 
 export default function ProjectCard({ slug, title, summary, category, tags, date, impact }: Project) {
   return (
-    <div className="bg-[#13132A] border border-[#2A2A50] rounded-xl p-6 flex flex-col transition-all duration-300 hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[3px]">
+    <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex flex-col transition-all duration-300 hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[3px]">
       {/* Top row */}
       <div className="flex justify-end">
         <Badge variant="accent">{category}</Badge>

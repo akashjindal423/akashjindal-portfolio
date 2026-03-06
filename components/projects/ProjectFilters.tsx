@@ -17,7 +17,7 @@ export default function ProjectFilters({ categories, activeFilter, onFilter }: P
           className={`px-4 py-2 rounded-full text-sm transition-all duration-200 ${
             activeFilter === cat
               ? 'bg-violet-600 text-white font-semibold'
-              : 'bg-[#13132A] border border-[#2A2A50] text-text-secondary hover:border-violet-500/40'
+              : 'bg-[var(--surface)] border border-[var(--border)] text-text-secondary hover:border-violet-500/40'
           }`}
         >
           {cat}

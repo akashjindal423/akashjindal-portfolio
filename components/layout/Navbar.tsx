@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu } from 'lucide-react'
 import MobileNav from './MobileNav'
+import { ThemeToggle } from '@/features/theme'
 
 const NAV_LINKS = [
   { label: 'Projects', href: '/projects' },
@@ -30,7 +31,7 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-50 h-16 w-full transition-all duration-300 ${
           scrolled
-            ? 'bg-[#0D0D1A]/90 backdrop-blur-md border-b border-[#2A2A50]'
+            ? 'bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)]'
             : 'bg-transparent'
         }`}
       >
@@ -40,7 +41,7 @@ export default function Navbar() {
             <span className="w-8 h-8 bg-violet-600 text-white font-bold text-sm flex items-center justify-center rounded shrink-0">
               AJ
             </span>
-            <span className="font-medium text-[#F8F8FF]">Akash Jindal</span>
+            <span className="font-medium text-[var(--text-primary)]">Akash Jindal</span>
           </Link>
 
           {/* Centre: Desktop nav */}
@@ -52,7 +53,7 @@ export default function Navbar() {
                 className={`text-sm transition-colors duration-200 ${
                   pathname === href
                     ? 'text-violet-400'
-                    : 'text-[#A09EC0] hover:text-[#F8F8FF]'
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {label}
@@ -69,7 +70,7 @@ export default function Navbar() {
               Contact →
             </Link>
             <button
-              className="md:hidden text-[#A09EC0] hover:text-[#F8F8FF] transition-colors duration-200"
+              className="md:hidden text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors duration-200"
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
             >
