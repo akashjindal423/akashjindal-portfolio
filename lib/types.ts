@@ -52,6 +52,7 @@ export interface PassionProject {
   tags: string[]
   status: string
   statusColor: string
+  clickable?: boolean
 }
 
 export interface ProjectsData {

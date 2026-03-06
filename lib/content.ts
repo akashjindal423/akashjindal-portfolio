@@ -253,12 +253,21 @@ export function getProjects(): ProjectsData {
         status: 'Ideation',
         statusColor: 'bg-blue-500/20 text-blue-400',
       },
+      {
+        slug: 'ai-health-companion',
+        title: 'AI Health Companion',
+        description: 'A wellness product combining AI-guided exercise, real-time posture feedback, and culturally relevant nutrition — built around how people actually live.',
+        tags: ['AI/ML', 'Health Tech', 'Computer Vision', 'Personalisation'],
+        status: 'Concept',
+        statusColor: 'violet',
+        clickable: true,
+      },
     ],
   }
 }
 
 export function getFeaturedProjects(): OfficialProject[] {
-  return getProjects().official
+  return getProjects().official.slice(0, 1) // Lloyds only
 }
 
 export function getProjectBySlug(slug: string): OfficialProject | undefined {
