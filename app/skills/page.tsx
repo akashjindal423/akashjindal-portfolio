@@ -1,7 +1,7 @@
 import { Search, Code2, TrendingUp } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
-import SkillsSnapshot from '@/components/home/SkillsSnapshot'
+import SkillIconGrid from '@/components/sections/SkillIconGrid'
 
 const howIWork = [
   {
@@ -32,7 +32,9 @@ export default function SkillsPage() {
         />
       </SectionWrapper>
 
-      <SkillsSnapshot />
+      <SectionWrapper>
+        <SkillIconGrid />
+      </SectionWrapper>
 
       <SectionWrapper>
         <p className="text-violet-400 text-xs uppercase tracking-widest mb-2">Approach</p>

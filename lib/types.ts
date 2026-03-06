@@ -29,3 +29,32 @@ export interface Project {
   githubUrl?: string
   liveUrl?: string
 }
+
+export interface OfficialProject {
+  slug: string
+  company: string
+  title: string
+  description: string
+  tags: string[]
+  period: string
+  companyColor: string
+  border: string
+  badge: string
+  badgeColor: string
+  clickable: boolean
+  externalUrl?: string
+}
+
+export interface PassionProject {
+  slug: string
+  title: string
+  description: string
+  tags: string[]
+  status: string
+  statusColor: string
+}
+
+export interface ProjectsData {
+  official: OfficialProject[]
+  passion: PassionProject[]
+}

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Download, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import CursorGlow from '@/components/hero/CursorGlow'
 import TypingHeadline from '@/components/hero/TypingHeadline'
 import ProductBriefCard from '@/components/hero/ProductBriefCard'
@@ -54,8 +54,8 @@ export default function HeroSection() {
             {...fadeUp(0.3)}
             className="text-text-secondary text-lg md:text-xl max-w-2xl leading-relaxed mb-10"
           >
-            Bridging data, AI, and cloud to deliver compliant, high-impact products.
-            From AR at Dyson to regulatory data at Lloyds — I turn complex requirements into products teams are proud of.
+            Team Product Owner in the AI Centre of Excellence at Lloyds. Previously AR at Dyson, PS5 at Sony.
+            Building products that matter across banking, tech, and innovation.
           </motion.p>
 
           {/* CTA row */}
@@ -68,14 +68,6 @@ export default function HeroSection() {
               className="bg-violet-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-violet-500 hover:scale-[1.02] transition-all duration-200"
             >
               View Projects →
-            </Link>
-            <Link
-              href="/cv/akash-jindal-cv.pdf"
-              target="_blank"
-              className="inline-flex items-center gap-2 border border-[#2A2A50] text-[#A09EC0] px-8 py-4 rounded-lg hover:border-violet-500/60 hover:text-violet-400 transition-all duration-200"
-            >
-              <Download className="w-4 h-4" />
-              Download CV
             </Link>
           </motion.div>
         </div>

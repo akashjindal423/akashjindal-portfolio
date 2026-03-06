@@ -14,23 +14,23 @@ const sections = [
     heading: '// STATUS',
     lines: [
       { key: 'open_to', value: 'PM · Product · Apps · Dashboards', highlight: true },
-      { key: 'current', value: 'Gen BI @ Lloyds AI CoE' },
+      { key: 'current', value: 'Team PO · AI CoE @ Lloyds' },
       { key: 'availability', value: 'Open to new roles', highlight: true },
     ],
   },
   {
     heading: '// TRACK RECORD',
     lines: [
-      { key: 'dyson', value: 'AR product · WashG1 NPI' },
+      { key: 'lloyds', value: 'Gen AI · Gen BI · AI CoE' },
+      { key: 'dyson', value: 'CleanTrace AR · WashG1 NPI' },
       { key: 'sony', value: 'PS5 platform launch' },
-      { key: 'lloyds', value: 'Regulatory data · Cloud · AI' },
-      { key: 'years', value: '8+ across 5 industries' },
+      { key: 'infosys', value: 'Fortune 500 · IoT · Azure' },
     ],
   },
   {
     heading: '// INTERESTS',
     lines: [
-      { key: 'building', value: 'Apps · Dashboards · AI tools' },
+      { key: 'building', value: 'Products · AI tools · Insights' },
       { key: 'stack', value: 'GCP · SAFe · SQL · Gen AI' },
     ],
   },

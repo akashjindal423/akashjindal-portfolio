@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import SectionWrapper from '@/components/shared/SectionWrapper'
@@ -16,9 +16,23 @@ function initials(name: string) {
 export default function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0)
   const total = testimonials.length
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const prev = () => setCurrent((i) => (i - 1 + total) % total)
   const next = () => setCurrent((i) => (i + 1) % total)
+
+  const startAutoPlay = () => {
+    intervalRef.current = setInterval(() => setCurrent((i) => (i + 1) % total), 4500)
+  }
+  const stopAutoPlay = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+  }
+
+  useEffect(() => {
+    startAutoPlay()
+    return stopAutoPlay
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const t = testimonials[current]
 
@@ -33,7 +47,11 @@ export default function TestimonialsCarousel() {
       </div>
 
       {/* Card */}
-      <div className="relative bg-[#13132A] border border-[#2A2A50] rounded-2xl p-8 md:p-12 max-w-4xl mx-auto overflow-hidden">
+      <div
+        className="relative bg-[#13132A] border border-[#2A2A50] rounded-2xl p-8 md:p-12 max-w-4xl mx-auto overflow-hidden"
+        onMouseEnter={stopAutoPlay}
+        onMouseLeave={startAutoPlay}
+      >
         {/* Decorative quote mark */}
         <span className="font-display absolute top-4 left-8 text-[120px] leading-none text-violet-400 opacity-15 select-none pointer-events-none">
           "

@@ -3,12 +3,7 @@ import Link from 'next/link'
 import { Briefcase } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
-
-const stats = [
-  { value: '8+', label: 'Years in product and banking' },
-  { value: '20+', label: 'Products and features shipped' },
-  { value: '4', label: 'Agile certifications held' },
-]
+import AboutStats from '@/components/shared/AboutStats'
 
 export default function AboutPage() {
   return (
@@ -32,18 +27,13 @@ export default function AboutPage() {
                 including GDPR-compliant cloud migrations and AI-led agriculture pilots. That
                 foundation gave me a strong grounding in enterprise delivery and technical thinking.
               </p>
-              <p className="text-text-secondary leading-relaxed mb-4">
-                From there I moved into product roles at Sony Interactive Entertainment (PlayStation
-                5 launch), SSE plc, and Dyson — where I pioneered the company&apos;s first Augmented
-                Reality experience and led New Product Innovation for the WashG1, Dyson&apos;s first
-                dedicated wet floor cleaner, collaborating across UK, Singapore, Malaysia, and China.
-              </p>
               <p className="text-text-secondary leading-relaxed">
-                Today I am a Data Product Owner at Lloyds Banking Group, leading regulatory data
-                initiatives, contributing to the AI Centre of Excellence, and driving cloud
-                transformation onto Google Cloud Platform. I partner with data engineers, compliance
-                teams, and executive stakeholders to deliver products that are both technically
-                sound and commercially impactful.
+                I am currently a Team Product Owner in the AI Centre of Excellence at Lloyds Banking
+                Group, working on Generative AI and Gen BI initiatives to transform banking for both
+                colleagues and customers. Before that, I pioneered Dyson&apos;s first Augmented Reality
+                product (CleanTrace) and contributed to the PlayStation 5 platform launch at Sony
+                Interactive Entertainment — giving me a rare blend of enterprise data, consumer tech,
+                and innovation experience.
               </p>
             </div>
 
@@ -78,17 +68,7 @@ export default function AboutPage() {
               className="w-full aspect-square object-cover rounded-2xl border border-[#2A2A50]"
               priority
             />
-            {stats.map(({ value, label }) => (
-              <div
-                key={value}
-                className="bg-[#13132A] border border-[#2A2A50] rounded-xl p-6 flex items-center gap-4"
-              >
-                <span className="font-display text-4xl font-extrabold text-violet-400 leading-none">
-                  {value}
-                </span>
-                <span className="text-text-secondary text-sm leading-tight">{label}</span>
-              </div>
-            ))}
+            <AboutStats />
           </div>
         </div>
 
@@ -98,7 +78,7 @@ export default function AboutPage() {
           <div>
             <p className="text-text-primary font-semibold mb-1">Currently Open To</p>
             <p className="text-text-secondary text-sm leading-relaxed mb-3">
-              Open to Senior / Lead Data Product Owner roles in fintech, banking, AI, or cloud-native tech.
+              Open to Senior / Lead Product Owner roles in fintech, banking, AI, or cloud-native tech.
               Bristol / London, open to hybrid.
             </p>
             <Link

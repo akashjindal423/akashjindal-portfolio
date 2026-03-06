@@ -5,8 +5,8 @@ const roles = [
   'Product Owner',
   'Gen BI Specialist',
   'AI Product Thinker',
-  'App & Dashboard Builder',
-  'Cross-Industry Innovator',
+  'Product Thinker & Builder',
+  'Turning Complexity into Clarity',
 ]
 
 export default function TypingHeadline() {

@@ -1,4 +1,4 @@
-import { Experience, Project } from './types'
+import { Experience, Project, OfficialProject, PassionProject, ProjectsData } from './types'
 
 export interface SkillGroup {
   category: string
@@ -24,6 +24,7 @@ export interface BlogPost {
   heroImage?: string
   draft: boolean
   body: string
+  externalUrl?: string
 }
 
 export interface Testimonial {
@@ -86,7 +87,7 @@ export function getExperience(): Experience[] {
   return [
     {
       slug: 'lloyds-data-po',
-      role: 'Data Product Owner',
+      role: 'Product Owner',
       company: 'Lloyds Banking Group',
       location: 'Bristol, England · Hybrid',
       startDate: '2023-08',
@@ -106,7 +107,7 @@ export function getExperience(): Experience[] {
       slug: 'dyson-po-npi',
       role: 'Software Product Owner — New Product Innovation',
       company: 'Dyson',
-      location: 'Bristol, England · On-site (+ Singapore, Malaysia, China)',
+      location: 'Bristol, England · On-site',
       startDate: '2022-09',
       endDate: '2023-08',
       current: false,
@@ -183,77 +184,85 @@ export function getHomeExperience(): Experience[] {
   return getExperience().slice(0, 2)
 }
 
-export function getFeaturedProjects(): Project[] {
-  return [
-    {
-      slug: 'payment-hub-modernisation',
-      title: 'Payment Hub Modernisation',
-      summary:
-        'Led end-to-end discovery and delivery of a core payment processing platform serving 2M retail customers, replacing a 15-year-old legacy system.',
-      category: 'Platform',
-      tags: ['Payments', 'API', 'Agile', 'Stakeholder Management'],
-      date: '2024-03',
-      featured: true,
-      impact: 'Reduced payment failure rate from 3% to 0.3%, saving £1.8M annually.',
-      tools: ['Jira', 'Confluence', 'Figma', 'SQL', 'Miro'],
-    },
-    {
-      slug: 'open-banking-dashboard',
-      title: 'Open Banking Analytics Dashboard',
-      summary:
-        'Defined and shipped a self-serve analytics dashboard enabling relationship managers to view consolidated customer financial data across 12 institutions.',
-      category: 'Analytics',
-      tags: ['Open Banking', 'Data', 'UX Research', 'Compliance'],
-      date: '2023-09',
-      featured: true,
-      impact: 'Adopted by 340 relationship managers in first month, NPS +42.',
-      tools: ['Figma', 'SQL', 'Looker', 'Jira', 'Confluence'],
-    },
-    {
-      slug: 'kyc-automation-platform',
-      title: 'KYC Automation Platform',
-      summary:
-        'Spearheaded the product strategy for an AI-assisted KYC onboarding platform, reducing manual review time by 60% while maintaining full FCA compliance.',
-      category: 'Compliance',
-      tags: ['KYC', 'AI/ML', 'Compliance', 'Onboarding'],
-      date: '2023-03',
-      featured: true,
-      impact: 'Cut onboarding time from 5 days to 18 hours. £2.4M cost saving in year 1.',
-      tools: ['Jira', 'Miro', 'Python (data analysis)', 'Figma'],
-    },
-  ]
+export function getProjects(): ProjectsData {
+  return {
+    official: [
+      {
+        slug: 'lloyds-gen-bi',
+        company: 'Lloyds Banking Group',
+        title: 'Gen BI Initiative',
+        description: 'Modernising traditional dashboards and reporting tools to make them Generative BI enabled — transforming how colleagues and customers interact with financial data across the bank.',
+        tags: ['Gen BI', 'AI', 'GCP', 'Data', 'Banking'],
+        period: 'Aug 2023 – Present',
+        companyColor: 'from-green-500/10 to-emerald-500/10',
+        border: 'border-green-500/20',
+        badge: 'Current Role',
+        badgeColor: 'bg-green-500/20 text-green-400',
+        clickable: false,
+      },
+      {
+        slug: 'dyson-cleantrace',
+        company: 'Dyson',
+        title: 'CleanTrace — First AR Product',
+        description: "Led end-to-end development of Dyson's first in-home Augmented Reality cleaning guidance tool. International assignment across Singapore, Malaysia, and China bridging cross-cultural UX, hardware, and software teams.",
+        tags: ['AR', 'Innovation', 'NPI', 'SAFe', 'APAC'],
+        period: 'Sep 2022 – Aug 2023',
+        companyColor: 'from-violet-500/10 to-purple-500/10',
+        border: 'border-violet-500/20',
+        badge: 'AR Innovation',
+        badgeColor: 'bg-violet-500/20 text-violet-400',
+        clickable: true,
+        externalUrl: 'https://www.dyson.com.sg/newsroom/dyson-cleantrace',
+      },
+      {
+        slug: 'sony-ps5',
+        company: 'Sony Interactive Entertainment',
+        title: 'PlayStation 5 Platform Launch',
+        description: 'Contributed to the PS5 launch by leading ITSM and ServiceNow product initiatives. Orchestrated planning of launch-critical platform features ensuring reliability and readiness for global release.',
+        tags: ['PS5', 'ITSM', 'ServiceNow', 'Platform', 'Launch'],
+        period: 'Apr 2020 – Apr 2021',
+        companyColor: 'from-blue-500/10 to-indigo-500/10',
+        border: 'border-blue-500/20',
+        badge: 'Platform Launch',
+        badgeColor: 'bg-blue-500/20 text-blue-400',
+        clickable: false,
+      },
+    ],
+    passion: [
+      {
+        slug: 'passion-1',
+        title: 'AI Product Research Tool',
+        description: 'A tool to help product managers research competitors, synthesise user feedback, and generate PRD drafts using AI. Currently exploring and building.',
+        tags: ['AI', 'Product Tools', 'LLM', 'In Progress'],
+        status: 'In Progress',
+        statusColor: 'bg-amber-500/20 text-amber-400',
+      },
+      {
+        slug: 'passion-2',
+        title: 'Gen BI Dashboard Concept',
+        description: 'Exploring what a truly generative BI interface looks like — where users ask questions in natural language and get interactive data stories back, not just charts.',
+        tags: ['Gen BI', 'Data', 'UX', 'Concept'],
+        status: 'Concept',
+        statusColor: 'bg-violet-500/20 text-violet-400',
+      },
+      {
+        slug: 'passion-3',
+        title: 'Product Portfolio Tracker',
+        description: 'A lightweight personal tool to track product initiatives, outcomes, and learnings across roles — so POs can build a living evidence base for their CV and interviews.',
+        tags: ['Productivity', 'Product', 'Side Project'],
+        status: 'Ideation',
+        statusColor: 'bg-blue-500/20 text-blue-400',
+      },
+    ],
+  }
 }
 
-export function getProjects(): Project[] {
-  return [
-    ...getFeaturedProjects(),
-    {
-      slug: 'mobile-onboarding-redesign',
-      title: 'Mobile Onboarding Redesign',
-      summary: 'Redesigned the end-to-end mobile onboarding journey for a challenger bank, reducing drop-off by 41% and cutting completion time from 12 minutes to 4.',
-      category: 'Discovery',
-      tags: ['UX Research', 'Mobile', 'Onboarding', 'A/B Testing'],
-      date: '2022-06',
-      featured: false,
-      impact: 'Drop-off reduced by 41%. Completion time cut from 12 min to 4 min.',
-      tools: ['Figma', 'Amplitude', 'Jira', 'Hotjar', 'Miro'],
-    },
-    {
-      slug: 'regulatory-reporting-platform',
-      title: 'Regulatory Reporting Platform',
-      summary: 'Led the product workstream for a new automated regulatory reporting tool covering CASS, EMIR, and MiFID II obligations across 6 asset classes.',
-      category: 'Compliance',
-      tags: ['Regulation', 'Reporting', 'CASS', 'MiFID II', 'Automation'],
-      date: '2021-09',
-      featured: false,
-      impact: 'Eliminated 240 hours/month of manual reporting. Zero regulatory breaches in 2 years.',
-      tools: ['Jira', 'Confluence', 'SQL', 'Excel', 'Visio'],
-    },
-  ]
+export function getFeaturedProjects(): OfficialProject[] {
+  return getProjects().official
 }
 
-export function getProjectBySlug(slug: string): Project | undefined {
-  return getProjects().find(p => p.slug === slug)
+export function getProjectBySlug(slug: string): OfficialProject | undefined {
+  return getProjects().official.find(p => p.slug === slug)
 }
 
 export function getSkillGroups(): SkillGroup[] {
@@ -343,12 +352,50 @@ export function getEducation(): Education[] {
 
 export function getBlogPosts(): BlogPost[] {
   return [
-    { slug: 'product-discovery-regulated', title: 'How I Run Product Discovery in a Regulated Environment', date: '2026-02-10', excerpt: 'Discovery in banking is not like discovery at a startup. Compliance, risk, and legacy systems create constraints that shape every decision. Here is how I make it work.', tags: ['Discovery', 'Banking', 'Agile'], readingTime: 5, draft: false, body: '' },
-    { slug: 'user-stories-engineers-love', title: 'Writing User Stories That Engineers Actually Love', date: '2026-01-22', excerpt: 'After hundreds of sprint planning sessions, I have learned exactly what makes engineers groan and what makes them say "this is clear, I can build this." Here is the formula.', tags: ['Agile', 'Engineering', 'Communication'], readingTime: 4, draft: false, body: '' },
-    { slug: 'technical-po-not-developer', title: 'Being a Technical PO Without Being a Developer', date: '2025-12-15', excerpt: 'Technical credibility does not mean writing code. It means understanding trade-offs, speaking the language of engineers, and knowing when to push back on technical debt.', tags: ['Product', 'Technical', 'Career'], readingTime: 6, draft: false, body: '' },
+    { slug: 'integrating-bdd-user-personas-agile', title: 'Integrating BDD & User Personas in Agile Product — Explained', excerpt: 'How Behaviour-Driven Development combined with well-crafted user personas transforms the way agile teams build products that actually solve real problems.', date: '2024-03-15', tags: ['Agile', 'BDD', 'Product', 'Discovery'], readingTime: 5, draft: false, body: '', externalUrl: 'https://www.linkedin.com/pulse/integrating-bdd-user-personas-agile-product-explained-akash-jindal-t3p2e/' },
+    { slug: 'successful-golive-when-world-remote', title: 'Successful Go-Live When the World is Remote', excerpt: 'Lessons learned from managing a high-stakes product launch in a fully remote environment — stakeholder alignment, risk management, and keeping teams motivated across time zones.', date: '2021-06-10', tags: ['Product', 'Agile', 'Remote', 'Delivery'], readingTime: 4, draft: false, body: '', externalUrl: 'https://www.linkedin.com/pulse/successful-golive-when-world-remote-akash-jindal/' },
+    { slug: 'amazon-go-revolutionize-grocery-shopping', title: 'Will Amazon Go Really Revolutionize Grocery Shopping?', excerpt: "A product thinker's analysis of Amazon Go — the cashierless store concept, its UX implications, scalability challenges, and what it means for the future of retail.", date: '2019-11-20', tags: ['Product', 'Innovation', 'Retail Tech', 'AI'], readingTime: 6, draft: false, body: '', externalUrl: 'https://www.linkedin.com/pulse/amazon-go-really-revolutionize-grocery-shopping-akash-jindal/' },
   ]
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return getBlogPosts().find(p => p.slug === slug)
+}
+
+export function getCommunityInvolvement() {
+  return [
+    {
+      slug: 'toastmasters',
+      role: 'Vice President of Membership',
+      organisation: 'Toastmasters International',
+      period: 'Apr 2024 – Oct 2024',
+      type: 'Leadership',
+      typeColor: 'violet',
+      location: 'London · Remote',
+      summary: 'Empowering individuals through confident communication and leadership within a globally recognised public speaking community.',
+      bullets: [
+        'Reignited member engagement — spearheaded initiatives improving participation and community bonding',
+        'Drove strategic membership growth via digital marketing campaigns and targeted email outreach',
+        'Designed structured onboarding with mentorship support, improving retention and integration',
+        'Built a scalable membership framework ensuring consistent communication and long-term development',
+      ],
+      tags: ['Team Leadership', 'Marketing', 'Community Building', 'Onboarding'],
+    },
+    {
+      slug: 'soch-ngo',
+      role: 'Mentor',
+      organisation: 'SOCH (अंत ही आरम्भ)',
+      period: 'Dec 2019 – Jul 2023',
+      type: 'Social Impact',
+      typeColor: 'emerald',
+      location: 'India',
+      summary: 'Supported high-impact social initiatives focused on health, inclusion, and sustainable development for underprivileged communities.',
+      bullets: [
+        'Led Covid-19 relief — delivered essentials to 1,000+ families. "Covid Frontline Warrior" (Alert Award 2020)',
+        'Guided NGO through Section 8 registration, unlocking public donations and government partnerships',
+        'Initiated Project Pride — gender-neutral washrooms and LGBTQIA+ mental health programmes',
+      ],
+      tags: ['Mentorship', 'Social Impact', 'Community Development', 'LGBTQIA+ Inclusion'],
+    },
+  ]
 }

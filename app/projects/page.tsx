@@ -1,41 +1,94 @@
 'use client'
-
-import { useState } from 'react'
-import { getProjects } from '@/lib/content'
-import ProjectCard from '@/components/projects/ProjectCard'
 import PageHeader from '@/components/shared/PageHeader'
-import ProjectFilters from '@/components/projects/ProjectFilters'
-import AnimatedEntry from '@/components/shared/AnimatedEntry'
-
-const allProjects = getProjects()
-const categories = [...new Set(allProjects.map((p) => p.category))]
+import { getProjects } from '@/lib/content'
+import { ExternalLink, Lock } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function ProjectsPage() {
-  const [activeFilter, setActiveFilter] = useState('All')
-
-  const filtered =
-    activeFilter === 'All' ? allProjects : allProjects.filter((p) => p.category === activeFilter)
-
+  const { official, passion } = getProjects()
   return (
-    <main className="max-w-6xl mx-auto px-4 py-16">
+    <main className="min-h-screen pt-24 pb-16 px-4 max-w-6xl mx-auto">
       <PageHeader
         eyebrow="WORK"
         title="Projects"
-        subtitle="End-to-end case studies from discovery through delivery in banking and fintech."
+        subtitle="Official projects I have been involved with, and passion projects I am building."
       />
-      <div className="mt-8">
-        <ProjectFilters
-          categories={categories}
-          activeFilter={activeFilter}
-          onFilter={setActiveFilter}
-        />
+
+      {/* Official Projects */}
+      <div className="mt-12">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-xs uppercase tracking-widest text-[#4F4D70]">Official Projects</span>
+          <div className="flex-1 h-px bg-[#2A2A50]" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {official.map((project, i) => (
+            <motion.div
+              key={project.slug}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className={`relative rounded-2xl border ${project.border} bg-gradient-to-br ${project.companyColor} bg-[#13132A] p-6 flex flex-col`}
+            >
+              <div className="flex items-start justify-between mb-3">
+                <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${project.badgeColor}`}>
+                  {project.badge}
+                </span>
+                {project.clickable && project.externalUrl && (
+                  <a href={project.externalUrl} target="_blank" rel="noopener noreferrer"
+                    className="text-[#4F4D70] hover:text-violet-400 transition">
+                    <ExternalLink size={16} />
+                  </a>
+                )}
+                {!project.clickable && (
+                  <Lock size={14} className="text-[#3D3B60]" />
+                )}
+              </div>
+              <p className="text-xs text-[#4F4D70] mb-1">{project.company}</p>
+              <h3 className="text-base font-bold text-[#F8F8FF] mb-3 leading-snug">{project.title}</h3>
+              <p className="text-sm text-[#A09EC0] leading-relaxed flex-1">{project.description}</p>
+              <div className="flex flex-wrap gap-1.5 mt-4">
+                {project.tags.map(tag => (
+                  <span key={tag} className="text-[10px] bg-[#0D0D1F]/60 border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p className="text-[11px] text-[#3D3B60] mt-3">{project.period}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        {filtered.map((project, i) => (
-          <AnimatedEntry key={project.slug} delay={i * 0.05}>
-            <ProjectCard {...project} />
-          </AnimatedEntry>
-        ))}
+
+      {/* Passion Projects */}
+      <div className="mt-14">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-xs uppercase tracking-widest text-[#4F4D70]">Passion Projects</span>
+          <div className="flex-1 h-px bg-[#2A2A50]" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {passion.map((project, i) => (
+            <motion.div
+              key={project.slug}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + i * 0.1 }}
+              className="rounded-2xl border border-dashed border-[#2A2A50] bg-[#0D0D1F]/50 p-6 flex flex-col"
+            >
+              <span className={`text-xs px-2.5 py-1 rounded-full font-medium w-fit mb-3 ${project.statusColor}`}>
+                {project.status}
+              </span>
+              <h3 className="text-base font-bold text-[#F8F8FF] mb-3 leading-snug">{project.title}</h3>
+              <p className="text-sm text-[#A09EC0] leading-relaxed flex-1">{project.description}</p>
+              <div className="flex flex-wrap gap-1.5 mt-4">
+                {project.tags.map(tag => (
+                  <span key={tag} className="text-[10px] bg-[#13132A] border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </main>
   )
