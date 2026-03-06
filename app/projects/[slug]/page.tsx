@@ -1,10 +1,9 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { format, parseISO } from 'date-fns'
 import type { Metadata } from 'next'
 import { getProjectBySlug, getProjects } from '@/lib/content'
 import Badge from '@/components/shared/Badge'
-import { Calendar, CheckCircle2 } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -52,54 +51,59 @@ export default async function ProjectPage({ params }: Props) {
         <h1 className="text-4xl md:text-5xl font-bold font-sans leading-tight mt-4 text-text-primary">
           {project!.title}
         </h1>
-        <p className="text-xl text-text-secondary mt-4 leading-relaxed">{project!.summary}</p>
+        <p className="text-xl text-text-secondary mt-4 leading-relaxed">{project!.description}</p>
 
         <div className="flex flex-wrap gap-6 mt-6 text-sm text-text-muted">
-          <span className="flex items-center gap-2">
-            <Calendar className="w-4 h-4" />
-            {format(parseISO(project!.date + '-01'), 'MMM yyyy')}
-          </span>
-          {project!.tools && (
-            <div className="flex flex-wrap gap-2">
-              {project!.tools.map((tool) => (
-                <Badge key={tool}>{tool}</Badge>
-              ))}
-            </div>
-          )}
+          {project!.period && <span>{project!.period}</span>}
+          <div className="flex flex-wrap gap-2">
+            {project!.tags.map((tag) => (
+              <Badge key={tag}>{tag}</Badge>
+            ))}
+          </div>
         </div>
       </div>
 
       <div className="border-t border-[#2A2A50] mt-8 mb-8" />
 
-      {/* Section 2 — The Problem */}
-      <section className="mb-10">
+      {/* Section 2 — Description & Tags */}
+      <div className="mt-8">
+        <p className="text-lg text-[#A09EC0] leading-relaxed">{project!.description}</p>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {project!.tags.map((tag: string) => (
+            <span key={tag} className="text-xs bg-[#13132A] border border-[#2A2A50] text-[#6B69A0] px-3 py-1 rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Section 3 — The Problem */}
+      <section className="mb-10 mt-10">
         <h2 className="text-2xl font-bold text-text-primary border-l-4 border-violet-600 pl-4 mb-4">
           The Problem
         </h2>
         <div className="bg-[#13132A] rounded-xl p-6 text-text-secondary leading-relaxed">
-          {project!.problem ||
-            'The existing system had grown organically over many years, resulting in significant technical debt, poor user experience, and a high rate of manual intervention. Stakeholders needed a clear, data-backed case for change before any discovery work could begin.'}
+          The existing system had grown organically over many years, resulting in significant technical debt, poor user experience, and a high rate of manual intervention. Stakeholders needed a clear, data-backed case for change before any discovery work could begin.
         </div>
       </section>
 
-      {/* Section 3 — Approach */}
+      {/* Section 4 — Approach */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-text-primary border-l-4 border-violet-600 pl-4 mb-4">
           Approach
         </h2>
         <div className="text-text-secondary leading-relaxed">
-          {project!.approach ||
-            'I ran a structured discovery phase over six weeks: stakeholder interviews, process mapping, competitive benchmarking, and user research with 20+ participants. Findings were synthesised into a problem statement and opportunity space that aligned both technical and business stakeholders. Delivery followed in iterative two-week sprints with regular show-and-tells to maintain visibility.'}
+          I ran a structured discovery phase over six weeks: stakeholder interviews, process mapping, competitive benchmarking, and user research with 20+ participants. Findings were synthesised into a problem statement and opportunity space that aligned both technical and business stakeholders. Delivery followed in iterative two-week sprints with regular show-and-tells to maintain visibility.
         </div>
       </section>
 
-      {/* Section 4 — Impact & Outcomes */}
+      {/* Section 5 — Impact & Outcomes */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-text-primary border-l-4 border-violet-600 pl-4 mb-4">
           Impact & Outcomes
         </h2>
         <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-6 mb-4 text-text-secondary leading-relaxed">
-          {project!.impact || 'Significant measurable improvements delivered across key metrics.'}
+          Significant measurable improvements delivered across key metrics.
         </div>
         <div className="flex flex-wrap gap-4">
           {[
@@ -118,7 +122,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Section 5 — My Responsibilities */}
+      {/* Section 6 — My Responsibilities */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-text-primary border-l-4 border-violet-600 pl-4 mb-4">
           My Responsibilities
@@ -133,7 +137,7 @@ export default async function ProjectPage({ params }: Props) {
         </ul>
       </section>
 
-      {/* Section 6 — Footer nav */}
+      {/* Section 7 — Footer nav */}
       <div className="flex justify-between mt-16 pt-8 border-t border-[#2A2A50]">
         {prev ? (
           <Link href={`/projects/${prev.slug}`} className="text-violet-400 hover:text-violet-300 transition-colors duration-200 text-sm">
