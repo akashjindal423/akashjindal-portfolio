@@ -48,7 +48,7 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* Section 1 — Header */}
       <div className="mt-2">
-        <Badge variant="accent">{project!.category}</Badge>
+        <Badge variant="accent">{project!.badge ?? project!.tags?.[0] ?? 'Project'}</Badge>
         <h1 className="text-4xl md:text-5xl font-bold font-sans leading-tight mt-4 text-text-primary">
           {project!.title}
         </h1>
