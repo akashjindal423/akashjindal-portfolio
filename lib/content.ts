@@ -262,6 +262,15 @@ export function getProjects(): ProjectsData {
         statusColor: 'violet',
         clickable: true,
       },
+      {
+        slug: 'google-maps-teardown',
+        title: 'Google Maps Product Teardown',
+        description: 'A deep-dive PM analysis of Google Maps — competitive moat, monetisation flywheel, Local Guides ecosystem, Gemini integration, and three feature proposals with RICE prioritisation.',
+        tags: ['Product Teardown', 'Strategy', 'AI/ML', 'Monetisation'],
+        status: 'Published',
+        statusColor: 'emerald',
+        clickable: true,
+      },
     ],
   }
 }
