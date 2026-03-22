@@ -42,9 +42,6 @@ const categoryBadge: Record<string, string> = {
 export default function ToolkitPage() {
   const [filter, setFilter] = useState("All")
   const [searchQuery, setSearchQuery] = useState("")
-  const [expandedLinkedin, setExpandedLinkedin] = useState<number | null>(null)
-  const [copied, setCopied] = useState<number | null>(null)
-
   const filtered = tools.filter(t => {
     const matchCategory = filter === "All" || t.category === filter
     const matchSearch =
@@ -54,12 +51,6 @@ export default function ToolkitPage() {
       t.category.toLowerCase().includes(searchQuery.toLowerCase())
     return matchCategory && matchSearch
   })
-
-  const handleCopy = (id: number, text: string) => {
-    navigator.clipboard.writeText(text)
-    setCopied(id)
-    setTimeout(() => setCopied(null), 2000)
-  }
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
@@ -119,10 +110,10 @@ export default function ToolkitPage() {
       <div className="bg-[var(--surface)] border-y border-[var(--border)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { icon: "📥", value: "23,500+", label: "Total Downloads" },
-            { icon: "⭐", value: "847", label: "GitHub Stars" },
-            { icon: "📋", value: "20", label: "Templates" },
-            { icon: "🏢", value: "Google, Amazon, HSBC", label: "Used at" },
+            { icon: "🧰", value: "20", label: "Templates" },
+            { icon: "🆓", value: "Free Forever", label: "" },
+            { icon: "⏱️", value: "8+ Years", label: "of PM Experience Distilled" },
+            { icon: "🏢", value: "Lloyds, Dyson & Sony", label: "Built at" },
           ].map(s => (
             <div key={s.label}>
               <div className="text-xl mb-1">{s.icon}</div>
@@ -181,18 +172,25 @@ export default function ToolkitPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map(tool => {
-              const isLinkedinOpen = expandedLinkedin === tool.id
               const badgeClass = categoryBadge[tool.category] ?? "text-violet-400 bg-violet-400/10 border-violet-400/20"
+              const isMostPopular = tool.id === 18 || tool.id === 20
 
               return (
                 <div key={tool.id} className="flex flex-col">
                   <div className="flex-1 bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-500/5 hover:-translate-y-0.5 transition-all duration-200">
                     {/* Top row */}
-                    <div className="flex items-start justify-between">
+                    <div className="flex items-start justify-between gap-2">
                       <span className="text-3xl">{tool.emoji}</span>
-                      <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${badgeClass}`}>
-                        {tool.category}
-                      </span>
+                      <div className="flex items-center gap-2 flex-wrap justify-end">
+                        {isMostPopular && (
+                          <span className="text-xs px-2 py-0.5 rounded-full border bg-amber-500/10 text-amber-400 border-amber-500/20">
+                            ⭐ Most Popular
+                          </span>
+                        )}
+                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${badgeClass}`}>
+                          {tool.category}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Title + tagline */}
@@ -203,47 +201,17 @@ export default function ToolkitPage() {
                     <p className="text-sm text-[var(--text-muted)] mt-3 leading-relaxed">{tool.desc}</p>
 
                     {/* Footer */}
-                    <div className="mt-4 pt-4 border-t border-[var(--border)] flex items-center justify-between gap-2">
-                      <span className="text-xs text-[var(--text-muted)]">📥 {tool.downloads} downloads</span>
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => setExpandedLinkedin(isLinkedinOpen ? null : tool.id)}
-                          className="text-xs px-3 py-1.5 rounded-lg bg-violet-500/10 text-violet-400 border border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200"
-                        >
-                          LinkedIn Post
-                        </button>
-                        <a
-                          href="https://github.com/akash-jindal/pm-toolkit"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs px-3 py-1.5 rounded-lg bg-violet-500/10 text-violet-400 border border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200"
-                        >
-                          Download
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* LinkedIn panel */}
-                  {isLinkedinOpen && (
-                    <div className="mt-2 bg-violet-500/5 border border-violet-500/20 rounded-xl p-4">
-                      <p className="text-violet-400 text-xs font-semibold uppercase tracking-widest mb-3">
-                        LINKEDIN POST PREVIEW
-                      </p>
-                      <p className="text-sm text-[var(--text-primary)] leading-relaxed mb-2">
-                        "{tool.linkedinHook}"
-                      </p>
-                      <p className="text-xs text-[var(--text-muted)] italic mb-3">
-                        Full post + hashtags in the toolkit download
-                      </p>
-                      <button
-                        onClick={() => handleCopy(tool.id, tool.linkedinHook)}
+                    <div className="mt-4 pt-4 border-t border-[var(--border)] flex items-center justify-end">
+                      <a
+                        href="https://github.com/akash-jindal/pm-toolkit"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-xs px-3 py-1.5 rounded-lg bg-violet-500/10 text-violet-400 border border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200"
                       >
-                        {copied === tool.id ? "Copied!" : "Copy Hook"}
-                      </button>
+                        Download
+                      </a>
                     </div>
-                  )}
+                  </div>
                 </div>
               )
             })}
@@ -251,36 +219,60 @@ export default function ToolkitPage() {
         )}
       </section>
 
-      {/* ── LINKEDIN CONTENT SECTION ── */}
+      {/* ── PM PRACTICE SECTION ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[var(--border)]">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3">
-            20 Weeks of Content — Scheduled
+            Built for How PMs Actually Work
           </h2>
           <p className="text-[var(--text-muted)] max-w-xl mx-auto">
-            Each tool comes with a ready-to-post LinkedIn hook, insight paragraph, CTA, and hashtag set.
+            These aren't textbook frameworks. They're the tools I reach for when facing real decisions — in sprint planning, stakeholder reviews, product discovery, and launch weeks.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
-            { stat: "20 Posts", sub: "One per tool, ready to copy" },
-            { stat: "5 Months", sub: "Of consistent thought leadership" },
-            { stat: "0 Hours", sub: "Writing from scratch" },
-          ].map(item => (
+            {
+              icon: "🎯",
+              title: "Prioritise Without Politics",
+              body: "RICE, MoSCoW, and the Opportunity Solution Tree give you a defensible, data-backed answer when everyone has an opinion on what to build next.",
+            },
+            {
+              icon: "🤝",
+              title: "Manage Up, Down, and Sideways",
+              body: "The Stakeholder Canvas and Comms Plan template cover the meetings, escalations, and relationships that don't appear on any roadmap.",
+            },
+            {
+              icon: "🔍",
+              title: "Discover Before You Define",
+              body: "User Story Kit, JTBD Canvas, and Product Vision Board force the discipline of understanding the problem before designing the solution.",
+            },
+            {
+              icon: "📦",
+              title: "Ship With Confidence",
+              body: "The GTM Checklist, Sprint Planning Guide, and Decision Log cover the execution layer — launch prep, team ceremonies, and audit trails.",
+            },
+            {
+              icon: "📊",
+              title: "Measure What Matters",
+              body: "North Star metrics, AARRR pirate metrics, and A/B test hypothesis templates help you define success before you start building.",
+            },
+            {
+              icon: "🚀",
+              title: "Communicate With Clarity",
+              body: "The 1-Page Brief and Now/Next/Later Roadmap replace 30-slide decks with one page of honest, confidence-weighted thinking.",
+            },
+          ].map(card => (
             <div
-              key={item.stat}
-              className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 text-center"
+              key={card.title}
+              className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6"
             >
-              <div className="text-2xl font-bold text-violet-400 mb-1">{item.stat}</div>
-              <div className="text-sm text-[var(--text-muted)]">{item.sub}</div>
+              <div className="text-2xl mb-3">{card.icon}</div>
+              <h3 className="text-base font-bold text-[var(--text-primary)] mb-2">{card.title}</h3>
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">{card.body}</p>
             </div>
           ))}
         </div>
-
-        <p className="text-center text-sm text-[var(--text-muted)]">
-          Download the full toolkit to get all 20 LinkedIn posts →
-        </p>
       </section>
 
       {/* ── FOOTER CTA ── */}
