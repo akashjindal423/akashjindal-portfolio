@@ -72,7 +72,7 @@ export default function ToolkitPage() {
 
         {/* Stat pills */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {["20 Tools", "Free Forever", "Used by 10K+ PMs"].map(s => (
+          {["20 Tools", "Free Forever", "No Email Required"].map(s => (
             <span
               key={s}
               className="px-4 py-2 bg-[var(--surface)] border border-[var(--border)] rounded-full text-sm text-[var(--text-muted)]"
@@ -83,15 +83,7 @@ export default function ToolkitPage() {
         </div>
 
         {/* CTA buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
-          <a
-            href="https://github.com/akash-jindal/pm-toolkit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-violet-500 text-violet-400 text-sm font-semibold hover:bg-violet-500/10 transition-all duration-200"
-          >
-            ⭐ Star on GitHub
-          </a>
+        <div className="flex justify-center mb-8">
           <a
             href="#tools"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-all duration-200"
@@ -281,15 +273,7 @@ export default function ToolkitPage() {
             Everything you need to ship better products
           </h2>
           <p className="text-[var(--text-muted)] mb-8">20 templates. Completely free. No email required.</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://github.com/akash-jindal/pm-toolkit"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-violet-500 text-violet-400 text-sm font-semibold hover:bg-violet-500/10 transition-all duration-200"
-            >
-              ⭐ Star on GitHub
-            </a>
+          <div className="flex justify-center">
             <Link
               href="/"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-all duration-200"
