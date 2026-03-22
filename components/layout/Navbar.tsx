@@ -3,21 +3,19 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu } from 'lucide-react'
 import MobileNav from './MobileNav'
-import { ThemeToggle } from '@/features/theme'
 
 const NAV_LINKS = [
   { label: 'Projects', href: '/projects' },
   { label: 'Experience', href: '/experience' },
   { label: 'Skills', href: '/skills' },
+  { label: 'Toolkit', href: '/toolkit' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -69,13 +67,7 @@ export default function Navbar() {
             >
               Contact →
             </Link>
-            <button
-              className="md:hidden text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors duration-200"
-              onClick={() => setMobileOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu size={22} />
-            </button>
+            {/* Mobile hamburger rendered by MobileNav */}
           </div>
         </div>
       </header>
