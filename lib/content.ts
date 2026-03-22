@@ -230,30 +230,6 @@ export function getProjects(): ProjectsData {
     ],
     passion: [
       {
-        slug: 'passion-1',
-        title: 'AI Product Research Tool',
-        description: 'A tool to help product managers research competitors, synthesise user feedback, and generate PRD drafts using AI. Currently exploring and building.',
-        tags: ['AI', 'Product Tools', 'LLM', 'In Progress'],
-        status: 'In Progress',
-        statusColor: 'bg-amber-500/20 text-amber-400',
-      },
-      {
-        slug: 'passion-2',
-        title: 'Gen BI Dashboard Concept',
-        description: 'Exploring what a truly generative BI interface looks like — where users ask questions in natural language and get interactive data stories back, not just charts.',
-        tags: ['Gen BI', 'Data', 'UX', 'Concept'],
-        status: 'Concept',
-        statusColor: 'bg-violet-500/20 text-violet-400',
-      },
-      {
-        slug: 'passion-3',
-        title: 'Product Portfolio Tracker',
-        description: 'A lightweight personal tool to track product initiatives, outcomes, and learnings across roles — so POs can build a living evidence base for their CV and interviews.',
-        tags: ['Productivity', 'Product', 'Side Project'],
-        status: 'Ideation',
-        statusColor: 'bg-blue-500/20 text-blue-400',
-      },
-      {
         slug: 'ai-health-companion',
         title: 'AI Health Companion',
         description: 'A wellness product combining AI-guided exercise, real-time posture feedback, and culturally relevant nutrition — built around how people actually live.',
