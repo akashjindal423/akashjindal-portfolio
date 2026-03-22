@@ -238,34 +238,46 @@ export default function GoogleMapsTeardownPage() {
         </div>
 
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Monetisation Flywheel</p>
-        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
-          <pre className="font-mono text-xs text-[var(--text-muted)] leading-relaxed overflow-x-auto">{`┌──────────────────────────────────────────────────────────────────────┐
-│                   GOOGLE MAPS MONETISATION FLYWHEEL                  │
-│                                                                      │
-│   ┌──────────┐     ┌──────────────┐     ┌──────────────┐           │
-│   │  2B+     │────▶│  High        │────▶│  Premium Ad  │           │
-│   │  Users   │     │  Commercial  │     │  Inventory   │           │
-│   │          │     │  Intent      │     │  ($11B+/yr)  │           │
-│   └────▲─────┘     └──────────────┘     └──────┬───────┘           │
-│        │                                        │                    │
-│        │                                        ▼                    │
-│   ┌────┴─────┐     ┌──────────────┐     ┌──────────────┐           │
-│   │  Better  │◀────│  More Street │◀────│  Revenue     │           │
-│   │  Product │     │  View, Data, │     │  Reinvested  │           │
-│   │  (AI/3D) │     │  AI Models   │     │  in Infra    │           │
-│   └──────────┘     └──────────────┘     └──────────────┘           │
-│                                                                      │
-│   ┌──────────┐     ┌──────────────┐     ┌──────────────┐           │
-│   │  5M+     │────▶│  Developer   │────▶│  API Revenue │           │
-│   │  Apps    │     │  Lock-in     │     │  (~$2B+/yr)  │           │
-│   └──────────┘     └──────────────┘     └──────────────┘           │
-│                                                                      │
-│   ┌──────────┐     ┌──────────────┐     ┌──────────────┐           │
-│   │  200M    │────▶│  Free GBP    │────▶│  Upsell to   │           │
-│   │  Listed  │     │  Creates     │     │  Google Ads  │           │
-│   │  Biz     │     │  Dependency  │     │  (Promoted)  │           │
-│   └──────────┘     └──────────────┘     └──────────────┘           │
-└──────────────────────────────────────────────────────────────────────┘`}</pre>
+        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8">
+          <p className="text-[10px] uppercase tracking-widest text-violet-400 text-center mb-6">Monetisation Flywheel</p>
+          {/* Rows 1 & 2 — core flywheel loop */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center mb-2">
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">2B+ Users</div>
+            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">High Commercial Intent</div>
+            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Premium Ad Inventory ($11B+/yr)</div>
+          </div>
+          <div className="hidden md:grid grid-cols-[1fr_28px_1fr_28px_1fr] gap-x-1 items-center my-1">
+            <div className="text-violet-400 text-sm text-center">↑</div>
+            <div />
+            <div />
+            <div />
+            <div className="text-violet-400 text-sm text-center">↓</div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center mb-8">
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Better Product (AI/3D)</div>
+            <span className="text-violet-400 text-sm text-center hidden md:block">←</span>
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">More Street View, Data, AI Models</div>
+            <span className="text-violet-400 text-sm text-center hidden md:block">←</span>
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Revenue Reinvested in Infra</div>
+          </div>
+          {/* Row 3 */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center mb-3">
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">5M+ Apps</div>
+            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Developer Lock-in</div>
+            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">API Revenue (~$2B+/yr)</div>
+          </div>
+          {/* Row 4 */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center">
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">200M Listed Businesses</div>
+            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Free GBP Creates Dependency</div>
+            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Upsell to Google Ads</div>
+          </div>
         </div>
       </section>
 
@@ -451,74 +463,152 @@ export default function GoogleMapsTeardownPage() {
         <div className="space-y-8">
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Journey 1</p>
-            <h3 className="text-base font-bold text-text-primary mb-4">"Finding a Restaurant for Tonight" — Discovery Flow</h3>
-            <pre className="font-mono text-xs text-[var(--text-muted)] leading-relaxed overflow-x-auto">{`USER GOAL: Find a good restaurant nearby for dinner tonight
-
-STAGE 1: TRIGGER
-├── User opens Google Maps (or types in Search → redirected to Maps)
-├── Taps search bar
-└── Types: "good Indian restaurant near me" or uses Ask Maps:
-    "Where should I eat tonight? I want Indian food, not too fancy,
-    with outdoor seating"
-
-STAGE 2: RESULTS & EVALUATION
-├── Maps shows map pins + list view
-├── Each result shows: name, rating, price band, distance, photos
-├── [PROMOTED] Ad results appear at top (monetisation touch)
-├── Ask Maps version: conversational response with top 3 picks,
-│   reasoning ("this one has outdoor seating and 4.6 stars")
-├── User taps a result → Business profile page
-└── Reads: reviews, photos, menu, hours, "Popular times" graph
-
-STAGE 3: DECISION
-├── User reads 3-4 reviews (Local Guides badges visible on quality reviews)
-├── Checks photos (uploaded by Local Guides)
-├── Checks "Popular times" to avoid waiting
-├── Decides on restaurant
-└── Taps "Directions" or "Reserve a table" (OpenTable integration)
-
-STAGE 4: NAVIGATION
-├── Turn-by-turn directions (Immersive Navigation if available)
-├── Real-time traffic updates
-├── Arrival: building entrance highlighted, parking suggestions
-└── [POST-ARRIVAL] Maps prompts: "How was [Restaurant]? Leave a review"
-
-STAGE 5: POST-VISIT
-├── User receives notification to review
-├── If user is a Local Guide → points earned
-└── Review feeds back into the system → improves results for next user`}</pre>
+            <h3 className="text-base font-bold text-text-primary mb-6">"Finding a Restaurant for Tonight" — Discovery Flow</h3>
+            <p className="text-xs text-text-muted mb-6 italic">User goal: Find a good restaurant nearby for dinner tonight</p>
+            <div className="relative">
+              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-violet-500/30" />
+              {[
+                {
+                  num: 1,
+                  title: 'TRIGGER',
+                  items: [
+                    'User opens Google Maps (or types in Search → redirected to Maps)',
+                    'Taps search bar',
+                    'Types: "good Indian restaurant near me" or uses Ask Maps: "Where should I eat tonight? I want Indian food, not too fancy, with outdoor seating"',
+                  ],
+                  highlight: null,
+                },
+                {
+                  num: 2,
+                  title: 'RESULTS & EVALUATION',
+                  items: [
+                    'Maps shows map pins + list view',
+                    'Each result shows: name, rating, price band, distance, photos',
+                    'Ask Maps version: conversational response with top 3 picks, reasoning ("this one has outdoor seating and 4.6 stars")',
+                    'User taps a result → Business profile page',
+                    'Reads: reviews, photos, menu, hours, "Popular times" graph',
+                  ],
+                  highlight: 'Ad results appear at top (monetisation touch)',
+                },
+                {
+                  num: 3,
+                  title: 'DECISION',
+                  items: [
+                    'User reads 3–4 reviews (Local Guides badges visible on quality reviews)',
+                    'Checks photos (uploaded by Local Guides)',
+                    'Checks "Popular times" to avoid waiting',
+                    'Decides on restaurant',
+                    'Taps "Directions" or "Reserve a table" (OpenTable integration)',
+                  ],
+                  highlight: null,
+                },
+                {
+                  num: 4,
+                  title: 'NAVIGATION',
+                  items: [
+                    'Turn-by-turn directions (Immersive Navigation if available)',
+                    'Real-time traffic updates',
+                    'Arrival: building entrance highlighted, parking suggestions',
+                  ],
+                  highlight: 'Maps prompts post-arrival: "How was [Restaurant]? Leave a review"',
+                },
+                {
+                  num: 5,
+                  title: 'POST-VISIT',
+                  items: [
+                    'User receives notification to review',
+                    'If user is a Local Guide → points earned',
+                    'Review feeds back into the system → improves results for next user',
+                  ],
+                  highlight: null,
+                },
+              ].map((step) => (
+                <div key={step.num} className="relative pl-10 pb-8 last:pb-0">
+                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-violet-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    {step.num}
+                  </div>
+                  <p className="text-sm font-bold text-text-primary mb-2">{step.title}</p>
+                  <ul className="space-y-1.5">
+                    {step.highlight && (
+                      <li className="flex items-start gap-2">
+                        <span className="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full px-2 py-0.5 shrink-0 mt-0.5">PROMOTED</span>
+                        <span className="text-text-muted text-sm">{step.highlight}</span>
+                      </li>
+                    )}
+                    {step.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="text-violet-400 mt-1.5 text-[8px] shrink-0">●</span>
+                        <span className="text-text-muted text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Journey 2</p>
-            <h3 className="text-base font-bold text-text-primary mb-4">"Daily Commute" — Navigation Flow</h3>
-            <pre className="font-mono text-xs text-[var(--text-muted)] leading-relaxed overflow-x-auto">{`USER GOAL: Get to work efficiently
-
-STAGE 1: TRIGGER
-├── User taps "Commute" tab or saved "Work" location
-├── Maps shows: estimated time, traffic conditions, suggested departure time
-└── Widget on home screen shows live ETA
-
-STAGE 2: ROUTE SELECTION
-├── Primary route shown with ETA
-├── Alternative routes with tradeoffs (new in March 2026):
-│   "Route A: 25 min, light traffic"
-│   "Route B: 22 min, toll road (£2.50)"
-│   "Route C: 30 min, scenic, no motorway"
-└── User selects preferred route
-
-STAGE 3: ACTIVE NAVIGATION
-├── Immersive Navigation: 3D buildings, lane guidance
-├── Real-time disruption alerts: "Crash ahead on M4, +8 min delay"
-│   └── Automatic alternative suggestion with time comparison
-├── Smart zoom at complex junctions
-├── Natural voice: "Go past this exit, take the next one"
-└── Community-sourced updates (10M+ daily contributions)
-
-STAGE 4: ARRIVAL
-├── Building entrance highlighted
-├── Parking recommendations (if applicable)
-└── Journey logged for future commute predictions`}</pre>
+            <h3 className="text-base font-bold text-text-primary mb-6">"Daily Commute" — Navigation Flow</h3>
+            <p className="text-xs text-text-muted mb-6 italic">User goal: Get to work efficiently</p>
+            <div className="relative">
+              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-violet-500/30" />
+              {[
+                {
+                  num: 1,
+                  title: 'TRIGGER',
+                  items: [
+                    'User taps "Commute" tab or saved "Work" location',
+                    'Maps shows: estimated time, traffic conditions, suggested departure time',
+                    'Widget on home screen shows live ETA',
+                  ],
+                },
+                {
+                  num: 2,
+                  title: 'ROUTE SELECTION',
+                  items: [
+                    'Primary route shown with ETA',
+                    'Alternative routes with tradeoffs (new in March 2026): "Route A: 25 min, light traffic" / "Route B: 22 min, toll road (£2.50)" / "Route C: 30 min, scenic, no motorway"',
+                    'User selects preferred route',
+                  ],
+                },
+                {
+                  num: 3,
+                  title: 'ACTIVE NAVIGATION',
+                  items: [
+                    'Immersive Navigation: 3D buildings, lane guidance',
+                    'Real-time disruption alerts: "Crash ahead on M4, +8 min delay" → Automatic alternative suggestion with time comparison',
+                    'Smart zoom at complex junctions',
+                    'Natural voice: "Go past this exit, take the next one"',
+                    'Community-sourced updates (10M+ daily contributions)',
+                  ],
+                },
+                {
+                  num: 4,
+                  title: 'ARRIVAL',
+                  items: [
+                    'Building entrance highlighted',
+                    'Parking recommendations (if applicable)',
+                    'Journey logged for future commute predictions',
+                  ],
+                },
+              ].map((step) => (
+                <div key={step.num} className="relative pl-10 pb-8 last:pb-0">
+                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-violet-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    {step.num}
+                  </div>
+                  <p className="text-sm font-bold text-text-primary mb-2">{step.title}</p>
+                  <ul className="space-y-1.5">
+                    {step.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="text-violet-400 mt-1.5 text-[8px] shrink-0">●</span>
+                        <span className="text-text-muted text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -584,42 +674,73 @@ STAGE 4: ARRIVAL
         {/* Wireframe */}
         <div className="mb-6">
           <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Wireframe — Creator Dashboard</p>
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
-            <pre className="font-mono text-xs text-[var(--text-muted)] leading-relaxed overflow-x-auto">{`┌──────────────────────────────────────────────────────────┐
-│  📊 Local Guides Creator Dashboard                       │
-│                                                          │
-│  ┌─────────────────────────────────────────────────────┐ │
-│  │  💰 This Month's Earnings          March 2026      │ │
-│  │  ┌──────────┐ ┌──────────┐ ┌──────────┐           │ │
-│  │  │   £47.20 │ │   2,340  │ │   89     │           │ │
-│  │  │ Earnings │ │ Views on │ │ "Helpful"│           │ │
-│  │  │ (est.)   │ │ Reviews  │ │ Votes    │           │ │
-│  │  └──────────┘ └──────────┘ └──────────┘           │ │
-│  └─────────────────────────────────────────────────────┘ │
-│                                                          │
-│  ┌─────────────────────────────────────────────────────┐ │
-│  │  📈 Top Performing Contributions                    │ │
-│  │                                                     │ │
-│  │  1. "Pipal Tree Cafe" review      → 1,240 views   │ │
-│  │     4.5★ · 347 words · 12 photos  → £8.30 earned  │ │
-│  │                                                     │ │
-│  │  2. "Clifton Village Walk" list   → 890 views      │ │
-│  │     8 places curated              → £5.10 earned   │ │
-│  │                                                     │ │
-│  │  3. "No.1 Harbourside" photos     → 2,100 views   │ │
-│  │     24 photos uploaded            → £3.90 earned   │ │
-│  └─────────────────────────────────────────────────────┘ │
-│                                                          │
-│  ┌─────────────────────────────────────────────────────┐ │
-│  │  🎯 Contribution Opportunities (Higher Earnings)    │ │
-│  │                                                     │ │
-│  │  ⚡ "New restaurant: Honest Burgers, Park St"       │ │
-│  │     Be first to review → 3x point multiplier       │ │
-│  │                                                     │ │
-│  │  📸 "Photos needed: The Downs Café"                │ │
-│  │     Interior photos missing → bonus £2             │ │
-│  └─────────────────────────────────────────────────────┘ │
-└──────────────────────────────────────────────────────────┘`}</pre>
+          <div className="rounded-2xl p-1 bg-gradient-to-b from-violet-500/10 to-transparent border border-violet-500/20">
+            <div className="bg-[#0A0A1A] rounded-2xl p-5 space-y-5">
+              {/* Header */}
+              <div className="text-center">
+                <div className="inline-flex items-center gap-1.5 bg-[var(--surface)] border border-[var(--border)] rounded-full px-3 py-1 text-xs text-text-muted mb-1">
+                  <span>📊</span> Local Guides Creator Dashboard
+                </div>
+                <p className="text-[10px] text-text-muted">March 2026</p>
+              </div>
+              {/* Earnings row */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                {[
+                  { value: '£47.20', label: 'Earnings (est.)' },
+                  { value: '2,340', label: 'Views on Reviews' },
+                  { value: '89', label: '"Helpful" Votes' },
+                ].map((stat) => (
+                  <div key={stat.label} className="flex-1 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 text-center">
+                    <p className="text-2xl font-bold text-white">{stat.value}</p>
+                    <p className="text-[10px] text-text-muted mt-0.5">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+              {/* Top Performing Contributions */}
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">📝 Top Performing Contributions</p>
+                <div className="space-y-0">
+                  {[
+                    { name: '"Pipal Tree Cafe" review', detail: '4.5★ · 347 words · 12 photos', views: '1,240 views', earned: '£8.30 earned' },
+                    { name: '"Clifton Village Walk" list', detail: '8 places curated', views: '890 views', earned: '£5.10 earned' },
+                    { name: '"No.1 Harbourside" photos', detail: '24 photos uploaded', views: '2,100 views', earned: '£3.90 earned' },
+                  ].map((item) => (
+                    <div key={item.name} className="flex items-center justify-between py-3 border-b border-[var(--border)] last:border-0">
+                      <div>
+                        <p className="text-xs font-medium text-white">{item.name}</p>
+                        <p className="text-[10px] text-text-muted">{item.detail}</p>
+                      </div>
+                      <div className="text-right shrink-0 ml-4">
+                        <p className="text-xs text-text-muted">→ {item.views}</p>
+                        <p className="text-xs text-emerald-400 font-medium">{item.earned}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Contribution Opportunities */}
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">🎯 Contribution Opportunities</p>
+                <div className="space-y-2">
+                  <div className="flex items-start gap-3 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-3">
+                    <span className="text-violet-400 text-base shrink-0">⚡</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-medium text-white">New restaurant: Honest Burgers, Park St</p>
+                      <p className="text-[10px] text-text-muted">Be first to review</p>
+                    </div>
+                    <span className="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full px-2 py-0.5 shrink-0">3x multiplier</span>
+                  </div>
+                  <div className="flex items-start gap-3 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-3">
+                    <span className="text-violet-400 text-base shrink-0">📸</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-medium text-white">Photos needed: The Downs Café</p>
+                      <p className="text-[10px] text-text-muted">Interior photos missing</p>
+                    </div>
+                    <span className="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full px-2 py-0.5 shrink-0">bonus £2</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -706,54 +827,82 @@ STAGE 4: ARRIVAL
         {/* User Flow + Wireframe */}
         <div className="mb-6">
           <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">User Flow & Wireframe</p>
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
-            <pre className="font-mono text-xs text-[var(--text-muted)] leading-relaxed overflow-x-auto">{`STEP 1: CREATE TRIP
-User taps "+" → "New Group Trip"
-Names it: "Bristol Weekend with Friends"
-Sets dates: March 28-30
-
-STEP 2: INVITE COLLABORATORS
-Share link via WhatsApp/SMS/email
-Each person joins with their Google account
-
-STEP 3: COLLABORATIVE PLANNING
-┌──────────────────────────────────────────────────┐
-│  🗺️ Bristol Weekend  ·  4 people                │
-│                                                  │
-│  ┌──────────────────────────────────────────┐   │
-│  │ 📅 Saturday, March 28                     │   │
-│  │                                           │   │
-│  │  10:00  🏛️ SS Great Britain              │   │
-│  │         Added by: Akash  ❤️ 3 votes      │   │
-│  │                                           │   │
-│  │  13:00  🍽️ [3 suggestions — vote!]       │   │
-│  │         • Pipal Tree Cafe (Priya ❤️)     │   │
-│  │         • The Ox (Raj ❤️)                │   │
-│  │         • Cargo Cantina (2 ❤️)  ← Winner │   │
-│  │                                           │   │
-│  │  15:00  💬 Ask Maps: "What should we do   │   │
-│  │         after lunch near the harbour       │   │
-│  │         that's fun for 4 adults?"          │   │
-│  │         → AI suggests: Banksy walking tour,│   │
-│  │           paddle boarding, Arnolfini gallery│   │
-│  │                                           │   │
-│  │  19:00  🍷 [No plans yet — suggest!]      │   │
-│  └──────────────────────────────────────────┘   │
-│                                                  │
-│  💬 Group chat                                   │
-│  📊 Budget tracker (split bills)                │
-│  🗺️ View all on map                             │
-└──────────────────────────────────────────────────┘
-
-STEP 4: DURING THE TRIP
-→ Live location sharing (opt-in)
-→ Turn-by-turn navigation to each stop
-→ Auto-suggest next stop based on itinerary + current location
-
-STEP 5: POST-TRIP
-→ "Trip Summary" — photos, places visited, total distance
-→ Prompt to review visited places (Local Guides integration)
-→ Share summary as a "Trip List" for others to use`}</pre>
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 space-y-5">
+            {/* Steps 1 & 2 */}
+            <div className="space-y-2 text-sm text-text-secondary">
+              <p><span className="font-semibold text-text-primary">Step 1 — Create Trip:</span> User taps "+" → "New Group Trip", names it "Bristol Weekend with Friends", sets dates March 28–30.</p>
+              <p><span className="font-semibold text-text-primary">Step 2 — Invite Collaborators:</span> Share link via WhatsApp / SMS / email. Each person joins with their Google account.</p>
+            </div>
+            {/* Step 3 — Wireframe mock */}
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-text-muted mb-3">Step 3 — Collaborative Planning</p>
+              <div className="rounded-2xl p-1 bg-gradient-to-b from-violet-500/10 to-transparent border border-violet-500/20">
+                <div className="bg-[#0A0A1A] rounded-2xl overflow-hidden">
+                  {/* Header band */}
+                  <div className="bg-gradient-to-r from-violet-600/20 to-blue-600/20 px-4 py-3">
+                    <p className="text-sm font-semibold text-white">🗺️ Bristol Weekend · 4 people</p>
+                  </div>
+                  <div className="p-4 space-y-3">
+                    <p className="text-[10px] uppercase tracking-widest text-text-muted">📅 Saturday, March 28</p>
+                    {/* 10:00 */}
+                    <div className="flex items-start gap-3 py-3 border-b border-[var(--border)]">
+                      <span className="text-[10px] text-text-muted w-10 shrink-0 pt-0.5">10:00</span>
+                      <span className="text-base shrink-0">🏛️</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-white">SS Great Britain</p>
+                        <p className="text-[10px] text-text-muted">Added by: Akash · ❤️ 3 votes</p>
+                      </div>
+                      <span className="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full px-2 py-0.5 shrink-0">✓ Confirmed</span>
+                    </div>
+                    {/* 13:00 */}
+                    <div className="flex items-start gap-3 py-3 border-b border-[var(--border)]">
+                      <span className="text-[10px] text-text-muted w-10 shrink-0 pt-0.5">13:00</span>
+                      <span className="text-base shrink-0">🍽️</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-white">Vote for lunch spot</p>
+                        <div className="flex flex-wrap gap-1.5 mt-1.5">
+                          <span className="text-[10px] bg-[var(--surface)] border border-[var(--border)] rounded-full px-2 py-0.5 text-text-muted">Pipal Tree Cafe</span>
+                          <span className="text-[10px] bg-[var(--surface)] border border-[var(--border)] rounded-full px-2 py-0.5 text-text-muted">The Ox</span>
+                          <span className="text-[10px] bg-violet-600 text-white rounded-full px-2 py-0.5">Cargo Cantina</span>
+                          <span className="text-[10px] text-violet-400">← Winner</span>
+                        </div>
+                      </div>
+                    </div>
+                    {/* 15:00 */}
+                    <div className="flex items-start gap-3 py-3 border-b border-[var(--border)]">
+                      <span className="text-[10px] text-text-muted w-10 shrink-0 pt-0.5">15:00</span>
+                      <span className="text-base shrink-0">💬</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-white">Ask Maps suggestion</p>
+                        <div className="mt-2 bg-violet-500/5 border border-violet-500/20 rounded-lg p-3">
+                          <p className="text-xs text-text-muted italic">AI suggests: Banksy walking tour, paddle boarding, Arnolfini gallery</p>
+                        </div>
+                      </div>
+                    </div>
+                    {/* 19:00 */}
+                    <div className="flex items-start gap-3 py-3">
+                      <span className="text-[10px] text-text-muted w-10 shrink-0 pt-0.5">19:00</span>
+                      <div className="flex-1 border-dashed border border-[var(--border)] rounded-lg p-3">
+                        <p className="text-xs text-text-muted italic">No plans yet — suggest!</p>
+                      </div>
+                    </div>
+                    {/* Footer */}
+                    <div className="flex items-center gap-0 border-t border-[var(--border)] pt-3">
+                      <span className="flex-1 text-center text-[10px] text-text-muted">💬 Group chat</span>
+                      <span className="w-px h-3 bg-[var(--border)]" />
+                      <span className="flex-1 text-center text-[10px] text-text-muted">📊 Budget tracker</span>
+                      <span className="w-px h-3 bg-[var(--border)]" />
+                      <span className="flex-1 text-center text-[10px] text-text-muted">🗺️ View on map</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Steps 4 & 5 */}
+            <div className="space-y-2 text-sm text-text-secondary">
+              <p><span className="font-semibold text-text-primary">Step 4 — During the Trip:</span> Live location sharing (opt-in), turn-by-turn navigation to each stop, auto-suggest next stop based on itinerary + current location.</p>
+              <p><span className="font-semibold text-text-primary">Step 5 — Post-Trip:</span> "Trip Summary" with photos, places visited, total distance. Prompt to review visited places (Local Guides integration). Share summary as a "Trip List" for others to use.</p>
+            </div>
           </div>
         </div>
 
@@ -882,44 +1031,74 @@ STEP 5: POST-TRIP
         {/* Wireframe */}
         <div className="mb-6">
           <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Wireframe — Neighbourhood Profile</p>
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
-            <pre className="font-mono text-xs text-[var(--text-muted)] leading-relaxed overflow-x-auto">{`┌──────────────────────────────────────────────────────────┐
-│  🏘️ Neighbourhood: Clifton, Bristol                     │
-│  Overall Score: 8.4 / 10                                 │
-│                                                          │
-│  ┌──────────────────────────────────────────────────────┐│
-│  │  [MAP VIEW with colour-coded zones]                  ││
-│  │  🟢 Green = high walkability                         ││
-│  │  🔵 Blue = high transit access                       ││
-│  │  🟡 Yellow = restaurant/cafe clusters                ││
-│  │  ⬜ Grey = residential quiet zones                   ││
-│  └──────────────────────────────────────────────────────┘│
-│                                                          │
-│  📊 Scores Breakdown                                     │
-│  ┌─────────────────────────────────┐                    │
-│  │ 🚶 Walkability          9.1    │ ████████████░      │
-│  │ 🚌 Public Transport     7.8    │ █████████░░░░      │
-│  │ 🛒 Daily Amenities      8.5    │ ██████████░░       │
-│  │ 🌳 Green Space          9.3    │ ████████████░      │
-│  │ 🍽️ Food & Drink         8.9    │ ███████████░░      │
-│  │ 🏫 Schools (OFSTED)     7.2    │ ████████░░░░░      │
-│  │ 🔇 Quietness            6.1    │ ██████░░░░░░░      │
-│  │ 💷 Cost of Living       4.8    │ ████░░░░░░░░░      │
-│  └─────────────────────────────────┘                    │
-│                                                          │
-│  🔄 Compare with:  [Redland] [Bedminster] [Bishopston]  │
-│                                                          │
-│  ⏱️ Commute to [Your Workplace]:                        │
-│     🚗 18 min (peak) · 🚌 32 min · 🚲 12 min           │
-│                                                          │
-│  💬 Ask Maps: "Is Clifton a good area for a young       │
-│     professional with no car?"                           │
-│     → "Clifton scores 9.1 for walkability and has 3     │
-│     supermarkets within 10 min walk. However, parking    │
-│     is limited and rents average £1,200/month for a      │
-│     1-bed. Consider Bedminster for 30% lower rent with   │
-│     similar walkability scores."                         │
-└──────────────────────────────────────────────────────────┘`}</pre>
+          <div className="rounded-2xl p-1 bg-gradient-to-b from-violet-500/10 to-transparent border border-violet-500/20">
+            <div className="bg-[#0A0A1A] rounded-2xl p-5 space-y-5">
+              {/* Header */}
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <p className="text-sm font-bold text-white">🏘️ Neighbourhood: Clifton, Bristol</p>
+                <p className="text-2xl font-bold text-violet-400">8.4 / 10</p>
+              </div>
+              {/* Map placeholder */}
+              <div className="relative h-32 rounded-xl bg-gradient-to-br from-emerald-500/10 to-blue-500/10 border border-[var(--border)] overflow-hidden">
+                <div className="absolute bottom-2 left-2 flex flex-wrap gap-1">
+                  {[
+                    { emoji: '🟢', label: 'Walkability' },
+                    { emoji: '🔵', label: 'Transit' },
+                    { emoji: '🟡', label: 'Food' },
+                    { emoji: '⬜', label: 'Residential' },
+                  ].map((item) => (
+                    <span key={item.label} className="text-[9px] bg-[#0A0A1A]/80 rounded-full px-2 py-0.5 text-text-muted">
+                      {item.emoji} {item.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              {/* Score bars */}
+              <div className="space-y-2.5">
+                {[
+                  { emoji: '🚶', label: 'Walkability', score: 9.1, pct: '91%', color: 'bg-violet-500' },
+                  { emoji: '🚌', label: 'Public Transport', score: 7.8, pct: '78%', color: 'bg-blue-400' },
+                  { emoji: '🛒', label: 'Daily Amenities', score: 8.5, pct: '85%', color: 'bg-violet-500' },
+                  { emoji: '🌳', label: 'Green Space', score: 9.3, pct: '93%', color: 'bg-emerald-400' },
+                  { emoji: '🍽️', label: 'Food & Drink', score: 8.9, pct: '89%', color: 'bg-violet-500' },
+                  { emoji: '🏫', label: 'Schools', score: 7.2, pct: '72%', color: 'bg-amber-400' },
+                  { emoji: '🔇', label: 'Quietness', score: 6.1, pct: '61%', color: 'bg-blue-400' },
+                  { emoji: '💷', label: 'Cost of Living', score: 4.8, pct: '48%', color: 'bg-red-400' },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-center gap-3">
+                    <span className="text-sm shrink-0 w-5">{item.emoji}</span>
+                    <span className="text-[10px] text-text-muted w-28 shrink-0">{item.label}</span>
+                    <span className="text-[10px] font-semibold text-text-primary w-6 shrink-0">{item.score}</span>
+                    <div className="flex-1 bg-[var(--surface)] rounded-full h-2">
+                      <div className={`h-2 rounded-full ${item.color}`} style={{ width: item.pct }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* Compare row */}
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-[10px] text-text-muted shrink-0">🔄 Compare with:</span>
+                {['Redland', 'Bedminster', 'Bishopston'].map((area) => (
+                  <button key={area} className="text-[10px] bg-[var(--surface)] border border-[var(--border)] hover:border-violet-500/50 rounded-full px-3 py-1 text-text-muted transition-colors">
+                    {area}
+                  </button>
+                ))}
+              </div>
+              {/* Commute row */}
+              <div className="flex flex-wrap items-center gap-3 text-[10px] text-text-muted">
+                <span className="shrink-0">⏱️ Commute to [Your Workplace]:</span>
+                <span>🚗 18 min</span>
+                <span>🚌 32 min</span>
+                <span>🚲 12 min</span>
+              </div>
+              {/* Ask Maps result */}
+              <div className="border-l-4 border-violet-500 pl-4 bg-violet-500/5 rounded-r-xl p-4">
+                <p className="text-[10px] text-violet-400 mb-1 font-semibold">Ask Maps</p>
+                <p className="text-xs text-text-muted italic leading-relaxed">
+                  "Clifton scores 9.1 for walkability and has 3 supermarkets within 10 min walk. However, parking is limited and rents average £1,200/month for a 1-bed. Consider Bedminster for 30% lower rent with similar walkability scores."
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
