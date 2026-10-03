@@ -59,6 +59,13 @@ export default function LabPage() {
             ))}
           </ul>
         )}
+        <p className="mt-8 text-sm text-text-secondary">
+          One more: the <span className="font-mono text-text-primary">product_brief.md</span> card on the{' '}
+          <Link href="/" className="text-violet-400 hover:text-violet-300 transition-colors duration-200">
+            homepage
+          </Link>{' '}
+          is a working terminal. Type <span className="font-mono text-text-primary">help</span> to see what it can do.
+        </p>
       </SectionWrapper>
     </main>
   )
