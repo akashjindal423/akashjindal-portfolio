@@ -89,7 +89,7 @@ export default function AboutPage() {
           <div>
             <p className="text-text-primary font-semibold mb-1">Currently Open To</p>
             <p className="text-text-secondary text-sm leading-relaxed mb-3">
-              Open to Senior / Lead Product Owner roles in fintech, banking, AI, or cloud-native tech.
+              Open to AI Product Manager roles.
               Bristol / London, open to hybrid.
             </p>
             <Link

@@ -70,7 +70,7 @@ export default function ContactPage() {
               <div>
                 <p className="text-text-primary font-semibold text-sm mb-1">Currently Open To</p>
                 <p className="text-text-secondary text-sm">
-                  Senior PO / Lead PO roles in fintech, banking, or growth-stage tech.
+                  AI Product Manager roles.
                 </p>
               </div>
             </div>
