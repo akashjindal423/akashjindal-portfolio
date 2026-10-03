@@ -64,8 +64,16 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
+      // The site is dark-only (theme toggle is hidden). Rendering the class on the server means
+      // the dark palette applies before, or without, the next-themes script.
+      className={`dark ${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        {/* Without JavaScript, framer-motion entrances never run; show their end state instead. */}
+        <noscript>
+          <style>{'[style*="opacity:0"]{opacity:1!important;transform:none!important}'}</style>
+        </noscript>
+      </head>
       <body suppressHydrationWarning className="bg-[var(--background)] text-[var(--text-primary)] font-sans antialiased">
         <ThemeProvider>
           <MotionProvider>
