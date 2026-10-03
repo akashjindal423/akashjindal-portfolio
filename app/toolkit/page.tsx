@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 const tools = [
-  { id: 1, name: "PRD Template", category: "Discovery", emoji: "📄", desc: "The product requirements document I use for every feature I ship. Forces problem-first thinking with built-in scope controls.", tagline: "Problem first. Solution second.", downloadHref: "/downloads/pm-toolkit/prd-one-pager.pdf" },
+  { id: 1, name: "PRD Template", category: "Discovery", emoji: "📄", desc: "One-page product requirements template that puts the problem before the solution, with built-in scope controls.", tagline: "Problem first. Solution second.", downloadHref: "/downloads/pm-toolkit/prd-one-pager.pdf" },
   { id: 2, name: "RICE Calculator", category: "Prioritisation", emoji: "🧮", desc: "Scoring framework with guardrails that prevent the 3 most common inflation mistakes POs make when prioritising backlogs.", tagline: "Objective prioritisation, honest scoring.", downloadHref: "/downloads/pm-toolkit/rice-scoring.pdf" },
   { id: 3, name: "Stakeholder Canvas", category: "Stakeholders", emoji: "🗺️", desc: "Power × Interest mapping with communication plan and influence map. Know who to convince first to unblock decisions.", tagline: "Manage people, not just products.", downloadHref: "/downloads/pm-toolkit/stakeholder-map.pdf" },
   { id: 4, name: "Retro Board", category: "Delivery", emoji: "🔄", desc: "Sprint retrospective with a max-3-actions constraint, previous sprint accountability check, and team health pulse.", tagline: "Max 3 actions. Zero excuses.", downloadHref: "/downloads/pm-toolkit/sprint-retrospective.pdf" },
@@ -65,14 +65,14 @@ export default function ToolkitPage() {
         </h1>
 
         <p className="text-lg text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed mb-8">
-          20 battle-tested templates, frameworks, and tools for Product Managers.
-          Built from 9+ years in tech, shipping products at Lloyds, Dyson, Sony, and Infosys.
-          Download. Use. Ship better products.
+          20 one-page worksheets and starting templates for product managers, as free PDFs.
+          Each gives you a structure to fill in for a common product task, not a finished answer:
+          print it, adapt it to your team, and make it your own.
         </p>
 
         {/* Stat pills */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {["20 Tools", "Free Forever", "No Email Required"].map(s => (
+          {["20 one-page PDFs", "Free", "No email required"].map(s => (
             <span
               key={s}
               className="px-4 py-2 bg-[var(--surface)] border border-[var(--border)] rounded-full text-sm text-[var(--text-muted)]"
@@ -88,7 +88,7 @@ export default function ToolkitPage() {
             href="#tools"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-all duration-200"
           >
-            Download All 20 Tools
+            Browse the 20 templates
           </a>
         </div>
 
@@ -102,10 +102,10 @@ export default function ToolkitPage() {
       <div className="bg-[var(--surface)] border-y border-[var(--border)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { icon: "🧰", value: "20", label: "Templates" },
-            { icon: "🆓", value: "Free Forever", label: "" },
-            { icon: "⏱️", value: "6+ Years", label: "as a Product Owner" },
-            { icon: "🏢", value: "Lloyds, Dyson & Sony", label: "Built at" },
+            { icon: "🧰", value: "20", label: "One-page worksheets" },
+            { icon: "🆓", value: "Free", label: "No email required" },
+            { icon: "✏️", value: "Fill-in", label: "Starting templates, not finished answers" },
+            { icon: "⏱️", value: "6+ Years", label: "as a Product Owner behind them" },
           ].map(s => (
             <div key={s.label}>
               <div className="text-xl mb-1">{s.icon}</div>
@@ -210,10 +210,10 @@ export default function ToolkitPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[var(--border)]">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3">
-            Built for How PMs Actually Work
+            Where Each Template Helps
           </h2>
           <p className="text-[var(--text-muted)] max-w-xl mx-auto">
-            These aren&apos;t textbook frameworks. They&apos;re the tools I reach for when facing real decisions — in sprint planning, stakeholder reviews, product discovery, and launch weeks.
+            Each worksheet is a starting point for a common product decision — sprint planning, stakeholder reviews, discovery, and launches. Adapt it to how your team works.
           </p>
         </div>
 
@@ -266,9 +266,9 @@ export default function ToolkitPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="bg-gradient-to-r from-violet-600/10 to-violet-900/20 border border-violet-500/20 rounded-2xl p-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3">
-            Everything you need to ship better products
+            Free starting templates for everyday product work
           </h2>
-          <p className="text-[var(--text-muted)] mb-8">20 templates. Completely free. No email required.</p>
+          <p className="text-[var(--text-muted)] mb-8">20 one-page PDFs. Free. No email required.</p>
           <div className="flex justify-center">
             <Link
               href="/"
