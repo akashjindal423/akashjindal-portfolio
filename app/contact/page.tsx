@@ -2,6 +2,7 @@ import { Clock, Linkedin, Mail, Briefcase } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import ContactForm from '@/components/contact/ContactForm'
+import CopyEmail from '@/components/contact/CopyEmail'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata = pageMetadata({
@@ -24,8 +25,11 @@ export default function ContactPage() {
 
       <SectionWrapper>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left: form */}
-          <ContactForm />
+          {/* Left: form, with a plain-address fallback for visitors without a mail app */}
+          <div className="flex flex-col gap-6">
+            <ContactForm />
+            <CopyEmail />
+          </div>
 
           {/* Right: info cards */}
           <div className="flex flex-col gap-4">

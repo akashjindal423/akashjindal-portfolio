@@ -30,7 +30,9 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <label htmlFor="contact-name" className="sr-only">Your name</label>
       <input
+        id="contact-name"
         type="text"
         name="name"
         placeholder="Your name"
@@ -39,7 +41,9 @@ export default function ContactForm() {
         onChange={handleChange}
         className={inputClass}
       />
+      <label htmlFor="contact-subject" className="sr-only">Subject</label>
       <select
+        id="contact-subject"
         name="subject"
         value={formData.subject}
         onChange={handleChange}
@@ -51,7 +55,9 @@ export default function ContactForm() {
         <option>Speaking</option>
         <option>Other</option>
       </select>
+      <label htmlFor="contact-message" className="sr-only">Your message</label>
       <textarea
+        id="contact-message"
         name="message"
         placeholder="Your message"
         required
@@ -66,6 +72,9 @@ export default function ContactForm() {
       >
         Open Email App →
       </button>
+      <p className="text-xs text-text-subtle -mt-1">
+        This opens your email app with the message filled in. Nothing is sent from this site.
+      </p>
     </form>
   )
 }
