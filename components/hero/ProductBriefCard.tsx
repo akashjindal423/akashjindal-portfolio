@@ -51,7 +51,7 @@ export default function ProductBriefCard() {
         <div className="h-3 w-3 rounded-full bg-[#28C840]" />
         <span className="ml-3 text-xs text-text-subtle font-mono tracking-wide">product_brief.md</span>
         <div className="ml-auto flex items-center gap-1">
-          <div className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
+          <div className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse motion-reduce:animate-none" />
           <span className="text-[10px] text-green-400 font-mono">live</span>
         </div>
       </div>

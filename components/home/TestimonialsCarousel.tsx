@@ -22,6 +22,8 @@ export default function TestimonialsCarousel() {
   const next = () => setCurrent((i) => (i + 1) % total)
 
   const startAutoPlay = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    stopAutoPlay()
     intervalRef.current = setInterval(() => setCurrent((i) => (i + 1) % total), 4500)
   }
   const stopAutoPlay = () => {
@@ -51,6 +53,8 @@ export default function TestimonialsCarousel() {
         className="relative bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8 md:p-12 max-w-4xl mx-auto overflow-hidden"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
+        onFocus={stopAutoPlay}
+        onBlur={startAutoPlay}
       >
         {/* Decorative quote mark */}
         <span className="font-display absolute top-4 left-8 text-[120px] leading-none text-violet-400 opacity-15 select-none pointer-events-none">

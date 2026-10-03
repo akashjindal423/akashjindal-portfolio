@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { ThemeProvider } from '@/features/theme'
+import MotionProvider from '@/components/shared/MotionProvider'
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/site'
 
 const inter = Inter({
@@ -67,9 +68,11 @@ export default function RootLayout({
     >
       <body suppressHydrationWarning className="bg-[var(--background)] text-[var(--text-primary)] font-sans antialiased">
         <ThemeProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <MotionProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>
