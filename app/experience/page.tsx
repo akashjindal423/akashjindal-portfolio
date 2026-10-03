@@ -18,15 +18,15 @@ export default function ExperiencePage() {
 
   return (
     <main>
-      <SectionWrapper>
+      <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="EXPERIENCE"
           title="Where I've Worked"
-          subtitle="My full career history in banking, fintech, and tech."
+          subtitle="My full career history across banking, energy, gaming, and consumer tech."
         />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="pt-10 sm:pt-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Timeline */}
           <div className="lg:col-span-2">
@@ -41,7 +41,7 @@ export default function ExperiencePage() {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="sticky top-8 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6">
+            <div className="sticky top-24 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6">
               <p className="text-violet-400 text-xs uppercase tracking-widest font-semibold mb-4">
                 Skills &amp; Tools
               </p>

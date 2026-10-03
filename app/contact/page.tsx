@@ -15,7 +15,7 @@ export const metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <main>
-      <SectionWrapper>
+      <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="CONTACT"
           title="Let's Talk"
@@ -23,7 +23,7 @@ export default function ContactPage() {
         />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="pt-10 sm:pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left: form, with a plain-address fallback for visitors without a mail app */}
           <div className="flex flex-col gap-6">

@@ -32,7 +32,7 @@ const howIWork = [
 export default function SkillsPage() {
   return (
     <main>
-      <SectionWrapper>
+      <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="SKILLS"
           title="Core Competencies"
@@ -40,7 +40,7 @@ export default function SkillsPage() {
         />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="pt-10 sm:pt-12">
         <SkillIconGrid />
       </SectionWrapper>
 

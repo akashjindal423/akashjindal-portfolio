@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import { getTestimonials } from '@/lib/content'
@@ -46,6 +47,12 @@ export default function TestimonialsCarousel() {
           Recommendations
         </span>
         <h2 className="text-3xl font-bold text-text-primary">What People Say</h2>
+        <Link
+          href="/recommendations"
+          className="inline-block mt-3 text-violet-400 text-sm hover:text-violet-300 transition-colors duration-200"
+        >
+          All recommendations →
+        </Link>
       </div>
 
       {/* Card */}

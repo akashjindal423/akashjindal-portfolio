@@ -23,7 +23,7 @@ export default function HeroSection() {
     >
       <CursorGlow />
 
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-h-screen max-w-7xl mx-auto px-6 py-24">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 items-center min-h-screen max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
 
         {/* Left column */}
         <div className="flex flex-col justify-center">

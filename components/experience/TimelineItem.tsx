@@ -24,7 +24,7 @@ export default function TimelineItem({ experience, isLast, compact = false }: Pr
   const dateRange = `${formatDate(startDate)} – ${current ? 'Present' : endDate ? formatDate(endDate) : ''}`
 
   return (
-    <div className="relative flex gap-8">
+    <div className="relative flex gap-4 sm:gap-8">
       {/* Timeline line */}
       {!isLast && (
         <div className="absolute left-4 top-8 bottom-0 w-px bg-[var(--border)]" />
@@ -36,7 +36,7 @@ export default function TimelineItem({ experience, isLast, compact = false }: Pr
       </div>
 
       {/* Card */}
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex-1 mb-8">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 sm:p-6 flex-1 min-w-0 mb-8">
         {/* Top row */}
         <div className="flex flex-wrap items-center gap-2">
           <span className="font-semibold text-lg text-text-primary">{role}</span>

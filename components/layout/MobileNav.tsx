@@ -38,6 +38,8 @@ export default function MobileNav() {
         className="md:hidden fixed top-4 right-4 z-[60] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors duration-200"
         onClick={() => setOpen(v => !v)}
         aria-label={open ? 'Close menu' : 'Open menu'}
+        aria-expanded={open}
+        aria-controls="mobile-nav-drawer"
       >
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
@@ -51,9 +53,12 @@ export default function MobileNav() {
       )}
 
       {/* Drawer */}
-      <div
-        className={`md:hidden fixed top-0 right-0 h-full w-64 z-[56] bg-[var(--surface)] border-l border-[var(--border)] flex flex-col pt-20 px-6 gap-2 transition-transform duration-300 ${
-          open ? 'translate-x-0' : 'translate-x-full'
+      <nav
+        id="mobile-nav-drawer"
+        aria-label="Mobile"
+        inert={!open}
+        className={`md:hidden fixed top-0 right-0 h-full w-64 z-[56] bg-[var(--surface)] border-l border-[var(--border)] flex flex-col pt-20 px-6 gap-2 transition-[transform,visibility] duration-300 motion-reduce:transition-none ${
+          open ? 'translate-x-0 visible' : 'translate-x-full invisible'
         }`}
       >
         {NAV_LINKS.map(({ label, href }) => (
@@ -77,7 +82,7 @@ export default function MobileNav() {
         >
           Contact →
         </Link>
-      </div>
+      </nav>
     </>
   )
 }

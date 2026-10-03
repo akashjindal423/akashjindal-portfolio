@@ -23,14 +23,14 @@ export default function RecommendationsPage() {
 
   return (
     <main>
-      <SectionWrapper>
+      <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="RECOMMENDATIONS"
           title="What People Say"
         />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="pt-10 sm:pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((t) => (
             <div

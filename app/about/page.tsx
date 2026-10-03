@@ -19,14 +19,14 @@ export default function AboutPage() {
   return (
     <main>
       <JsonLd data={personSchema()} />
-      <SectionWrapper>
+      <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="ABOUT"
           title="Product thinking meets technical fluency"
         />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="pt-10 sm:pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
           {/* Left: prose */}
           <div className="space-y-8">
@@ -70,7 +70,7 @@ export default function AboutPage() {
           </div>
 
           {/* Right: sticky photo + stats */}
-          <div className="md:sticky md:top-8 md:self-start flex flex-col gap-6">
+          <div className="md:sticky md:top-24 md:self-start flex flex-col gap-6">
             <Image
               src="/profile.jpg"
               alt="Photo of Akash Jindal"

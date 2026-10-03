@@ -26,14 +26,14 @@ export default function TrainingPage() {
 
   return (
     <main>
-      <SectionWrapper>
+      <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="CERTIFICATIONS"
           title="Training & Certifications"
         />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="pt-10 sm:pt-12">
         {/* Grid of certs */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           {certs.map((cert) => (

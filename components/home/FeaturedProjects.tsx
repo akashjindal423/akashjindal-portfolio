@@ -61,7 +61,7 @@ export default function FeaturedProjects() {
   return (
     <SectionWrapper id="projects">
       {/* Header */}
-      <div className="flex justify-between items-end mb-12">
+      <div className="flex flex-wrap justify-between items-end gap-4 mb-12">
         <div>
           <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">
             Selected Work
