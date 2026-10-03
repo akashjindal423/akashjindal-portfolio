@@ -54,7 +54,7 @@ export default function TestimonialsCarousel() {
       >
         {/* Decorative quote mark */}
         <span className="font-display absolute top-4 left-8 text-[120px] leading-none text-violet-400 opacity-15 select-none pointer-events-none">
-          "
+          &quot;
         </span>
 
         {/* Animated quote */}
@@ -68,7 +68,7 @@ export default function TestimonialsCarousel() {
           >
             {/* Quote */}
             <p className="relative z-10 text-lg md:text-xl text-text-primary leading-relaxed italic min-h-[100px]">
-              "{t.quote}"
+              &quot;{t.quote}&quot;
             </p>
 
             {/* Author row */}

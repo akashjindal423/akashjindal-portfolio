@@ -24,8 +24,10 @@ export default function TypingHeadline() {
     } else if (deleting && displayed.length > 0) {
       timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40)
     } else {
-      setDeleting(false)
-      setRoleIndex((i) => (i + 1) % roles.length)
+      timeout = setTimeout(() => {
+        setDeleting(false)
+        setRoleIndex((i) => (i + 1) % roles.length)
+      }, 0)
     }
     return () => clearTimeout(timeout)
   }, [displayed, deleting, roleIndex])

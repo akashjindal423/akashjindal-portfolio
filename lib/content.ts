@@ -1,4 +1,4 @@
-import { Experience, Project, OfficialProject, PassionProject, ProjectsData } from './types'
+import { Experience, OfficialProject, ProjectsData } from './types'
 
 export interface SkillGroup {
   category: string

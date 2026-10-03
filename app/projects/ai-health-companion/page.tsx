@@ -173,8 +173,8 @@ export default function AIHealthCompanionPage() {
         <h2 className="text-2xl font-bold text-text-primary mb-6">The guiding statement</h2>
         <div className="border-l-4 border-violet-500 pl-6 py-2">
           <p className="text-xl md:text-2xl text-text-primary leading-relaxed italic">
-            "An AI health companion that learns your culture, lifestyle, and goals — then gives you
-            guidance that is realistic, relevant, and respectful of how you actually live."
+            &quot;An AI health companion that learns your culture, lifestyle, and goals — then gives you
+            guidance that is realistic, relevant, and respectful of how you actually live.&quot;
           </p>
         </div>
       </section>
@@ -350,7 +350,7 @@ export default function AIHealthCompanionPage() {
                 </span>
               </div>
               <div className="px-5 py-4">
-                <p className="text-sm text-text-primary leading-relaxed italic mb-4">"{s.story}"</p>
+                <p className="text-sm text-text-primary leading-relaxed italic mb-4">&quot;{s.story}&quot;</p>
                 <p className="text-[10px] uppercase tracking-widest text-text-muted font-semibold mb-2">
                   Acceptance Criteria
                 </p>

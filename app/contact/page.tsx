@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Clock, Linkedin, Mail, Briefcase } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'

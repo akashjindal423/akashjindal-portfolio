@@ -18,10 +18,12 @@ export default function MobileNav() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
-  // Close on route change
-  useEffect(() => {
+  // Close on route change (adjust state during render rather than in an effect)
+  const [lastPath, setLastPath] = useState(pathname)
+  if (pathname !== lastPath) {
+    setLastPath(pathname)
     setOpen(false)
-  }, [pathname])
+  }
 
   // Prevent body scroll when open
   useEffect(() => {

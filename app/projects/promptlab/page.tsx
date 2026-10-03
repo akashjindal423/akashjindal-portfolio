@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import type { Metadata } from 'next'
 
 // ── Terminal row data ──────────────────────────────────────────────────────────
 const terminalRows = [
@@ -37,7 +36,6 @@ const dimensions = [
 ]
 
 // ── Comparison table ───────────────────────────────────────────────────────────
-type CompCell = boolean | '✅' | '❌'
 interface CompRow { feature: string; promptlab: boolean; dspy: boolean; promptfoo: boolean; braintrust: boolean; chrome: boolean; highlight?: boolean }
 const compRows: CompRow[] = [
   { feature: 'No dataset needed',       promptlab: true,  dspy: false, promptfoo: false, braintrust: false, chrome: true  },
@@ -95,7 +93,7 @@ export default function PromptLabPage() {
         </div>
 
         <h1 className="text-4xl md:text-5xl font-bold font-sans leading-tight text-text-primary">
-          Stop Guessing Why Your Prompt Isn't Working
+          Stop Guessing Why Your Prompt Isn&apos;t Working
         </h1>
 
         <p className="text-lg text-text-secondary mt-5 leading-relaxed max-w-3xl">

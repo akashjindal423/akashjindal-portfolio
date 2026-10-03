@@ -1,13 +1,14 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
+
+const noopSubscribe = () => () => {}
 
 export function ThemeToggle() {
-  const [mounted, setMounted] = useState(false)
+  const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false)
   const { theme, setTheme } = useTheme()
 
-  useEffect(() => setMounted(true), [])
   if (!mounted) return <div className="w-9 h-9" />
 
   const isDark = theme === 'dark'
