@@ -357,8 +357,9 @@ export function getBlogPosts(): BlogPost[] {
   ]
 }
 
-export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  return getBlogPosts().find(p => p.slug === slug)
+/** Published posts whose full text lives on this site. Posts without a body link out (e.g. to LinkedIn). */
+export function getHostedBlogPosts(): BlogPost[] {
+  return getBlogPosts().filter(p => !p.draft && p.body.trim().length > 0)
 }
 
 export function getCommunityInvolvement() {
