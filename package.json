@@ -1,5 +1,5 @@
 {
-  "name": "next-scaffold-tmp",
+  "name": "akashjindal-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,14 +17,11 @@
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
     "next-mdx-remote": "^6.0.0",
-    "next-sitemap": "^4.2.3",
     "next-themes": "^0.4.6",
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^7.1.0",
-    "rehype-shiki": "^0.0.9",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.5.0"
