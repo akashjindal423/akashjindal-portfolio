@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: 'Experience', href: '/experience' },
   { label: 'Skills', href: '/skills' },
   { label: 'Toolkit', href: '/toolkit' },
+  { label: 'Lab', href: '/lab' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
 ]
@@ -49,7 +50,7 @@ export default function Navbar() {
                 key={href}
                 href={href}
                 className={`text-sm transition-colors duration-200 ${
-                  pathname === href
+                  pathname === href || pathname.startsWith(`${href}/`)
                     ? 'text-violet-400'
                     : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                 }`}
