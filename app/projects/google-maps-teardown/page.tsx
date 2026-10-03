@@ -1338,9 +1338,9 @@ export default function GoogleMapsTeardownPage() {
           <div className="flex-1">
             <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">About the Author</p>
             <h3 className="text-base font-bold text-text-primary mb-1">Akash Jindal</h3>
-            <p className="text-sm text-text-muted mb-3">Technical Product Owner · AI Centre of Excellence · Lloyds Banking Group</p>
+            <p className="text-sm text-text-muted mb-3">AI Product Owner · AI Centre of Excellence · Lloyds Banking Group</p>
             <p className="text-sm text-text-secondary leading-relaxed mb-4">
-              Akash Jindal is a Technical Product Owner at Lloyds Banking Group&apos;s AI Centre of Excellence. He previously shipped AR products at Dyson and contributed to the PlayStation 5 platform launch at Sony. He holds GCP Associate Cloud Engineer, PSPO II, and ICAgile ICP-APO certifications.
+              Akash Jindal is an AI Product Owner at Lloyds Banking Group&apos;s AI Centre of Excellence. He previously shipped AR products at Dyson and contributed to the PlayStation 5 platform launch at Sony. He holds GCP Associate Cloud Engineer, PSPO II, and ICAgile ICP-APO certifications.
             </p>
             <div className="flex flex-wrap gap-3">
               <a

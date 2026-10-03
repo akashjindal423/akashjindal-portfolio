@@ -93,7 +93,7 @@ export default function ToolkitPage() {
         </div>
 
         <p className="text-sm text-[var(--text-muted)] max-w-xl mx-auto">
-          Built by Akash Jindal — Technical Product Owner at Lloyds Banking Group&apos;s AI Centre of Excellence.
+          Built by Akash Jindal — AI Product Owner at Lloyds Banking Group&apos;s AI Centre of Excellence.
           Previously shipped AR at Dyson and contributed to the PS5 launch at Sony.
         </p>
       </section>

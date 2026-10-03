@@ -35,7 +35,7 @@ export default function Footer() {
               </span>
               <span className="font-medium text-[var(--text-primary)]">Akash Jindal</span>
             </div>
-            <p className="text-[#A09EC0] text-sm mt-2">Technical Product Owner</p>
+            <p className="text-[#A09EC0] text-sm mt-2">AI Product Owner</p>
             <p className="text-[#4F4D70] text-sm mt-3">
               Open to contract and permanent roles in banking, fintech, and tech.
             </p>

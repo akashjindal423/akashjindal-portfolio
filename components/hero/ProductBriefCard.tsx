@@ -6,14 +6,14 @@ const sections = [
     heading: '// WHO',
     lines: [
       { key: 'name', value: '"Akash Jindal"' },
-      { key: 'title', value: 'Product Owner' },
-      { key: 'location', value: 'Bristol · London, UK' },
+      { key: 'title', value: 'AI Product Owner' },
+      { key: 'location', value: 'Bristol, UK' },
     ],
   },
   {
     heading: '// STATUS',
     lines: [
-      { key: 'open_to', value: 'PM · Product · Apps · Dashboards', highlight: true },
+      { key: 'open_to', value: 'AI Product Manager roles', highlight: true },
       { key: 'current', value: 'Team PO · AI CoE @ Lloyds' },
       { key: 'availability', value: 'Open to new roles', highlight: true },
     ],

@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import CursorGlow from '@/components/hero/CursorGlow'
-import TypingHeadline from '@/components/hero/TypingHeadline'
 import ProductBriefCard from '@/components/hero/ProductBriefCard'
 
 const fadeUp = (delay: number) => ({
@@ -33,7 +32,7 @@ export default function HeroSection() {
             {...fadeUp(0)}
             className="block text-violet-400 text-sm uppercase tracking-[0.2em] font-medium mb-6"
           >
-            Product Owner
+            AI Product Owner
           </motion.span>
 
           {/* H1 */}
@@ -44,10 +43,13 @@ export default function HeroSection() {
             Akash Jindal
           </motion.h1>
 
-          {/* Typing headline */}
-          <div className="mt-3 text-xl md:text-2xl text-[#A09EC0] mb-6">
-            <TypingHeadline />
-          </div>
+          {/* Positioning line */}
+          <motion.p
+            {...fadeUp(0.22)}
+            className="mt-3 text-xl md:text-2xl text-violet-400 font-semibold mb-6"
+          >
+            Generative AI and Gen BI in banking
+          </motion.p>
 
           {/* Tagline */}
           <motion.p
