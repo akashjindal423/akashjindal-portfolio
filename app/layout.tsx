@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://akashjindal.dev'),
+  metadataBase: new URL('https://akashjindal.com'),
   title: { default: 'Akash Jindal — Technical Product Owner', template: '%s | Akash Jindal' },
   description: 'Senior Product Owner specialising in banking and fintech. 8+ years shipping digital products at Monzo, Barclays, and Lloyds. Based in London.',
   keywords: ['Product Owner', 'Technical PO', 'Fintech', 'Banking', 'London', 'Monzo', 'Barclays'],
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://akashjindal.dev',
+    url: 'https://akashjindal.com',
     siteName: 'Akash Jindal',
     title: 'Akash Jindal — Technical Product Owner',
     description: 'Senior Product Owner in banking and fintech. London.',
