@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ExternalLink, Lock } from 'lucide-react'
 import SectionWrapper from '@/components/shared/SectionWrapper'
-import { getFeaturedProjects } from '@/lib/content'
+import { getFeaturedPassionProjects, getFeaturedProjects } from '@/lib/content'
 
 type FeaturedItem = {
   slug: string
@@ -16,10 +16,15 @@ type FeaturedItem = {
   title: string
   description: string
   tags: string[]
-  period: string
+  period?: string
   href?: string
   externalUrl?: string
   locked?: boolean
+}
+
+const statusColorMap: Record<string, string> = {
+  violet: 'bg-violet-500/20 text-violet-400',
+  emerald: 'bg-emerald-500/20 text-emerald-400',
 }
 
 const [lloyds] = getFeaturedProjects()
@@ -38,26 +43,25 @@ const featuredItems: FeaturedItem[] = [
     period: lloyds.period,
     locked: true,
   },
-  {
-    slug: 'ai-health-companion',
-    badge: 'Passion Project',
-    badgeColor: 'bg-violet-500/20 text-violet-400',
+  ...getFeaturedPassionProjects().map((p) => ({
+    slug: p.slug,
+    badge: p.status,
+    badgeColor: statusColorMap[p.statusColor] ?? statusColorMap.violet,
     border: 'border-violet-500/20',
     companyColor: 'from-violet-500/10 to-purple-500/10',
     company: 'Passion Project',
-    title: 'AI Health Companion',
-    description: 'A wellness product combining AI-guided exercise, real-time posture feedback, and culturally relevant nutrition — built around how people actually live.',
-    tags: ['AI/ML', 'Health Tech', 'Computer Vision', 'Personalisation'],
-    period: 'Concept Stage',
-    href: '/projects/ai-health-companion',
-  },
+    title: p.title,
+    description: p.description,
+    tags: p.tags,
+    href: `/projects/${p.slug}`,
+  })),
 ]
 
 export default function FeaturedProjects() {
   return (
     <SectionWrapper id="projects">
       {/* Header */}
-      <div className="flex justify-between items-end mb-12">
+      <div className="flex flex-wrap justify-between items-end gap-4 mb-12">
         <div>
           <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">
             Selected Work
@@ -73,7 +77,7 @@ export default function FeaturedProjects() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {featuredItems.map((project, i) => {
           const card = (
             <motion.div
@@ -91,23 +95,23 @@ export default function FeaturedProjects() {
                 {project.externalUrl && (
                   <a href={project.externalUrl} target="_blank" rel="noopener noreferrer"
                     aria-label={`View ${project.title} externally`}
-                    className="text-[#4F4D70] hover:text-violet-400 transition">
+                    className="text-text-subtle hover:text-violet-400 transition">
                     <ExternalLink size={16} aria-hidden="true" />
                   </a>
                 )}
-                {project.locked && <Lock size={14} className="text-[#3D3B60]" aria-label="NDA — details private" />}
+                {project.locked && <Lock size={14} className="text-text-subtle" role="img" aria-label="Confidential — details private" />}
               </div>
-              <p className="text-xs text-[#4F4D70] mb-1">{project.company}</p>
+              <p className="text-xs text-text-subtle mb-1">{project.company}</p>
               <h3 className="text-base font-bold text-[#F8F8FF] mb-3 leading-snug">{project.title}</h3>
               <p className="text-sm text-[#A09EC0] leading-relaxed flex-1">{project.description}</p>
               <div className="flex flex-wrap gap-1.5 mt-4">
                 {project.tags.map(tag => (
-                  <span key={tag} className="text-[10px] bg-[var(--background)]/60 border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
+                  <span key={tag} className="text-[10px] bg-[var(--background)]/60 border border-white/5 text-text-subtle px-2 py-0.5 rounded-md">
                     {tag}
                   </span>
                 ))}
               </div>
-              <p className="text-[11px] text-[#3D3B60] mt-3">{project.period}</p>
+              {project.period && <p className="text-[11px] text-text-subtle mt-3">{project.period}</p>}
             </motion.div>
           )
 

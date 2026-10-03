@@ -4,6 +4,14 @@ import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import Badge from '@/components/shared/Badge'
 import { getTraining } from '@/lib/content'
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'Training and Certifications',
+  description:
+    'Certifications held by Akash Jindal, including Google Generative AI Leader, Google Associate Cloud Engineer and Scrum.org PSPO II.',
+  path: '/training',
+})
 
 function formatYM(ym: string) {
   const [year, month] = ym.split('-')
@@ -18,14 +26,14 @@ export default function TrainingPage() {
 
   return (
     <main>
-      <SectionWrapper>
+      <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="CERTIFICATIONS"
           title="Training & Certifications"
         />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="pt-10 sm:pt-12">
         {/* Grid of certs */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           {certs.map((cert) => (

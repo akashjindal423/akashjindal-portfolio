@@ -6,10 +6,22 @@ import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
 import SkillsSnapshot from '@/components/home/SkillsSnapshot'
 import TrainingHighlights from '@/components/home/TrainingHighlights'
 import LatestPosts from '@/components/home/LatestPosts'
+import JsonLd from '@/components/shared/JsonLd'
+import { pageMetadata } from '@/lib/seo'
+import { personSchema } from '@/lib/structured-data'
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/site'
+
+export const metadata = pageMetadata({
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  path: '/',
+  absoluteTitle: true,
+})
 
 export default function HomePage() {
   return (
     <main>
+      <JsonLd data={personSchema()} />
       <section id="hero"><HeroSection /></section>
       <section id="about"><AboutSnippet /></section>
       <section id="projects"><FeaturedProjects /></section>

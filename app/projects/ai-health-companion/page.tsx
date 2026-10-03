@@ -1,15 +1,18 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
 import Badge from '@/components/shared/Badge'
 import PersonaCard from '@/components/projects/PersonaCard'
 import MetricCard from '@/components/projects/MetricCard'
 import RoadmapPhase from '@/components/projects/RoadmapPhase'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'AI Health Companion | Akash Jindal',
+export const metadata = pageMetadata({
+  title: 'AI Health Companion',
   description:
     'A passion project exploring AI-powered personalised wellness — posture-aware exercise guidance, culturally relevant nutrition, and preventive health coaching.',
-}
+  path: '/projects/ai-health-companion',
+  image: '/projects/ai-health-companion/opengraph-image',
+})
 
 const personas = [
   {
@@ -107,12 +110,13 @@ export default function AIHealthCompanionPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
 
-      <Link
-        href="/projects"
-        className="text-violet-400 hover:text-violet-300 text-sm transition-colors duration-200 inline-block mb-10"
-      >
-        ← Back to Projects
-      </Link>
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Projects', href: '/projects' },
+          { label: 'AI Health Companion', href: '/projects/ai-health-companion' },
+        ]}
+      />
 
       {/* HERO */}
       <section>
@@ -173,8 +177,8 @@ export default function AIHealthCompanionPage() {
         <h2 className="text-2xl font-bold text-text-primary mb-6">The guiding statement</h2>
         <div className="border-l-4 border-violet-500 pl-6 py-2">
           <p className="text-xl md:text-2xl text-text-primary leading-relaxed italic">
-            "An AI health companion that learns your culture, lifestyle, and goals — then gives you
-            guidance that is realistic, relevant, and respectful of how you actually live."
+            &quot;An AI health companion that learns your culture, lifestyle, and goals — then gives you
+            guidance that is realistic, relevant, and respectful of how you actually live.&quot;
           </p>
         </div>
       </section>
@@ -336,7 +340,7 @@ export default function AIHealthCompanionPage() {
         <h2 className="text-2xl font-bold text-text-primary mb-6">Epics and stories</h2>
         <div className="flex flex-wrap gap-2 mb-8">
           {['EP-01 Onboarding & Profile', 'EP-02 Cultural Nutrition Engine', 'EP-03 Movement & Posture', 'EP-04 Wellness Nudges', 'EP-05 Apple Health Integration', 'EP-06 Weekly Digest'].map((epic) => (
-            <span key={epic} className="text-xs bg-[var(--surface)] border border-[var(--border)] text-[#6B69A0] px-3 py-1.5 rounded-lg font-mono">
+            <span key={epic} className="text-xs bg-[var(--surface)] border border-[var(--border)] text-text-subtle px-3 py-1.5 rounded-lg font-mono">
               {epic}
             </span>
           ))}
@@ -350,7 +354,7 @@ export default function AIHealthCompanionPage() {
                 </span>
               </div>
               <div className="px-5 py-4">
-                <p className="text-sm text-text-primary leading-relaxed italic mb-4">"{s.story}"</p>
+                <p className="text-sm text-text-primary leading-relaxed italic mb-4">&quot;{s.story}&quot;</p>
                 <p className="text-[10px] uppercase tracking-widest text-text-muted font-semibold mb-2">
                   Acceptance Criteria
                 </p>
@@ -385,7 +389,7 @@ export default function AIHealthCompanionPage() {
             <thead>
               <tr className="bg-[var(--surface)] border-b border-[var(--border)]">
                 {['Risk', 'Impact', 'Mitigation'].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-[#4F4D70] font-semibold">
+                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold">
                     {h}
                   </th>
                 ))}

@@ -4,18 +4,29 @@ import { Briefcase } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import AboutStats from '@/components/shared/AboutStats'
+import JsonLd from '@/components/shared/JsonLd'
+import { pageMetadata } from '@/lib/seo'
+import { personSchema } from '@/lib/structured-data'
+
+export const metadata = pageMetadata({
+  title: 'About',
+  description:
+    "Akash Jindal is an AI Product Owner in Lloyds Banking Group's AI Centre of Excellence, with earlier product roles at Dyson, SSE and Sony Interactive Entertainment. Based in Bristol, UK.",
+  path: '/about',
+})
 
 export default function AboutPage() {
   return (
     <main>
-      <SectionWrapper>
+      <JsonLd data={personSchema()} />
+      <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="ABOUT"
           title="Product thinking meets technical fluency"
         />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="pt-10 sm:pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
           {/* Left: prose */}
           <div className="space-y-8">
@@ -59,10 +70,10 @@ export default function AboutPage() {
           </div>
 
           {/* Right: sticky photo + stats */}
-          <div className="md:sticky md:top-8 md:self-start flex flex-col gap-6">
+          <div className="md:sticky md:top-24 md:self-start flex flex-col gap-6">
             <Image
               src="/profile.jpg"
-              alt="Akash Jindal"
+              alt="Akash Jindal smiling, wearing glasses and a dark zip-neck jumper"
               width={500}
               height={500}
               className="w-full aspect-square object-cover rounded-2xl border border-[var(--border)]"
@@ -78,7 +89,7 @@ export default function AboutPage() {
           <div>
             <p className="text-text-primary font-semibold mb-1">Currently Open To</p>
             <p className="text-text-secondary text-sm leading-relaxed mb-3">
-              Open to Senior / Lead Product Owner roles in fintech, banking, AI, or cloud-native tech.
+              Open to AI Product Manager roles.
               Bristol / London, open to hybrid.
             </p>
             <Link

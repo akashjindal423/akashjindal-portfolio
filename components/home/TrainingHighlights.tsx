@@ -20,11 +20,19 @@ export default function TrainingHighlights() {
   return (
     <SectionWrapper id="training">
       {/* Header */}
-      <div className="mb-12">
-        <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">
-          Certifications
-        </span>
-        <h2 className="text-3xl font-bold text-text-primary">Training &amp; Certifications</h2>
+      <div className="flex flex-wrap justify-between items-end gap-4 mb-12">
+        <div>
+          <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">
+            Certifications
+          </span>
+          <h2 className="text-3xl font-bold text-text-primary">Training &amp; Certifications</h2>
+        </div>
+        <Link
+          href="/training"
+          className="text-violet-400 text-sm hover:text-violet-300 transition-colors duration-200 whitespace-nowrap"
+        >
+          All certifications →
+        </Link>
       </div>
 
       {/* Horizontal scroll row */}

@@ -2,6 +2,14 @@ import { Search, Code2, TrendingUp } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import SkillIconGrid from '@/components/sections/SkillIconGrid'
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'Skills',
+  description:
+    'Skills of Akash Jindal across AI and data (Gen AI, Gen BI, Google Cloud, BigQuery), product strategy and agile delivery.',
+  path: '/skills',
+})
 
 const howIWork = [
   {
@@ -24,15 +32,15 @@ const howIWork = [
 export default function SkillsPage() {
   return (
     <main>
-      <SectionWrapper>
+      <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="SKILLS"
           title="Core Competencies"
-          subtitle="A full breakdown of my product, delivery, and technical skills."
+          subtitle="The AI and data, product, and delivery skills I use most."
         />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="pt-10 sm:pt-12">
         <SkillIconGrid />
       </SectionWrapper>
 

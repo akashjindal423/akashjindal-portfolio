@@ -9,7 +9,7 @@ export default function AboutSnippet() {
   return (
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left column */}
           <AnimatedEntry>
             <span className="block text-violet-400 text-xs uppercase tracking-widest mb-4">
@@ -21,7 +21,7 @@ export default function AboutSnippet() {
             <p className="text-text-secondary leading-relaxed">
               Currently a Team Product Owner in the AI Centre of Excellence at Lloyds Banking Group,
               driving Generative AI and Gen BI transformation. Previously shipped AR at Dyson and
-              contributed to the PS5 launch at Sony. 8+ years across banking, energy, and consumer tech.
+              contributed to the PS5 launch at Sony. 9+ years in tech across banking, energy, gaming, and consumer tech.
             </p>
             <Link
               href="/about"

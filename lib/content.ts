@@ -1,4 +1,4 @@
-import { Experience, Project, OfficialProject, PassionProject, ProjectsData } from './types'
+import { Experience, OfficialProject, PassionProject, ProjectsData } from './types'
 
 export interface SkillGroup {
   category: string
@@ -95,10 +95,9 @@ export function getExperience(): Experience[] {
       summary:
         'Driving innovation at the intersection of data, compliance, and cloud transformation within one of the UK\'s leading financial institutions.',
       achievements: [
-        'Led strategic regulatory data initiatives — enhanced reporting accuracy, risk transparency, and compliance posture',
-        'Contributed to AI Centre of Excellence (AI CoE) — enabling scalable, AI-driven solutions across functions',
-        'Enabled cloud-led digital transformation — migrated key data assets from on-premise to Google Cloud Platform (GCP)',
-        'Streamlined product delivery across squads in SAFe environment — Epics, Stories, and delivery priorities',
+        'Product Owner for Gen BI in the AI Centre of Excellence, replacing manual reports with reporting colleagues can question in plain English',
+        'Supported Gen BI use cases for four business areas',
+        'Cut dependency on manually produced reports by moving recurring requests to self-serve answers',
       ],
       tools: ['GCP', 'BigQuery', 'SAFe', 'Jira', 'Confluence', 'SQL', 'Data Engineering'],
       order: 1,
@@ -191,7 +190,7 @@ export function getProjects(): ProjectsData {
         slug: 'lloyds-gen-bi',
         company: 'Lloyds Banking Group',
         title: 'Gen BI Initiative',
-        description: 'Modernising traditional dashboards and reporting tools to make them Generative BI enabled — transforming how colleagues and customers interact with financial data across the bank.',
+        description: 'Product Owner for Gen BI in the AI Centre of Excellence: replacing manual reports with reporting colleagues can question in plain English, supporting use cases for four business areas, and moving recurring requests to self-serve answers.',
         tags: ['Gen BI', 'AI', 'GCP', 'Data', 'Banking'],
         period: 'Aug 2023 – Present',
         companyColor: 'from-green-500/10 to-emerald-500/10',
@@ -264,8 +263,13 @@ export function getFeaturedProjects(): OfficialProject[] {
   return getProjects().official.slice(0, 1) // Lloyds only
 }
 
-export function getProjectBySlug(slug: string): OfficialProject | undefined {
-  return getProjects().official.find(p => p.slug === slug)
+const FEATURED_PASSION_SLUGS = ['promptlab', 'google-maps-teardown']
+
+export function getFeaturedPassionProjects(): PassionProject[] {
+  const { passion } = getProjects()
+  return FEATURED_PASSION_SLUGS.map(slug => passion.find(p => p.slug === slug)).filter(
+    (p): p is PassionProject => Boolean(p),
+  )
 }
 
 export function getSkillGroups(): SkillGroup[] {
@@ -361,8 +365,9 @@ export function getBlogPosts(): BlogPost[] {
   ]
 }
 
-export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  return getBlogPosts().find(p => p.slug === slug)
+/** Published posts whose full text lives on this site. Posts without a body link out (e.g. to LinkedIn). */
+export function getHostedBlogPosts(): BlogPost[] {
+  return getBlogPosts().filter(p => !p.draft && p.body.trim().length > 0)
 }
 
 export function getCommunityInvolvement() {

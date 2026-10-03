@@ -12,12 +12,12 @@ export default function ExperienceHighlights() {
   return (
     <SectionWrapper id="experience">
       {/* Header */}
-      <div className="flex justify-between items-end mb-12">
+      <div className="flex flex-wrap justify-between items-end gap-4 mb-12">
         <div>
           <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">
             Experience
           </span>
-          <h2 className="text-3xl font-bold text-text-primary">Where I've Worked</h2>
+          <h2 className="text-3xl font-bold text-text-primary">Where I&apos;ve Worked</h2>
         </div>
         <Link
           href="/experience"
@@ -31,7 +31,7 @@ export default function ExperienceHighlights() {
       <div>
         {items.map((exp, i) => (
           <AnimatedEntry key={exp.slug} delay={i * 0.1}>
-            <TimelineItem experience={exp} isLast={i === items.length - 1} />
+            <TimelineItem experience={exp} isLast={i === items.length - 1} compact />
           </AnimatedEntry>
         ))}
       </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import { getTestimonials } from '@/lib/content'
@@ -22,6 +23,8 @@ export default function TestimonialsCarousel() {
   const next = () => setCurrent((i) => (i + 1) % total)
 
   const startAutoPlay = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    stopAutoPlay()
     intervalRef.current = setInterval(() => setCurrent((i) => (i + 1) % total), 4500)
   }
   const stopAutoPlay = () => {
@@ -44,6 +47,12 @@ export default function TestimonialsCarousel() {
           Recommendations
         </span>
         <h2 className="text-3xl font-bold text-text-primary">What People Say</h2>
+        <Link
+          href="/recommendations"
+          className="inline-block mt-3 text-violet-400 text-sm hover:text-violet-300 transition-colors duration-200"
+        >
+          All recommendations →
+        </Link>
       </div>
 
       {/* Card */}
@@ -51,10 +60,12 @@ export default function TestimonialsCarousel() {
         className="relative bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8 md:p-12 max-w-4xl mx-auto overflow-hidden"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
+        onFocus={stopAutoPlay}
+        onBlur={startAutoPlay}
       >
         {/* Decorative quote mark */}
         <span className="font-display absolute top-4 left-8 text-[120px] leading-none text-violet-400 opacity-15 select-none pointer-events-none">
-          "
+          &quot;
         </span>
 
         {/* Animated quote */}
@@ -68,7 +79,7 @@ export default function TestimonialsCarousel() {
           >
             {/* Quote */}
             <p className="relative z-10 text-lg md:text-xl text-text-primary leading-relaxed italic min-h-[100px]">
-              "{t.quote}"
+              &quot;{t.quote}&quot;
             </p>
 
             {/* Author row */}

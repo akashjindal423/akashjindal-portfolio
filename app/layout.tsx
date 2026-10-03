@@ -4,6 +4,8 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { ThemeProvider } from '@/features/theme'
+import MotionProvider from '@/components/shared/MotionProvider'
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/site'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -21,26 +23,34 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://akashjindal.dev'),
-  title: { default: 'Akash Jindal — Technical Product Owner', template: '%s | Akash Jindal' },
-  description: 'Senior Product Owner specialising in banking and fintech. 8+ years shipping digital products at Monzo, Barclays, and Lloyds. Based in London.',
-  keywords: ['Product Owner', 'Technical PO', 'Fintech', 'Banking', 'London', 'Monzo', 'Barclays'],
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: '%s | Akash Jindal' },
+  description: SITE_DESCRIPTION,
+  keywords: [
+    'Akash Jindal',
+    'AI Product Owner',
+    'Product Owner',
+    'Generative AI',
+    'Gen BI',
+    'AI Centre of Excellence',
+    'Lloyds Banking Group',
+    'Banking',
+    'Bristol',
+  ],
   authors: [{ name: 'Akash Jindal' }],
   creator: 'Akash Jindal',
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://akashjindal.dev',
+    url: SITE_URL,
     siteName: 'Akash Jindal',
-    title: 'Akash Jindal — Technical Product Owner',
-    description: 'Senior Product Owner in banking and fintech. London.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Akash Jindal — Technical Product Owner' }],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Akash Jindal — Technical Product Owner',
-    description: 'Senior Product Owner in banking and fintech. London.',
-    images: ['/og-image.png'],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   robots: { index: true, follow: true },
 }
@@ -54,13 +64,23 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
+      // The site is dark-only (theme toggle is hidden). Rendering the class on the server means
+      // the dark palette applies before, or without, the next-themes script.
+      className={`dark ${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        {/* Without JavaScript, framer-motion entrances never run; show their end state instead. */}
+        <noscript>
+          <style>{'[style*="opacity:0"]{opacity:1!important;transform:none!important}'}</style>
+        </noscript>
+      </head>
       <body suppressHydrationWarning className="bg-[var(--background)] text-[var(--text-primary)] font-sans antialiased">
         <ThemeProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <MotionProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -21,7 +21,9 @@ const config: Config = {
         },
         'text-primary': '#F8F8FF',
         'text-secondary': '#A09EC0',
-        'text-muted': '#4F4D70',
+        'text-muted': '#9B99BB',
+        // AA-compliant tertiary text: 5.72:1 on #0D0D1A, 5.40:1 on #13132A
+        'text-subtle': '#8A88B0',
       },
       fontFamily: {
         display: ['var(--font-fraunces)', 'serif'],

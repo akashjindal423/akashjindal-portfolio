@@ -1,13 +1,21 @@
-import Link from 'next/link'
 import { Clock, Linkedin, Mail, Briefcase } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import ContactForm from '@/components/contact/ContactForm'
+import CopyEmail from '@/components/contact/CopyEmail'
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'Contact',
+  description:
+    'Get in touch with Akash Jindal by email or LinkedIn about AI product roles, collaboration or speaking.',
+  path: '/contact',
+})
 
 export default function ContactPage() {
   return (
     <main>
-      <SectionWrapper>
+      <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="CONTACT"
           title="Let's Talk"
@@ -15,10 +23,13 @@ export default function ContactPage() {
         />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="pt-10 sm:pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left: form */}
-          <ContactForm />
+          {/* Left: form, with a plain-address fallback for visitors without a mail app */}
+          <div className="flex flex-col gap-6">
+            <ContactForm />
+            <CopyEmail />
+          </div>
 
           {/* Right: info cards */}
           <div className="flex flex-col gap-4">
@@ -63,7 +74,7 @@ export default function ContactPage() {
               <div>
                 <p className="text-text-primary font-semibold text-sm mb-1">Currently Open To</p>
                 <p className="text-text-secondary text-sm">
-                  Senior PO / Lead PO roles in fintech, banking, or growth-stage tech.
+                  AI Product Manager roles.
                 </p>
               </div>
             </div>

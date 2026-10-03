@@ -5,6 +5,8 @@ import { Experience } from '@/lib/types'
 interface Props {
   experience: Experience
   isLast: boolean
+  /** Show only the first two achievements (homepage summary). */
+  compact?: boolean
 }
 
 function formatDate(ym: string) {
@@ -15,14 +17,14 @@ function formatDate(ym: string) {
   })
 }
 
-export default function TimelineItem({ experience, isLast }: Props) {
+export default function TimelineItem({ experience, isLast, compact = false }: Props) {
   const { role, company, location, startDate, endDate, current, summary, achievements, tools } =
     experience
 
   const dateRange = `${formatDate(startDate)} – ${current ? 'Present' : endDate ? formatDate(endDate) : ''}`
 
   return (
-    <div className="relative flex gap-8">
+    <div className="relative flex gap-4 sm:gap-8">
       {/* Timeline line */}
       {!isLast && (
         <div className="absolute left-4 top-8 bottom-0 w-px bg-[var(--border)]" />
@@ -34,7 +36,7 @@ export default function TimelineItem({ experience, isLast }: Props) {
       </div>
 
       {/* Card */}
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex-1 mb-8">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 sm:p-6 flex-1 min-w-0 mb-8">
         {/* Top row */}
         <div className="flex flex-wrap items-center gap-2">
           <span className="font-semibold text-lg text-text-primary">{role}</span>
@@ -56,9 +58,9 @@ export default function TimelineItem({ experience, isLast }: Props) {
         {/* Summary */}
         <p className="text-text-secondary text-sm mt-3 leading-relaxed">{summary}</p>
 
-        {/* Achievements (first 2) */}
+        {/* Achievements */}
         <ul className="mt-3 space-y-1">
-          {achievements.slice(0, 2).map((a) => (
+          {(compact ? achievements.slice(0, 2) : achievements).map((a) => (
             <li key={a} className="flex gap-2 items-start text-sm text-text-secondary">
               <ChevronRight className="w-3 h-3 mt-1 flex-shrink-0 text-violet-400" />
               {a}

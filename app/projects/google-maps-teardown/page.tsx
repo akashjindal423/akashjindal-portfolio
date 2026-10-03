@@ -1,23 +1,46 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
 import Badge from '@/components/shared/Badge'
+import JsonLd from '@/components/shared/JsonLd'
+import { pageMetadata } from '@/lib/seo'
+import { SITE_URL } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'Google Maps Product Teardown | Akash Jindal',
+export const metadata = pageMetadata({
+  title: 'Google Maps Product Teardown',
   description:
     'A deep-dive PM analysis of Google Maps — competitive moat, monetisation flywheel, Local Guides ecosystem, Gemini AI features, and three feature proposals with RICE prioritisation.',
+  path: '/projects/google-maps-teardown',
+  image: '/projects/google-maps-teardown/opengraph-image',
+  ogType: 'article',
+})
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Google Maps: A Product Teardown',
+  description:
+    'A deep-dive PM analysis of Google Maps — competitive moat, monetisation flywheel, Local Guides ecosystem, Gemini AI features, and three feature proposals with RICE prioritisation.',
+  datePublished: '2026-03',
+  inLanguage: 'en-GB',
+  url: `${SITE_URL}/projects/google-maps-teardown`,
+  mainEntityOfPage: `${SITE_URL}/projects/google-maps-teardown`,
+  image: `${SITE_URL}/projects/google-maps-teardown/opengraph-image`,
+  author: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Akash Jindal', url: SITE_URL },
+  publisher: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Akash Jindal', url: SITE_URL },
 }
 
 export default function GoogleMapsTeardownPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+      <JsonLd data={articleSchema} />
 
-      <Link
-        href="/projects"
-        className="text-violet-400 hover:text-violet-300 text-sm transition-colors duration-200 inline-block mb-10"
-      >
-        ← Back to Projects
-      </Link>
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Projects', href: '/projects' },
+          { label: 'Google Maps Teardown', href: '/projects/google-maps-teardown' },
+        ]}
+      />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section>
@@ -142,7 +165,7 @@ export default function GoogleMapsTeardownPage() {
 
         <h3 className="text-lg font-semibold text-text-primary mb-4">Competitive Moat Analysis</h3>
         <p className="text-base text-text-secondary leading-relaxed max-w-3xl mb-6">
-          I see Google Maps' moat as built from five reinforcing layers, each of which would take a competitor years and billions of dollars to replicate:
+          I see Google Maps&apos; moat as built from five reinforcing layers, each of which would take a competitor years and billions of dollars to replicate:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
           {[
@@ -416,13 +439,13 @@ export default function GoogleMapsTeardownPage() {
               <div>
                 <p className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">What it does</p>
                 <p className="text-sm text-text-secondary leading-relaxed">
-                  Launched March 12, 2026 in the US and India, Ask Maps is a conversational search interface built on Gemini models. Users type natural language queries like "My phone is dying, where can I charge it without waiting in a long coffee line?" Maps returns personalised answers synthesised from 300M+ places and 500M+ reviewers.
+                  Launched March 12, 2026 in the US and India, Ask Maps is a conversational search interface built on Gemini models. Users type natural language queries like &quot;My phone is dying, where can I charge it without waiting in a long coffee line?&quot; Maps returns personalised answers synthesised from 300M+ places and 500M+ reviewers.
                 </p>
               </div>
               <div>
                 <p className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">Why this matters</p>
                 <p className="text-sm text-text-secondary leading-relaxed">
-                  Ask Maps transforms Google Maps from a search-and-filter tool into a reasoning engine. The shift is from "user provides structured input → system returns ranked results" to "user describes a need → system reasons about context and returns a recommendation." This is a fundamental UX paradigm shift.
+                  Ask Maps transforms Google Maps from a search-and-filter tool into a reasoning engine. The shift is from &quot;user provides structured input → system returns ranked results&quot; to &quot;user describes a need → system reasons about context and returns a recommendation.&quot; This is a fundamental UX paradigm shift.
                 </p>
               </div>
               <div>
@@ -441,7 +464,7 @@ export default function GoogleMapsTeardownPage() {
               <div>
                 <p className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">Key features</p>
                 <p className="text-sm text-text-secondary leading-relaxed">
-                  Also launched March 12, 2026 — what Google describes as the biggest navigation update in over a decade. A 3D view reflecting actual buildings, terrain, and overpasses. Highlighted lanes, crosswalks, traffic lights, and stop signs. "Transparent buildings" to preview upcoming turns. Natural voice guidance. Route tradeoff comparisons. Pre-trip destination preview with parking recommendations. Building entrance highlighting on arrival.
+                  Also launched March 12, 2026 — what Google describes as the biggest navigation update in over a decade. A 3D view reflecting actual buildings, terrain, and overpasses. Highlighted lanes, crosswalks, traffic lights, and stop signs. &quot;Transparent buildings&quot; to preview upcoming turns. Natural voice guidance. Route tradeoff comparisons. Pre-trip destination preview with parking recommendations. Building entrance highlighting on arrival.
                 </p>
               </div>
               <div>
@@ -463,7 +486,7 @@ export default function GoogleMapsTeardownPage() {
         <div className="space-y-8">
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Journey 1</p>
-            <h3 className="text-base font-bold text-text-primary mb-6">"Finding a Restaurant for Tonight" — Discovery Flow</h3>
+            <h3 className="text-base font-bold text-text-primary mb-6">&quot;Finding a Restaurant for Tonight&quot; — Discovery Flow</h3>
             <p className="text-xs text-text-muted mb-6 italic">User goal: Find a good restaurant nearby for dinner tonight</p>
             <div className="relative">
               <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-violet-500/30" />
@@ -549,7 +572,7 @@ export default function GoogleMapsTeardownPage() {
 
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Journey 2</p>
-            <h3 className="text-base font-bold text-text-primary mb-6">"Daily Commute" — Navigation Flow</h3>
+            <h3 className="text-base font-bold text-text-primary mb-6">&quot;Daily Commute&quot; — Navigation Flow</h3>
             <p className="text-xs text-text-muted mb-6 italic">User goal: Get to work efficiently</p>
             <div className="relative">
               <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-violet-500/30" />
@@ -627,13 +650,13 @@ export default function GoogleMapsTeardownPage() {
           <span className="text-xs uppercase tracking-widest text-violet-400 font-semibold px-3 py-1 border border-violet-500/30 rounded-full">Feature Proposal A</span>
           <div className="h-px flex-1 bg-[var(--border)]" />
         </div>
-        <h3 className="text-xl font-bold text-text-primary mb-6">"Local Guide Creator Fund"</h3>
+        <h3 className="text-xl font-bold text-text-primary mb-6">&quot;Local Guide Creator Fund&quot;</h3>
 
         {/* Problem */}
         <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 mb-6">
           <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">The Problem</p>
           <p className="text-sm text-text-secondary leading-relaxed">
-            Google Maps' competitive moat depends on 30M+ Local Guides contributing free content. But contributor motivation is declining — perks have been reduced, and competing platforms now pay creators. The average Local Guide at Level 6+ has contributed hundreds of hours of work. If even 10% of high-level guides become inactive, it would measurably impact data freshness.
+            Google Maps&apos; competitive moat depends on 30M+ Local Guides contributing free content. But contributor motivation is declining — perks have been reduced, and competing platforms now pay creators. The average Local Guide at Level 6+ has contributed hundreds of hours of work. If even 10% of high-level guides become inactive, it would measurably impact data freshness.
           </p>
         </div>
 
@@ -641,7 +664,7 @@ export default function GoogleMapsTeardownPage() {
         <div className="mb-6">
           <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">The Solution</p>
           <p className="text-sm text-text-secondary leading-relaxed max-w-3xl mb-4">
-            Launch a "Local Guide Creator Fund" — a revenue-sharing programme for the top tier of contributors (Level 7+). Eligible guides earn a share of ad revenue generated from places they have reviewed or photographed. The mechanism would work similarly to YouTube's Partner Programme: Google already knows which business listings drive ad clicks, and which reviews/photos appear on those listings. Connecting these data points is an engineering task, not a conceptual leap.
+            Launch a &quot;Local Guide Creator Fund&quot; — a revenue-sharing programme for the top tier of contributors (Level 7+). Eligible guides earn a share of ad revenue generated from places they have reviewed or photographed. The mechanism would work similarly to YouTube&apos;s Partner Programme: Google already knows which business listings drive ad clicks, and which reviews/photos appear on those listings. Connecting these data points is an engineering task, not a conceptual leap.
           </p>
           <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
             <table className="w-full text-sm min-w-[480px]">
@@ -806,7 +829,7 @@ export default function GoogleMapsTeardownPage() {
           <span className="text-xs uppercase tracking-widest text-violet-400 font-semibold px-3 py-1 border border-violet-500/30 rounded-full">Feature Proposal B</span>
           <div className="h-px flex-1 bg-[var(--border)]" />
         </div>
-        <h3 className="text-xl font-bold text-text-primary mb-6">"Group Trip Planner" with Collaborative Itinerary</h3>
+        <h3 className="text-xl font-bold text-text-primary mb-6">&quot;Group Trip Planner&quot; with Collaborative Itinerary</h3>
 
         {/* Problem */}
         <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 mb-6">
@@ -820,7 +843,7 @@ export default function GoogleMapsTeardownPage() {
         <div className="mb-6">
           <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">The Solution</p>
           <p className="text-sm text-text-secondary leading-relaxed max-w-3xl mb-6">
-            Build a "Group Trip" feature within Maps that lets users create a shared trip, invite friends/family, and collaboratively build an itinerary. Integrate with Ask Maps so the AI can reconcile different preferences ("Priya wants vegetarian food, Raj wants a pub, and you want somewhere walkable from the hotel — here are 3 options that work for everyone").
+            Build a &quot;Group Trip&quot; feature within Maps that lets users create a shared trip, invite friends/family, and collaboratively build an itinerary. Integrate with Ask Maps so the AI can reconcile different preferences (&quot;Priya wants vegetarian food, Raj wants a pub, and you want somewhere walkable from the hotel — here are 3 options that work for everyone&quot;).
           </p>
         </div>
 
@@ -830,7 +853,7 @@ export default function GoogleMapsTeardownPage() {
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 space-y-5">
             {/* Steps 1 & 2 */}
             <div className="space-y-2 text-sm text-text-secondary">
-              <p><span className="font-semibold text-text-primary">Step 1 — Create Trip:</span> User taps "+" → "New Group Trip", names it "Bristol Weekend with Friends", sets dates March 28–30.</p>
+              <p><span className="font-semibold text-text-primary">Step 1 — Create Trip:</span> User taps &quot;+&quot; → &quot;New Group Trip&quot;, names it &quot;Bristol Weekend with Friends&quot;, sets dates March 28–30.</p>
               <p><span className="font-semibold text-text-primary">Step 2 — Invite Collaborators:</span> Share link via WhatsApp / SMS / email. Each person joins with their Google account.</p>
             </div>
             {/* Step 3 — Wireframe mock */}
@@ -901,7 +924,7 @@ export default function GoogleMapsTeardownPage() {
             {/* Steps 4 & 5 */}
             <div className="space-y-2 text-sm text-text-secondary">
               <p><span className="font-semibold text-text-primary">Step 4 — During the Trip:</span> Live location sharing (opt-in), turn-by-turn navigation to each stop, auto-suggest next stop based on itinerary + current location.</p>
-              <p><span className="font-semibold text-text-primary">Step 5 — Post-Trip:</span> "Trip Summary" with photos, places visited, total distance. Prompt to review visited places (Local Guides integration). Share summary as a "Trip List" for others to use.</p>
+              <p><span className="font-semibold text-text-primary">Step 5 — Post-Trip:</span> &quot;Trip Summary&quot; with photos, places visited, total distance. Prompt to review visited places (Local Guides integration). Share summary as a &quot;Trip List&quot; for others to use.</p>
             </div>
           </div>
         </div>
@@ -910,7 +933,7 @@ export default function GoogleMapsTeardownPage() {
         <div className="border border-amber-500/20 bg-amber-500/5 rounded-xl p-5 mb-6">
           <p className="text-[10px] uppercase tracking-widest text-amber-400 mb-2">Monetisation Potential</p>
           <p className="text-sm text-amber-200/75 leading-relaxed">
-            This feature creates new ad surfaces: promoted restaurants/activities within group suggestions, "Sponsored experiences" in Ask Maps group recommendations, and hotel/accommodation upsells integrated into multi-day trip planning.
+            This feature creates new ad surfaces: promoted restaurants/activities within group suggestions, &quot;Sponsored experiences&quot; in Ask Maps group recommendations, and hotel/accommodation upsells integrated into multi-day trip planning.
           </p>
         </div>
 
@@ -977,7 +1000,7 @@ export default function GoogleMapsTeardownPage() {
           <span className="text-xs uppercase tracking-widest text-violet-400 font-semibold px-3 py-1 border border-violet-500/30 rounded-full">Feature Proposal C</span>
           <div className="h-px flex-1 bg-[var(--border)]" />
         </div>
-        <h3 className="text-xl font-bold text-text-primary mb-6">"Neighbourhood Intelligence" — Hyperlocal Insights for Relocators</h3>
+        <h3 className="text-xl font-bold text-text-primary mb-6">&quot;Neighbourhood Intelligence&quot; — Hyperlocal Insights for Relocators</h3>
 
         {/* Problem */}
         <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 mb-6">
@@ -991,7 +1014,7 @@ export default function GoogleMapsTeardownPage() {
         <div className="mb-6">
           <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">The Solution</p>
           <p className="text-sm text-text-secondary leading-relaxed max-w-3xl mb-6">
-            Build a "Neighbourhood Score" layer in Maps that aggregates existing Google data into a unified, interactive neighbourhood profile.
+            Build a &quot;Neighbourhood Score&quot; layer in Maps that aggregates existing Google data into a unified, interactive neighbourhood profile.
           </p>
 
           <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">Data Sources (All Already Available to Google)</p>
@@ -1095,7 +1118,7 @@ export default function GoogleMapsTeardownPage() {
               <div className="border-l-4 border-violet-500 pl-4 bg-violet-500/5 rounded-r-xl p-4">
                 <p className="text-[10px] text-violet-400 mb-1 font-semibold">Ask Maps</p>
                 <p className="text-xs text-text-muted italic leading-relaxed">
-                  "Clifton scores 9.1 for walkability and has 3 supermarkets within 10 min walk. However, parking is limited and rents average £1,200/month for a 1-bed. Consider Bedminster for 30% lower rent with similar walkability scores."
+                  &quot;Clifton scores 9.1 for walkability and has 3 supermarkets within 10 min walk. However, parking is limited and rents average £1,200/month for a 1-bed. Consider Bedminster for 30% lower rent with similar walkability scores.&quot;
                 </p>
               </div>
             </div>
@@ -1106,7 +1129,7 @@ export default function GoogleMapsTeardownPage() {
         <div className="border border-emerald-500/20 bg-emerald-500/5 rounded-xl p-5 mb-6">
           <p className="text-[10px] uppercase tracking-widest text-emerald-400 mb-2">Why This Wins</p>
           <p className="text-sm text-emerald-200/80 leading-relaxed">
-            This feature would be transformative for a specific, high-value moment: the relocation decision. Google already has all the data — the insight is simply not aggregated. This feature creates sustained, high-intent engagement (people don't choose a neighbourhood in one session) and opens advertising opportunities for estate agents, removal services, utility providers, and local businesses wanting to attract new residents. For immigrants (a personal lens I bring), this solves a real information asymmetry — deciding between neighbourhoods in a new country without the benefit of local word-of-mouth.
+            This feature would be transformative for a specific, high-value moment: the relocation decision. Google already has all the data — the insight is simply not aggregated. This feature creates sustained, high-intent engagement (people don&apos;t choose a neighbourhood in one session) and opens advertising opportunities for estate agents, removal services, utility providers, and local businesses wanting to attract new residents. For immigrants (a personal lens I bring), this solves a real information asymmetry — deciding between neighbourhoods in a new country without the benefit of local word-of-mouth.
           </p>
         </div>
 
@@ -1226,7 +1249,7 @@ export default function GoogleMapsTeardownPage() {
             <thead>
               <tr className="bg-[var(--surface)] border-b border-[var(--border)]">
                 {['Feature', 'Biggest Risk', 'Open Question'].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-[#4F4D70] font-semibold">
+                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold">
                     {h}
                   </th>
                 ))}
@@ -1315,9 +1338,9 @@ export default function GoogleMapsTeardownPage() {
           <div className="flex-1">
             <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">About the Author</p>
             <h3 className="text-base font-bold text-text-primary mb-1">Akash Jindal</h3>
-            <p className="text-sm text-text-muted mb-3">Technical Product Owner · AI Centre of Excellence · Lloyds Banking Group</p>
+            <p className="text-sm text-text-muted mb-3">AI Product Owner · AI Centre of Excellence · Lloyds Banking Group</p>
             <p className="text-sm text-text-secondary leading-relaxed mb-4">
-              Akash Jindal is a Technical Product Owner at Lloyds Banking Group's AI Centre of Excellence. He previously shipped AR products at Dyson and contributed to the PlayStation 5 platform launch at Sony. He holds GCP Associate Cloud Engineer, PSPO II, and ICAgile ICP-APO certifications.
+              Akash Jindal is an AI Product Owner at Lloyds Banking Group&apos;s AI Centre of Excellence. He previously shipped AR products at Dyson and contributed to the PlayStation 5 platform launch at Sony. He holds GCP Associate Cloud Engineer, PSPO II, and ICAgile ICP-APO certifications.
             </p>
             <div className="flex flex-wrap gap-3">
               <a

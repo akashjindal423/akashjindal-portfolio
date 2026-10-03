@@ -12,7 +12,7 @@ export default function LatestPosts() {
   return (
     <SectionWrapper id="blog">
       {/* Header */}
-      <div className="flex justify-between items-end mb-12">
+      <div className="flex flex-wrap justify-between items-end gap-4 mb-12">
         <div>
           <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">
             Writing
