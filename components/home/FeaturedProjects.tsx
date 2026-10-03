@@ -95,7 +95,7 @@ export default function FeaturedProjects() {
                     <ExternalLink size={16} aria-hidden="true" />
                   </a>
                 )}
-                {project.locked && <Lock size={14} className="text-[#3D3B60]" aria-label="NDA — details private" />}
+                {project.locked && <Lock size={14} className="text-[#3D3B60]" role="img" aria-label="Confidential — details private" />}
               </div>
               <p className="text-xs text-[#4F4D70] mb-1">{project.company}</p>
               <h3 className="text-base font-bold text-[#F8F8FF] mb-3 leading-snug">{project.title}</h3>

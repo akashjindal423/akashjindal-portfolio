@@ -121,6 +121,7 @@ export default function ToolkitPage() {
         <div className="flex justify-center mb-4">
           <div className="relative w-full max-w-md">
             <svg
+              aria-hidden="true"
               className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] w-4 h-4"
               fill="none"
               stroke="currentColor"
@@ -133,6 +134,7 @@ export default function ToolkitPage() {
             <input
               type="text"
               placeholder="Search tools..."
+              aria-label="Search tools"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               className="w-full bg-[var(--surface)] border border-[var(--border)] rounded-xl pl-10 pr-4 py-3 text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-violet-500/50 outline-none text-sm transition-colors duration-200"

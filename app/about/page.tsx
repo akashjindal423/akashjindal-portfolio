@@ -73,7 +73,7 @@ export default function AboutPage() {
           <div className="md:sticky md:top-8 md:self-start flex flex-col gap-6">
             <Image
               src="/profile.jpg"
-              alt="Akash Jindal"
+              alt="Photo of Akash Jindal"
               width={500}
               height={500}
               className="w-full aspect-square object-cover rounded-2xl border border-[var(--border)]"

@@ -52,7 +52,7 @@ export default function ProjectsIndex() {
                   </a>
                 )}
                 {!project.clickable && (
-                  <Lock size={14} className="text-[#3D3B60]" />
+                  <Lock size={14} className="text-[#3D3B60]" role="img" aria-label="Confidential — details private" />
                 )}
               </div>
               <p className="text-xs text-[#4F4D70] mb-1">{project.company}</p>

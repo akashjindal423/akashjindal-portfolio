@@ -25,7 +25,7 @@ export default function AboutStats() {
       {/* Box 4 — GCP */}
       <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border)] flex items-center justify-center shrink-0">
-          <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M12 5L9 8H15L12 5Z" fill="#EA4335"/>
             <path d="M17 9.5L14.5 7H19L17 9.5Z" fill="#4285F4"/>
             <path d="M7 9.5L5 7H9.5L7 9.5Z" fill="#FBBC05"/>
@@ -46,7 +46,7 @@ export default function AboutStats() {
       {/* Box 5 — PSPO, full width */}
       <div className="col-span-2 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border)] flex items-center justify-center shrink-0">
-          <svg viewBox="0 0 24 24" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 24" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <circle cx="12" cy="12" r="11" fill="#D9232D"/>
             <text x="12" y="10.5" textAnchor="middle" fill="white" fontSize="4.5" fontWeight="bold" fontFamily="Arial,sans-serif">SCRUM</text>
             <text x="12" y="14.5" textAnchor="middle" fill="white" fontSize="3.5" fontFamily="Arial,sans-serif">.ORG</text>
