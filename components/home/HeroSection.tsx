@@ -81,7 +81,7 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
         <ChevronDown className="w-6 h-6 text-text-muted animate-bounce motion-reduce:animate-none" aria-hidden="true" />
       </div>
     </section>

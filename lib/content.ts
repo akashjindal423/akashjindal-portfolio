@@ -2,7 +2,7 @@ import { Experience, OfficialProject, PassionProject, ProjectsData } from './typ
 
 export interface SkillGroup {
   category: string
-  skills: { name: string; level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert' }[]
+  skills: string[]
 }
 
 export interface Training {
@@ -272,47 +272,20 @@ export function getFeaturedPassionProjects(): PassionProject[] {
   )
 }
 
+/** Core skills shown on the Skills page, the homepage grid and the hero terminal. */
 export function getSkillGroups(): SkillGroup[] {
   return [
     {
-      category: 'Product',
-      skills: [
-        { name: 'Product Discovery', level: 'Expert' },
-        { name: 'Roadmap Strategy', level: 'Expert' },
-        { name: 'Stakeholder Management', level: 'Expert' },
-        { name: 'User Story Writing', level: 'Expert' },
-        { name: 'OKR / KPI Setting', level: 'Advanced' },
-      ],
+      category: 'AI and Data',
+      skills: ['Gen AI', 'Gen BI', 'LLM Tools', 'Prompt Engineering', 'Vertex AI', 'Semantic Layer', 'Google Cloud', 'BigQuery', 'SQL', 'Looker'],
+    },
+    {
+      category: 'Product and Strategy',
+      skills: ['Roadmapping', 'Stakeholder Management', 'OKR Alignment', 'Go-To-Market'],
     },
     {
       category: 'Delivery',
-      skills: [
-        { name: 'Agile / Scrum', level: 'Expert' },
-        { name: 'Kanban', level: 'Advanced' },
-        { name: 'Release Planning', level: 'Expert' },
-        { name: 'Risk Management', level: 'Advanced' },
-        { name: 'Cross-team Alignment', level: 'Expert' },
-      ],
-    },
-    {
-      category: 'Data & Analytics',
-      skills: [
-        { name: 'SQL', level: 'Advanced' },
-        { name: 'Product Analytics', level: 'Advanced' },
-        { name: 'A/B Testing', level: 'Intermediate' },
-        { name: 'Amplitude / Mixpanel', level: 'Advanced' },
-        { name: 'Data-driven Decisions', level: 'Expert' },
-      ],
-    },
-    {
-      category: 'Tools & Tech',
-      skills: [
-        { name: 'Jira / Confluence', level: 'Expert' },
-        { name: 'Figma', level: 'Advanced' },
-        { name: 'Miro', level: 'Expert' },
-        { name: 'API / REST concepts', level: 'Advanced' },
-        { name: 'Git basics', level: 'Intermediate' },
-      ],
+      skills: ['SAFe', 'Scrum', 'Backlog Management'],
     },
   ]
 }

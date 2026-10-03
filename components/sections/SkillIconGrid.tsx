@@ -20,63 +20,52 @@ import {
 } from 'lucide-react'
 import AnimatedEntry from '@/components/shared/AnimatedEntry'
 import { cn } from '@/lib/utils'
+import { getSkillGroups } from '@/lib/content'
 
-interface SkillGroup {
+const ICONS: Record<string, LucideIcon> = {
+  'Gen AI': Sparkles,
+  'Gen BI': MessageSquareText,
+  'LLM Tools': Bot,
+  'Prompt Engineering': MessageSquareCode,
+  'Vertex AI': BrainCircuit,
+  'Semantic Layer': Layers,
+  'Google Cloud': Cloud,
+  BigQuery: Database,
+  SQL: CodeXml,
+  Looker: ChartColumn,
+  Roadmapping: Map,
+  'Stakeholder Management': Users,
+  'OKR Alignment': Target,
+  'Go-To-Market': Rocket,
+  SAFe: Workflow,
+  Scrum: Repeat,
+  'Backlog Management': ListChecks,
+}
+
+// Visual treatment per group, in the order getSkillGroups() returns them
+const STYLES = [
+  { accent: 'border-violet-500/30 bg-violet-500/5', headerColor: 'text-violet-400', iconColor: 'text-violet-400', wide: true },
+  { accent: 'border-purple-500/30 bg-purple-500/5', headerColor: 'text-purple-400', iconColor: 'text-purple-400', wide: false },
+  { accent: 'border-emerald-500/30 bg-emerald-500/5', headerColor: 'text-emerald-400', iconColor: 'text-emerald-400', wide: false },
+]
+
+interface SkillGroupView {
   category: string
   accent: string
   headerColor: string
   iconColor: string
   /** Layout: the large AI and Data group spans two columns on desktop. */
-  wide?: boolean
+  wide: boolean
   skills: { name: string; icon: LucideIcon }[]
 }
 
-const skillGroups: SkillGroup[] = [
-  {
-    category: 'AI and Data',
-    accent: 'border-violet-500/30 bg-violet-500/5',
-    headerColor: 'text-violet-400',
-    iconColor: 'text-violet-400',
-    wide: true,
-    skills: [
-      { name: 'Gen AI', icon: Sparkles },
-      { name: 'Gen BI', icon: MessageSquareText },
-      { name: 'LLM Tools', icon: Bot },
-      { name: 'Prompt Engineering', icon: MessageSquareCode },
-      { name: 'Vertex AI', icon: BrainCircuit },
-      { name: 'Semantic Layer', icon: Layers },
-      { name: 'Google Cloud', icon: Cloud },
-      { name: 'BigQuery', icon: Database },
-      { name: 'SQL', icon: CodeXml },
-      { name: 'Looker', icon: ChartColumn },
-    ],
-  },
-  {
-    category: 'Product and Strategy',
-    accent: 'border-purple-500/30 bg-purple-500/5',
-    headerColor: 'text-purple-400',
-    iconColor: 'text-purple-400',
-    skills: [
-      { name: 'Roadmapping', icon: Map },
-      { name: 'Stakeholder Management', icon: Users },
-      { name: 'OKR Alignment', icon: Target },
-      { name: 'Go-To-Market', icon: Rocket },
-    ],
-  },
-  {
-    category: 'Delivery',
-    accent: 'border-emerald-500/30 bg-emerald-500/5',
-    headerColor: 'text-emerald-400',
-    iconColor: 'text-emerald-400',
-    skills: [
-      { name: 'SAFe', icon: Workflow },
-      { name: 'Scrum', icon: Repeat },
-      { name: 'Backlog Management', icon: ListChecks },
-    ],
-  },
-]
+const skillGroups: SkillGroupView[] = getSkillGroups().map((g, i) => ({
+  ...STYLES[i % STYLES.length],
+  category: g.category,
+  skills: g.skills.map((name) => ({ name, icon: ICONS[name] ?? Sparkles })),
+}))
 
-function GroupCard({ group }: { group: SkillGroup }) {
+function GroupCard({ group }: { group: SkillGroupView }) {
   return (
     <div className={cn('rounded-2xl border p-5 h-full', group.accent)}>
       <h3 className={cn('text-sm font-semibold uppercase tracking-widest mb-5', group.headerColor)}>
