@@ -66,7 +66,7 @@ export default function ToolkitPage() {
 
         <p className="text-lg text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed mb-8">
           20 battle-tested templates, frameworks, and tools for Product Managers.
-          Built from 8+ years of shipping products at Lloyds, Dyson, Sony, and Infosys.
+          Built from 9+ years in tech, shipping products at Lloyds, Dyson, Sony, and Infosys.
           Download. Use. Ship better products.
         </p>
 
@@ -104,7 +104,7 @@ export default function ToolkitPage() {
           {[
             { icon: "🧰", value: "20", label: "Templates" },
             { icon: "🆓", value: "Free Forever", label: "" },
-            { icon: "⏱️", value: "8+ Years", label: "of PM Experience Distilled" },
+            { icon: "⏱️", value: "6+ Years", label: "as a Product Owner" },
             { icon: "🏢", value: "Lloyds, Dyson & Sony", label: "Built at" },
           ].map(s => (
             <div key={s.label}>

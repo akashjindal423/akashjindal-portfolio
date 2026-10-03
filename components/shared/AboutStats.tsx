@@ -1,28 +1,27 @@
-'use client'
+import { getTraining } from '@/lib/content'
+
+const STATS = [
+  { value: '9+', label: 'years in tech' },
+  { value: '6+', label: 'years as a Product Owner' },
+  { value: '4', label: 'industries: banking, energy, gaming, consumer tech' },
+  { value: String(getTraining().length), label: 'certifications' },
+]
 
 export default function AboutStats() {
   return (
     <div className="grid grid-cols-2 gap-3">
 
-      {/* Box 1 */}
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3">
-        <span className="text-3xl font-bold text-violet-400">8+</span>
-        <span className="text-sm text-[#A09EC0] leading-snug">Years in product and banking</span>
-      </div>
+      {STATS.map(({ value, label }) => (
+        <div
+          key={label}
+          className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3"
+        >
+          <span className="text-3xl font-bold text-violet-400 shrink-0">{value}</span>
+          <span className="text-sm text-[#A09EC0] leading-snug">{label}</span>
+        </div>
+      ))}
 
-      {/* Box 2 */}
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3">
-        <span className="text-3xl font-bold text-violet-400">20+</span>
-        <span className="text-sm text-[#A09EC0] leading-snug">Products and features shipped</span>
-      </div>
-
-      {/* Box 3 */}
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3">
-        <span className="text-3xl font-bold text-violet-400">4</span>
-        <span className="text-sm text-[#A09EC0] leading-snug">Agile certifications held</span>
-      </div>
-
-      {/* Box 4 — GCP */}
+      {/* Box 5 — GCP */}
       <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border)] flex items-center justify-center shrink-0">
           <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -43,8 +42,8 @@ export default function AboutStats() {
         </div>
       </div>
 
-      {/* Box 5 — PSPO, full width */}
-      <div className="col-span-2 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3">
+      {/* Box 6 — PSPO */}
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border)] flex items-center justify-center shrink-0">
           <svg viewBox="0 0 24 24" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <circle cx="12" cy="12" r="11" fill="#D9232D"/>
