@@ -1,4 +1,4 @@
-import { Experience, OfficialProject, ProjectsData } from './types'
+import { Experience, OfficialProject, PassionProject, ProjectsData } from './types'
 
 export interface SkillGroup {
   category: string
@@ -261,6 +261,15 @@ export function getProjects(): ProjectsData {
 
 export function getFeaturedProjects(): OfficialProject[] {
   return getProjects().official.slice(0, 1) // Lloyds only
+}
+
+const FEATURED_PASSION_SLUGS = ['promptlab', 'google-maps-teardown']
+
+export function getFeaturedPassionProjects(): PassionProject[] {
+  const { passion } = getProjects()
+  return FEATURED_PASSION_SLUGS.map(slug => passion.find(p => p.slug === slug)).filter(
+    (p): p is PassionProject => Boolean(p),
+  )
 }
 
 export function getSkillGroups(): SkillGroup[] {

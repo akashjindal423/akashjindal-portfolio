@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ExternalLink, Lock } from 'lucide-react'
 import SectionWrapper from '@/components/shared/SectionWrapper'
-import { getFeaturedProjects } from '@/lib/content'
+import { getFeaturedPassionProjects, getFeaturedProjects } from '@/lib/content'
 
 type FeaturedItem = {
   slug: string
@@ -16,10 +16,15 @@ type FeaturedItem = {
   title: string
   description: string
   tags: string[]
-  period: string
+  period?: string
   href?: string
   externalUrl?: string
   locked?: boolean
+}
+
+const statusColorMap: Record<string, string> = {
+  violet: 'bg-violet-500/20 text-violet-400',
+  emerald: 'bg-emerald-500/20 text-emerald-400',
 }
 
 const [lloyds] = getFeaturedProjects()
@@ -38,19 +43,18 @@ const featuredItems: FeaturedItem[] = [
     period: lloyds.period,
     locked: true,
   },
-  {
-    slug: 'ai-health-companion',
-    badge: 'Passion Project',
-    badgeColor: 'bg-violet-500/20 text-violet-400',
+  ...getFeaturedPassionProjects().map((p) => ({
+    slug: p.slug,
+    badge: p.status,
+    badgeColor: statusColorMap[p.statusColor] ?? statusColorMap.violet,
     border: 'border-violet-500/20',
     companyColor: 'from-violet-500/10 to-purple-500/10',
     company: 'Passion Project',
-    title: 'AI Health Companion',
-    description: 'A wellness product combining AI-guided exercise, real-time posture feedback, and culturally relevant nutrition — built around how people actually live.',
-    tags: ['AI/ML', 'Health Tech', 'Computer Vision', 'Personalisation'],
-    period: 'Concept Stage',
-    href: '/projects/ai-health-companion',
-  },
+    title: p.title,
+    description: p.description,
+    tags: p.tags,
+    href: `/projects/${p.slug}`,
+  })),
 ]
 
 export default function FeaturedProjects() {
@@ -73,7 +77,7 @@ export default function FeaturedProjects() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {featuredItems.map((project, i) => {
           const card = (
             <motion.div
@@ -107,7 +111,7 @@ export default function FeaturedProjects() {
                   </span>
                 ))}
               </div>
-              <p className="text-[11px] text-[#3D3B60] mt-3">{project.period}</p>
+              {project.period && <p className="text-[11px] text-[#3D3B60] mt-3">{project.period}</p>}
             </motion.div>
           )
 
