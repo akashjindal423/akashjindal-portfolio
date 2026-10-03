@@ -57,7 +57,7 @@ export default function ExperiencePage() {
 
       <SectionWrapper>
         <div className="flex items-center gap-3 mt-16 mb-8">
-          <span className="text-xs uppercase tracking-widest text-[#4F4D70]">Community &amp; Volunteering</span>
+          <span className="text-xs uppercase tracking-widest text-text-subtle">Community &amp; Volunteering</span>
           <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -65,7 +65,7 @@ export default function ExperiencePage() {
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <div className="flex items-start justify-between mb-3">
               <div>
-                <p className="text-xs text-[#4F4D70] mb-1">Apr 2024 – Oct 2024 · London · Remote</p>
+                <p className="text-xs text-text-subtle mb-1">Apr 2024 – Oct 2024 · London · Remote</p>
                 <h3 className="text-base font-bold text-[#F8F8FF]">Vice President of Membership</h3>
                 <p className="text-sm text-violet-400 mt-0.5">Toastmasters International · Part-time</p>
               </div>
@@ -87,7 +87,7 @@ export default function ExperiencePage() {
             </ul>
             <div className="flex flex-wrap gap-1.5 mt-4">
               {['Team Leadership', 'Marketing', 'Community Building', 'Onboarding'].map(tag => (
-                <span key={tag} className="text-[10px] bg-[var(--background)] border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">{tag}</span>
+                <span key={tag} className="text-[10px] bg-[var(--background)] border border-white/5 text-text-subtle px-2 py-0.5 rounded-md">{tag}</span>
               ))}
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function ExperiencePage() {
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <div className="flex items-start justify-between mb-3">
               <div>
-                <p className="text-xs text-[#4F4D70] mb-1">Dec 2019 – Jul 2023 · 3 yrs 8 mos</p>
+                <p className="text-xs text-text-subtle mb-1">Dec 2019 – Jul 2023 · 3 yrs 8 mos</p>
                 <h3 className="text-base font-bold text-[#F8F8FF]">Mentor</h3>
                 <p className="text-sm text-violet-400 mt-0.5">SOCH (अंत ही आरम्भ) · Part-time</p>
               </div>
@@ -117,7 +117,7 @@ export default function ExperiencePage() {
             </ul>
             <div className="flex flex-wrap gap-1.5 mt-4">
               {['Mentorship', 'Social Impact', 'Community Development', 'LGBTQIA+ Inclusion'].map(tag => (
-                <span key={tag} className="text-[10px] bg-[var(--background)] border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">{tag}</span>
+                <span key={tag} className="text-[10px] bg-[var(--background)] border border-white/5 text-text-subtle px-2 py-0.5 rounded-md">{tag}</span>
               ))}
             </div>
           </div>

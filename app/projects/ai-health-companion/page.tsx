@@ -340,7 +340,7 @@ export default function AIHealthCompanionPage() {
         <h2 className="text-2xl font-bold text-text-primary mb-6">Epics and stories</h2>
         <div className="flex flex-wrap gap-2 mb-8">
           {['EP-01 Onboarding & Profile', 'EP-02 Cultural Nutrition Engine', 'EP-03 Movement & Posture', 'EP-04 Wellness Nudges', 'EP-05 Apple Health Integration', 'EP-06 Weekly Digest'].map((epic) => (
-            <span key={epic} className="text-xs bg-[var(--surface)] border border-[var(--border)] text-[#6B69A0] px-3 py-1.5 rounded-lg font-mono">
+            <span key={epic} className="text-xs bg-[var(--surface)] border border-[var(--border)] text-text-subtle px-3 py-1.5 rounded-lg font-mono">
               {epic}
             </span>
           ))}
@@ -389,7 +389,7 @@ export default function AIHealthCompanionPage() {
             <thead>
               <tr className="bg-[var(--surface)] border-b border-[var(--border)]">
                 {['Risk', 'Impact', 'Mitigation'].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-[#4F4D70] font-semibold">
+                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold">
                     {h}
                   </th>
                 ))}

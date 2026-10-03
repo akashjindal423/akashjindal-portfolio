@@ -49,7 +49,7 @@ export default function ProductBriefCard() {
         <div className="h-3 w-3 rounded-full bg-[#FF5F57]" />
         <div className="h-3 w-3 rounded-full bg-[#FEBC2E]" />
         <div className="h-3 w-3 rounded-full bg-[#28C840]" />
-        <span className="ml-3 text-xs text-[#4F4D70] font-mono tracking-wide">product_brief.md</span>
+        <span className="ml-3 text-xs text-text-subtle font-mono tracking-wide">product_brief.md</span>
         <div className="ml-auto flex items-center gap-1">
           <div className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
           <span className="text-[10px] text-green-400 font-mono">live</span>
@@ -64,7 +64,7 @@ export default function ProductBriefCard() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 + si * 0.15 }}
-              className="text-[#3D3B60] text-xs mb-1.5 tracking-widest"
+              className="text-text-subtle text-xs mb-1.5 tracking-widest"
             >
               {section.heading}
             </motion.p>

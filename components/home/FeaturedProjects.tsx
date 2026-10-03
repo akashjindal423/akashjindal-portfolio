@@ -95,23 +95,23 @@ export default function FeaturedProjects() {
                 {project.externalUrl && (
                   <a href={project.externalUrl} target="_blank" rel="noopener noreferrer"
                     aria-label={`View ${project.title} externally`}
-                    className="text-[#4F4D70] hover:text-violet-400 transition">
+                    className="text-text-subtle hover:text-violet-400 transition">
                     <ExternalLink size={16} aria-hidden="true" />
                   </a>
                 )}
-                {project.locked && <Lock size={14} className="text-[#3D3B60]" role="img" aria-label="Confidential — details private" />}
+                {project.locked && <Lock size={14} className="text-text-subtle" role="img" aria-label="Confidential — details private" />}
               </div>
-              <p className="text-xs text-[#4F4D70] mb-1">{project.company}</p>
+              <p className="text-xs text-text-subtle mb-1">{project.company}</p>
               <h3 className="text-base font-bold text-[#F8F8FF] mb-3 leading-snug">{project.title}</h3>
               <p className="text-sm text-[#A09EC0] leading-relaxed flex-1">{project.description}</p>
               <div className="flex flex-wrap gap-1.5 mt-4">
                 {project.tags.map(tag => (
-                  <span key={tag} className="text-[10px] bg-[var(--background)]/60 border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
+                  <span key={tag} className="text-[10px] bg-[var(--background)]/60 border border-white/5 text-text-subtle px-2 py-0.5 rounded-md">
                     {tag}
                   </span>
                 ))}
               </div>
-              {project.period && <p className="text-[11px] text-[#3D3B60] mt-3">{project.period}</p>}
+              {project.period && <p className="text-[11px] text-text-subtle mt-3">{project.period}</p>}
             </motion.div>
           )
 

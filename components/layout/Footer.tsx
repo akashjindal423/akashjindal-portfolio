@@ -36,14 +36,14 @@ export default function Footer() {
               <span className="font-medium text-[var(--text-primary)]">Akash Jindal</span>
             </div>
             <p className="text-[#A09EC0] text-sm mt-2">AI Product Owner</p>
-            <p className="text-[#4F4D70] text-sm mt-3">
+            <p className="text-text-subtle text-sm mt-3">
               Open to AI Product Manager roles, contract or permanent.
             </p>
           </div>
 
           {/* Col 2 — Navigation */}
           <div>
-            <p className="text-xs uppercase tracking-widest text-[#4F4D70] mb-4">Navigation</p>
+            <p className="text-xs uppercase tracking-widest text-text-subtle mb-4">Navigation</p>
             <ul className="grid grid-cols-2 gap-x-6 gap-y-2 sm:max-w-xs">
               {NAV_LINKS.map(({ label, href }) => (
                 <li key={href}>
@@ -60,7 +60,7 @@ export default function Footer() {
 
           {/* Col 3 — Connect */}
           <div>
-            <p className="text-xs uppercase tracking-widest text-[#4F4D70] mb-4">Connect</p>
+            <p className="text-xs uppercase tracking-widest text-text-subtle mb-4">Connect</p>
             <ul className="flex flex-col gap-2">
               {CONNECT_LINKS.map(({ label, href, icon: Icon, external }) => (
                 <li key={label}>
@@ -80,7 +80,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-[var(--border)] mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-2 text-[#4F4D70] text-xs">
+        <div className="border-t border-[var(--border)] mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-2 text-text-subtle text-xs">
           <span>© 2026 Akash Jindal. All rights reserved.</span>
           <span>Built with Next.js &amp; deployed on Vercel</span>
         </div>

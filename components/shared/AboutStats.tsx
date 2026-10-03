@@ -37,7 +37,7 @@ export default function AboutStats() {
           </svg>
         </div>
         <div>
-          <p className="text-[10px] text-[#4F4D70] uppercase tracking-wider font-normal leading-none mb-1">Google Cloud</p>
+          <p className="text-[10px] text-text-subtle uppercase tracking-wider font-normal leading-none mb-1">Google Cloud</p>
           <p className="text-sm text-[#A09EC0] font-normal leading-snug">Assoc. Cloud Engineer</p>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default function AboutStats() {
           </svg>
         </div>
         <div>
-          <p className="text-[10px] text-[#4F4D70] uppercase tracking-wider font-normal leading-none mb-1">Scrum.org</p>
+          <p className="text-[10px] text-text-subtle uppercase tracking-wider font-normal leading-none mb-1">Scrum.org</p>
           <p className="text-sm text-[#A09EC0] font-normal leading-snug">PSPO II Certified</p>
         </div>
       </div>

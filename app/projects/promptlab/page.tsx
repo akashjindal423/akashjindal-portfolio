@@ -59,7 +59,7 @@ function Cell({ val, bold }: { val: boolean; bold?: boolean }) {
     <td className="px-4 py-3 text-center text-base">
       {val
         ? <span className={bold ? 'text-emerald-400 font-bold' : 'text-emerald-400'}>✅</span>
-        : <span className="text-[#4F4D70]">❌</span>
+        : <span className="text-text-subtle">❌</span>
       }
     </td>
   )
@@ -195,24 +195,24 @@ export default function PromptLabPage() {
             <span className="w-3 h-3 rounded-full bg-[#FF5F57]" />
             <span className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
             <span className="w-3 h-3 rounded-full bg-[#28C840]" />
-            <span className="ml-3 text-xs text-[#4F4D70] font-mono">terminal</span>
+            <span className="ml-3 text-xs text-text-subtle font-mono">terminal</span>
           </div>
 
           {/* Body */}
           <div className="bg-[#0d1117] px-6 py-5 font-mono text-sm overflow-x-auto">
             {/* Command */}
             <p className="text-emerald-400">
-              <span className="text-[#4F4D70]">$ </span>
+              <span className="text-text-subtle">$ </span>
               promptlab analyse <span className="text-amber-300">&quot;You are a helpful assistant. Answer questions.&quot;</span>
             </p>
 
-            <p className="text-[#4F4D70] mt-3 text-xs">Analysing prompt across 12 dimensions...</p>
+            <p className="text-text-subtle mt-3 text-xs">Analysing prompt across 12 dimensions...</p>
 
             <div className="mt-4">
               <p className="text-white">
                 Overall Score:{' '}
                 <span className="text-amber-400 font-bold">2.1 / 5.0</span>
-                <span className="text-[#4F4D70]"> ────────────────────</span>
+                <span className="text-text-subtle"> ────────────────────</span>
                 <span className="text-amber-400 font-semibold"> NEEDS WORK</span>
               </p>
             </div>
@@ -220,7 +220,7 @@ export default function PromptLabPage() {
             {/* Table */}
             <div className="mt-5 overflow-x-auto">
               {/* Header */}
-              <div className="flex text-[11px] text-[#4F4D70] border-b border-[#2A2A50] pb-1.5 mb-0.5">
+              <div className="flex text-[11px] text-text-subtle border-b border-[#2A2A50] pb-1.5 mb-0.5">
                 <span className="w-52 shrink-0">Dimension</span>
                 <span className="w-16 shrink-0">Score</span>
                 <span>Status</span>
@@ -350,10 +350,10 @@ export default function PromptLabPage() {
               <tr className="bg-violet-600/10 border-b border-violet-500/20">
                 <th className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">Feature</th>
                 <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold text-center">PromptLab</th>
-                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-[#4F4D70] font-semibold text-center">DSPy</th>
-                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-[#4F4D70] font-semibold text-center">Promptfoo</th>
-                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-[#4F4D70] font-semibold text-center">Braintrust</th>
-                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-[#4F4D70] font-semibold text-center">Chrome Ext.</th>
+                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold text-center">DSPy</th>
+                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold text-center">Promptfoo</th>
+                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold text-center">Braintrust</th>
+                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold text-center">Chrome Ext.</th>
               </tr>
             </thead>
             <tbody>

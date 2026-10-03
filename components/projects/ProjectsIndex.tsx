@@ -28,7 +28,7 @@ export default function ProjectsIndex() {
       {/* Official Projects */}
       <div className="mt-12">
         <div className="flex items-center gap-3 mb-6">
-          <span className="text-xs uppercase tracking-widest text-[#4F4D70]">Official Projects</span>
+          <span className="text-xs uppercase tracking-widest text-text-subtle">Official Projects</span>
           <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -47,25 +47,25 @@ export default function ProjectsIndex() {
                 {project.clickable && project.externalUrl && (
                   <a href={project.externalUrl} target="_blank" rel="noopener noreferrer"
                     aria-label={`View ${project.title} externally`}
-                    className="text-[#4F4D70] hover:text-violet-400 transition">
+                    className="text-text-subtle hover:text-violet-400 transition">
                     <ExternalLink size={16} aria-hidden="true" />
                   </a>
                 )}
                 {!project.clickable && (
-                  <Lock size={14} className="text-[#3D3B60]" role="img" aria-label="Confidential — details private" />
+                  <Lock size={14} className="text-text-subtle" role="img" aria-label="Confidential — details private" />
                 )}
               </div>
-              <p className="text-xs text-[#4F4D70] mb-1">{project.company}</p>
+              <p className="text-xs text-text-subtle mb-1">{project.company}</p>
               <h3 className="text-base font-bold text-[#F8F8FF] mb-3 leading-snug">{project.title}</h3>
               <p className="text-sm text-[#A09EC0] leading-relaxed flex-1">{project.description}</p>
               <div className="flex flex-wrap gap-1.5 mt-4">
                 {project.tags.map(tag => (
-                  <span key={tag} className="text-[10px] bg-[var(--background)]/60 border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
+                  <span key={tag} className="text-[10px] bg-[var(--background)]/60 border border-white/5 text-text-subtle px-2 py-0.5 rounded-md">
                     {tag}
                   </span>
                 ))}
               </div>
-              <p className="text-[11px] text-[#3D3B60] mt-3">{project.period}</p>
+              <p className="text-[11px] text-text-subtle mt-3">{project.period}</p>
             </motion.div>
           ))}
         </div>
@@ -74,7 +74,7 @@ export default function ProjectsIndex() {
       {/* Passion Projects */}
       <div className="mt-14">
         <div className="flex items-center gap-3 mb-6">
-          <span className="text-xs uppercase tracking-widest text-[#4F4D70]">Passion Projects</span>
+          <span className="text-xs uppercase tracking-widest text-text-subtle">Passion Projects</span>
           <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -93,7 +93,7 @@ export default function ProjectsIndex() {
                 <p className="text-sm text-[#A09EC0] leading-relaxed flex-1">{project.description}</p>
                 <div className="flex flex-wrap gap-1.5 mt-4">
                   {project.tags.map(tag => (
-                    <span key={tag} className="text-[10px] bg-[var(--surface)] border border-white/5 text-[#6B69A0] px-2 py-0.5 rounded-md">
+                    <span key={tag} className="text-[10px] bg-[var(--surface)] border border-white/5 text-text-subtle px-2 py-0.5 rounded-md">
                       {tag}
                     </span>
                   ))}

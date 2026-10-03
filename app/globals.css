@@ -14,6 +14,7 @@
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -51,6 +52,7 @@
   --border: #E2E0F0;
   --text-primary: #0F0E1A;
   --text-muted: #4A4869;
+  --text-subtle: #5F5D80; /* 5.87:1 on #F8F7FF */
   --accent: #7C3AED;
 
   /* shadcn/ui compatibility — light */
@@ -77,6 +79,8 @@
   --border: #2A2A50;
   --text-primary: #F8F7FF;
   --text-muted: #9B99BB;
+  /* Tertiary text. 5.72:1 on #0D0D1A, 5.40:1 on #13132A, 4.99:1 on #1A1A38 (WCAG AA) */
+  --text-subtle: #8A88B0;
   --accent: #8B5CF6;
 
   /* shadcn/ui compatibility — dark */

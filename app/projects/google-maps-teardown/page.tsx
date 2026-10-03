@@ -1249,7 +1249,7 @@ export default function GoogleMapsTeardownPage() {
             <thead>
               <tr className="bg-[var(--surface)] border-b border-[var(--border)]">
                 {['Feature', 'Biggest Risk', 'Open Question'].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-[#4F4D70] font-semibold">
+                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold">
                     {h}
                   </th>
                 ))}
