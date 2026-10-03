@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
 import Badge from '@/components/shared/Badge'
 import PersonaCard from '@/components/projects/PersonaCard'
 import MetricCard from '@/components/projects/MetricCard'
@@ -109,12 +110,13 @@ export default function AIHealthCompanionPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
 
-      <Link
-        href="/projects"
-        className="text-violet-400 hover:text-violet-300 text-sm transition-colors duration-200 inline-block mb-10"
-      >
-        ← Back to Projects
-      </Link>
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Projects', href: '/projects' },
+          { label: 'AI Health Companion', href: '/projects/ai-health-companion' },
+        ]}
+      />
 
       {/* HERO */}
       <section>

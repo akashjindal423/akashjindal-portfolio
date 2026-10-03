@@ -4,7 +4,9 @@ import { Briefcase } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import AboutStats from '@/components/shared/AboutStats'
+import JsonLd from '@/components/shared/JsonLd'
 import { pageMetadata } from '@/lib/seo'
+import { personSchema } from '@/lib/structured-data'
 
 export const metadata = pageMetadata({
   title: 'About',
@@ -16,6 +18,7 @@ export const metadata = pageMetadata({
 export default function AboutPage() {
   return (
     <main>
+      <JsonLd data={personSchema()} />
       <SectionWrapper>
         <PageHeader
           eyebrow="ABOUT"

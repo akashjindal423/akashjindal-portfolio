@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
 
 // ── Terminal row data ──────────────────────────────────────────────────────────
 const terminalRows = [
@@ -78,12 +79,13 @@ export default function PromptLabPage() {
     <main className="max-w-4xl mx-auto px-4 py-12">
 
       {/* ── HERO ──────────────────────────────────────────────────────────────── */}
-      <Link
-        href="/projects"
-        className="text-violet-400 hover:text-violet-300 text-sm transition-colors duration-200 inline-block mb-10"
-      >
-        ← Projects
-      </Link>
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Projects', href: '/projects' },
+          { label: 'PromptLab', href: '/projects/promptlab' },
+        ]}
+      />
 
       <section>
         <div className="mb-5">

@@ -1,6 +1,9 @@
 import Link from 'next/link'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
 import Badge from '@/components/shared/Badge'
+import JsonLd from '@/components/shared/JsonLd'
 import { pageMetadata } from '@/lib/seo'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata = pageMetadata({
   title: 'Google Maps Product Teardown',
@@ -11,16 +14,33 @@ export const metadata = pageMetadata({
   ogType: 'article',
 })
 
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Google Maps: A Product Teardown',
+  description:
+    'A deep-dive PM analysis of Google Maps — competitive moat, monetisation flywheel, Local Guides ecosystem, Gemini AI features, and three feature proposals with RICE prioritisation.',
+  datePublished: '2026-03',
+  inLanguage: 'en-GB',
+  url: `${SITE_URL}/projects/google-maps-teardown`,
+  mainEntityOfPage: `${SITE_URL}/projects/google-maps-teardown`,
+  image: `${SITE_URL}/projects/google-maps-teardown/opengraph-image`,
+  author: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Akash Jindal', url: SITE_URL },
+  publisher: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Akash Jindal', url: SITE_URL },
+}
+
 export default function GoogleMapsTeardownPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+      <JsonLd data={articleSchema} />
 
-      <Link
-        href="/projects"
-        className="text-violet-400 hover:text-violet-300 text-sm transition-colors duration-200 inline-block mb-10"
-      >
-        ← Back to Projects
-      </Link>
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Projects', href: '/projects' },
+          { label: 'Google Maps Teardown', href: '/projects/google-maps-teardown' },
+        ]}
+      />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section>
