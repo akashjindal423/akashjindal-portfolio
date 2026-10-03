@@ -1,131 +1,122 @@
-'use client'
-import { motion } from 'framer-motion'
+import type { LucideIcon } from 'lucide-react'
+import {
+  Bot,
+  BrainCircuit,
+  ChartColumn,
+  Cloud,
+  CodeXml,
+  Database,
+  Layers,
+  ListChecks,
+  Map,
+  MessageSquareCode,
+  MessageSquareText,
+  Repeat,
+  Rocket,
+  Sparkles,
+  Target,
+  Users,
+  Workflow,
+} from 'lucide-react'
+import AnimatedEntry from '@/components/shared/AnimatedEntry'
+import { cn } from '@/lib/utils'
 
-const skillGroups = [
+interface SkillGroup {
+  category: string
+  accent: string
+  headerColor: string
+  iconColor: string
+  /** Layout: the large AI and Data group spans two columns on desktop. */
+  wide?: boolean
+  skills: { name: string; icon: LucideIcon }[]
+}
+
+const skillGroups: SkillGroup[] = [
   {
-    category: 'Product & Strategy',
+    category: 'AI and Data',
     accent: 'border-violet-500/30 bg-violet-500/5',
     headerColor: 'text-violet-400',
+    iconColor: 'text-violet-400',
+    wide: true,
     skills: [
-      { name: 'Roadmapping', icon: '🗺️' },
-      { name: 'OKR Alignment', icon: '🎯' },
-      { name: 'Backlog Mgmt', icon: '📋' },
-      { name: 'Sprint Planning', icon: '🔁' },
-      { name: 'Go-To-Market', icon: '🚀' },
-      { name: 'Stakeholder Mgmt', icon: '🤝' },
-      { name: 'Design Thinking', icon: '💡' },
-      { name: 'Journey Mapping', icon: '🗂️' },
+      { name: 'Gen AI', icon: Sparkles },
+      { name: 'Gen BI', icon: MessageSquareText },
+      { name: 'LLM Tools', icon: Bot },
+      { name: 'Prompt Engineering', icon: MessageSquareCode },
+      { name: 'Vertex AI', icon: BrainCircuit },
+      { name: 'Semantic Layer', icon: Layers },
+      { name: 'Google Cloud', icon: Cloud },
+      { name: 'BigQuery', icon: Database },
+      { name: 'SQL', icon: CodeXml },
+      { name: 'Looker', icon: ChartColumn },
     ],
   },
   {
-    category: 'Cloud & Data',
-    accent: 'border-blue-500/30 bg-blue-500/5',
-    headerColor: 'text-blue-400',
-    skills: [
-      { name: 'Google Cloud', icon: '☁️' },
-      { name: 'BigQuery', icon: '📊' },
-      { name: 'SQL', icon: '🗄️' },
-      { name: 'Azure', icon: '💠' },
-      { name: 'Data Warehousing', icon: '🏛️' },
-      { name: 'Power BI', icon: '📈' },
-      { name: 'Tableau', icon: '📉' },
-      { name: 'Looker', icon: '👁️' },
-    ],
-  },
-  {
-    category: 'AI & Innovation',
+    category: 'Product and Strategy',
     accent: 'border-purple-500/30 bg-purple-500/5',
     headerColor: 'text-purple-400',
+    iconColor: 'text-purple-400',
     skills: [
-      { name: 'Gen AI', icon: '✨' },
-      { name: 'Gen BI', icon: '🧠' },
-      { name: 'LLM Tools', icon: '⚡' },
-      { name: 'Prompt Eng.', icon: '💬' },
-      { name: 'AI CoE', icon: '🔬' },
-      { name: 'Vertex AI', icon: '🌐' },
-      { name: 'Dashboard Design', icon: '🖥️' },
-      { name: 'Semantic Layer', icon: '🔗' },
+      { name: 'Roadmapping', icon: Map },
+      { name: 'Stakeholder Management', icon: Users },
+      { name: 'OKR Alignment', icon: Target },
+      { name: 'Go-To-Market', icon: Rocket },
     ],
   },
   {
-    category: 'Delivery & Agile',
-    accent: 'border-orange-500/30 bg-orange-500/5',
-    headerColor: 'text-orange-400',
-    skills: [
-      { name: 'SAFe', icon: '🏗️' },
-      { name: 'Scrum', icon: '🔄' },
-      { name: 'Jira', icon: '📌' },
-      { name: 'Confluence', icon: '📚' },
-      { name: 'SDLC', icon: '⚙️' },
-      { name: 'Azure DevOps', icon: '🔧' },
-      { name: 'MS Teams', icon: '💻' },
-      { name: 'ServiceNow', icon: '🎫' },
-    ],
-  },
-  {
-    category: 'Design & UX',
-    accent: 'border-pink-500/30 bg-pink-500/5',
-    headerColor: 'text-pink-400',
-    skills: [
-      { name: 'Figma', icon: '🎨' },
-      { name: 'Miro', icon: '🗒️' },
-      { name: 'Wireframing', icon: '📐' },
-      { name: 'Prototyping', icon: '🖌️' },
-      { name: 'UX Research', icon: '👥' },
-      { name: 'Visio', icon: '📝' },
-      { name: 'Draw.io', icon: '✏️' },
-      { name: 'Lucidchart', icon: '🔷' },
-    ],
-  },
-  {
-    category: 'Technical & APIs',
+    category: 'Delivery',
     accent: 'border-emerald-500/30 bg-emerald-500/5',
     headerColor: 'text-emerald-400',
+    iconColor: 'text-emerald-400',
     skills: [
-      { name: 'API Management', icon: '🔌' },
-      { name: 'Postman', icon: '📮' },
-      { name: 'Git', icon: '🌿' },
-      { name: 'SDLC', icon: '🔩' },
-      { name: 'NoSQL', icon: '📦' },
-      { name: 'Amplitude', icon: '📡' },
-      { name: 'GA4', icon: '📊' },
-      { name: 'Automation Testing', icon: '🤖' },
+      { name: 'SAFe', icon: Workflow },
+      { name: 'Scrum', icon: Repeat },
+      { name: 'Backlog Management', icon: ListChecks },
     ],
   },
 ]
 
-export default function SkillIconGrid() {
+function GroupCard({ group }: { group: SkillGroup }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
-      {skillGroups.map((group, gi) => (
-        <motion.div
-          key={group.category}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: gi * 0.08 }}
-          className={`rounded-2xl border ${group.accent} p-5`}
-        >
-          <p className={`text-sm font-semibold uppercase tracking-widest mb-5 ${group.headerColor}`}>
-            {group.category}
-          </p>
-          <div className="grid grid-cols-4 gap-x-2 gap-y-4">
-            {group.skills.map((skill) => (
-              <div
-                key={skill.name}
-                className="flex flex-col items-center gap-2 group cursor-default"
-              >
-                <div className="w-14 h-14 rounded-xl bg-[var(--background)] border border-[var(--border)] flex items-center justify-center text-3xl group-hover:border-white/20 group-hover:bg-[var(--surface)] transition-all duration-200">
-                  {skill.icon}
-                </div>
-                <span className="text-[11px] font-medium text-[#A09EC0] text-center leading-tight group-hover:text-[#A09EC0] transition-colors px-0.5">
-                  {skill.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      ))}
+    <div className={cn('rounded-2xl border p-5 h-full', group.accent)}>
+      <h3 className={cn('text-sm font-semibold uppercase tracking-widest mb-5', group.headerColor)}>
+        {group.category}
+      </h3>
+      <ul
+        className={cn(
+          'grid gap-x-2 gap-y-4',
+          group.wide ? 'grid-cols-3 sm:grid-cols-5' : 'grid-cols-3 sm:grid-cols-4',
+        )}
+      >
+        {group.skills.map(({ name, icon: Icon }) => (
+          <li key={name} className="flex flex-col items-center gap-2">
+            <div className="w-14 h-14 rounded-xl bg-[var(--background)] border border-[var(--border)] flex items-center justify-center">
+              <Icon className={cn('w-6 h-6', group.iconColor)} aria-hidden="true" strokeWidth={1.75} />
+            </div>
+            <span className="text-[11px] font-medium text-[#A09EC0] text-center leading-tight px-0.5">
+              {name}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+export default function SkillIconGrid() {
+  const [wide, ...rest] = skillGroups
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-8">
+      <AnimatedEntry className="lg:col-span-2">
+        <GroupCard group={wide} />
+      </AnimatedEntry>
+      <div className="flex flex-col gap-5">
+        {rest.map((group, i) => (
+          <AnimatedEntry key={group.category} delay={(i + 1) * 0.08}>
+            <GroupCard group={group} />
+          </AnimatedEntry>
+        ))}
+      </div>
     </div>
   )
 }

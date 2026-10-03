@@ -36,7 +36,7 @@ export default function SkillsPage() {
         <PageHeader
           eyebrow="SKILLS"
           title="Core Competencies"
-          subtitle="A full breakdown of my product, delivery, and technical skills."
+          subtitle="The AI and data, product, and delivery skills I use most."
         />
       </SectionWrapper>
 
