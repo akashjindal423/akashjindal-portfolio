@@ -1,20 +1,24 @@
 import Link from 'next/link'
 import { ExternalLink, Github, Mail } from 'lucide-react'
+import { GITHUB_URL, LINKEDIN_URL } from '@/lib/structured-data'
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Projects', href: '/projects' },
   { label: 'Experience', href: '/experience' },
   { label: 'Skills', href: '/skills' },
+  { label: 'Toolkit', href: '/toolkit' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
+  { label: 'Training', href: '/training' },
+  { label: 'Recommendations', href: '/recommendations' },
   { label: 'Contact', href: '/contact' },
 ]
 
 const CONNECT_LINKS = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/akash--jindal/', icon: ExternalLink },
-  { label: 'GitHub', href: '#', icon: Github },
-  { label: 'akashjindal423@gmail.com', href: 'mailto:akashjindal423@gmail.com', icon: Mail },
+  { label: 'LinkedIn', href: LINKEDIN_URL, icon: ExternalLink, external: true },
+  { label: 'GitHub', href: GITHUB_URL, icon: Github, external: true },
+  { label: 'akashjindal423@gmail.com', href: 'mailto:akashjindal423@gmail.com', icon: Mail, external: false },
 ]
 
 export default function Footer() {
@@ -40,7 +44,7 @@ export default function Footer() {
           {/* Col 2 — Navigation */}
           <div>
             <p className="text-xs uppercase tracking-widest text-[#4F4D70] mb-4">Navigation</p>
-            <ul className="flex flex-col gap-2">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2 sm:max-w-xs">
               {NAV_LINKS.map(({ label, href }) => (
                 <li key={href}>
                   <Link
@@ -58,13 +62,15 @@ export default function Footer() {
           <div>
             <p className="text-xs uppercase tracking-widest text-[#4F4D70] mb-4">Connect</p>
             <ul className="flex flex-col gap-2">
-              {CONNECT_LINKS.map(({ label, href, icon: Icon }) => (
+              {CONNECT_LINKS.map(({ label, href, icon: Icon, external }) => (
                 <li key={label}>
                   <a
                     href={href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
                     className="inline-flex items-center gap-2 text-[#A09EC0] hover:text-violet-400 text-sm transition-colors duration-200"
                   >
-                    <Icon size={14} />
+                    <Icon size={14} aria-hidden="true" />
                     {label}
                   </a>
                 </li>
