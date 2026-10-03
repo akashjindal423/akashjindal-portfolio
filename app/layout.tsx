@@ -20,11 +20,25 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
 })
 
+const TITLE = 'Akash Jindal — AI Product Owner | GenAI and Gen BI'
+const DESCRIPTION =
+  "AI Product Owner at Lloyds Banking Group's AI Centre of Excellence, building Generative AI and Gen BI products. Previously Dyson and Sony PlayStation. Bristol, UK."
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://akashjindal.com'),
-  title: { default: 'Akash Jindal — Technical Product Owner', template: '%s | Akash Jindal' },
-  description: 'Senior Product Owner specialising in banking and fintech. 8+ years shipping digital products at Monzo, Barclays, and Lloyds. Based in London.',
-  keywords: ['Product Owner', 'Technical PO', 'Fintech', 'Banking', 'London', 'Monzo', 'Barclays'],
+  title: { default: TITLE, template: '%s | Akash Jindal' },
+  description: DESCRIPTION,
+  keywords: [
+    'Akash Jindal',
+    'AI Product Owner',
+    'Product Owner',
+    'Generative AI',
+    'Gen BI',
+    'AI Centre of Excellence',
+    'Lloyds Banking Group',
+    'Banking',
+    'Bristol',
+  ],
   authors: [{ name: 'Akash Jindal' }],
   creator: 'Akash Jindal',
   openGraph: {
@@ -32,14 +46,14 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     url: 'https://akashjindal.com',
     siteName: 'Akash Jindal',
-    title: 'Akash Jindal — Technical Product Owner',
-    description: 'Senior Product Owner in banking and fintech. London.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Akash Jindal — Technical Product Owner' }],
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: TITLE }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Akash Jindal — Technical Product Owner',
-    description: 'Senior Product Owner in banking and fintech. London.',
+    title: TITLE,
+    description: DESCRIPTION,
     images: ['/og-image.png'],
   },
   robots: { index: true, follow: true },
