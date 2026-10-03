@@ -264,10 +264,6 @@ export function getFeaturedProjects(): OfficialProject[] {
   return getProjects().official.slice(0, 1) // Lloyds only
 }
 
-export function getProjectBySlug(slug: string): OfficialProject | undefined {
-  return getProjects().official.find(p => p.slug === slug)
-}
-
 export function getSkillGroups(): SkillGroup[] {
   return [
     {
