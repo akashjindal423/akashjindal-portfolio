@@ -1,6 +1,7 @@
 import HeroSection from '@/components/home/HeroSection'
 import AboutSnippet from '@/components/home/AboutSnippet'
 import FeaturedProjects from '@/components/home/FeaturedProjects'
+import LabFeature from '@/components/home/LabFeature'
 import ExperienceHighlights from '@/components/home/ExperienceHighlights'
 import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
 import SkillsSnapshot from '@/components/home/SkillsSnapshot'
@@ -25,6 +26,7 @@ export default function HomePage() {
       <section id="hero"><HeroSection /></section>
       <section id="about"><AboutSnippet /></section>
       <section id="projects"><FeaturedProjects /></section>
+      <LabFeature />
       <section id="experience"><ExperienceHighlights /></section>
       <section id="testimonials"><TestimonialsCarousel /></section>
       <section id="skills"><SkillsSnapshot /></section>

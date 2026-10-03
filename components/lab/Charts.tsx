@@ -1,0 +1,337 @@
+'use client'
+
+import { useEffect, useId, useRef, useState } from 'react'
+import type { DataPoint, GenBiResult } from '@/lib/lab/genbi'
+import { formatValue } from '@/lib/lab/genbi'
+
+/*
+ * Lightweight SVG charts for the Gen BI demo (no chart library).
+ * Single series, so no legend: the title names what is plotted.
+ * Colours: base #7461C9 and highlight #C4B5FD both clear 3:1 against the #13132A
+ * surface; the highlighted mark also carries a direct value label.
+ */
+const COLOR_BASE = '#7461C9'
+const COLOR_HIGHLIGHT = '#C4B5FD'
+const COLOR_LINE = '#A78BFA'
+const SURFACE = '#13132A'
+const GRID = '#2A2A50'
+
+const HEIGHT = 240
+const MARGIN = { top: 28, right: 12, bottom: 30, left: 52 }
+
+type Unit = GenBiResult['unit']
+
+interface ChartProps {
+  title: string
+  data: DataPoint[]
+  unit: Unit
+  highlight: number
+}
+
+/** Tracks the rendered width so text stays at its real size instead of being scaled by a viewBox. */
+function useWidth<T extends HTMLElement>(fallback = 560) {
+  const ref = useRef<T>(null)
+  const [width, setWidth] = useState(fallback)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const ro = new ResizeObserver(([entry]) => setWidth(Math.max(260, Math.round(entry.contentRect.width))))
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+  return [ref, width] as const
+}
+
+/** Axis maximum giving four clean tick steps, e.g. 1,120 -> 1,200 (300 per step). */
+function niceMax(max: number) {
+  const rough = max / 4
+  const mag = Math.pow(10, Math.floor(Math.log10(rough)))
+  const step = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].find((s) => s * mag >= rough) ?? 10
+  return step * mag * 4
+}
+
+function tickLabel(value: number, unit: Unit) {
+  if (unit === 'pct') return `${value}%`
+  if (unit === 'gbp') return `£${value}`
+  return value >= 1000 ? `£${value / 1000}m` : `£${value}k`
+}
+
+function Frame({
+  width,
+  yMax,
+  unit,
+  children,
+}: {
+  width: number
+  yMax: number
+  unit: Unit
+  children: React.ReactNode
+}) {
+  const innerH = HEIGHT - MARGIN.top - MARGIN.bottom
+  const ticks = [0, 1, 2, 3, 4].map((i) => (yMax / 4) * i)
+  return (
+    <>
+      {ticks.map((t) => {
+        const y = MARGIN.top + innerH - (t / yMax) * innerH
+        return (
+          <g key={t}>
+            <line x1={MARGIN.left} x2={width - MARGIN.right} y1={y} y2={y} stroke={GRID} strokeWidth={1} />
+            <text x={MARGIN.left - 8} y={y} dy="0.32em" textAnchor="end" className="fill-text-subtle text-[11px] tabular-nums">
+              {tickLabel(t, unit)}
+            </text>
+          </g>
+        )
+      })}
+      {children}
+    </>
+  )
+}
+
+function Tooltip({
+  x,
+  y,
+  label,
+  value,
+  width,
+  placement = 'above',
+}: {
+  x: number
+  y: number
+  label: string
+  value: string
+  width: number
+  placement?: 'above' | 'right'
+}) {
+  // Keep the tooltip inside the chart horizontally
+  const style =
+    placement === 'above'
+      ? { left: Math.min(Math.max(x, 64), width - 64), top: y - 10 }
+      : { left: Math.min(x + 12, width - 112), top: y }
+  return (
+    <div
+      className={`pointer-events-none absolute z-10 rounded-lg border border-[#2A2A50] bg-[var(--background)] px-3 py-2 shadow-elevated ${
+        placement === 'above' ? '-translate-x-1/2 -translate-y-full' : '-translate-y-1/2'
+      }`}
+      style={style}
+      role="presentation"
+    >
+      <p className="text-sm font-semibold text-text-primary tabular-nums whitespace-nowrap">{value}</p>
+      <p className="text-xs text-text-secondary whitespace-nowrap">{label}</p>
+    </div>
+  )
+}
+
+export function DataTable({ title, data, unit }: Omit<ChartProps, 'highlight'>) {
+  return (
+    <details className="mt-3 text-sm">
+      <summary className="cursor-pointer text-text-secondary hover:text-violet-400 transition-colors duration-200 w-fit">
+        Show data table
+      </summary>
+      <div className="mt-2 overflow-x-auto rounded-lg border border-[#2A2A50]">
+        <table className="w-full text-left text-sm">
+          <caption className="sr-only">{title}</caption>
+          <tbody>
+            {data.map((d) => (
+              <tr key={d.label} className="border-b border-[#2A2A50] last:border-0">
+                <th scope="row" className="px-3 py-1.5 font-normal text-text-secondary">{d.label}</th>
+                <td className="px-3 py-1.5 text-right text-text-primary tabular-nums">{formatValue(d.value, unit)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  )
+}
+
+/** Horizontal bars: category labels read left to right at any width. */
+export function BarChart({ title, data, unit, highlight }: ChartProps) {
+  const [ref, width] = useWidth<HTMLDivElement>()
+  const [active, setActive] = useState<number | null>(null)
+  const titleId = useId()
+  const ROW = 36
+  const BAR = 20 // <= 24px thick
+  const labelW = Math.min(96, Math.max(...data.map((d) => d.label.length)) * 7 + 12)
+  const m = { top: 4, right: 56, bottom: 26, left: labelW }
+  const innerW = width - m.left - m.right
+  const height = m.top + ROW * data.length + m.bottom
+  const xMax = niceMax(Math.max(...data.map((d) => d.value)))
+  const ticks = [0, 1, 2, 3, 4].map((i) => (xMax / 4) * i)
+  const axisY = m.top + ROW * data.length
+
+  const bars = data.map((d, i) => {
+    const w = (d.value / xMax) * innerW
+    const y = m.top + ROW * i + (ROW - BAR) / 2
+    return { ...d, w, y, end: m.left + w }
+  })
+
+  return (
+    <figure className="m-0">
+      <figcaption id={titleId} className="text-sm font-medium text-text-primary mb-2">{title}</figcaption>
+      <div ref={ref} className="relative w-full">
+        <svg width={width} height={height} role="group" aria-labelledby={titleId} className="block max-w-full overflow-visible">
+          {ticks.map((t) => {
+            const x = m.left + (t / xMax) * innerW
+            return (
+              <g key={t}>
+                <line x1={x} x2={x} y1={m.top} y2={axisY} stroke={GRID} strokeWidth={1} />
+                <text x={x} y={axisY + 16} textAnchor="middle" className="fill-text-subtle text-[11px] tabular-nums">
+                  {tickLabel(t, unit)}
+                </text>
+              </g>
+            )
+          })}
+          {bars.map((b, i) => {
+            const r = Math.min(4, b.w)
+            const fill = i === highlight ? COLOR_HIGHLIGHT : COLOR_BASE
+            return (
+              <g key={b.label}>
+                <text x={m.left - 10} y={b.y + BAR / 2} dy="0.32em" textAnchor="end" className="fill-text-secondary text-xs">
+                  {b.label}
+                </text>
+                {/* 4px rounded data-end, square at the baseline */}
+                <path
+                  d={`M${m.left},${b.y} H${b.end - r} Q${b.end},${b.y} ${b.end},${b.y + r} V${b.y + BAR - r} Q${b.end},${b.y + BAR} ${b.end - r},${b.y + BAR} H${m.left} Z`}
+                  fill={fill}
+                  opacity={active === null || active === i ? 1 : 0.75}
+                />
+                {i === highlight && (
+                  <text x={b.end + 8} y={b.y + BAR / 2} dy="0.32em" className="fill-text-primary text-xs font-semibold tabular-nums">
+                    {formatValue(b.value, unit)}
+                  </text>
+                )}
+                {/* Hit target: the whole row, bigger than the bar */}
+                <rect
+                  x={0}
+                  y={m.top + ROW * i}
+                  width={width}
+                  height={ROW}
+                  fill="transparent"
+                  tabIndex={0}
+                  role="img"
+                  aria-label={`${b.label}: ${formatValue(b.value, unit)}`}
+                  className="cursor-default outline-none focus-visible:stroke-violet-400 focus-visible:[stroke-width:1px]"
+                  onPointerEnter={() => setActive(i)}
+                  onPointerLeave={() => setActive(null)}
+                  onFocus={() => setActive(i)}
+                  onBlur={() => setActive(null)}
+                />
+              </g>
+            )
+          })}
+        </svg>
+        {active !== null && (
+          <Tooltip
+            x={bars[active].end}
+            y={bars[active].y + BAR / 2}
+            width={width}
+            placement="right"
+            label={bars[active].label}
+            value={formatValue(bars[active].value, unit)}
+          />
+        )}
+      </div>
+      <DataTable title={title} data={data} unit={unit} />
+    </figure>
+  )
+}
+
+export function LineChart({ title, data, unit, highlight }: ChartProps) {
+  const [ref, width] = useWidth<HTMLDivElement>()
+  const [active, setActive] = useState<number | null>(null)
+  const titleId = useId()
+  const innerW = width - MARGIN.left - MARGIN.right
+  const innerH = HEIGHT - MARGIN.top - MARGIN.bottom
+  const yMax = niceMax(Math.max(...data.map((d) => d.value)))
+  const baseline = MARGIN.top + innerH
+  const step = innerW / (data.length - 1)
+  const pts = data.map((d, i) => ({ ...d, x: MARGIN.left + step * i, y: baseline - (d.value / yMax) * innerH }))
+  const line = pts.map((p, i) => `${i ? 'L' : 'M'}${p.x},${p.y}`).join(' ')
+  const area = `${line} L${pts[pts.length - 1].x},${baseline} L${pts[0].x},${baseline} Z`
+  // Thin out x labels when space is tight
+  const labelEvery = step < 34 ? 2 : 1
+  const hl = pts[highlight]
+
+  function nearest(clientX: number, rect: DOMRect) {
+    const x = clientX - rect.left - MARGIN.left
+    return Math.max(0, Math.min(data.length - 1, Math.round(x / step)))
+  }
+
+  function onKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault()
+      const dir = e.key === 'ArrowRight' ? 1 : -1
+      setActive((a) => Math.max(0, Math.min(data.length - 1, (a ?? (dir > 0 ? -1 : data.length)) + dir)))
+    } else if (e.key === 'Escape') {
+      setActive(null)
+    }
+  }
+
+  const a = active === null ? null : pts[active]
+
+  return (
+    <figure className="m-0">
+      <figcaption id={titleId} className="text-sm font-medium text-text-primary mb-2">{title}</figcaption>
+      <div ref={ref} className="relative w-full">
+        <svg
+          width={width}
+          height={HEIGHT}
+          role="group"
+          aria-labelledby={titleId}
+          aria-describedby={`${titleId}-hint`}
+          tabIndex={0}
+          onKeyDown={onKeyDown}
+          onBlur={() => setActive(null)}
+          className="block max-w-full overflow-visible rounded-md outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60"
+        >
+          <Frame width={width} yMax={yMax} unit={unit}>
+            <path d={area} fill={COLOR_LINE} opacity={0.1} />
+            <path d={line} fill="none" stroke={COLOR_LINE} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+            {pts.map((p, i) =>
+              i % labelEvery === 0 || i === data.length - 1 ? (
+                <text key={p.label} x={p.x} y={baseline + 18} textAnchor="middle" className="fill-text-secondary text-xs">
+                  {p.label}
+                </text>
+              ) : null,
+            )}
+            {a && <line x1={a.x} x2={a.x} y1={MARGIN.top} y2={baseline} stroke="#8A88B0" strokeWidth={1} />}
+            {/* Highlighted point: dot with a 2px surface ring and a direct label */}
+            <circle cx={hl.x} cy={hl.y} r={5} fill={COLOR_HIGHLIGHT} stroke={SURFACE} strokeWidth={2} />
+            <text
+              x={Math.min(hl.x, width - MARGIN.right - 24)}
+              y={hl.y - 12}
+              textAnchor="middle"
+              className="fill-text-primary text-xs font-semibold tabular-nums"
+            >
+              {formatValue(hl.value, unit)}
+            </text>
+            {a && active !== highlight && <circle cx={a.x} cy={a.y} r={4} fill={COLOR_LINE} stroke={SURFACE} strokeWidth={2} />}
+            {/* Crosshair capture layer: snaps to the nearest month */}
+            <rect
+              x={MARGIN.left - step / 2}
+              y={MARGIN.top}
+              width={innerW + step}
+              height={innerH}
+              fill="transparent"
+              onPointerMove={(e) => setActive(nearest(e.clientX, e.currentTarget.ownerSVGElement!.getBoundingClientRect()))}
+              onPointerLeave={() => setActive(null)}
+            />
+          </Frame>
+        </svg>
+        <p id={`${titleId}-hint`} className="sr-only">
+          Use the left and right arrow keys to read each month.
+        </p>
+        {a && <Tooltip x={a.x} y={a.y} width={width} label={a.label} value={formatValue(a.value, unit)} />}
+        <p className="sr-only" aria-live="polite">
+          {a ? `${a.label}: ${formatValue(a.value, unit)}` : ''}
+        </p>
+      </div>
+      <DataTable title={title} data={data} unit={unit} />
+    </figure>
+  )
+}
+
+export function GenBiChart({ result }: { result: GenBiResult }) {
+  const props = { title: result.title, data: result.data, unit: result.unit, highlight: result.highlight }
+  return result.chart === 'bar' ? <BarChart {...props} /> : <LineChart {...props} />
+}

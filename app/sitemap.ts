@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getHostedBlogPosts, getProjects } from '@/lib/content'
 import { SITE_URL } from '@/lib/site'
+import { LAB_ITEMS } from '@/lib/lab/items'
 
 type Entry = MetadataRoute.Sitemap[number]
 
@@ -33,5 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Only blog posts with a body are rendered on this site; the rest link out to LinkedIn
   const posts: Entry[] = getHostedBlogPosts().map((p) => ({ url: `${SITE_URL}/blog/${p.slug}`, lastModified: p.date, changeFrequency: 'yearly', priority: 0.5 }))
 
-  return [...pages, ...projects, ...posts]
+  const lab: Entry[] = LAB_ITEMS.map((item) => ({ url: `${SITE_URL}${item.href}`, changeFrequency: 'yearly', priority: 0.7 }))
+
+  return [...pages, ...projects, ...lab, ...posts]
 }
