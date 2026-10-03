@@ -1,0 +1,318 @@
+'use client'
+
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { Check, Copy, Play, RotateCcw, Timer } from 'lucide-react'
+import {
+  CAPACITY,
+  IMPACT_LABEL,
+  ITEMS,
+  PRODUCT,
+  PRODUCT_BLURB,
+  ROUND_SECONDS,
+  effortOf,
+  evaluate,
+  riceScore,
+  value,
+  type BacklogItem,
+  type Evaluation,
+} from '@/lib/lab/backlog'
+import { SITE_URL } from '@/lib/site'
+
+type Phase = 'intro' | 'playing' | 'done'
+
+const fmt = (n: number) => Math.round(n).toLocaleString('en-GB')
+
+function ItemFacts({ item }: { item: BacklogItem }) {
+  return (
+    <dl className="mt-2 grid grid-cols-4 gap-2 text-[11px]">
+      {[
+        ['Reach', `${fmt(item.reach)}/qtr`],
+        ['Impact', `${IMPACT_LABEL[item.impact]} (${item.impact})`],
+        ['Confidence', `${item.confidence * 100}%`],
+        ['Effort', `${item.effort} wks`],
+      ].map(([k, v]) => (
+        <div key={k} className="min-w-0">
+          <dt className="text-text-subtle uppercase tracking-wider text-[10px]">{k}</dt>
+          <dd className="text-text-primary font-mono tabular-nums truncate">{v}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
+
+export default function BacklogGame() {
+  const [phase, setPhase] = useState<Phase>('intro')
+  const [picked, setPicked] = useState<string[]>([])
+  const [remaining, setRemaining] = useState(ROUND_SECONDS)
+  const [result, setResult] = useState<Evaluation | null>(null)
+  const [announcement, setAnnouncement] = useState('')
+  const [copy, setCopy] = useState<'idle' | 'copied' | 'failed'>('idle')
+  const deadline = useRef(0)
+  // Mirror of `picked` for the timer callback, which must not read stale state
+  const pickedRef = useRef<string[]>([])
+  const resultRef = useRef<HTMLHeadingElement>(null)
+
+  const used = effortOf(picked)
+
+  const finish = useCallback((ids: string[]) => {
+    setResult(evaluate(ids))
+    setPhase('done')
+    requestAnimationFrame(() => resultRef.current?.focus())
+  }, [])
+
+  // Countdown from a fixed deadline so the timer stays accurate if a tick is delayed
+  useEffect(() => {
+    if (phase !== 'playing') return
+    const id = setInterval(() => {
+      const left = Math.max(0, Math.ceil((deadline.current - Date.now()) / 1000))
+      setRemaining(left)
+      if ([30, 10, 5].includes(left)) setAnnouncement(`${left} seconds left`)
+      if (left === 0) {
+        clearInterval(id)
+        setAnnouncement("Time's up")
+        finish(pickedRef.current)
+      }
+    }, 250)
+    return () => clearInterval(id)
+  }, [phase, finish])
+
+  function start() {
+    deadline.current = Date.now() + ROUND_SECONDS * 1000
+    pickedRef.current = []
+    setPicked([])
+    setResult(null)
+    setRemaining(ROUND_SECONDS)
+    setAnnouncement(`Round started. ${ROUND_SECONDS} seconds.`)
+    setCopy('idle')
+    setPhase('playing')
+  }
+
+  function toggle(id: string) {
+    const next = picked.includes(id) ? picked.filter((x) => x !== id) : [...picked, id]
+    if (effortOf(next) > CAPACITY) return
+    pickedRef.current = next
+    setPicked(next)
+  }
+
+  async function copyScore(r: Evaluation) {
+    const text = `I delivered ${r.score}% of the optimal value in Akash Jindal's 60-second RICE backlog game. Can you beat it? ${SITE_URL}/lab/backlog-game`
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopy('copied')
+    } catch {
+      setCopy('failed')
+    }
+  }
+
+  return (
+    <div className="flex flex-col gap-6">
+      <p className="sr-only" aria-live="polite">
+        {announcement}
+      </p>
+
+      {phase === 'intro' && (
+        <div className="rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-5 sm:p-6">
+          <h2 className="text-lg font-semibold text-text-primary">How it works</h2>
+          <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-sm text-text-secondary">
+            <li>
+              You own the backlog for {PRODUCT}, {PRODUCT_BLURB}. Your team has{' '}
+              <strong className="text-text-primary">{CAPACITY} person-weeks</strong> this quarter.
+            </li>
+            <li>Pick the items to build. Each shows Reach, Impact, Confidence and Effort. Selections can&apos;t exceed capacity.</li>
+            <li>
+              You have <strong className="text-text-primary">{ROUND_SECONDS} seconds</strong>. When time runs out, your plan is
+              scored against the RICE-optimal set.
+            </li>
+          </ol>
+          <button
+            type="button"
+            onClick={start}
+            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white hover:bg-violet-500 transition-all duration-200"
+          >
+            <Play className="h-4 w-4" aria-hidden="true" /> Start the 60-second round
+          </button>
+          <noscript>
+            <p className="mt-3 text-sm text-text-subtle">The game needs JavaScript to run.</p>
+          </noscript>
+        </div>
+      )}
+
+      {phase === 'playing' && (
+        <>
+          <div className="sticky top-16 z-20 rounded-xl border border-[#2A2A50] bg-[var(--surface)]/95 backdrop-blur p-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="flex items-center gap-2 font-mono text-lg text-text-primary tabular-nums" aria-label={`${remaining} seconds left`}>
+                <Timer className="h-5 w-5 text-violet-400" aria-hidden="true" />
+                0:{String(remaining).padStart(2, '0')}
+              </p>
+              <p className="text-sm text-text-secondary">
+                Capacity <span className="font-mono text-text-primary tabular-nums">{used}/{CAPACITY}</span> person-weeks
+              </p>
+              <button
+                type="button"
+                onClick={() => finish(picked)}
+                className="rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-500 transition-all duration-200"
+              >
+                Submit plan
+              </button>
+            </div>
+            <div
+              className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-[#2A2A50]"
+              role="progressbar"
+              aria-label="Capacity used"
+              aria-valuemin={0}
+              aria-valuemax={CAPACITY}
+              aria-valuenow={used}
+            >
+              <div
+                className="h-full rounded-full bg-violet-500 transition-[width] duration-200 motion-reduce:transition-none"
+                style={{ width: `${(used / CAPACITY) * 100}%` }}
+              />
+            </div>
+          </div>
+
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {ITEMS.map((item) => {
+              const on = picked.includes(item.id)
+              const fits = on || used + item.effort <= CAPACITY
+              return (
+                <li key={item.id}>
+                  <button
+                    type="button"
+                    onClick={() => toggle(item.id)}
+                    aria-disabled={!fits}
+                    aria-pressed={on}
+                    aria-describedby={!fits ? `${item.id}-nofit` : undefined}
+                    className={`w-full rounded-xl border p-4 text-left transition-all duration-200 ${
+                      on
+                        ? 'border-violet-500/70 bg-violet-500/10'
+                        : 'border-[#2A2A50] bg-[var(--surface)] hover:border-violet-500/30 hover:-translate-y-[2px]'
+                    } aria-disabled:cursor-not-allowed aria-disabled:opacity-50 aria-disabled:hover:translate-y-0 aria-disabled:hover:border-[#2A2A50]`}
+                  >
+                    <span className="flex items-start justify-between gap-3">
+                      <span className="font-semibold text-text-primary">{item.title}</span>
+                      <span
+                        className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border ${
+                          on ? 'border-violet-400 bg-violet-500 text-white' : 'border-[#2A2A50]'
+                        }`}
+                        aria-hidden="true"
+                      >
+                        {on && <Check className="h-3.5 w-3.5" />}
+                      </span>
+                    </span>
+                    <ItemFacts item={item} />
+                    {!fits && (
+                      <span id={`${item.id}-nofit`} className="mt-2 block text-xs text-text-subtle">
+                        Doesn&apos;t fit the remaining capacity
+                      </span>
+                    )}
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
+        </>
+      )}
+
+      {phase === 'done' && result && (
+        <Results result={result} resultRef={resultRef} copy={copy} onCopy={() => copyScore(result)} onReplay={start} />
+      )}
+    </div>
+  )
+}
+
+function Results({
+  result,
+  resultRef,
+  copy,
+  onCopy,
+  onReplay,
+}: {
+  result: Evaluation
+  resultRef: React.RefObject<HTMLHeadingElement | null>
+  copy: 'idle' | 'copied' | 'failed'
+  onCopy: () => void
+  onReplay: () => void
+}) {
+  const rows = [...ITEMS].sort((a, b) => riceScore(b) - riceScore(a))
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-5 sm:p-6">
+        <h2 ref={resultRef} tabIndex={-1} className="text-xs uppercase tracking-widest text-violet-400 outline-none">
+          Your result
+        </h2>
+        <p className="mt-2 text-5xl font-bold text-text-primary">{result.score}%</p>
+        <p className="mt-1 text-sm text-text-secondary">
+          of the optimal value delivered ({fmt(result.pickedValue)} of {fmt(result.optimalValue)} expected impact points,{' '}
+          {CAPACITY - result.unused}/{CAPACITY} person-weeks used)
+        </p>
+        <ul className="mt-5 space-y-2">
+          {result.insights.map((text) => (
+            <li key={text} className="flex gap-2 text-sm leading-relaxed text-text-secondary">
+              <span className="text-violet-400" aria-hidden="true">›</span>
+              <span>{text}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <button
+            type="button"
+            onClick={onCopy}
+            className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-violet-500 transition-all duration-200"
+          >
+            {copy === 'copied' ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
+            {copy === 'copied' ? 'Score copied' : 'Copy my score'}
+          </button>
+          <button
+            type="button"
+            onClick={onReplay}
+            className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] px-5 py-2.5 text-sm text-text-secondary hover:border-violet-500/60 hover:text-violet-400 transition-all duration-200"
+          >
+            <RotateCcw className="h-4 w-4" aria-hidden="true" /> Play again
+          </button>
+        </div>
+        <p className="sr-only" aria-live="polite">
+          {copy === 'copied' ? 'Score copied to clipboard' : ''}
+        </p>
+        {copy === 'failed' && (
+          <p className="mt-2 text-xs text-text-subtle" role="status">
+            Couldn&apos;t access the clipboard. Your score: {result.score}% of the optimal value.
+          </p>
+        )}
+      </div>
+
+      <div className="rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-5 sm:p-6">
+        <h2 className="text-lg font-semibold text-text-primary">The numbers behind it</h2>
+        <p className="mt-1 text-sm text-text-secondary">
+          Expected impact = Reach × Impact × Confidence. RICE score = expected impact ÷ effort.
+        </p>
+        <div className="mt-4 overflow-x-auto rounded-lg border border-[#2A2A50]">
+          <table className="w-full min-w-[520px] text-left text-sm">
+            <thead>
+              <tr className="border-b border-[#2A2A50] text-[11px] uppercase tracking-wider text-text-subtle">
+                <th scope="col" className="px-3 py-2 font-medium">Item</th>
+                <th scope="col" className="px-3 py-2 font-medium text-right">Impact pts</th>
+                <th scope="col" className="px-3 py-2 font-medium text-right">Effort</th>
+                <th scope="col" className="px-3 py-2 font-medium text-right">RICE</th>
+                <th scope="col" className="px-3 py-2 font-medium">You</th>
+                <th scope="col" className="px-3 py-2 font-medium">Optimal</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((item) => (
+                <tr key={item.id} className="border-b border-[#2A2A50] last:border-0">
+                  <th scope="row" className="px-3 py-2 font-normal text-text-primary">{item.title}</th>
+                  <td className="px-3 py-2 text-right font-mono tabular-nums text-text-secondary">{fmt(value(item))}</td>
+                  <td className="px-3 py-2 text-right font-mono tabular-nums text-text-secondary">{item.effort}</td>
+                  <td className="px-3 py-2 text-right font-mono tabular-nums text-text-primary">{fmt(riceScore(item))}</td>
+                  <td className="px-3 py-2 text-text-secondary">{result.picked.includes(item.id) ? '✓ picked' : '—'}</td>
+                  <td className="px-3 py-2 text-violet-300">{result.optimal.includes(item.id) ? '✓ build' : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  )
+}
