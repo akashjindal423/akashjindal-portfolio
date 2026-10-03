@@ -4,26 +4,26 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 const tools = [
-  { id: 1, name: "PRD Template", category: "Discovery", emoji: "📄", desc: "The product requirements document I use for every feature I ship. Forces problem-first thinking with built-in scope controls.", tagline: "Problem first. Solution second.", downloads: "2.4K", linkedinHook: "I've open-sourced the PRD template I use for every feature I ship.", downloadHref: "/downloads/pm-toolkit/prd-one-pager.pdf" },
-  { id: 2, name: "RICE Calculator", category: "Prioritisation", emoji: "🧮", desc: "Scoring framework with guardrails that prevent the 3 most common inflation mistakes POs make when prioritising backlogs.", tagline: "Objective prioritisation, honest scoring.", downloads: "1.8K", linkedinHook: "RICE scoring is the most popular prioritisation framework — and the most misused.", downloadHref: "/downloads/pm-toolkit/rice-scoring.pdf" },
-  { id: 3, name: "Stakeholder Canvas", category: "Stakeholders", emoji: "🗺️", desc: "Power × Interest mapping with communication plan and influence map. Know who to convince first to unblock decisions.", tagline: "Manage people, not just products.", downloads: "1.5K", linkedinHook: "The stakeholder map that changed how I manage products.", downloadHref: "/downloads/pm-toolkit/stakeholder-map.pdf" },
-  { id: 4, name: "Retro Board", category: "Delivery", emoji: "🔄", desc: "Sprint retrospective with a max-3-actions constraint, previous sprint accountability check, and team health pulse.", tagline: "Max 3 actions. Zero excuses.", downloads: "2.1K", linkedinHook: "Your sprint retros are broken if you leave with more than 3 action items.", downloadHref: "/downloads/pm-toolkit/sprint-retrospective.pdf" },
-  { id: 5, name: "OKR Tracker", category: "Strategy", emoji: "🎯", desc: "Objective and Key Result tracker with scoring guide, common mistakes section, and the golden rule: KRs measure outcomes, not outputs.", tagline: "Outcomes, not outputs.", downloads: "1.9K", linkedinHook: "'Launch feature X' is NOT a Key Result. It's a task.", downloadHref: "/downloads/pm-toolkit/okr-planning.pdf" },
-  { id: 6, name: "User Story Kit", category: "Discovery", emoji: "✍️", desc: "Complete workshop kit: story format, Given/When/Then acceptance criteria, INVEST checklist, story mapping board, DoR and DoD.", tagline: "Stories worth reading.", downloads: "1.7K", linkedinHook: "The 'So that' clause is the most important part of a user story.", downloadHref: "/downloads/pm-toolkit/user-story-kit.pdf" },
-  { id: 7, name: "Vision Board", category: "Strategy", emoji: "🌟", desc: "One-page product vision canvas: Target Group, Needs, Product, Business Goals — anchored by a single inspiring vision statement.", tagline: "One page. Total clarity.", downloads: "1.3K", linkedinHook: "A product vision should fit on one page.", downloadHref: "/downloads/pm-toolkit/product-vision-board.pdf" },
-  { id: 8, name: "Opportunity Solution Tree", category: "Discovery", emoji: "🌳", desc: "Teresa Torres-inspired framework: Outcome → Opportunities → Solutions → Experiments. Prevents jumping to pet solutions.", tagline: "Explore before you commit.", downloads: "1.6K", linkedinHook: "The Opportunity Solution Tree is the most underused framework in PM.", downloadHref: "/downloads/pm-toolkit/impact-effort-matrix.pdf" },
-  { id: 9, name: "MoSCoW Matrix", category: "Prioritisation", emoji: "🚦", desc: "Must/Should/Could/Won't prioritisation with validation rules. The Won't Have list prevents scope creep conversations.", tagline: "Explicit trade-offs. No surprises.", downloads: "1.4K", linkedinHook: "MoSCoW prioritisation in 30 seconds.", downloadHref: "/downloads/pm-toolkit/moscow-prioritisation.pdf" },
-  { id: 10, name: "JTBD Canvas", category: "Research", emoji: "💡", desc: "Jobs To Be Done canvas breaking every job into functional, emotional, and social layers. With switching triggers and hiring criteria.", tagline: "People hire products for a job.", downloads: "1.2K", linkedinHook: "People don't buy products. They hire them to do a job.", downloadHref: "/downloads/pm-toolkit/jtbd-canvas.pdf" },
-  { id: 11, name: "Metrics Dashboard", category: "Measurement", emoji: "📊", desc: "North Star + AARRR pirate metrics framework. Acquisition, Activation, Retention, Revenue, Referral — with the right KPIs for each.", tagline: "Track what matters.", downloads: "2.0K", linkedinHook: "Every product team tracks metrics. Very few track the RIGHT metrics.", downloadHref: "/downloads/pm-toolkit/north-star-metrics.pdf" },
-  { id: 12, name: "Competitive Analysis", category: "Strategy", emoji: "🔍", desc: "Market overview, feature comparison matrix, 2×2 positioning map, and strategic implications. Analysis that leads to action.", tagline: "Find the white space.", downloads: "1.1K", linkedinHook: "A competitive analysis that's just a feature table is useless.", downloadHref: "/downloads/pm-toolkit/competitive-analysis.pdf" },
-  { id: 13, name: "GTM Checklist", category: "Delivery", emoji: "🚀", desc: "20-item go-to-market checklist across 4 phases: Pre-Launch, Launch Week, Launch Day, Post-Launch. Never miss a launch step again.", tagline: "Launch without chaos.", downloads: "1.8K", linkedinHook: "Launching a feature without a GTM checklist is like deploying without tests.", downloadHref: "/downloads/pm-toolkit/gtm-launch-checklist.pdf" },
-  { id: 14, name: "A/B Test Hypothesis", category: "Measurement", emoji: "🧪", desc: "Structured hypothesis template: Change → Segment → Outcome → Rationale. With decision framework for ship/revert/stop.", tagline: "Test with intention.", downloads: "950", linkedinHook: "Most A/B tests fail because the hypothesis is weak.", downloadHref: "/downloads/pm-toolkit/ab-test-hypothesis.pdf" },
-  { id: 15, name: "1-Page Brief", category: "Discovery", emoji: "📝", desc: "Problem (3 sentences), Evidence (3 data points), Proposal (3 sentences), Metrics (2), Risks (2). For when a full PRD is overkill.", tagline: "Pitch any idea in one page.", downloads: "2.3K", linkedinHook: "Not every idea needs a 10-page PRD.", downloadHref: "/downloads/pm-toolkit/feedback-synthesis.pdf" },
-  { id: 16, name: "Sprint Planning Guide", category: "Delivery", emoji: "📋", desc: "Facilitator guide with strict 60-minute time-box, capacity formula, and 5 anti-patterns to watch for during planning.", tagline: "60 minutes. No more.", downloads: "1.3K", linkedinHook: "Sprint planning should take 60 minutes.", downloadHref: "/downloads/pm-toolkit/sprint-planning.pdf" },
-  { id: 17, name: "Comms Plan", category: "Stakeholders", emoji: "📣", desc: "Stakeholder × Channel × Frequency matrix with escalation protocol. Different stakeholders need different things.", tagline: "Right message, right person, right time.", downloads: "1.0K", linkedinHook: "Different stakeholders need different things at different frequencies.", downloadHref: "/downloads/pm-toolkit/aarrr-pirate-metrics.pdf" },
-  { id: 18, name: "Roadmap (Now/Next/Later)", category: "Strategy", emoji: "🗺️", desc: "Priority-based roadmap replacing Gantt charts. Now = committed, Next = planned, Later = exploring. Honest about confidence.", tagline: "Priority, not false precision.", downloads: "2.5K", linkedinHook: "Stop using Gantt charts for product roadmaps.", downloadHref: "/downloads/pm-toolkit/now-next-later-roadmap.pdf" },
-  { id: 19, name: "Decision Log", category: "Delivery", emoji: "📒", desc: "Track every product decision with context, options considered, rationale, and review triggers. Institutional memory for your team.", tagline: "Never lose context again.", downloads: "880", linkedinHook: "The most underrated PM document: a decision log.", downloadHref: "/downloads/pm-toolkit/decision-log.pdf" },
-  { id: 20, name: "Interview Prep Kit", category: "Career", emoji: "🎯", desc: "STAR story bank (10 competencies × 2 stories), CIRCLES framework for product cases, estimation framework, and interviewer questions.", tagline: "20 stories. Zero blanks.", downloads: "3.1K", linkedinHook: "I interviewed at 4 companies and got offers at all of them.", downloadHref: "/downloads/pm-toolkit/pm-interview-prep.pdf" },
+  { id: 1, name: "PRD Template", category: "Discovery", emoji: "📄", desc: "The product requirements document I use for every feature I ship. Forces problem-first thinking with built-in scope controls.", tagline: "Problem first. Solution second.", downloadHref: "/downloads/pm-toolkit/prd-one-pager.pdf" },
+  { id: 2, name: "RICE Calculator", category: "Prioritisation", emoji: "🧮", desc: "Scoring framework with guardrails that prevent the 3 most common inflation mistakes POs make when prioritising backlogs.", tagline: "Objective prioritisation, honest scoring.", downloadHref: "/downloads/pm-toolkit/rice-scoring.pdf" },
+  { id: 3, name: "Stakeholder Canvas", category: "Stakeholders", emoji: "🗺️", desc: "Power × Interest mapping with communication plan and influence map. Know who to convince first to unblock decisions.", tagline: "Manage people, not just products.", downloadHref: "/downloads/pm-toolkit/stakeholder-map.pdf" },
+  { id: 4, name: "Retro Board", category: "Delivery", emoji: "🔄", desc: "Sprint retrospective with a max-3-actions constraint, previous sprint accountability check, and team health pulse.", tagline: "Max 3 actions. Zero excuses.", downloadHref: "/downloads/pm-toolkit/sprint-retrospective.pdf" },
+  { id: 5, name: "OKR Tracker", category: "Strategy", emoji: "🎯", desc: "Objective and Key Result tracker with scoring guide, common mistakes section, and the golden rule: KRs measure outcomes, not outputs.", tagline: "Outcomes, not outputs.", downloadHref: "/downloads/pm-toolkit/okr-planning.pdf" },
+  { id: 6, name: "User Story Kit", category: "Discovery", emoji: "✍️", desc: "Complete workshop kit: story format, Given/When/Then acceptance criteria, INVEST checklist, story mapping board, DoR and DoD.", tagline: "Stories worth reading.", downloadHref: "/downloads/pm-toolkit/user-story-kit.pdf" },
+  { id: 7, name: "Vision Board", category: "Strategy", emoji: "🌟", desc: "One-page product vision canvas: Target Group, Needs, Product, Business Goals — anchored by a single inspiring vision statement.", tagline: "One page. Total clarity.", downloadHref: "/downloads/pm-toolkit/product-vision-board.pdf" },
+  { id: 8, name: "Impact-Effort Matrix", category: "Prioritisation", emoji: "⚖️", desc: "2×2 grid that sorts ideas into Quick Wins, Big Bets, Fill-ins and Money Pits, with a guide to what to do with each quadrant.", tagline: "Quick wins first, money pits never.", downloadHref: "/downloads/pm-toolkit/impact-effort-matrix.pdf" },
+  { id: 9, name: "MoSCoW Matrix", category: "Prioritisation", emoji: "🚦", desc: "Must/Should/Could/Won't prioritisation with validation rules. The Won't Have list prevents scope creep conversations.", tagline: "Explicit trade-offs. No surprises.", downloadHref: "/downloads/pm-toolkit/moscow-prioritisation.pdf" },
+  { id: 10, name: "JTBD Canvas", category: "Research", emoji: "💡", desc: "Jobs To Be Done canvas breaking every job into functional, emotional, and social layers. With switching triggers and hiring criteria.", tagline: "People hire products for a job.", downloadHref: "/downloads/pm-toolkit/jtbd-canvas.pdf" },
+  { id: 11, name: "North Star Metrics", category: "Measurement", emoji: "📊", desc: "One North Star metric with its definition and target, leading input metrics for acquisition, engagement and retention, and guard-rail metrics that must not worsen.", tagline: "Track what matters.", downloadHref: "/downloads/pm-toolkit/north-star-metrics.pdf" },
+  { id: 12, name: "Competitive Analysis", category: "Strategy", emoji: "🔍", desc: "Market overview, feature comparison matrix, 2×2 positioning map, and strategic implications. Analysis that leads to action.", tagline: "Find the white space.", downloadHref: "/downloads/pm-toolkit/competitive-analysis.pdf" },
+  { id: 13, name: "GTM Checklist", category: "Delivery", emoji: "🚀", desc: "20-item go-to-market checklist across 4 phases: Pre-Launch, Launch Week, Launch Day, Post-Launch. Never miss a launch step again.", tagline: "Launch without chaos.", downloadHref: "/downloads/pm-toolkit/gtm-launch-checklist.pdf" },
+  { id: 14, name: "A/B Test Hypothesis", category: "Measurement", emoji: "🧪", desc: "Structured hypothesis template: Change → Segment → Outcome → Rationale. With decision framework for ship/revert/stop.", tagline: "Test with intention.", downloadHref: "/downloads/pm-toolkit/ab-test-hypothesis.pdf" },
+  { id: 15, name: "Feedback Synthesis", category: "Research", emoji: "🗣️", desc: "Turn research notes into findings: an observation log with theme, frequency and severity, three affinity clusters, top three findings and next actions.", tagline: "From raw quotes to clear findings.", downloadHref: "/downloads/pm-toolkit/feedback-synthesis.pdf" },
+  { id: 16, name: "Sprint Planning Guide", category: "Delivery", emoji: "📋", desc: "Facilitator guide with strict 60-minute time-box, capacity formula, and 5 anti-patterns to watch for during planning.", tagline: "60 minutes. No more.", downloadHref: "/downloads/pm-toolkit/sprint-planning.pdf" },
+  { id: 17, name: "AARRR Pirate Metrics", category: "Measurement", emoji: "🏴‍☠️", desc: "Map the funnel across Acquisition, Activation, Retention, Referral and Revenue: current metric, target, lever and owner per stage, plus conversion rates and the biggest leak.", tagline: "Find where users drop off.", downloadHref: "/downloads/pm-toolkit/aarrr-pirate-metrics.pdf" },
+  { id: 18, name: "Roadmap (Now/Next/Later)", category: "Strategy", emoji: "🗺️", desc: "Priority-based roadmap replacing Gantt charts. Now = committed, Next = planned, Later = exploring. Honest about confidence.", tagline: "Priority, not false precision.", downloadHref: "/downloads/pm-toolkit/now-next-later-roadmap.pdf" },
+  { id: 19, name: "Decision Log", category: "Delivery", emoji: "📒", desc: "Track every product decision with context, options considered, rationale, and review triggers. Institutional memory for your team.", tagline: "Never lose context again.", downloadHref: "/downloads/pm-toolkit/decision-log.pdf" },
+  { id: 20, name: "Interview Prep Kit", category: "Career", emoji: "🎯", desc: "STAR story bank (10 competencies × 2 stories), CIRCLES framework for product cases, estimation framework, and interviewer questions.", tagline: "20 stories. Zero blanks.", downloadHref: "/downloads/pm-toolkit/pm-interview-prep.pdf" },
 ]
 
 const categories = ["All", "Discovery", "Prioritisation", "Strategy", "Delivery", "Measurement", "Stakeholders", "Research", "Career"]
@@ -167,7 +167,6 @@ export default function ToolkitPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map(tool => {
               const badgeClass = categoryBadge[tool.category] ?? "text-violet-400 bg-violet-400/10 border-violet-400/20"
-              const isMostPopular = tool.id === 18 || tool.id === 20
 
               return (
                 <div key={tool.id} className="flex flex-col">
@@ -176,11 +175,6 @@ export default function ToolkitPage() {
                     <div className="flex items-start justify-between gap-2">
                       <span className="text-3xl">{tool.emoji}</span>
                       <div className="flex items-center gap-2 flex-wrap justify-end">
-                        {isMostPopular && (
-                          <span className="text-xs px-2 py-0.5 rounded-full border bg-amber-500/10 text-amber-400 border-amber-500/20">
-                            ⭐ Most Popular
-                          </span>
-                        )}
                         <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${badgeClass}`}>
                           {tool.category}
                         </span>
@@ -228,12 +222,12 @@ export default function ToolkitPage() {
             {
               icon: "🎯",
               title: "Prioritise Without Politics",
-              body: "RICE, MoSCoW, and the Opportunity Solution Tree give you a defensible, data-backed answer when everyone has an opinion on what to build next.",
+              body: "RICE, MoSCoW, and the Impact-Effort Matrix give you a defensible, data-backed answer when everyone has an opinion on what to build next.",
             },
             {
               icon: "🤝",
               title: "Manage Up, Down, and Sideways",
-              body: "The Stakeholder Canvas and Comms Plan template cover the meetings, escalations, and relationships that don't appear on any roadmap.",
+              body: "The Stakeholder Canvas and its built-in comms plan cover the meetings, escalations, and relationships that don't appear on any roadmap.",
             },
             {
               icon: "🔍",
@@ -253,7 +247,7 @@ export default function ToolkitPage() {
             {
               icon: "🚀",
               title: "Communicate With Clarity",
-              body: "The 1-Page Brief and Now/Next/Later Roadmap replace 30-slide decks with one page of honest, confidence-weighted thinking.",
+              body: "The PRD one-pager and Now/Next/Later Roadmap replace 30-slide decks with one page of honest, confidence-weighted thinking.",
             },
           ].map(card => (
             <div
