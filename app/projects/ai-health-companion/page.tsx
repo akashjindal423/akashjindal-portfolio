@@ -10,6 +10,7 @@ export const metadata = pageMetadata({
   description:
     'A passion project exploring AI-powered personalised wellness — posture-aware exercise guidance, culturally relevant nutrition, and preventive health coaching.',
   path: '/projects/ai-health-companion',
+  image: '/projects/ai-health-companion/opengraph-image',
 })
 
 const personas = [

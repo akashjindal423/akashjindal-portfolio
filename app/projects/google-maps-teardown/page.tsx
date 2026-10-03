@@ -7,6 +7,7 @@ export const metadata = pageMetadata({
   description:
     'A deep-dive PM analysis of Google Maps — competitive moat, monetisation flywheel, Local Guides ecosystem, Gemini AI features, and three feature proposals with RICE prioritisation.',
   path: '/projects/google-maps-teardown',
+  image: '/projects/google-maps-teardown/opengraph-image',
   ogType: 'article',
 })
 
