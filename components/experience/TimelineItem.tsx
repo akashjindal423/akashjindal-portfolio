@@ -5,6 +5,8 @@ import { Experience } from '@/lib/types'
 interface Props {
   experience: Experience
   isLast: boolean
+  /** Show only the first two achievements (homepage summary). */
+  compact?: boolean
 }
 
 function formatDate(ym: string) {
@@ -15,7 +17,7 @@ function formatDate(ym: string) {
   })
 }
 
-export default function TimelineItem({ experience, isLast }: Props) {
+export default function TimelineItem({ experience, isLast, compact = false }: Props) {
   const { role, company, location, startDate, endDate, current, summary, achievements, tools } =
     experience
 
@@ -56,9 +58,9 @@ export default function TimelineItem({ experience, isLast }: Props) {
         {/* Summary */}
         <p className="text-text-secondary text-sm mt-3 leading-relaxed">{summary}</p>
 
-        {/* Achievements (first 2) */}
+        {/* Achievements */}
         <ul className="mt-3 space-y-1">
-          {achievements.slice(0, 2).map((a) => (
+          {(compact ? achievements.slice(0, 2) : achievements).map((a) => (
             <li key={a} className="flex gap-2 items-start text-sm text-text-secondary">
               <ChevronRight className="w-3 h-3 mt-1 flex-shrink-0 text-violet-400" />
               {a}

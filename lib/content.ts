@@ -95,10 +95,9 @@ export function getExperience(): Experience[] {
       summary:
         'Driving innovation at the intersection of data, compliance, and cloud transformation within one of the UK\'s leading financial institutions.',
       achievements: [
-        'Led strategic regulatory data initiatives — enhanced reporting accuracy, risk transparency, and compliance posture',
-        'Contributed to AI Centre of Excellence (AI CoE) — enabling scalable, AI-driven solutions across functions',
-        'Enabled cloud-led digital transformation — migrated key data assets from on-premise to Google Cloud Platform (GCP)',
-        'Streamlined product delivery across squads in SAFe environment — Epics, Stories, and delivery priorities',
+        'Product Owner for Gen BI in the AI Centre of Excellence, replacing manual reports with reporting colleagues can question in plain English',
+        'Supported Gen BI use cases for four business areas',
+        'Cut dependency on manually produced reports by moving recurring requests to self-serve answers',
       ],
       tools: ['GCP', 'BigQuery', 'SAFe', 'Jira', 'Confluence', 'SQL', 'Data Engineering'],
       order: 1,
@@ -191,7 +190,7 @@ export function getProjects(): ProjectsData {
         slug: 'lloyds-gen-bi',
         company: 'Lloyds Banking Group',
         title: 'Gen BI Initiative',
-        description: 'Modernising traditional dashboards and reporting tools to make them Generative BI enabled — transforming how colleagues and customers interact with financial data across the bank.',
+        description: 'Product Owner for Gen BI in the AI Centre of Excellence: replacing manual reports with reporting colleagues can question in plain English, supporting use cases for four business areas, and moving recurring requests to self-serve answers.',
         tags: ['Gen BI', 'AI', 'GCP', 'Data', 'Banking'],
         period: 'Aug 2023 – Present',
         companyColor: 'from-green-500/10 to-emerald-500/10',

@@ -31,7 +31,7 @@ export default function ExperienceHighlights() {
       <div>
         {items.map((exp, i) => (
           <AnimatedEntry key={exp.slug} delay={i * 0.1}>
-            <TimelineItem experience={exp} isLast={i === items.length - 1} />
+            <TimelineItem experience={exp} isLast={i === items.length - 1} compact />
           </AnimatedEntry>
         ))}
       </div>
