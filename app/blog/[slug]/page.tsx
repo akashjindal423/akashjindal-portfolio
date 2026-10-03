@@ -11,6 +11,7 @@ import Badge from '@/components/shared/Badge'
 import PostCard from '@/components/blog/PostCard'
 import MDXContent from '@/components/blog/MDXContent'
 import CopyLinkButton from '@/components/blog/CopyLinkButton'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = getBlogPostBySlug(slug)
   if (!post) return {}
-  return { title: post.title, description: post.excerpt }
+  return pageMetadata({ title: post.title, description: post.excerpt, path: `/blog/${slug}`, ogType: 'article' })
 }
 
 export async function generateStaticParams() {

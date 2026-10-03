@@ -2,6 +2,14 @@ import { Search, Code2, TrendingUp } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import SkillIconGrid from '@/components/sections/SkillIconGrid'
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'Skills',
+  description:
+    'Skills of Akash Jindal across AI and data (Gen AI, Gen BI, Google Cloud, BigQuery), product strategy and agile delivery.',
+  path: '/skills',
+})
 
 const howIWork = [
   {

@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { ThemeProvider } from '@/features/theme'
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/site'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -20,14 +21,10 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
 })
 
-const TITLE = 'Akash Jindal — AI Product Owner | GenAI and Gen BI'
-const DESCRIPTION =
-  "AI Product Owner at Lloyds Banking Group's AI Centre of Excellence, building Generative AI and Gen BI products. Previously Dyson and Sony PlayStation. Bristol, UK."
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://akashjindal.com'),
-  title: { default: TITLE, template: '%s | Akash Jindal' },
-  description: DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: '%s | Akash Jindal' },
+  description: SITE_DESCRIPTION,
   keywords: [
     'Akash Jindal',
     'AI Product Owner',
@@ -44,16 +41,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://akashjindal.com',
+    url: SITE_URL,
     siteName: 'Akash Jindal',
-    title: TITLE,
-    description: DESCRIPTION,
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: TITLE }],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: SITE_TITLE }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: TITLE,
-    description: DESCRIPTION,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ['/og-image.png'],
   },
   robots: { index: true, follow: true },

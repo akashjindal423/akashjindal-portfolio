@@ -4,6 +4,14 @@ import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import Badge from '@/components/shared/Badge'
 import { getTraining } from '@/lib/content'
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'Training and Certifications',
+  description:
+    'Certifications held by Akash Jindal, including Google Generative AI Leader, Google Associate Cloud Engineer and Scrum.org PSPO II.',
+  path: '/training',
+})
 
 function formatYM(ym: string) {
   const [year, month] = ym.split('-')

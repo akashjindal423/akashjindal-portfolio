@@ -1,12 +1,14 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import Badge from '@/components/shared/Badge'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Google Maps Product Teardown | Akash Jindal',
+export const metadata = pageMetadata({
+  title: 'Google Maps Product Teardown',
   description:
     'A deep-dive PM analysis of Google Maps — competitive moat, monetisation flywheel, Local Guides ecosystem, Gemini AI features, and three feature proposals with RICE prioritisation.',
-}
+  path: '/projects/google-maps-teardown',
+  ogType: 'article',
+})
 
 export default function GoogleMapsTeardownPage() {
   return (

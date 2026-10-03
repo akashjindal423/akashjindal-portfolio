@@ -4,6 +4,14 @@ import { Briefcase } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import AboutStats from '@/components/shared/AboutStats'
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'About',
+  description:
+    "Akash Jindal is an AI Product Owner in Lloyds Banking Group's AI Centre of Excellence, with earlier product roles at Dyson, SSE and Sony Interactive Entertainment. Based in Bristol, UK.",
+  path: '/about',
+})
 
 export default function AboutPage() {
   return (

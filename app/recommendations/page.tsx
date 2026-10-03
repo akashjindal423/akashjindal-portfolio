@@ -1,6 +1,14 @@
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import { getTestimonials } from '@/lib/content'
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'Recommendations',
+  description:
+    'LinkedIn recommendations for Akash Jindal from managers, mentors and colleagues at IBM, Delta Air Lines and elsewhere.',
+  path: '/recommendations',
+})
 
 function initials(name: string) {
   return name

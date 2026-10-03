@@ -3,6 +3,14 @@ import SectionWrapper from '@/components/shared/SectionWrapper'
 import TimelineItem from '@/components/experience/TimelineItem'
 import Badge from '@/components/shared/Badge'
 import { getExperience } from '@/lib/content'
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'Experience',
+  description:
+    'Career history of Akash Jindal: Product Owner at Lloyds Banking Group, Dyson, SSE and Sony Interactive Entertainment, after consulting at Infosys.',
+  path: '/experience',
+})
 
 export default function ExperiencePage() {
   const experiences = getExperience()

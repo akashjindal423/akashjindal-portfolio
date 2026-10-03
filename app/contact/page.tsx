@@ -2,6 +2,14 @@ import { Clock, Linkedin, Mail, Briefcase } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import ContactForm from '@/components/contact/ContactForm'
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'Contact',
+  description:
+    'Get in touch with Akash Jindal by email or LinkedIn about AI product roles, collaboration or speaking.',
+  path: '/contact',
+})
 
 export default function ContactPage() {
   return (

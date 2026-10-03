@@ -6,6 +6,15 @@ import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
 import SkillsSnapshot from '@/components/home/SkillsSnapshot'
 import TrainingHighlights from '@/components/home/TrainingHighlights'
 import LatestPosts from '@/components/home/LatestPosts'
+import { pageMetadata } from '@/lib/seo'
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/site'
+
+export const metadata = pageMetadata({
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  path: '/',
+  absoluteTitle: true,
+})
 
 export default function HomePage() {
   return (

@@ -1,15 +1,16 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import Badge from '@/components/shared/Badge'
 import PersonaCard from '@/components/projects/PersonaCard'
 import MetricCard from '@/components/projects/MetricCard'
 import RoadmapPhase from '@/components/projects/RoadmapPhase'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'AI Health Companion | Akash Jindal',
+export const metadata = pageMetadata({
+  title: 'AI Health Companion',
   description:
     'A passion project exploring AI-powered personalised wellness — posture-aware exercise guidance, culturally relevant nutrition, and preventive health coaching.',
-}
+  path: '/projects/ai-health-companion',
+})
 
 const personas = [
   {
