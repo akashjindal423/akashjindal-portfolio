@@ -3,22 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumbs from '@/components/shared/Breadcrumbs'
-
-// ── Terminal row data ──────────────────────────────────────────────────────────
-const terminalRows = [
-  { dim: 'Role Definition',       score: '1/5', status: '⚠ CRITICAL', type: 'critical' },
-  { dim: 'Task Clarity',          score: '2/5', status: '▲ LOW',       type: 'low' },
-  { dim: 'Output Format',         score: '1/5', status: '⚠ CRITICAL', type: 'critical' },
-  { dim: 'Input Specification',   score: '1/5', status: '⚠ CRITICAL', type: 'critical' },
-  { dim: 'Constraints',           score: '2/5', status: '▲ LOW',       type: 'low' },
-  { dim: 'Examples (Few-shot)',    score: '1/5', status: '⚠ CRITICAL', type: 'critical' },
-  { dim: 'Tone & Style',          score: '2/5', status: '▲ LOW',       type: 'low' },
-  { dim: 'Edge Cases',            score: '1/5', status: '⚠ CRITICAL', type: 'critical' },
-  { dim: 'Reasoning Instructions',score: '1/5', status: '⚠ CRITICAL', type: 'critical' },
-  { dim: 'Context Management',    score: '2/5', status: '▲ LOW',       type: 'low' },
-  { dim: 'Specificity Balance',   score: '3/5', status: '● MEDIUM',    type: 'medium' },
-  { dim: 'Token Efficiency',      score: '4/5', status: '✓ GOOD',      type: 'good' },
-]
+import { STATUS, counts, overallScore, recordedScores, scoreTotal, terminalRows } from '@/lib/projects/promptlab-example'
 
 // ── Dimension cards ────────────────────────────────────────────────────────────
 const dimensions = [
@@ -184,9 +169,12 @@ export default function PromptLabPage() {
 
       {/* ── TERMINAL DEMO ─────────────────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Live Demo</p>
-        <h2 className="text-2xl font-bold text-text-primary mb-2">See It In Action</h2>
-        <p className="text-sm text-text-muted mb-6">Real output from <code className="font-mono text-violet-400">promptlab analyse</code> on a weak prompt.</p>
+        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Recorded example</p>
+        <h2 className="text-2xl font-bold text-text-primary mb-2">What the analysis looks like</h2>
+        <p className="text-sm text-text-muted mb-6">
+          A recorded example of <code className="font-mono text-violet-400">promptlab analyse</code> on a weak prompt,
+          shown as static text. Nothing runs on this page.
+        </p>
 
         {/* Terminal window */}
         <div className="rounded-2xl overflow-hidden border border-[#2A2A50] shadow-2xl">
@@ -211,7 +199,7 @@ export default function PromptLabPage() {
             <div className="mt-4">
               <p className="text-white">
                 Overall Score:{' '}
-                <span className="text-amber-400 font-bold">2.1 / 5.0</span>
+                <span className="text-amber-400 font-bold">{overallScore.toFixed(2)} / 5.0</span>
                 <span className="text-text-subtle"> ────────────────────</span>
                 <span className="text-amber-400 font-semibold"> NEEDS WORK</span>
               </p>
@@ -244,7 +232,7 @@ export default function PromptLabPage() {
                       {row.dim}
                     </span>
                     <span className={`w-16 shrink-0 font-semibold ${isGood ? 'text-emerald-400' : isCritical ? 'text-red-400' : 'text-[#c9d1d9]'}`}>
-                      {row.score}
+                      {row.score}/5
                     </span>
                     <span className={
                       isCritical ? 'text-red-400' :
@@ -252,7 +240,7 @@ export default function PromptLabPage() {
                       isMedium   ? 'text-amber-400' :
                                    'text-[#8b949e]'
                     }>
-                      {row.status}
+                      {STATUS[row.type]}
                     </span>
                   </div>
                 )
@@ -260,13 +248,13 @@ export default function PromptLabPage() {
             </div>
 
             <p className="mt-4 text-[#8b949e] text-xs">
-              <span className="text-red-400">5 critical issues</span>
+              <span className="text-red-400">{counts.critical} critical {counts.critical === 1 ? 'issue' : 'issues'}</span>
               {' · '}
-              <span className="text-[#8b949e]">4 low</span>
+              <span className="text-[#8b949e]">{counts.low} low</span>
               {' · '}
-              <span className="text-amber-400">1 medium</span>
+              <span className="text-amber-400">{counts.medium} medium</span>
               {' · '}
-              <span className="text-emerald-400">1 good</span>
+              <span className="text-emerald-400">{counts.good} good</span>
             </p>
 
             <p className="mt-3 text-violet-400 text-xs">
@@ -274,6 +262,11 @@ export default function PromptLabPage() {
             </p>
           </div>
         </div>
+        <p className="mt-3 text-xs text-text-muted">
+          On this page the overall score is the unweighted mean of the {recordedScores.length} dimension scores ({scoreTotal} ÷{' '}
+          {recordedScores.length} = {overallScore.toFixed(2)}), and a dimension is Critical at 1/5, Low at 2/5, Medium at
+          3/5 and Good at 4/5 or above. The counts are taken from the rows above.
+        </p>
       </section>
 
       {/* ── HOW IT WORKS ──────────────────────────────────────────────────────── */}
