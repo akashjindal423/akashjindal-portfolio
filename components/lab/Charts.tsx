@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import type { DataPoint, GenBiResult, Unit } from '@/lib/lab/genbi'
 import { formatTick, formatValue } from '@/lib/lab/genbi'
 
@@ -46,6 +46,18 @@ function useWidth<T extends HTMLElement>(fallback = 560) {
     return () => ro.disconnect()
   }, [])
   return [ref, width] as const
+}
+
+/** While a tooltip is showing, Escape hides it (WCAG 1.4.13), whether it came from hover or focus. */
+function useEscapeToDismiss(active: number | null, dismiss: () => void) {
+  useEffect(() => {
+    if (active === null) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') dismiss()
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [active, dismiss])
 }
 
 /** Axis maximum giving four clean tick steps, e.g. 1,120 -> 1,200 (300 per step). */
@@ -138,26 +150,30 @@ function Tooltip({
   )
 }
 
-export function DataTable({ title, data, unit }: Omit<ChartProps, 'highlight'>) {
+/** The same data as a table: the chart's keyboard and screen-reader fallback. */
+export function DataTable({ title, data, unit, highlight }: ChartProps) {
   return (
-    <details className="mt-3 text-sm">
-      <summary className="cursor-pointer text-text-secondary hover:text-text-primary transition-colors duration-200 w-fit">
-        Show data table
-      </summary>
-      <div className="mt-2 overflow-x-auto rounded-lg border border-[var(--border)]">
-        <table className="w-full text-left text-sm">
-          <caption className="sr-only">{title}</caption>
-          <tbody>
-            {data.map((d) => (
-              <tr key={d.label} className="border-b border-[var(--border)] last:border-0">
-                <th scope="row" className="px-3 py-1.5 font-normal text-text-secondary">{d.label}</th>
-                <td className="px-3 py-1.5 text-right text-text-primary tabular-nums">{formatValue(d.value, unit)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </details>
+    <div className="overflow-x-auto rounded-lg border border-[var(--border)]">
+      <table className="w-full text-left text-sm">
+        <caption className="px-3 py-2 text-left text-sm font-medium text-text-primary">{title}</caption>
+        <thead>
+          <tr className="border-y border-[var(--border)] bg-[var(--surface-raised)] text-xs uppercase tracking-wider text-text-subtle">
+            <th scope="col" className="px-3 py-2 font-medium">Item</th>
+            <th scope="col" className="px-3 py-2 text-right font-medium">Value</th>
+            <th scope="col" className="px-3 py-2 font-medium"><span className="sr-only">Answer</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((d, i) => (
+            <tr key={d.label} className="border-b border-[var(--border)] last:border-0">
+              <th scope="row" className="px-3 py-1.5 font-normal text-text-secondary">{d.label}</th>
+              <td className="px-3 py-1.5 text-right text-text-primary tabular-nums">{formatValue(d.value, unit)}</td>
+              <td className="px-3 py-1.5 text-xs text-highlight">{highlight.includes(i) && highlight.length < data.length ? 'answer' : ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 }
 
@@ -175,6 +191,9 @@ export function BarChart({ title, data, unit, highlight }: ChartProps) {
   const xMax = niceMax(Math.max(...data.map((d) => d.value)))
   const ticks = [0, 1, 2, 3, 4].map((i) => (xMax / 4) * i)
   const axisY = m.top + ROW * data.length
+  const hintId = `${titleId}-hint`
+  const dismiss = useCallback(() => setActive(null), [])
+  useEscapeToDismiss(active, dismiss)
 
   const bars = data.map((d, i) => {
     const w = (d.value / xMax) * innerW
@@ -186,7 +205,7 @@ export function BarChart({ title, data, unit, highlight }: ChartProps) {
     <figure className="m-0">
       <ChartHeading id={titleId} title={title} highlighted={highlight.length > 0 && highlight.length < data.length} />
       <div ref={ref} className="relative w-full">
-        <svg width={width} height={height} role="group" aria-labelledby={titleId} className="block max-w-full overflow-visible">
+        <svg width={width} height={height} role="group" aria-labelledby={titleId} aria-describedby={hintId} className="block max-w-full overflow-visible">
           {ticks.map((t) => {
             const x = m.left + (t / xMax) * innerW
             return (
@@ -228,11 +247,14 @@ export function BarChart({ title, data, unit, highlight }: ChartProps) {
                   tabIndex={0}
                   role="img"
                   aria-label={`${b.label}: ${formatValue(b.value, unit)}`}
-                  className="cursor-default outline-none focus-visible:stroke-violet-400 focus-visible:[stroke-width:1px]"
+                  className="cursor-default outline-none focus-visible:stroke-violet-400 focus-visible:[stroke-width:2px]"
                   onPointerEnter={() => setActive(i)}
                   onPointerLeave={() => setActive(null)}
                   onFocus={() => setActive(i)}
                   onBlur={() => setActive(null)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Escape') setActive(null)
+                  }}
                 />
               </g>
             )
@@ -248,8 +270,10 @@ export function BarChart({ title, data, unit, highlight }: ChartProps) {
             value={formatValue(bars[active].value, unit)}
           />
         )}
+        <p id={hintId} className="sr-only">
+          Use Tab to move through the bars and hear each value. Press Escape to hide the tooltip.
+        </p>
       </div>
-      <DataTable title={title} data={data} unit={unit} />
     </figure>
   )
 }
@@ -275,8 +299,14 @@ export function LineChart({ title, data, unit, highlight }: ChartProps) {
     return Math.max(0, Math.min(data.length - 1, Math.round(x / step)))
   }
 
+  const dismiss = useCallback(() => setActive(null), [])
+  useEscapeToDismiss(active, dismiss)
+
   function onKeyDown(e: React.KeyboardEvent) {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+    if (e.key === 'Home' || e.key === 'End') {
+      e.preventDefault()
+      setActive(e.key === 'Home' ? 0 : data.length - 1)
+    } else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
       e.preventDefault()
       const dir = e.key === 'ArrowRight' ? 1 : -1
       setActive((a) => Math.max(0, Math.min(data.length - 1, (a ?? (dir > 0 ? -1 : data.length)) + dir)))
@@ -341,14 +371,13 @@ export function LineChart({ title, data, unit, highlight }: ChartProps) {
           </Frame>
         </svg>
         <p id={`${titleId}-hint`} className="sr-only">
-          Use the left and right arrow keys to read each month.
+          Use the left and right arrow keys (or Home and End) to read each point. Press Escape to hide the tooltip.
         </p>
         {a && <Tooltip x={a.x} y={a.y} width={width} label={a.label} value={formatValue(a.value, unit)} />}
         <p className="sr-only" aria-live="polite">
           {a ? `${a.label}: ${formatValue(a.value, unit)}` : ''}
         </p>
       </div>
-      <DataTable title={title} data={data} unit={unit} />
     </figure>
   )
 }
@@ -363,8 +392,49 @@ export function StatTile({ title, data, unit }: Omit<ChartProps, 'highlight'>) {
   )
 }
 
-export function GenBiChart({ result }: { result: GenBiResult }) {
+export type ChartView = 'chart' | 'table'
+
+/**
+ * The answer's chart, with a Chart / Table switch. The table view is the fallback for
+ * keyboard, screen-reader and colour-independent reading. Pass `view` to keep the
+ * visitor's choice across answers.
+ */
+export function GenBiChart({
+  result,
+  view: controlledView,
+  onViewChange,
+}: {
+  result: GenBiResult
+  view?: ChartView
+  onViewChange?: (view: ChartView) => void
+}) {
+  const [ownView, setOwnView] = useState<ChartView>('chart')
+  const view = controlledView ?? ownView
+  const setView = onViewChange ?? setOwnView
   const props = { title: result.title, data: result.data, unit: result.unit, highlight: result.highlight }
   if (result.chart === 'stat') return <StatTile {...props} />
-  return result.chart === 'bar' ? <BarChart {...props} /> : <LineChart {...props} />
+  return (
+    <div>
+      <div role="group" aria-label="Show the answer as" className="mb-3 inline-flex rounded-lg border border-[var(--border)] p-0.5 text-xs">
+        {(['chart', 'table'] as const).map((v) => (
+          <button
+            key={v}
+            type="button"
+            aria-pressed={view === v}
+            onClick={() => setView(v)}
+            className="rounded-md px-3 py-1 font-medium capitalize text-text-secondary hover:text-text-primary aria-pressed:bg-[var(--surface-raised)] aria-pressed:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
+          >
+            {v}
+          </button>
+        ))}
+      </div>
+      {view === 'table' ? (
+        <DataTable {...props} />
+      ) : result.chart === 'bar' ? (
+        <BarChart {...props} />
+      ) : (
+        <LineChart {...props} />
+      )}
+    </div>
+  )
 }

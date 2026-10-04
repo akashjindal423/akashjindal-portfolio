@@ -2,7 +2,7 @@
 
 import { useId, useState } from 'react'
 import { CircleHelp, Info, Send } from 'lucide-react'
-import { GenBiChart } from '@/components/lab/Charts'
+import { GenBiChart, type ChartView } from '@/components/lab/Charts'
 import {
   CAPABILITIES,
   DATA_YEAR,
@@ -49,6 +49,8 @@ export default function GenBiDemo() {
   const [draft, setDraft] = useState('')
   // Starts empty: nothing is answered until the visitor asks
   const [outcome, setOutcome] = useState<AskOutcome>({ kind: 'empty' })
+  // Chart or table, kept across answers
+  const [view, setView] = useState<ChartView>('chart')
 
   function run(question: string) {
     setOutcome(ask(question))
@@ -117,7 +119,7 @@ export default function GenBiDemo() {
         {outcome.kind === 'answer' && (
           <>
             <div className="mt-6">
-              <GenBiChart key={outcome.result.title} result={outcome.result} />
+              <GenBiChart key={outcome.result.title} result={outcome.result} view={view} onViewChange={setView} />
             </div>
             <details className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 text-sm">
               <summary className="cursor-pointer text-text-secondary hover:text-text-primary transition-colors duration-200">
