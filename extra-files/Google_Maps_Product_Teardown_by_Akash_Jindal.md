@@ -360,7 +360,7 @@ Launch a "Local Guide Creator Fund" — a revenue-sharing programme for the top 
 | Impact | 9/10 | Directly strengthens Maps' core competitive moat |
 | Confidence | 6/10 | Revenue share model is proven (YouTube) but untested for Maps |
 | Effort | 7/10 (high) | Requires payment infrastructure, policy framework, abuse prevention |
-| **RICE Score** | **9.3** | **(8 × 9 × 0.6) / 7** |
+| **RICE Score (illustrative)** | **6.17** | **(8 × 9 × 0.6) / 7** |
 
 ---
 
@@ -443,7 +443,7 @@ This feature creates new ad surfaces: promoted restaurants/activities within gro
 | Impact | 7/10 | High engagement + new monetisation, but not core navigation |
 | Confidence | 7/10 | Proven by Wanderlog/TripIt success; Google has all technical primitives |
 | Effort | 8/10 (high) | Real-time collaboration + Ask Maps integration is complex |
-| **RICE Score** | **7.9** | **(9 × 7 × 0.7) / 8** |
+| **RICE Score (illustrative)** | **5.51** | **(9 × 7 × 0.7) / 8** |
 
 ---
 
@@ -527,20 +527,22 @@ For immigrants (a personal lens I bring), this solves a real information asymmet
 | Factor | Score | Reasoning |
 |--------|-------|-----------|
 | Reach | 6/10 | Relevant at relocation moments (millions/year) but not daily use |
-| Impact | 9/10 | High-value, life-decision product moment with no competition |
+| Impact | 9/10 | High-value, life-decision product moment |
 | Confidence | 8/10 | All data exists within Google already; Zillow/Rightmove validate demand |
 | Effort | 5/10 (medium) | Data aggregation and UI work; no new data collection needed |
-| **RICE Score** | **8.6** | **(6 × 9 × 0.8) / 5** |
+| **RICE Score (illustrative)** | **8.64** | **(6 × 9 × 0.8) / 5** |
 
 ---
 
 ## 8. Feature Proposal Prioritisation Summary
 
-| Feature | RICE | Build Order | Rationale |
+Ordered by RICE score. The scoring is illustrative: each input is my own 1–10 estimate from public information, not Google data. Score = (Reach × Impact × Confidence) ÷ Effort, with confidence as a fraction. The website computes these from `lib/teardown/rice.ts`.
+
+| Feature | RICE (illustrative) | Build Order | Rationale |
 |---------|------|-------------|-----------|
-| C: Neighbourhood Intelligence | 8.6 | **Ship First** | Lowest effort, highest confidence, unique positioning |
-| A: Local Guide Creator Fund | 9.3 | Ship Second | High impact but requires payment infrastructure |
-| B: Group Trip Planner | 7.9 | Ship Third | Highest effort; needs real-time collaboration + AI integration |
+| C: Neighbourhood Intelligence | 8.64 | **Ship First** | Lowest effort and highest confidence |
+| A: Local Guide Creator Fund | 6.17 | Ship Second | High impact, held back by lower confidence and the payment infrastructure it needs |
+| B: Group Trip Planner | 5.51 | Ship Third | Highest effort: needs real-time collaboration and AI integration |
 
 ---
 

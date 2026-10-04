@@ -4,6 +4,7 @@ import Badge from '@/components/shared/Badge'
 import JsonLd from '@/components/shared/JsonLd'
 import { pageMetadata } from '@/lib/seo'
 import { SITE_URL } from '@/lib/site'
+import { formatRice, proposal, rankedProposals, riceFormula, riceScore, type RiceProposal } from '@/lib/teardown/rice'
 
 export const metadata = pageMetadata({
   title: 'Google Maps Product Teardown',
@@ -27,6 +28,56 @@ const articleSchema = {
   image: `${SITE_URL}/projects/google-maps-teardown/opengraph-image`,
   author: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Akash Jindal', url: SITE_URL },
   publisher: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Akash Jindal', url: SITE_URL },
+}
+
+const RICE_NOTE =
+  'The scoring is illustrative: each input is my own 1–10 estimate from public information, not Google data. Score = (Reach × Impact × Confidence) ÷ Effort, with confidence as a fraction.'
+const BUILD_ORDER = ['Ship First', 'Ship Second', 'Ship Third']
+const ranked = rankedProposals()
+const [top] = ranked
+
+/** One proposal's RICE inputs and its computed score. */
+function RiceTable({ proposal: p }: { proposal: RiceProposal }) {
+  const rows: [string, string, string][] = [
+    ['Reach', `${p.reach}/10`, p.reasons.reach],
+    ['Impact', `${p.impact}/10`, p.reasons.impact],
+    ['Confidence', `${p.confidence}/10`, p.reasons.confidence],
+    ['Effort', `${p.effort}/10 (${p.effortLabel})`, p.reasons.effort],
+  ]
+  return (
+    <div>
+      <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">RICE Score (illustrative)</p>
+      <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+        <table className="w-full text-sm min-w-[480px]">
+          <thead>
+            <tr className="bg-violet-600/20 border-b border-violet-500/30">
+              {['Factor', 'Score', 'Reasoning'].map((h) => (
+                <th key={h} scope="col" className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(([factor, score, reasoning], i) => (
+              <tr key={factor} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
+                <th scope="row" className="px-4 py-3 text-left font-medium text-text-primary">{factor}</th>
+                <td className="px-4 py-3 text-violet-300 font-semibold">{score}</td>
+                <td className="px-4 py-3 text-text-secondary">{reasoning}</td>
+              </tr>
+            ))}
+            <tr className={`border-t ${p.id === top.id ? 'bg-emerald-600/10 border-emerald-500/30' : 'bg-violet-600/10 border-violet-500/30'}`}>
+              <th scope="row" className="px-4 py-3 text-left font-bold text-text-primary">RICE Score</th>
+              <td className={`px-4 py-3 font-bold text-base tabular-nums ${p.id === top.id ? 'text-emerald-400' : 'text-violet-300'}`}>
+                {formatRice(riceScore(p))}
+              </td>
+              <td className="px-4 py-3 text-text-muted text-xs">{riceFormula(p)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
 }
 
 export default function GoogleMapsTeardownPage() {
@@ -641,6 +692,7 @@ export default function GoogleMapsTeardownPage() {
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 7</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">What I Would Build Next: Three Feature Proposals</h2>
         <p className="text-base text-text-muted">Each proposal includes problem definition, solution, ASCII wireframe, success metrics, and RICE prioritisation.</p>
+        <p className="text-sm text-text-muted mt-3">{RICE_NOTE}</p>
       </section>
 
       {/* ── FEATURE PROPOSAL A ───────────────────────────────────────────── */}
@@ -784,42 +836,7 @@ export default function GoogleMapsTeardownPage() {
           </div>
         </div>
 
-        {/* RICE */}
-        <div>
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">RICE Score</p>
-          <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
-            <table className="w-full text-sm min-w-[480px]">
-              <thead>
-                <tr className="bg-violet-600/20 border-b border-violet-500/30">
-                  {['Factor', 'Score', 'Reasoning'].map((h) => (
-                    <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['Reach', '8/10', 'Affects 30M+ contributors and all Maps users who read reviews'],
-                  ['Impact', '9/10', 'Directly strengthens Maps\' core competitive moat'],
-                  ['Confidence', '6/10', 'Revenue share model is proven (YouTube) but untested for Maps'],
-                  ['Effort', '7/10 (high)', 'Requires payment infrastructure, policy framework, abuse prevention'],
-                ].map(([factor, score, reasoning], i) => (
-                  <tr key={factor} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
-                    <td className="px-4 py-3 font-medium text-text-primary">{factor}</td>
-                    <td className="px-4 py-3 text-violet-300 font-semibold">{score}</td>
-                    <td className="px-4 py-3 text-text-secondary">{reasoning}</td>
-                  </tr>
-                ))}
-                <tr className="bg-violet-600/10 border-t border-violet-500/30">
-                  <td className="px-4 py-3 font-bold text-text-primary">RICE Score</td>
-                  <td className="px-4 py-3 font-bold text-violet-300 text-base">9.3</td>
-                  <td className="px-4 py-3 text-text-muted text-xs">(8 × 9 × 0.6) / 7</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <RiceTable proposal={proposal('A')} />
       </section>
 
       {/* ── FEATURE PROPOSAL B ───────────────────────────────────────────── */}
@@ -955,42 +972,7 @@ export default function GoogleMapsTeardownPage() {
           </div>
         </div>
 
-        {/* RICE */}
-        <div>
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">RICE Score</p>
-          <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
-            <table className="w-full text-sm min-w-[480px]">
-              <thead>
-                <tr className="bg-violet-600/20 border-b border-violet-500/30">
-                  {['Factor', 'Score', 'Reasoning'].map((h) => (
-                    <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['Reach', '9/10', 'Trip planning affects most Maps users; group travel is near-universal'],
-                  ['Impact', '7/10', 'High engagement + new monetisation, but not core navigation'],
-                  ['Confidence', '7/10', 'Proven by Wanderlog/TripIt success; Google has all technical primitives'],
-                  ['Effort', '8/10 (high)', 'Real-time collaboration + Ask Maps integration is complex'],
-                ].map(([factor, score, reasoning], i) => (
-                  <tr key={factor} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
-                    <td className="px-4 py-3 font-medium text-text-primary">{factor}</td>
-                    <td className="px-4 py-3 text-violet-300 font-semibold">{score}</td>
-                    <td className="px-4 py-3 text-text-secondary">{reasoning}</td>
-                  </tr>
-                ))}
-                <tr className="bg-violet-600/10 border-t border-violet-500/30">
-                  <td className="px-4 py-3 font-bold text-text-primary">RICE Score</td>
-                  <td className="px-4 py-3 font-bold text-violet-300 text-base">7.9</td>
-                  <td className="px-4 py-3 text-text-muted text-xs">(9 × 7 × 0.7) / 8</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <RiceTable proposal={proposal('B')} />
       </section>
 
       {/* ── FEATURE PROPOSAL C ───────────────────────────────────────────── */}
@@ -1151,88 +1133,36 @@ export default function GoogleMapsTeardownPage() {
           </div>
         </div>
 
-        {/* RICE */}
-        <div>
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">RICE Score</p>
-          <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
-            <table className="w-full text-sm min-w-[480px]">
-              <thead>
-                <tr className="bg-violet-600/20 border-b border-violet-500/30">
-                  {['Factor', 'Score', 'Reasoning'].map((h) => (
-                    <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['Reach', '6/10', 'Relevant at relocation moments (millions/year) but not daily use'],
-                  ['Impact', '9/10', 'High-value, life-decision product moment with no competition'],
-                  ['Confidence', '8/10', 'All data exists within Google already; Zillow/Rightmove validate demand'],
-                  ['Effort', '5/10 (medium)', 'Data aggregation and UI work; no new data collection needed'],
-                ].map(([factor, score, reasoning], i) => (
-                  <tr key={factor} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
-                    <td className="px-4 py-3 font-medium text-text-primary">{factor}</td>
-                    <td className="px-4 py-3 text-violet-300 font-semibold">{score}</td>
-                    <td className="px-4 py-3 text-text-secondary">{reasoning}</td>
-                  </tr>
-                ))}
-                <tr className="bg-emerald-600/10 border-t border-emerald-500/30">
-                  <td className="px-4 py-3 font-bold text-text-primary">RICE Score</td>
-                  <td className="px-4 py-3 font-bold text-emerald-400 text-base">8.6</td>
-                  <td className="px-4 py-3 text-text-muted text-xs">(6 × 9 × 0.8) / 5</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <RiceTable proposal={proposal('C')} />
       </section>
 
       {/* ── PRIORITISATION SUMMARY ───────────────────────────────────────── */}
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 8</p>
-        <h2 className="text-2xl font-bold text-text-primary mb-6">Feature Proposal Prioritisation Summary</h2>
+        <h2 className="text-2xl font-bold text-text-primary mb-2">Feature Proposal Prioritisation Summary</h2>
+        <p className="text-sm text-text-muted mb-6 max-w-3xl">
+          Ordered by RICE score. {top.name} ranks first: {top.note.charAt(0).toLowerCase() + top.note.slice(1)}. {RICE_NOTE}
+        </p>
         <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
           <table className="w-full text-sm min-w-[540px]">
             <thead>
               <tr className="bg-violet-600/20 border-b border-violet-500/30">
-                {['Feature', 'RICE', 'Build Order', 'Rationale'].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
+                {['Feature', 'RICE (illustrative)', 'Build Order', 'Rationale'].map((h) => (
+                  <th key={h} scope="col" className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
                     {h}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {[
-                {
-                  feature: 'C: Neighbourhood Intelligence',
-                  rice: '8.6',
-                  order: 'Ship First',
-                  orderColor: 'text-emerald-400',
-                  rationale: 'Lowest effort, highest confidence, unique positioning',
-                },
-                {
-                  feature: 'A: Local Guide Creator Fund',
-                  rice: '9.3',
-                  order: 'Ship Second',
-                  orderColor: 'text-violet-400',
-                  rationale: 'High impact but requires payment infrastructure',
-                },
-                {
-                  feature: 'B: Group Trip Planner',
-                  rice: '7.9',
-                  order: 'Ship Third',
-                  orderColor: 'text-text-muted',
-                  rationale: 'Highest effort; needs real-time collaboration + AI integration',
-                },
-              ].map((row, i) => (
-                <tr key={row.feature} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
-                  <td className="px-4 py-3 font-medium text-text-primary">{row.feature}</td>
-                  <td className="px-4 py-3 font-bold text-violet-300">{row.rice}</td>
-                  <td className={`px-4 py-3 font-semibold ${row.orderColor}`}>{row.order}</td>
-                  <td className="px-4 py-3 text-text-secondary">{row.rationale}</td>
+              {ranked.map((row, i) => (
+                <tr key={row.id} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
+                  <th scope="row" className="px-4 py-3 text-left font-medium text-text-primary">{row.id}: {row.name}</th>
+                  <td className="px-4 py-3 font-bold text-violet-300 tabular-nums">{formatRice(row.score)}</td>
+                  <td className={`px-4 py-3 font-semibold ${i === 0 ? 'text-emerald-400' : i === 1 ? 'text-violet-400' : 'text-text-muted'}`}>
+                    {BUILD_ORDER[i]}
+                  </td>
+                  <td className="px-4 py-3 text-text-secondary">{row.note}</td>
                 </tr>
               ))}
             </tbody>
