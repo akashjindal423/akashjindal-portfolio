@@ -23,7 +23,7 @@ export default function HomePage() {
   return (
     <main>
       <JsonLd data={personSchema()} />
-      <section id="hero"><HeroSection /></section>
+      <HeroSection />
       <section id="about"><AboutSnippet /></section>
       <section id="projects"><FeaturedProjects /></section>
       <LabFeature />

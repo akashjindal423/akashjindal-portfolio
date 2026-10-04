@@ -2,9 +2,8 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
 import CursorGlow from '@/components/hero/CursorGlow'
-import ProductBriefCard from '@/components/hero/ProductBriefCard'
+import PromptLabPreview from '@/components/home/PromptLabPreview'
 
 const fadeUp = (delay: number) => ({
   initial: { y: 20, opacity: 0 },
@@ -15,7 +14,8 @@ const fadeUp = (delay: number) => ({
 export default function HeroSection() {
   return (
     <section
-      className="relative min-h-screen overflow-hidden"
+      id="hero"
+      className="relative overflow-hidden"
       style={{
         background:
           'radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.12) 0%, transparent 60%), #0D0D1A',
@@ -23,67 +23,59 @@ export default function HeroSection() {
     >
       <CursorGlow />
 
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 items-center min-h-screen max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-12 items-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 md:pt-16 md:pb-20">
 
         {/* Left column */}
         <div className="flex flex-col justify-center">
-          {/* Eyebrow */}
           <motion.span
             {...fadeUp(0)}
-            className="block text-violet-400 text-sm uppercase tracking-[0.2em] font-medium mb-6"
+            className="block text-violet-400 text-sm uppercase tracking-[0.2em] font-medium mb-4"
           >
             AI Product Owner
           </motion.span>
 
-          {/* H1 */}
           <motion.h1
             {...fadeUp(0.15)}
-            className="font-display text-6xl md:text-7xl lg:text-8xl font-extrabold text-text-primary leading-tight mb-6"
+            className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-text-primary leading-tight mb-4"
           >
             Akash Jindal
           </motion.h1>
 
-          {/* Positioning line */}
           <motion.p
             {...fadeUp(0.22)}
-            className="mt-3 text-xl md:text-2xl text-violet-400 font-semibold mb-6"
+            className="text-xl md:text-2xl text-violet-400 font-semibold mb-4"
           >
             Generative AI and Gen BI in banking
           </motion.p>
 
-          {/* Tagline */}
           <motion.p
             {...fadeUp(0.3)}
-            className="text-text-secondary text-lg md:text-xl max-w-2xl leading-relaxed mb-10"
+            className="text-text-secondary text-lg max-w-xl leading-relaxed mb-8"
           >
             Team Product Owner in the AI Centre of Excellence at Lloyds. Previously AR at Dyson, and ITSM for the PS5
-            launch at Sony via Infosys.
-            Building products that matter across banking, tech, and innovation.
+            launch at Sony via Infosys. I also build small public tools, like PromptLab.
           </motion.p>
 
-          {/* CTA row */}
-          <motion.div
-            {...fadeUp(0.45)}
-            className="flex gap-4 flex-wrap"
-          >
+          <motion.div {...fadeUp(0.45)} className="flex gap-3 flex-wrap">
             <Link
               href="/projects"
-              className="bg-violet-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-violet-500 hover:scale-[1.02] transition-all duration-200"
+              className="bg-violet-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-violet-500 transition-colors duration-200"
             >
-              View Projects →
+              View projects
+            </Link>
+            <Link
+              href="/lab"
+              className="border border-[var(--border)] text-text-secondary font-semibold px-6 py-3 rounded-lg hover:border-violet-500/60 hover:text-text-primary transition-colors duration-200"
+            >
+              Try the Lab
             </Link>
           </motion.div>
         </div>
 
-        {/* Right column */}
-        <div className="flex justify-center md:justify-end">
-          <ProductBriefCard />
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
-        <ChevronDown className="w-6 h-6 text-text-muted animate-bounce motion-reduce:animate-none" aria-hidden="true" />
+        {/* Right column: a public artefact */}
+        <motion.div {...fadeUp(0.3)} className="flex justify-center lg:justify-end">
+          <PromptLabPreview />
+        </motion.div>
       </div>
     </section>
   )
