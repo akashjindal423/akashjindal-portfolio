@@ -6,7 +6,7 @@ import SectionWrapper from '@/components/shared/SectionWrapper'
 import AboutStats from '@/components/shared/AboutStats'
 import JsonLd from '@/components/shared/JsonLd'
 import { pageMetadata } from '@/lib/seo'
-import { personSchema } from '@/lib/structured-data'
+import { profilePageSchema } from '@/lib/structured-data'
 import { SECONDARY_NAV } from '@/lib/nav'
 
 export const metadata = pageMetadata({
@@ -19,7 +19,7 @@ export const metadata = pageMetadata({
 export default function AboutPage() {
   return (
     <main>
-      <JsonLd data={personSchema()} />
+      <JsonLd data={profilePageSchema()} />
       <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="ABOUT"
