@@ -153,7 +153,7 @@ function Tooltip({
 /** The same data as a table: the chart's keyboard and screen-reader fallback. */
 export function DataTable({ title, data, unit, highlight }: ChartProps) {
   return (
-    <div className="overflow-x-auto rounded-lg border border-[var(--border)]">
+    <div className="overflow-x-auto rounded-lg border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
       <table className="w-full text-left text-sm">
         <caption className="px-3 py-2 text-left text-sm font-medium text-text-primary">{title}</caption>
         <thead>

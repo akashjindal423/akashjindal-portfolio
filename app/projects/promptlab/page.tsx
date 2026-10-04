@@ -153,7 +153,7 @@ export default function PromptLabPage() {
           </div>
 
           {/* Body */}
-          <div className="bg-[#0d1117] px-6 py-5 font-mono text-sm overflow-x-auto">
+          <div className="bg-[#0d1117] px-6 py-5 font-mono text-sm overflow-x-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0} role="region" aria-label="Recorded terminal output">
             {/* Command */}
             <p className="text-emerald-400">
               <span className="text-text-subtle">$ </span>
@@ -172,7 +172,7 @@ export default function PromptLabPage() {
             </div>
 
             {/* Table */}
-            <div className="mt-5 overflow-x-auto">
+            <div className="mt-5 overflow-x-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0} role="region" aria-label="Dimension scores (scrolls sideways on small screens)">
               {/* Header */}
               <div className="flex text-[11px] text-text-subtle border-b border-[var(--border)] pb-1.5 mb-0.5">
                 <span className="w-52 shrink-0">Dimension</span>

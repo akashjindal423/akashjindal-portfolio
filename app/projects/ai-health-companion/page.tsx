@@ -223,7 +223,7 @@ export default function AIHealthCompanionPage() {
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-highlight mb-2">Core Features</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">What the product does</h2>
-        <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+        <div className="overflow-x-auto rounded-2xl border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
           <table className="w-full text-sm min-w-[640px]">
             <thead>
               <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
@@ -391,7 +391,7 @@ export default function AIHealthCompanionPage() {
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-highlight mb-2">Risks</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Known risks and mitigations</h2>
-        <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+        <div className="overflow-x-auto rounded-2xl border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
           <table className="w-full text-sm min-w-[540px]">
             <thead>
               <tr className="bg-[var(--surface)] border-b border-[var(--border)]">

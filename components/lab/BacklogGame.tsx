@@ -338,7 +338,7 @@ function Results({
         <p className="mt-1 text-sm text-text-secondary">
           Modelled impact = Reach × Impact × Confidence. RICE score = modelled impact ÷ effort. All figures are fictional.
         </p>
-        <div className="mt-4 overflow-x-auto rounded-lg border border-[var(--border)]">
+        <div className="mt-4 overflow-x-auto rounded-lg border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
           <table className="w-full min-w-[520px] text-left text-sm">
             <thead>
               <tr className="border-b border-[var(--border)] text-[11px] uppercase tracking-wider text-text-subtle">

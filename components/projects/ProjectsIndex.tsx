@@ -20,7 +20,7 @@ export default function ProjectsIndex() {
       {/* Official Projects */}
       <div className="mt-12">
         <div className="flex items-center gap-3 mb-6">
-          <span className="text-xs uppercase tracking-widest text-text-subtle">Official Projects</span>
+          <h2 className="text-xs font-normal uppercase tracking-widest text-text-subtle">Official Projects</h2>
           <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -66,7 +66,7 @@ export default function ProjectsIndex() {
       {/* Passion Projects */}
       <div className="mt-14">
         <div className="flex items-center gap-3 mb-6">
-          <span className="text-xs uppercase tracking-widest text-text-subtle">Passion Projects</span>
+          <h2 className="text-xs font-normal uppercase tracking-widest text-text-subtle">Passion Projects</h2>
           <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

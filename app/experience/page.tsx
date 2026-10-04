@@ -57,7 +57,7 @@ export default function ExperiencePage() {
 
       <SectionWrapper>
         <div className="flex items-center gap-3 mt-16 mb-8">
-          <span className="text-xs uppercase tracking-widest text-text-subtle">Community &amp; Volunteering</span>
+          <h2 className="text-xs font-normal uppercase tracking-widest text-text-subtle">Community &amp; Volunteering</h2>
           <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

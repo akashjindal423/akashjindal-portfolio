@@ -47,7 +47,7 @@ function RiceTable({ proposal: p }: { proposal: RiceProposal }) {
   return (
     <div>
       <p className="text-[10px] uppercase tracking-widest text-highlight mb-3">RICE Score (illustrative)</p>
-      <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+      <div className="overflow-x-auto rounded-2xl border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
         <table className="w-full text-sm min-w-[480px]">
           <thead>
             <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
@@ -138,7 +138,7 @@ export default function GoogleMapsTeardownPage() {
         </p>
 
         <h3 className="text-lg font-semibold text-text-primary mb-4">Key Metrics (2025–2026)</h3>
-        <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+        <div className="overflow-x-auto rounded-2xl border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
           <table className="w-full text-sm min-w-[560px]">
             <thead>
               <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
@@ -184,7 +184,7 @@ export default function GoogleMapsTeardownPage() {
           Google Maps operates in a market where three players account for the overwhelming majority of usage, and Google controls two of them.
         </p>
 
-        <div className="overflow-x-auto rounded-2xl border border-[var(--border)] mb-10">
+        <div className="overflow-x-auto rounded-2xl border border-[var(--border)] mb-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
           <table className="w-full text-sm min-w-[480px]">
             <thead>
               <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
@@ -304,7 +304,7 @@ export default function GoogleMapsTeardownPage() {
           ].map((card) => (
             <div key={card.name} className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex flex-col">
               <p className="text-[10px] uppercase tracking-widest text-highlight mb-1">{card.label}</p>
-              <h4 className="text-sm font-bold text-text-primary mb-1 leading-snug">{card.name}</h4>
+              <h3 className="text-sm font-bold text-text-primary mb-1 leading-snug">{card.name}</h3>
               <p className="text-xs text-emerald-400 font-semibold mb-3">{card.share}</p>
               <p className="text-sm text-text-secondary leading-relaxed">{card.body}</p>
             </div>
@@ -368,7 +368,7 @@ export default function GoogleMapsTeardownPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
           <div>
             <h4 className="text-sm font-semibold text-text-primary mb-3">The Point System</h4>
-            <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+            <div className="overflow-x-auto rounded-2xl border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
@@ -403,7 +403,7 @@ export default function GoogleMapsTeardownPage() {
 
           <div>
             <h4 className="text-sm font-semibold text-text-primary mb-3">Level Progression</h4>
-            <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+            <div className="overflow-x-auto rounded-2xl border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
@@ -718,7 +718,7 @@ export default function GoogleMapsTeardownPage() {
           <p className="text-sm text-text-secondary leading-relaxed max-w-3xl mb-4">
             Launch a &quot;Local Guide Creator Fund&quot; — a revenue-sharing programme for the top tier of contributors (Level 7+). Eligible guides earn a share of ad revenue generated from places they have reviewed or photographed. The mechanism would work similarly to YouTube&apos;s Partner Programme: Google already knows which business listings drive ad clicks, and which reviews/photos appear on those listings. Connecting these data points is an engineering task, not a conceptual leap.
           </p>
-          <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+          <div className="overflow-x-auto rounded-2xl border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
             <table className="w-full text-sm min-w-[480px]">
               <thead>
                 <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
@@ -1000,7 +1000,7 @@ export default function GoogleMapsTeardownPage() {
           </p>
 
           <p className="text-[10px] uppercase tracking-widest text-highlight mb-3">Data Sources (All Already Available to Google)</p>
-          <div className="overflow-x-auto rounded-2xl border border-[var(--border)] mb-6">
+          <div className="overflow-x-auto rounded-2xl border border-[var(--border)] mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
             <table className="w-full text-sm min-w-[400px]">
               <thead>
                 <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
@@ -1144,7 +1144,7 @@ export default function GoogleMapsTeardownPage() {
         <p className="text-sm text-text-muted mb-6 max-w-3xl">
           Ordered by RICE score. {top.name} ranks first: {top.note.charAt(0).toLowerCase() + top.note.slice(1)}. {RICE_NOTE}
         </p>
-        <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+        <div className="overflow-x-auto rounded-2xl border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
           <table className="w-full text-sm min-w-[540px]">
             <thead>
               <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
@@ -1175,7 +1175,7 @@ export default function GoogleMapsTeardownPage() {
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 9</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Risks & Open Questions</h2>
-        <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+        <div className="overflow-x-auto rounded-2xl border border-[var(--border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500" tabIndex={0}>
           <table className="w-full text-sm min-w-[540px]">
             <thead>
               <tr className="bg-[var(--surface)] border-b border-[var(--border)]">
@@ -1255,7 +1255,7 @@ export default function GoogleMapsTeardownPage() {
                 <div className="w-7 h-7 rounded-full bg-[var(--surface-raised)] border border-[var(--border-strong)] flex items-center justify-center text-text-primary text-xs font-bold shrink-0">
                   {card.num}
                 </div>
-                <h4 className="text-sm font-bold text-text-primary">{card.title}</h4>
+                <h3 className="text-sm font-bold text-text-primary">{card.title}</h3>
               </div>
               <p className="text-sm text-text-secondary leading-relaxed">{card.body}</p>
             </div>

@@ -68,9 +68,9 @@ const skillGroups: SkillGroupView[] = getSkillGroups().map((g, i) => ({
 function GroupCard({ group }: { group: SkillGroupView }) {
   return (
     <div className={cn('rounded-2xl border p-5 h-full', group.accent)}>
-      <h3 className={cn('text-sm font-semibold uppercase tracking-widest mb-5', group.headerColor)}>
+      <h2 className={cn('text-sm font-semibold uppercase tracking-widest mb-5', group.headerColor)}>
         {group.category}
-      </h3>
+      </h2>
       <ul
         className={cn(
           'grid gap-x-2 gap-y-4',

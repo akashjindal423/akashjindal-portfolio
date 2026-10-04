@@ -45,7 +45,7 @@ export default function ToolkitPage() {
   })
 
   return (
-    <div className="min-h-screen bg-[var(--background)]">
+    <main className="min-h-screen bg-[var(--background)]">
       {/* ── HERO ── */}
       <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
         <span className="inline-block text-highlight text-xs font-semibold uppercase tracking-widest mb-6 px-3 py-1 border border-highlight/40 rounded-full">
@@ -158,7 +158,8 @@ export default function ToolkitPage() {
       </p>
 
       {/* ── TOOLS GRID ── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20" aria-labelledby="toolkit-templates">
+        <h2 id="toolkit-templates" className="sr-only">Templates</h2>
         {filtered.length === 0 ? (
           <p className="text-center text-[var(--text-muted)] py-16">No tools match your search.</p>
         ) : (
@@ -277,6 +278,6 @@ export default function ToolkitPage() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }

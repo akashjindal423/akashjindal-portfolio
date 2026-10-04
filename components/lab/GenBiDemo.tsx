@@ -129,7 +129,11 @@ export default function GenBiDemo() {
                 The rules turned the question into the query above. This is the equivalent SQL; the demo runs the same
                 aggregation in your browser over a 240-row table (12 months × 4 regions × 5 categories).
               </p>
-              <pre className="mt-2 overflow-x-auto rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3 font-mono text-xs leading-relaxed text-text-secondary">
+              <pre
+                tabIndex={0}
+                aria-label="Equivalent SQL"
+                className="mt-2 overflow-x-auto rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3 font-mono text-xs leading-relaxed text-text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
+              >
                 {outcome.result.sql}
               </pre>
             </details>
