@@ -54,6 +54,9 @@ Personal portfolio for Akash Jindal, deployed on Vercel at https://akashjindal.c
 - Reuse `components/shared/` (AnimatedEntry, Button, Badge, SectionWrapper, PageHeader)
   instead of re-implementing them.
 - Respect `prefers-reduced-motion` for any new animation.
+- Nothing auto-advances. Any future carousel or rotating content needs a persistent,
+  visible Pause control and must not autoplay at all when reduced motion is set
+  (WCAG 2.2.2). Testimonials are static: one on the homepage, all on /recommendations.
 - Every route needs its own title, description and canonical URL. Client-component
   pages get metadata from a sibling `layout.tsx` or a server wrapper.
 - One `<h1>` per page; meaningful `alt` text on every image.
