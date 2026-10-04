@@ -1,12 +1,9 @@
 import HeroSection from '@/components/home/HeroSection'
-import AboutSnippet from '@/components/home/AboutSnippet'
-import FeaturedProjects from '@/components/home/FeaturedProjects'
-import LabFeature from '@/components/home/LabFeature'
+import FeaturedWork from '@/components/home/FeaturedWork'
 import ExperienceHighlights from '@/components/home/ExperienceHighlights'
-import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
-import SkillsSnapshot from '@/components/home/SkillsSnapshot'
-import TrainingHighlights from '@/components/home/TrainingHighlights'
+import AboutSnippet from '@/components/home/AboutSnippet'
 import LatestPosts from '@/components/home/LatestPosts'
+import ContactCta from '@/components/home/ContactCta'
 import JsonLd from '@/components/shared/JsonLd'
 import { pageMetadata } from '@/lib/seo'
 import { personSchema } from '@/lib/structured-data'
@@ -19,19 +16,17 @@ export const metadata = pageMetadata({
   absoluteTitle: true,
 })
 
+// Each section renders its own <section> with a unique id
 export default function HomePage() {
   return (
     <main>
       <JsonLd data={personSchema()} />
       <HeroSection />
-      <section id="about"><AboutSnippet /></section>
-      <section id="projects"><FeaturedProjects /></section>
-      <LabFeature />
-      <section id="experience"><ExperienceHighlights /></section>
-      <section id="testimonials"><TestimonialsCarousel /></section>
-      <section id="skills"><SkillsSnapshot /></section>
-      <section id="training"><TrainingHighlights /></section>
-      <section id="blog"><LatestPosts /></section>
+      <FeaturedWork />
+      <ExperienceHighlights />
+      <AboutSnippet />
+      <LatestPosts />
+      <ContactCta />
     </main>
   )
 }

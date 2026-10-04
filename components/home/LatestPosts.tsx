@@ -10,7 +10,7 @@ const posts = getBlogPosts().filter((p) => !p.draft).slice(0, 3)
 
 export default function LatestPosts() {
   return (
-    <SectionWrapper id="blog">
+    <SectionWrapper id="writing">
       {/* Header */}
       <div className="flex flex-wrap justify-between items-end gap-4 mb-12">
         <div>
