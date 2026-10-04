@@ -257,7 +257,7 @@ export function getProjects(): ProjectsData {
       {
         slug: 'promptlab',
         title: 'PromptLab',
-        description: 'Open-source Python CLI that diagnoses prompts across 12 dimensions, generates targeted improvements using distinct strategies, and auto-tests all variants to find the winner — no dataset required.',
+        description: 'Open-source Python CLI that scores prompts across 12 dimensions, suggests improved variants and compares their outputs on generated test cases: a starting point for review, not proof of real-world quality.',
         tags: ['Python', 'CLI', 'AI', 'Open Source'],
         status: 'v0.1.0 · Open Source',
         statusColor: 'emerald',

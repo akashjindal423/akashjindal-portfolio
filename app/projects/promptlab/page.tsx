@@ -1,6 +1,3 @@
-'use client'
-
-import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumbs from '@/components/shared/Breadcrumbs'
 import { STATUS, counts, overallScore, recordedScores, scoreTotal, terminalRows } from '@/lib/projects/promptlab-example'
@@ -21,17 +18,6 @@ const dimensions = [
   { icon: '✂️', name: 'Token Efficiency',      desc: 'Concise and free of redundant instructions?' },
 ]
 
-// ── Comparison table ───────────────────────────────────────────────────────────
-interface CompRow { feature: string; promptlab: boolean; dspy: boolean; promptfoo: boolean; braintrust: boolean; chrome: boolean; highlight?: boolean }
-const compRows: CompRow[] = [
-  { feature: 'No dataset needed',       promptlab: true,  dspy: false, promptfoo: false, braintrust: false, chrome: true  },
-  { feature: 'Explains why it\'s weak', promptlab: true,  dspy: false, promptfoo: false, braintrust: false, chrome: false, highlight: true },
-  { feature: 'Auto-tests improvements', promptlab: true,  dspy: true,  promptfoo: true,  braintrust: true,  chrome: false },
-  { feature: 'Multi-provider support',  promptlab: true,  dspy: true,  promptfoo: true,  braintrust: true,  chrome: false },
-  { feature: 'Local-first / offline',   promptlab: true,  dspy: true,  promptfoo: true,  braintrust: false, chrome: false },
-  { feature: 'Free & open source',      promptlab: true,  dspy: true,  promptfoo: true,  braintrust: false, chrome: false },
-]
-
 const techStack = [
   'Python 3.10+', 'FastAPI', 'React', 'TypeScript', 'Click', 'Rich',
   'Pydantic', 'Anthropic SDK', 'OpenAI SDK', 'Ollama', 'pytest', 'GitHub Actions', 'Ruff',
@@ -39,27 +25,7 @@ const techStack = [
 
 const stats = ['12 Dimensions', '3 Providers', 'MIT Licence', 'Python 3.10+']
 
-function Cell({ val, bold }: { val: boolean; bold?: boolean }) {
-  return (
-    <td className="px-4 py-3 text-center text-base">
-      {val
-        ? <span className={bold ? 'text-emerald-400 font-bold' : 'text-emerald-400'}>✅</span>
-        : <span className="text-text-subtle">❌</span>
-      }
-    </td>
-  )
-}
-
 export default function PromptLabPage() {
-  const [copied, setCopied] = useState(false)
-
-  function handleCopy() {
-    navigator.clipboard.writeText('pip install promptlab').then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    })
-  }
-
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
 
@@ -84,9 +50,10 @@ export default function PromptLabPage() {
         </h1>
 
         <p className="text-lg text-text-secondary mt-5 leading-relaxed max-w-3xl">
-          PromptLab diagnoses your prompt across 12 dimensions, generates targeted improvements using
-          distinct strategies, and auto-tests all variants to prove which one wins — in one command.
-          No dataset required.
+          PromptLab scores a prompt across 12 dimensions, suggests improved variants using distinct
+          strategies, and compares the outputs of the original and the variants on test cases it
+          generates from the prompt. The comparison is a starting point for your own review, not proof
+          of how a prompt will perform in real use.
         </p>
 
         <div className="flex flex-wrap gap-3 mt-8">
@@ -99,16 +66,14 @@ export default function PromptLabPage() {
             View on GitHub →
           </a>
 
-          <button
-            onClick={handleCopy}
-            className="relative inline-flex items-center gap-2 border border-[#2A2A50] hover:border-violet-500/40 text-text-secondary hover:text-violet-300 text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200 font-mono"
+          <a
+            href="https://github.com/akashjindal423/Promptlab#readme"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 border border-[#2A2A50] hover:border-violet-500/40 text-text-secondary hover:text-violet-300 text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200"
           >
-            {copied ? (
-              <span className="text-emerald-400">Copied!</span>
-            ) : (
-              'pip install promptlab'
-            )}
-          </button>
+            Install instructions
+          </a>
         </div>
 
         <div className="flex flex-wrap gap-2 mt-6">
@@ -127,18 +92,18 @@ export default function PromptLabPage() {
 
       {/* ── THE PROBLEM ───────────────────────────────────────────────────────── */}
       <section className="mt-16">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">The Problem</p>
-        <h2 className="text-2xl font-bold text-text-primary mb-8">Most prompting tools make you guess.</h2>
+        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Why I built it</p>
+        <h2 className="text-2xl font-bold text-text-primary mb-8">Three problems I kept hitting</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Problems */}
           <div className="bg-red-500/5 border border-red-500/15 rounded-2xl p-6">
-            <p className="text-[11px] uppercase tracking-widest text-red-400 font-semibold mb-5">Without PromptLab</p>
+            <p className="text-[11px] uppercase tracking-widest text-red-400 font-semibold mb-5">The problem</p>
             <ul className="space-y-4">
               {[
-                'Rewrite tools give you a new prompt with no explanation of what was wrong',
-                'Testing frameworks require a labelled dataset you don\'t have',
-                'Chrome extensions work per-session with no history or comparison',
+                'A rewritten prompt with no explanation of what was wrong with the original',
+                'Evaluation set-ups that assume a labelled dataset I didn\'t have',
+                'No record of which variants I had tried, or how they compared',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-text-secondary leading-relaxed">
                   <span className="shrink-0 text-base leading-none mt-0.5">❌</span>
@@ -150,11 +115,11 @@ export default function PromptLabPage() {
 
           {/* Solutions */}
           <div className="bg-emerald-500/5 border border-emerald-500/15 rounded-2xl p-6">
-            <p className="text-[11px] uppercase tracking-widest text-emerald-400 font-semibold mb-5">With PromptLab</p>
+            <p className="text-[11px] uppercase tracking-widest text-emerald-400 font-semibold mb-5">What PromptLab does</p>
             <ul className="space-y-4">
               {[
-                'PromptLab scores every dimension and tells you exactly why each one is weak',
-                'Auto-generates test cases from your prompt — no dataset needed',
+                'Scores each dimension with a rationale for why it is weak and a suggestion',
+                'Generates test cases from the prompt, so variants can be compared without a dataset (a first pass, not a substitute for testing on real inputs)',
                 'CLI-first, local-first — sessions saved, history browsable, works offline',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-text-secondary leading-relaxed">
@@ -287,9 +252,9 @@ export default function PromptLabPage() {
               desc: 'Generates 3 improved variants using distinct strategies — structured enhancement, role & context expansion, and few-shot augmentation. Not random rewrites. Each change is explained.',
             },
             {
-              num: '03', icon: '🏆', title: 'Test & Win',
+              num: '03', icon: '⚖️', title: 'Compare',
               cmd: 'promptlab improve "your prompt" --test',
-              desc: 'Auto-generates test cases, runs your original and all 3 variants against them, scores every output, and recommends the winner with reasoning. No dataset. No manual grading.',
+              desc: 'Generates test cases from your prompt, runs the original and the 3 variants against them, and scores each output with its reasoning. Use the result to decide what to review by hand: generated test cases and model-graded scores are not proof of real-world quality.',
             },
           ].map((card) => (
             <div key={card.num} className="bg-[var(--surface)] border border-[#2A2A50] hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[2px] transition-all duration-300 rounded-2xl p-6 flex flex-col">
@@ -312,7 +277,7 @@ export default function PromptLabPage() {
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Diagnostic Framework</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">The 12 Dimensions</h2>
         <p className="text-sm text-text-muted mb-8">
-          Every prompt is scored 1–5 across these dimensions. Most prompts score under 2.5 on the first pass.
+          Every prompt is scored 1–5 across these dimensions.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -326,52 +291,6 @@ export default function PromptLabPage() {
               <p className="text-xs text-text-muted leading-relaxed">{d.desc}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ── COMPARISON TABLE ──────────────────────────────────────────────────── */}
-      <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Competitive Landscape</p>
-        <h2 className="text-2xl font-bold text-text-primary mb-2">Why Not Just Use...</h2>
-        <p className="text-sm text-text-muted mb-8">
-          PromptLab fills a specific gap — no other tool explains <em>why</em> a prompt is weak and proves the fix.
-        </p>
-
-        <div className="overflow-x-auto rounded-2xl border border-[#2A2A50]">
-          <table className="w-full text-sm min-w-[600px]">
-            <thead>
-              <tr className="bg-violet-600/10 border-b border-violet-500/20">
-                <th className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">Feature</th>
-                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold text-center">PromptLab</th>
-                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold text-center">DSPy</th>
-                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold text-center">Promptfoo</th>
-                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold text-center">Braintrust</th>
-                <th className="px-4 py-3 text-[11px] uppercase tracking-widest text-text-subtle font-semibold text-center">Chrome Ext.</th>
-              </tr>
-            </thead>
-            <tbody>
-              {compRows.map((row, i) => (
-                <tr
-                  key={row.feature}
-                  className={`border-b border-[#2A2A50] last:border-0 ${
-                    row.highlight
-                      ? 'border-l-2 border-l-amber-500/60 bg-amber-500/5'
-                      : i % 2 === 0 ? 'bg-[var(--background)]/40' : 'bg-[var(--surface)]/60'
-                  }`}
-                >
-                  <td className={`px-4 py-3 ${row.highlight ? 'font-semibold text-amber-200/80' : 'text-text-secondary'}`}>
-                    {row.feature}
-                    {row.highlight && <span className="ml-2 text-[10px] text-amber-500 font-mono uppercase tracking-wider">unique</span>}
-                  </td>
-                  <Cell val={row.promptlab} bold={row.highlight} />
-                  <Cell val={row.dspy} />
-                  <Cell val={row.promptfoo} />
-                  <Cell val={row.braintrust} />
-                  <Cell val={row.chrome} />
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
       </section>
 

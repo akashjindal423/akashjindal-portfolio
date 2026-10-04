@@ -8,6 +8,6 @@ export default function Image() {
   return renderOgImage({
     eyebrow: 'Project · Open source',
     title: 'PromptLab',
-    subtitle: 'A Python CLI that diagnoses prompts across 12 dimensions and auto-tests improved variants.',
+    subtitle: 'A Python CLI that scores prompts across 12 dimensions and compares improved variants on generated test cases.',
   })
 }
