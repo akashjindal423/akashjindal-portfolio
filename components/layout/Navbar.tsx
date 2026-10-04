@@ -41,6 +41,7 @@ export default function Navbar() {
               <Link
                 key={href}
                 href={href}
+                aria-current={isActive(pathname, href) ? 'page' : undefined}
                 className={`text-sm transition-colors duration-200 ${
                   isActive(pathname, href)
                     ? 'text-violet-400'
@@ -56,6 +57,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
+              aria-current={pathname === '/contact' ? 'page' : undefined}
               className="hidden md:inline-flex bg-violet-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-violet-700 transition-all duration-200"
             >
               Contact →
