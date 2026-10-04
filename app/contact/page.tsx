@@ -34,7 +34,7 @@ export default function ContactPage() {
           {/* Right: info cards */}
           <div className="flex flex-col gap-4">
             <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex items-start gap-4">
-              <Clock className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
+              <Clock className="w-5 h-5 text-text-secondary flex-shrink-0 mt-0.5" aria-hidden="true" />
               <div>
                 <p className="text-text-primary font-semibold text-sm mb-1">Response Time</p>
                 <p className="text-text-secondary text-sm">Typically within 24 hours.</p>
@@ -45,9 +45,9 @@ export default function ContactPage() {
               href="https://www.linkedin.com/in/akash--jindal/"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[var(--surface)] border border-[var(--border)] hover:border-violet-500/30 rounded-xl p-6 flex items-start gap-4 transition group"
+              className="bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] rounded-xl p-6 flex items-start gap-4 transition group"
             >
-              <Linkedin className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
+              <Linkedin className="w-5 h-5 text-text-secondary flex-shrink-0 mt-0.5" aria-hidden="true" />
               <div>
                 <p className="text-text-primary font-semibold text-sm mb-1">LinkedIn</p>
                 <p className="text-text-secondary text-sm group-hover:text-violet-400 transition-colors duration-200">
@@ -58,9 +58,9 @@ export default function ContactPage() {
 
             <a
               href="mailto:akashjindal423@gmail.com"
-              className="bg-[var(--surface)] border border-[var(--border)] hover:border-violet-500/30 rounded-xl p-6 flex items-start gap-4 transition group"
+              className="bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] rounded-xl p-6 flex items-start gap-4 transition group"
             >
-              <Mail className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
+              <Mail className="w-5 h-5 text-text-secondary flex-shrink-0 mt-0.5" aria-hidden="true" />
               <div>
                 <p className="text-text-primary font-semibold text-sm mb-1">Email</p>
                 <p className="text-text-secondary text-sm group-hover:text-violet-400 transition-colors duration-200">
@@ -69,8 +69,8 @@ export default function ContactPage() {
               </div>
             </a>
 
-            <div className="bg-violet-600/10 border border-violet-500/20 rounded-xl p-6 flex items-start gap-4">
-              <Briefcase className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
+            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex items-start gap-4">
+              <Briefcase className="w-5 h-5 text-text-secondary flex-shrink-0 mt-0.5" aria-hidden="true" />
               <div>
                 <p className="text-text-primary font-semibold text-sm mb-1">Currently Open To</p>
                 <p className="text-text-secondary text-sm">

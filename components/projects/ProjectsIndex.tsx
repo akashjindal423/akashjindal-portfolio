@@ -5,15 +5,7 @@ import { ExternalLink, Lock } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-const statusColorMap: Record<string, string> = {
-  violet: 'bg-violet-500/20 text-violet-400',
-  amber:  'bg-amber-500/20 text-amber-400',
-  emerald: 'bg-emerald-500/20 text-emerald-400',
-}
-
-function resolveStatusColor(raw: string): string {
-  return statusColorMap[raw] ?? raw
-}
+const CHIP = 'bg-[var(--surface-raised)] border border-[var(--border)] text-text-secondary'
 
 export default function ProjectsIndex() {
   const { official, passion } = getProjects()
@@ -38,16 +30,16 @@ export default function ProjectsIndex() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className={`relative rounded-2xl border ${project.border} bg-gradient-to-br ${project.companyColor} bg-[var(--surface)] p-6 flex flex-col`}
+              className="relative rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 flex flex-col"
             >
               <div className="flex items-start justify-between mb-3">
-                <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${project.badgeColor}`}>
+                <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${CHIP}`}>
                   {project.badge}
                 </span>
                 {project.clickable && project.externalUrl && (
                   <a href={project.externalUrl} target="_blank" rel="noopener noreferrer"
                     aria-label={`View ${project.title} externally`}
-                    className="text-text-subtle hover:text-violet-400 transition">
+                    className="text-text-subtle hover:text-violet-400 transition-colors">
                     <ExternalLink size={16} aria-hidden="true" />
                   </a>
                 )}
@@ -84,9 +76,9 @@ export default function ProjectsIndex() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + i * 0.1 }}
-                className={`rounded-2xl border border-dashed border-[var(--border)] bg-[var(--background)]/50 p-6 flex flex-col transition-all duration-300 ${project.clickable ? 'hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[2px] cursor-pointer' : ''}`}
+                className={`rounded-2xl border border-dashed border-[var(--border)] bg-[var(--background)]/50 p-6 flex flex-col transition-all duration-300 ${project.clickable ? 'hover:border-[var(--border-strong)] hover:-translate-y-[2px] cursor-pointer' : ''}`}
               >
-                <span className={`text-xs px-2.5 py-1 rounded-full font-medium w-fit mb-3 ${resolveStatusColor(project.statusColor)}`}>
+                <span className={`text-xs px-2.5 py-1 rounded-full font-medium w-fit mb-3 ${CHIP}`}>
                   {project.status}
                 </span>
                 <h3 className="text-base font-bold text-text-primary mb-3 leading-snug">{project.title}</h3>

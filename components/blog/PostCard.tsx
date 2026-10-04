@@ -11,7 +11,7 @@ export default function PostCard({ slug, title, date, excerpt, tags, readingTime
       href={href}
       target={externalUrl ? '_blank' : undefined}
       rel={externalUrl ? 'noopener noreferrer' : undefined}
-      className="group block bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 hover:border-violet-500/30 hover:-translate-y-[2px] hover:shadow-elevated transition-all duration-300"
+      className="group block bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 hover:border-[var(--border-strong)] hover:-translate-y-[2px] hover:shadow-elevated transition-all duration-300"
     >
       {/* Tags + LinkedIn badge */}
       <div className="flex flex-wrap gap-1.5 mb-3 items-center">
@@ -19,7 +19,7 @@ export default function PostCard({ slug, title, date, excerpt, tags, readingTime
           <Badge key={tag}>{tag}</Badge>
         ))}
         {externalUrl && (
-          <span className="text-[10px] text-violet-400 border border-violet-500/30 rounded px-1.5 py-0.5 font-mono">
+          <span className="text-[10px] text-text-secondary border border-[var(--border-strong)] rounded px-1.5 py-0.5 font-mono">
             ↗ LinkedIn
           </span>
         )}

@@ -10,9 +10,9 @@ interface BadgeProps {
 
 const variantStyles: Record<Variant, string> = {
   default:
-    'bg-[var(--surface)] text-text-secondary border border-[var(--border)] hover:border-violet-500/40 hover:text-violet-400 transition-colors duration-200',
+    'bg-[var(--surface)] text-text-secondary border border-[var(--border)]',
   accent:
-    'bg-violet-600 text-white font-medium',
+    'bg-[var(--surface-raised)] text-text-primary border border-[var(--border-strong)] font-medium',
 }
 
 export default function Badge({ variant = 'default', className, children }: BadgeProps) {

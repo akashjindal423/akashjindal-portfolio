@@ -46,9 +46,9 @@ const features = [
 ]
 
 const moscowCols = [
-  { label: 'Must', headingColor: 'text-violet-400', borderColor: 'border-violet-500/30', bg: 'bg-violet-500/5', items: ['Cultural onboarding', 'Culturally aware nutrition engine', 'Basic posture tracking', 'Wellness nudges', 'Optional Apple Health read (activity, sleep)'] },
-  { label: 'Should', headingColor: 'text-amber-400', borderColor: 'border-amber-500/30', bg: 'bg-amber-500/5', items: ['Personalised meal planning', 'Progress dashboard', 'Form correction library', 'Adaptive difficulty'] },
-  { label: 'Could', headingColor: 'text-emerald-400', borderColor: 'border-emerald-500/30', bg: 'bg-emerald-500/5', items: ['AI coach chat interface', 'Social accountability features', 'Gamification layer'] },
+  { label: 'Must', headingColor: 'text-violet-400', borderColor: 'border-[var(--border-strong)]', bg: 'bg-[var(--surface)]', items: ['Cultural onboarding', 'Culturally aware nutrition engine', 'Basic posture tracking', 'Wellness nudges', 'Optional Apple Health read (activity, sleep)'] },
+  { label: 'Should', headingColor: 'text-text-primary', borderColor: 'border-[var(--border)]', bg: 'bg-[var(--surface)]', items: ['Personalised meal planning', 'Progress dashboard', 'Form correction library', 'Adaptive difficulty'] },
+  { label: 'Could', headingColor: 'text-text-secondary', borderColor: 'border-[var(--border)]', bg: 'bg-[var(--surface)]', items: ['AI coach chat interface', 'Social accountability features', 'Gamification layer'] },
   { label: "Won't (v1)", headingColor: 'text-text-muted', borderColor: 'border-[var(--border)]', bg: 'bg-[var(--surface)]', items: ['Medical diagnosis', 'Guaranteed outcome claims', 'Live consultation'] },
 ]
 
@@ -202,7 +202,7 @@ export default function AIHealthCompanionPage() {
             'People with religious or cultural dietary requirements (halal, jain, kosher, religious fasting)',
           ].map((item) => (
             <li key={item} className="flex items-start gap-3 text-sm text-text-secondary leading-relaxed">
-              <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0" />
+              <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-text-subtle shrink-0" aria-hidden="true" />
               {item}
             </li>
           ))}
@@ -226,9 +226,9 @@ export default function AIHealthCompanionPage() {
         <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
           <table className="w-full text-sm min-w-[640px]">
             <thead>
-              <tr className="bg-violet-600/20 border-b border-violet-500/30">
+              <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
                 {['Feature', 'What it does', 'Why it matters to user', 'Expected product value (assumption)'].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
+                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-secondary font-semibold">
                     {h}
                   </th>
                 ))}
@@ -262,7 +262,7 @@ export default function AIHealthCompanionPage() {
             'Ethical guardrails defined early: no medical diagnosis language, no prescriptive outcome claims',
           ].map((item) => (
             <li key={item} className="flex items-start gap-3 text-sm text-text-secondary leading-relaxed">
-              <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0" />
+              <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-text-subtle shrink-0" aria-hidden="true" />
               {item}
             </li>
           ))}
@@ -274,12 +274,12 @@ export default function AIHealthCompanionPage() {
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">MVP Scope</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Proposed first release</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-2xl p-6">
+          <div className="bg-[var(--surface)] border border-[var(--border-strong)] rounded-2xl p-6">
             <p className="text-[11px] uppercase tracking-widest text-emerald-400 font-semibold mb-4">In Scope</p>
             <ul className="space-y-2.5">
               {['Cultural onboarding flow', 'Culturally aware meal suggestions', 'AI posture feedback on selected bodyweight exercises', 'Work-pattern wellness nudges', 'Optional Apple Health read (activity and sleep only)'].map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-text-secondary leading-snug">
-                  <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                  <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-text-subtle shrink-0" aria-hidden="true" />
                   {item}
                 </li>
               ))}
@@ -325,7 +325,7 @@ export default function AIHealthCompanionPage() {
           {journeySteps.map((item, i) => (
             <div key={item.step} className="flex gap-5">
               <div className="flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full bg-violet-600 flex items-center justify-center text-white text-xs font-bold shrink-0 z-10">
+                <div className="w-8 h-8 rounded-full bg-[var(--surface-raised)] border border-[var(--border-strong)] flex items-center justify-center text-text-primary text-xs font-bold shrink-0 z-10">
                   {item.step}
                 </div>
                 {i < journeySteps.length - 1 && (
@@ -368,7 +368,7 @@ export default function AIHealthCompanionPage() {
                 <div className="bg-[var(--background)] rounded-lg px-4 py-3 space-y-2">
                   {s.ac.map((c) => (
                     <p key={c} className="text-sm text-text-secondary font-mono leading-relaxed">
-                      <span className="text-violet-500 mr-2">✓</span>{c}
+                      <span className="text-text-subtle mr-2" aria-hidden="true">✓</span>{c}
                     </p>
                   ))}
                 </div>

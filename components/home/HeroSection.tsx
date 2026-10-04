@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import CursorGlow from '@/components/hero/CursorGlow'
 import PromptLabPreview from '@/components/home/PromptLabPreview'
 
 const fadeUp = (delay: number) => ({
@@ -15,14 +14,8 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden"
-      style={{
-        background:
-          'radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.12) 0%, transparent 60%), #0E0F12',
-      }}
+      className="relative overflow-hidden border-b border-[var(--border)]"
     >
-      <CursorGlow />
-
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-12 items-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 md:pt-16 md:pb-20">
 
         {/* Left column */}
@@ -59,13 +52,13 @@ export default function HeroSection() {
           <motion.div {...fadeUp(0.45)} className="flex gap-3 flex-wrap">
             <Link
               href="/projects"
-              className="bg-violet-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-violet-500 transition-colors duration-200"
+              className="bg-violet-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-violet-700 transition-colors duration-200"
             >
               View projects
             </Link>
             <Link
               href="/lab"
-              className="border border-[var(--border)] text-text-secondary font-semibold px-6 py-3 rounded-lg hover:border-violet-500/60 hover:text-text-primary transition-colors duration-200"
+              className="border border-[var(--border)] text-text-secondary font-semibold px-6 py-3 rounded-lg hover:border-[var(--border-strong)] hover:text-text-primary transition-colors duration-200"
             >
               Try the Lab
             </Link>

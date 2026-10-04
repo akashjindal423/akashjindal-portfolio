@@ -68,7 +68,7 @@ export default function ContactForm() {
       />
       <button
         type="submit"
-        className="w-full bg-violet-600 hover:bg-violet-500 text-white rounded-lg py-3 font-semibold transition"
+        className="w-full bg-violet-600 hover:bg-violet-700 text-white rounded-lg py-3 font-semibold transition"
       >
         Open Email App →
       </button>

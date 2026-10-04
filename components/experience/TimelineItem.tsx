@@ -32,8 +32,8 @@ export default function TimelineItem({ experience, isLast, compact = false }: Pr
       )}
 
       {/* Dot */}
-      <div className="w-8 h-8 rounded-full bg-violet-600 flex-shrink-0 flex items-center justify-center z-10">
-        <Briefcase className="w-4 h-4 text-white" />
+      <div className="w-8 h-8 rounded-full bg-[var(--surface-raised)] border border-[var(--border-strong)] flex-shrink-0 flex items-center justify-center z-10">
+        <Briefcase className="w-4 h-4 text-text-secondary" aria-hidden="true" />
       </div>
 
       {/* Card */}
@@ -49,7 +49,7 @@ export default function TimelineItem({ experience, isLast, compact = false }: Pr
         </div>
 
         {/* Company + location */}
-        <p className="text-violet-400 text-sm font-medium mt-1">
+        <p className="text-text-secondary text-sm font-medium mt-1">
           {employerName(experience)} · {location}
         </p>
 
@@ -63,7 +63,7 @@ export default function TimelineItem({ experience, isLast, compact = false }: Pr
         <ul className="mt-3 space-y-1">
           {(compact ? achievements.slice(0, 2) : achievements).map((a) => (
             <li key={a} className="flex gap-2 items-start text-sm text-text-secondary">
-              <ChevronRight className="w-3 h-3 mt-1 flex-shrink-0 text-violet-400" />
+              <ChevronRight className="w-3 h-3 mt-1 flex-shrink-0 text-text-subtle" aria-hidden="true" />
               {a}
             </li>
           ))}

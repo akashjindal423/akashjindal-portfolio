@@ -16,7 +16,7 @@ export default function ContactCta() {
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white hover:bg-violet-500 transition-colors duration-200"
+            className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white hover:bg-violet-700 transition-colors duration-200"
           >
             <Mail className="h-4 w-4" aria-hidden="true" /> {CONTACT_EMAIL}
           </a>
@@ -24,7 +24,7 @@ export default function ContactCta() {
             href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] px-6 py-3 font-semibold text-text-secondary hover:border-violet-500/60 hover:text-text-primary transition-colors duration-200"
+            className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] px-6 py-3 font-semibold text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary transition-colors duration-200"
           >
             LinkedIn <ExternalLink className="h-4 w-4" aria-hidden="true" />
           </a>

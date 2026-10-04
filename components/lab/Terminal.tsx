@@ -275,7 +275,7 @@ function TerminalCard() {
                 key={c}
                 type="button"
                 onClick={() => submit(c)}
-                className="rounded-md border border-[var(--border)] px-2 py-0.5 text-[11px] text-text-secondary hover:border-violet-500/40 hover:text-violet-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 transition-colors duration-200"
+                className="rounded-md border border-[var(--border)] px-2 py-0.5 text-[11px] text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 transition-colors duration-200"
               >
                 {c}
               </button>
@@ -284,14 +284,6 @@ function TerminalCard() {
         </div>
       ) : null}
 
-      {/* Bottom glow line */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" aria-hidden="true" />
-      {/* Subtle inner glow */}
-      <div
-        className="pointer-events-none absolute inset-0 rounded-2xl"
-        style={{ boxShadow: 'inset 0 0 40px rgba(124,58,237,0.04)' }}
-        aria-hidden="true"
-      />
     </motion.div>
   )
 }

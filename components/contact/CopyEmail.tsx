@@ -31,7 +31,7 @@ export default function CopyEmail() {
         <button
           type="button"
           onClick={handleCopy}
-          className="sm:ml-auto inline-flex items-center justify-center gap-2 rounded-lg border border-[var(--border)] px-4 py-2 text-sm text-text-secondary hover:border-violet-500/60 hover:text-violet-400 transition-all duration-200"
+          className="sm:ml-auto inline-flex items-center justify-center gap-2 rounded-lg border border-[var(--border)] px-4 py-2 text-sm text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary transition-all duration-200"
         >
           {status === 'copied' ? (
             <Check className="w-4 h-4" aria-hidden="true" />

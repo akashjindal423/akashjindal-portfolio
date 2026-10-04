@@ -119,7 +119,7 @@ function Tooltip({
 export function DataTable({ title, data, unit }: Omit<ChartProps, 'highlight'>) {
   return (
     <details className="mt-3 text-sm">
-      <summary className="cursor-pointer text-text-secondary hover:text-violet-400 transition-colors duration-200 w-fit">
+      <summary className="cursor-pointer text-text-secondary hover:text-text-primary transition-colors duration-200 w-fit">
         Show data table
       </summary>
       <div className="mt-2 overflow-x-auto rounded-lg border border-[var(--border)]">

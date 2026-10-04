@@ -72,7 +72,7 @@ export default function FeaturedWork() {
             <AnimatedEntry delay={i * 0.08} className="h-full">
               <Link
                 href={card.href}
-                className="group flex h-full flex-col rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:-translate-y-[2px] hover:border-violet-500/30 hover:shadow-glow"
+                className="group flex h-full flex-col rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:-translate-y-[2px] hover:border-[var(--border-strong)]"
               >
                 <span className="text-xs uppercase tracking-widest text-text-subtle">{card.kind}</span>
                 <h3 className="mt-2 text-lg font-semibold text-text-primary leading-snug group-hover:text-violet-400 transition-colors duration-200">

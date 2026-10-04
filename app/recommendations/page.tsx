@@ -37,10 +37,10 @@ export default function RecommendationsPage() {
               key={t.slug}
               className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8"
             >
-              <span className="text-5xl text-violet-600 opacity-30 font-display leading-none">&ldquo;</span>
+              <span className="text-5xl text-text-subtle font-display leading-none" aria-hidden="true">&ldquo;</span>
               <p className="italic text-text-secondary leading-relaxed mt-2">{t.quote}</p>
               <div className="flex items-center gap-3 mt-6">
-                <div className="w-10 h-10 rounded-full bg-violet-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-[var(--surface-raised)] border border-[var(--border-strong)] flex items-center justify-center text-sm font-bold text-text-primary flex-shrink-0" aria-hidden="true">
                   {initials(t.author)}
                 </div>
                 <div className="min-w-0 flex-1">
@@ -64,7 +64,7 @@ export default function RecommendationsPage() {
                     {t.role} · {t.company}
                   </p>
                 </div>
-                <span className="ml-auto flex-shrink-0 bg-violet-600/20 text-violet-400 text-xs px-2 py-1 rounded-full">
+                <span className="ml-auto flex-shrink-0 bg-[var(--surface-raised)] border border-[var(--border)] text-text-secondary text-xs px-2 py-1 rounded-full">
                   {t.relationship}
                 </span>
               </div>

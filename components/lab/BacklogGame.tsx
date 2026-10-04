@@ -127,7 +127,7 @@ export default function BacklogGame() {
           <button
             type="button"
             onClick={start}
-            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white hover:bg-violet-500 transition-all duration-200"
+            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white hover:bg-violet-700 transition-all duration-200"
           >
             <Play className="h-4 w-4" aria-hidden="true" /> Start the 60-second round
           </button>
@@ -151,7 +151,7 @@ export default function BacklogGame() {
               <button
                 type="button"
                 onClick={() => finish(picked)}
-                className="rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-500 transition-all duration-200"
+                className="rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-700 transition-all duration-200"
               >
                 Submit plan
               </button>
@@ -186,7 +186,7 @@ export default function BacklogGame() {
                     className={`w-full rounded-xl border p-4 text-left transition-all duration-200 ${
                       on
                         ? 'border-violet-500/70 bg-violet-500/10'
-                        : 'border-[var(--border)] bg-[var(--surface)] hover:border-violet-500/30 hover:-translate-y-[2px]'
+                        : 'border-[var(--border)] bg-[var(--surface)] hover:border-[var(--border-strong)] hover:-translate-y-[2px]'
                     } aria-disabled:cursor-not-allowed aria-disabled:opacity-50 aria-disabled:hover:translate-y-0 aria-disabled:hover:border-[var(--border)]`}
                   >
                     <span className="flex items-start justify-between gap-3">
@@ -262,7 +262,7 @@ function Results({
           <button
             type="button"
             onClick={onCopy}
-            className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-violet-500 transition-all duration-200"
+            className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-violet-700 transition-all duration-200"
           >
             {copy === 'copied' ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
             {copy === 'copied' ? 'Score copied' : 'Copy my score'}
@@ -270,7 +270,7 @@ function Results({
           <button
             type="button"
             onClick={onReplay}
-            className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] px-5 py-2.5 text-sm text-text-secondary hover:border-violet-500/60 hover:text-violet-400 transition-all duration-200"
+            className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] px-5 py-2.5 text-sm text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary transition-all duration-200"
           >
             <RotateCcw className="h-4 w-4" aria-hidden="true" /> Play again
           </button>
@@ -310,7 +310,7 @@ function Results({
                   <td className="px-3 py-2 text-right font-mono tabular-nums text-text-secondary">{item.effort}</td>
                   <td className="px-3 py-2 text-right font-mono tabular-nums text-text-primary">{fmt(riceScore(item))}</td>
                   <td className="px-3 py-2 text-text-secondary">{result.picked.includes(item.id) ? '✓ picked' : '—'}</td>
-                  <td className="px-3 py-2 text-violet-300">{result.optimal.includes(item.id) ? '✓ build' : '—'}</td>
+                  <td className="px-3 py-2 text-text-primary">{result.optimal.includes(item.id) ? '✓ build' : '—'}</td>
                 </tr>
               ))}
             </tbody>

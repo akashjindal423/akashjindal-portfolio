@@ -93,7 +93,7 @@ export default function AboutPage() {
               <li key={href}>
                 <Link
                   href={href}
-                  className="group block h-full rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 transition-all duration-300 hover:-translate-y-[2px] hover:border-violet-500/30"
+                  className="group block h-full rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 transition-all duration-300 hover:-translate-y-[2px] hover:border-[var(--border-strong)]"
                 >
                   <span className="font-semibold text-text-primary group-hover:text-violet-400 transition-colors duration-200">
                     {label} →
@@ -106,8 +106,8 @@ export default function AboutPage() {
         </section>
 
         {/* Currently Open To */}
-        <div className="mt-16 bg-violet-600/10 border border-violet-500/20 rounded-xl p-6 flex items-start gap-4">
-          <Briefcase className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
+        <div className="mt-16 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex items-start gap-4">
+          <Briefcase className="w-5 h-5 text-text-secondary flex-shrink-0 mt-0.5" aria-hidden="true" />
           <div>
             <p className="text-text-primary font-semibold mb-1">Currently Open To</p>
             <p className="text-text-secondary text-sm leading-relaxed mb-3">

@@ -50,7 +50,7 @@ export default function SkillsPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {howIWork.map(({ icon: Icon, title, body }) => (
             <div key={title} className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6">
-              <Icon className="w-6 h-6 text-violet-400 mb-4" />
+              <Icon className="w-6 h-6 text-text-primary mb-4" aria-hidden="true" />
               <h3 className="font-semibold text-text-primary mb-2">{title}</h3>
               <p className="text-text-secondary text-sm leading-relaxed">{body}</p>
             </div>

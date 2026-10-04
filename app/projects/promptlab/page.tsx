@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Star } from 'lucide-react'
 import Breadcrumbs from '@/components/shared/Breadcrumbs'
 import { STATUS, counts, overallScore, recordedScores, scoreTotal, terminalRows } from '@/lib/projects/promptlab-example'
 
@@ -61,7 +62,7 @@ export default function PromptLabPage() {
             href="https://github.com/akashjindal423/Promptlab"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors duration-200"
           >
             View on GitHub →
           </a>
@@ -70,7 +71,7 @@ export default function PromptLabPage() {
             href="https://github.com/akashjindal423/Promptlab#readme"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-violet-500/40 text-text-secondary hover:text-violet-300 text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200"
+            className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--border-strong)] text-text-secondary hover:text-text-primary text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200"
           >
             Install instructions
           </a>
@@ -137,7 +138,7 @@ export default function PromptLabPage() {
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Recorded example</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">What the analysis looks like</h2>
         <p className="text-sm text-text-muted mb-6">
-          A recorded example of <code className="font-mono text-violet-400">promptlab analyse</code> on a weak prompt,
+          A recorded example of <code className="font-mono text-text-primary">promptlab analyse</code> on a weak prompt,
           shown as static text. Nothing runs on this page.
         </p>
 
@@ -222,7 +223,7 @@ export default function PromptLabPage() {
               <span className="text-emerald-400">{counts.good} good</span>
             </p>
 
-            <p className="mt-3 text-violet-400 text-xs">
+            <p className="mt-3 text-[#8b949e] text-xs">
               → Run: <span className="text-emerald-300">promptlab improve &quot;You are a helpful assistant...&quot; --test</span>
             </p>
           </div>
@@ -257,10 +258,10 @@ export default function PromptLabPage() {
               desc: 'Generates test cases from your prompt, runs the original and the 3 variants against them, and scores each output with its reasoning. Use the result to decide what to review by hand: generated test cases and model-graded scores are not proof of real-world quality.',
             },
           ].map((card) => (
-            <div key={card.num} className="bg-[var(--surface)] border border-[var(--border)] hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[2px] transition-all duration-300 rounded-2xl p-6 flex flex-col">
+            <div key={card.num} className="bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] hover:-translate-y-[2px] transition-all duration-300 rounded-2xl p-6 flex flex-col">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-2xl">{card.icon}</span>
-                <span className="text-[11px] font-mono font-bold text-violet-500/60 bg-violet-500/10 px-2 py-0.5 rounded">{card.num}</span>
+                <span className="text-[11px] font-mono font-bold text-text-subtle bg-[var(--surface-raised)] px-2 py-0.5 rounded">{card.num}</span>
               </div>
               <h3 className="text-base font-bold text-text-primary mb-3">{card.title}</h3>
               <div className="bg-[#0d1117] border border-[var(--border)] rounded-lg px-3 py-2 mb-4">
@@ -284,7 +285,7 @@ export default function PromptLabPage() {
           {dimensions.map((d) => (
             <div
               key={d.name}
-              className="bg-[var(--surface)] border border-[var(--border)] hover:border-violet-500/30 hover:-translate-y-[2px] hover:shadow-glow transition-all duration-300 rounded-xl p-4"
+              className="bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] hover:-translate-y-[2px] transition-all duration-300 rounded-xl p-4"
             >
               <span className="text-xl mb-2 block">{d.icon}</span>
               <p className="text-sm font-semibold text-text-primary mb-1">{d.name}</p>
@@ -303,7 +304,7 @@ export default function PromptLabPage() {
           {techStack.map((t) => (
             <span
               key={t}
-              className="text-sm px-3 py-1.5 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-violet-500/30 text-text-secondary transition-colors duration-200"
+              className="text-sm px-3 py-1.5 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] text-text-secondary transition-colors duration-200"
             >
               {t}
             </span>
@@ -313,9 +314,7 @@ export default function PromptLabPage() {
 
       {/* ── CTA ───────────────────────────────────────────────────────────────── */}
       <section className="mt-20">
-        <div className="relative overflow-hidden rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-600/10 via-[var(--surface)] to-violet-900/10 p-8 md:p-10">
-          {/* Subtle glow */}
-          <div className="absolute -top-20 -right-20 w-64 h-64 bg-violet-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] p-8 md:p-10">
 
           <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 relative">
             It&apos;s open source. Use it, break it, improve it.
@@ -330,13 +329,13 @@ export default function PromptLabPage() {
               href="https://github.com/akashjindal423/Promptlab"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors duration-200"
+              className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors duration-200"
             >
-              ⭐ Star on GitHub
+              <Star className="h-4 w-4" aria-hidden="true" /> Star on GitHub
             </a>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-violet-500/40 text-text-secondary hover:text-violet-300 text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200"
+              className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--border-strong)] text-text-secondary hover:text-text-primary text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200"
             >
               ← Back to Projects
             </Link>

@@ -28,16 +28,8 @@ const tools = [
 
 const categories = ["All", "Discovery", "Prioritisation", "Strategy", "Delivery", "Measurement", "Stakeholders", "Research", "Career"]
 
-const categoryBadge: Record<string, string> = {
-  Discovery: "text-amber-400 bg-amber-400/10 border-amber-400/20",
-  Prioritisation: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
-  Strategy: "text-blue-400 bg-blue-400/10 border-blue-400/20",
-  Delivery: "text-violet-400 bg-violet-400/10 border-violet-400/20",
-  Measurement: "text-cyan-400 bg-cyan-400/10 border-cyan-400/20",
-  Stakeholders: "text-rose-400 bg-rose-400/10 border-rose-400/20",
-  Research: "text-yellow-400 bg-yellow-400/10 border-yellow-400/20",
-  Career: "text-teal-400 bg-teal-400/10 border-teal-400/20",
-}
+// Category chips are neutral: the category name carries the meaning, not a colour
+const CATEGORY_CHIP = "text-text-secondary bg-[var(--surface-raised)] border-[var(--border)]"
 
 export default function ToolkitPage() {
   const [filter, setFilter] = useState("All")
@@ -86,7 +78,7 @@ export default function ToolkitPage() {
         <div className="flex justify-center mb-8">
           <a
             href="#tools"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-all duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold transition-all duration-200"
           >
             Browse the 20 templates
           </a>
@@ -137,7 +129,7 @@ export default function ToolkitPage() {
               aria-label="Search tools"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full bg-[var(--surface)] border border-[var(--border)] rounded-xl pl-10 pr-4 py-3 text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-violet-500/50 outline-none text-sm transition-colors duration-200"
+              className="w-full bg-[var(--surface)] border border-[var(--border)] rounded-xl pl-10 pr-4 py-3 text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-violet-500 outline-none text-sm transition-colors duration-200"
             />
           </div>
         </div>
@@ -150,7 +142,7 @@ export default function ToolkitPage() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
                 filter === cat
                   ? "bg-violet-600 border-violet-600 text-white"
-                  : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-muted)] hover:border-violet-500/30 hover:text-[var(--text-primary)]"
+                  : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-muted)] hover:border-[var(--border-strong)] hover:text-[var(--text-primary)]"
               }`}
             >
               {cat}
@@ -166,11 +158,11 @@ export default function ToolkitPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map(tool => {
-              const badgeClass = categoryBadge[tool.category] ?? "text-violet-400 bg-violet-400/10 border-violet-400/20"
+              const badgeClass = CATEGORY_CHIP
 
               return (
                 <div key={tool.id} className="flex flex-col">
-                  <div className="flex-1 bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-500/5 hover:-translate-y-0.5 transition-all duration-200">
+                  <div className="flex-1 bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 hover:border-[var(--border-strong)] hover:-translate-y-0.5 transition-all duration-200">
                     {/* Top row */}
                     <div className="flex items-start justify-between gap-2">
                       <span className="text-3xl">{tool.emoji}</span>
@@ -183,7 +175,7 @@ export default function ToolkitPage() {
 
                     {/* Title + tagline */}
                     <h3 className="text-xl font-bold text-[var(--text-primary)] mt-4">{tool.name}</h3>
-                    <p className="text-sm text-violet-400 italic mt-1">{tool.tagline}</p>
+                    <p className="text-sm text-text-secondary italic mt-1">{tool.tagline}</p>
 
                     {/* Description */}
                     <p className="text-sm text-[var(--text-muted)] mt-3 leading-relaxed">{tool.desc}</p>
@@ -193,7 +185,7 @@ export default function ToolkitPage() {
                       <a
                         href={tool.downloadHref}
                         download
-                        className="text-xs px-3 py-1.5 rounded-lg bg-violet-500/10 text-violet-400 border border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200"
+                        className="text-xs px-3 py-1.5 rounded-lg border border-[var(--border-strong)] text-violet-400 hover:text-violet-300 hover:border-violet-500 transition-colors duration-200"
                       >
                         Download
                       </a>
@@ -264,7 +256,7 @@ export default function ToolkitPage() {
 
       {/* ── FOOTER CTA ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="bg-gradient-to-r from-violet-600/10 to-violet-900/20 border border-violet-500/20 rounded-2xl p-12 text-center">
+        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3">
             Free starting templates for everyday product work
           </h2>
@@ -272,7 +264,7 @@ export default function ToolkitPage() {
           <div className="flex justify-center">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-all duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold transition-all duration-200"
             >
               ← Back to Portfolio
             </Link>

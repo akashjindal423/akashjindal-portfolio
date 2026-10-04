@@ -27,13 +27,13 @@ export default function NotFound() {
         <div className="flex flex-wrap gap-3 mt-8">
           <Link
             href="/"
-            className="bg-violet-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-violet-500 transition-all duration-200"
+            className="bg-violet-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-violet-700 transition-all duration-200"
           >
             Back to home
           </Link>
           <Link
             href="/blog"
-            className="border border-[var(--border)] text-text-secondary px-6 py-3 rounded-lg hover:border-violet-500/60 hover:text-violet-400 transition-all duration-200"
+            className="border border-[var(--border)] text-text-secondary px-6 py-3 rounded-lg hover:border-[var(--border-strong)] hover:text-text-primary transition-all duration-200"
           >
             Browse articles
           </Link>

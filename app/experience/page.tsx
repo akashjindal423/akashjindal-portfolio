@@ -67,9 +67,9 @@ export default function ExperiencePage() {
               <div>
                 <p className="text-xs text-text-subtle mb-1">Apr 2024 – Oct 2024 · London · Remote</p>
                 <h3 className="text-base font-bold text-text-primary">Vice President of Membership</h3>
-                <p className="text-sm text-violet-400 mt-0.5">Toastmasters International · Part-time</p>
+                <p className="text-sm text-text-secondary font-medium mt-0.5">Toastmasters International · Part-time</p>
               </div>
-              <span className="text-xs bg-violet-500/10 border border-violet-500/20 text-violet-400 px-2.5 py-1 rounded-full shrink-0 ml-3">Leadership</span>
+              <span className="text-xs bg-[var(--surface-raised)] border border-[var(--border)] text-text-secondary px-2.5 py-1 rounded-full shrink-0 ml-3">Leadership</span>
             </div>
             <p className="text-sm text-text-secondary mb-4">Empowering individuals through confident communication and leadership within a globally recognised public speaking community.</p>
             <ul className="space-y-2">
@@ -80,7 +80,7 @@ export default function ExperiencePage() {
                 'Built a scalable membership framework ensuring consistent communication and long-term development',
               ].map((bullet, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-text-secondary">
-                  <span className="text-violet-400 mt-0.5 shrink-0">›</span>
+                  <span className="text-text-subtle mt-0.5 shrink-0" aria-hidden="true">›</span>
                   {bullet}
                 </li>
               ))}
@@ -98,9 +98,9 @@ export default function ExperiencePage() {
               <div>
                 <p className="text-xs text-text-subtle mb-1">Dec 2019 – Jul 2023 · 3 yrs 8 mos</p>
                 <h3 className="text-base font-bold text-text-primary">Mentor</h3>
-                <p className="text-sm text-violet-400 mt-0.5">SOCH (अंत ही आरम्भ) · Part-time</p>
+                <p className="text-sm text-text-secondary font-medium mt-0.5">SOCH (अंत ही आरम्भ) · Part-time</p>
               </div>
-              <span className="text-xs bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full shrink-0 ml-3">Social Impact</span>
+              <span className="text-xs bg-[var(--surface-raised)] border border-[var(--border)] text-text-secondary px-2.5 py-1 rounded-full shrink-0 ml-3">Social Impact</span>
             </div>
             <p className="text-sm text-text-secondary mb-4">Supported high-impact social initiatives focused on health, inclusion, and sustainable development for underprivileged communities.</p>
             <ul className="space-y-2">
@@ -110,7 +110,7 @@ export default function ExperiencePage() {
                 'Initiated Project Pride — delivered gender-neutral washrooms with local governments and launched LGBTQIA+ mental health and vocational programmes',
               ].map((bullet, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-text-secondary">
-                  <span className="text-emerald-400 mt-0.5 shrink-0">›</span>
+                  <span className="text-text-subtle mt-0.5 shrink-0" aria-hidden="true">›</span>
                   {bullet}
                 </li>
               ))}

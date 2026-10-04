@@ -39,10 +39,7 @@ export interface OfficialProject {
   description: string
   tags: string[]
   period: string
-  companyColor: string
-  border: string
   badge: string
-  badgeColor: string
   clickable: boolean
   externalUrl?: string
   /** Consultancy that placed the work, e.g. "Infosys" */
@@ -55,7 +52,6 @@ export interface PassionProject {
   description: string
   tags: string[]
   status: string
-  statusColor: string
   clickable?: boolean
 }
 

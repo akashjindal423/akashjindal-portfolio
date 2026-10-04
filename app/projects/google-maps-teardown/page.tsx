@@ -50,9 +50,9 @@ function RiceTable({ proposal: p }: { proposal: RiceProposal }) {
       <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
         <table className="w-full text-sm min-w-[480px]">
           <thead>
-            <tr className="bg-violet-600/20 border-b border-violet-500/30">
+            <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
               {['Factor', 'Score', 'Reasoning'].map((h) => (
-                <th key={h} scope="col" className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
+                <th key={h} scope="col" className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-secondary font-semibold">
                   {h}
                 </th>
               ))}
@@ -62,13 +62,13 @@ function RiceTable({ proposal: p }: { proposal: RiceProposal }) {
             {rows.map(([factor, score, reasoning], i) => (
               <tr key={factor} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
                 <th scope="row" className="px-4 py-3 text-left font-medium text-text-primary">{factor}</th>
-                <td className="px-4 py-3 text-violet-300 font-semibold">{score}</td>
+                <td className="px-4 py-3 text-text-primary font-semibold">{score}</td>
                 <td className="px-4 py-3 text-text-secondary">{reasoning}</td>
               </tr>
             ))}
-            <tr className={`border-t ${p.id === top.id ? 'bg-emerald-600/10 border-emerald-500/30' : 'bg-violet-600/10 border-violet-500/30'}`}>
+            <tr className={`border-t ${p.id === top.id ? 'bg-emerald-600/10 border-emerald-500/30' : 'bg-[var(--surface-raised)] border-[var(--border)]'}`}>
               <th scope="row" className="px-4 py-3 text-left font-bold text-text-primary">RICE Score</th>
-              <td className={`px-4 py-3 font-bold text-base tabular-nums ${p.id === top.id ? 'text-emerald-400' : 'text-violet-300'}`}>
+              <td className={`px-4 py-3 font-bold text-base tabular-nums ${p.id === top.id ? 'text-emerald-400' : 'text-text-primary'}`}>
                 {formatRice(riceScore(p))}
               </td>
               <td className="px-4 py-3 text-text-muted text-xs">{riceFormula(p)}</td>
@@ -141,9 +141,9 @@ export default function GoogleMapsTeardownPage() {
         <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
           <table className="w-full text-sm min-w-[560px]">
             <thead>
-              <tr className="bg-violet-600/20 border-b border-violet-500/30">
+              <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
                 {['Metric', 'Value', 'Source'].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
+                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-secondary font-semibold">
                     {h}
                   </th>
                 ))}
@@ -187,9 +187,9 @@ export default function GoogleMapsTeardownPage() {
         <div className="overflow-x-auto rounded-2xl border border-[var(--border)] mb-10">
           <table className="w-full text-sm min-w-[480px]">
             <thead>
-              <tr className="bg-violet-600/20 border-b border-violet-500/30">
+              <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
                 {['App', 'Monthly Active Users', 'Market Share (US)', 'Owner'].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
+                  <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-secondary font-semibold">
                     {h}
                   </th>
                 ))}
@@ -242,7 +242,7 @@ export default function GoogleMapsTeardownPage() {
             },
           ].map((card) => (
             <div key={card.label} className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
-              <h4 className="text-sm font-bold text-violet-300 mb-3">{card.label}</h4>
+              <h4 className="text-sm font-bold text-text-primary mb-3">{card.label}</h4>
               <p className="text-sm text-text-secondary leading-relaxed">{card.body}</p>
             </div>
           ))}
@@ -317,39 +317,39 @@ export default function GoogleMapsTeardownPage() {
           {/* Rows 1 & 2 — core flywheel loop */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center mb-2">
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">2B+ Users</div>
-            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <span className="text-text-subtle text-sm text-center hidden md:block" aria-hidden="true">→</span>
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">High Commercial Intent</div>
-            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <span className="text-text-subtle text-sm text-center hidden md:block" aria-hidden="true">→</span>
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Premium Ad Inventory ($11B+/yr)</div>
           </div>
           <div className="hidden md:grid grid-cols-[1fr_28px_1fr_28px_1fr] gap-x-1 items-center my-1">
-            <div className="text-violet-400 text-sm text-center">↑</div>
+            <div className="text-text-subtle text-sm text-center" aria-hidden="true">↑</div>
             <div />
             <div />
             <div />
-            <div className="text-violet-400 text-sm text-center">↓</div>
+            <div className="text-text-subtle text-sm text-center" aria-hidden="true">↓</div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center mb-8">
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Better Product (AI/3D)</div>
-            <span className="text-violet-400 text-sm text-center hidden md:block">←</span>
+            <span className="text-text-subtle text-sm text-center hidden md:block" aria-hidden="true">←</span>
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">More Street View, Data, AI Models</div>
-            <span className="text-violet-400 text-sm text-center hidden md:block">←</span>
+            <span className="text-text-subtle text-sm text-center hidden md:block" aria-hidden="true">←</span>
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Revenue Reinvested in Infra</div>
           </div>
           {/* Row 3 */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center mb-3">
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">5M+ Apps</div>
-            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <span className="text-text-subtle text-sm text-center hidden md:block" aria-hidden="true">→</span>
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Developer Lock-in</div>
-            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <span className="text-text-subtle text-sm text-center hidden md:block" aria-hidden="true">→</span>
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">API Revenue (~$2B+/yr)</div>
           </div>
           {/* Row 4 */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center">
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">200M Listed Businesses</div>
-            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <span className="text-text-subtle text-sm text-center hidden md:block" aria-hidden="true">→</span>
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Free GBP Creates Dependency</div>
-            <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
+            <span className="text-text-subtle text-sm text-center hidden md:block" aria-hidden="true">→</span>
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Upsell to Google Ads</div>
           </div>
         </div>
@@ -371,9 +371,9 @@ export default function GoogleMapsTeardownPage() {
             <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-violet-600/20 border-b border-violet-500/30">
+                  <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
                     {['Contribution Type', 'Points', 'Bonus'].map((h) => (
-                      <th key={h} className="text-left px-3 py-2.5 text-[10px] uppercase tracking-widest text-violet-300 font-semibold">
+                      <th key={h} className="text-left px-3 py-2.5 text-[10px] uppercase tracking-widest text-text-secondary font-semibold">
                         {h}
                       </th>
                     ))}
@@ -392,7 +392,7 @@ export default function GoogleMapsTeardownPage() {
                   ].map(([type, pts, bonus], i) => (
                     <tr key={type} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
                       <td className="px-3 py-2.5 text-text-primary">{type}</td>
-                      <td className="px-3 py-2.5 text-violet-300 font-semibold">{pts}</td>
+                      <td className="px-3 py-2.5 text-text-primary font-semibold">{pts}</td>
                       <td className="px-3 py-2.5 text-text-muted text-xs">{bonus}</td>
                     </tr>
                   ))}
@@ -406,9 +406,9 @@ export default function GoogleMapsTeardownPage() {
             <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-violet-600/20 border-b border-violet-500/30">
+                  <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
                     {['Level', 'Points Required', 'Key Unlock'].map((h) => (
-                      <th key={h} className="text-left px-3 py-2.5 text-[10px] uppercase tracking-widest text-violet-300 font-semibold">
+                      <th key={h} className="text-left px-3 py-2.5 text-[10px] uppercase tracking-widest text-text-secondary font-semibold">
                         {h}
                       </th>
                     ))}
@@ -428,7 +428,7 @@ export default function GoogleMapsTeardownPage() {
                     ['10', '100,000', 'Top-tier recognition'],
                   ].map(([level, points, unlock], i) => (
                     <tr key={level} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
-                      <td className="px-3 py-2.5 text-violet-300 font-bold">{level}</td>
+                      <td className="px-3 py-2.5 text-text-primary font-bold">{level}</td>
                       <td className="px-3 py-2.5 text-text-secondary">{points}</td>
                       <td className="px-3 py-2.5 text-text-muted text-xs">{unlock}</td>
                     </tr>
@@ -540,7 +540,7 @@ export default function GoogleMapsTeardownPage() {
             <h3 className="text-base font-bold text-text-primary mb-6">&quot;Finding a Restaurant for Tonight&quot; — Discovery Flow</h3>
             <p className="text-xs text-text-muted mb-6 italic">User goal: Find a good restaurant nearby for dinner tonight</p>
             <div className="relative">
-              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-violet-500/30" />
+              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-[var(--border-strong)]" />
               {[
                 {
                   num: 1,
@@ -598,7 +598,7 @@ export default function GoogleMapsTeardownPage() {
                 },
               ].map((step) => (
                 <div key={step.num} className="relative pl-10 pb-8 last:pb-0">
-                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-violet-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-[var(--surface-raised)] border border-[var(--border-strong)] flex items-center justify-center text-text-primary text-xs font-bold shrink-0">
                     {step.num}
                   </div>
                   <p className="text-sm font-bold text-text-primary mb-2">{step.title}</p>
@@ -611,7 +611,7 @@ export default function GoogleMapsTeardownPage() {
                     )}
                     {step.items.map((item) => (
                       <li key={item} className="flex items-start gap-2">
-                        <span className="text-violet-400 mt-1.5 text-[8px] shrink-0">●</span>
+                        <span className="text-text-subtle mt-1.5 text-[8px] shrink-0" aria-hidden="true">●</span>
                         <span className="text-text-muted text-sm">{item}</span>
                       </li>
                     ))}
@@ -626,7 +626,7 @@ export default function GoogleMapsTeardownPage() {
             <h3 className="text-base font-bold text-text-primary mb-6">&quot;Daily Commute&quot; — Navigation Flow</h3>
             <p className="text-xs text-text-muted mb-6 italic">User goal: Get to work efficiently</p>
             <div className="relative">
-              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-violet-500/30" />
+              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-[var(--border-strong)]" />
               {[
                 {
                   num: 1,
@@ -668,14 +668,14 @@ export default function GoogleMapsTeardownPage() {
                 },
               ].map((step) => (
                 <div key={step.num} className="relative pl-10 pb-8 last:pb-0">
-                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-violet-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-[var(--surface-raised)] border border-[var(--border-strong)] flex items-center justify-center text-text-primary text-xs font-bold shrink-0">
                     {step.num}
                   </div>
                   <p className="text-sm font-bold text-text-primary mb-2">{step.title}</p>
                   <ul className="space-y-1.5">
                     {step.items.map((item) => (
                       <li key={item} className="flex items-start gap-2">
-                        <span className="text-violet-400 mt-1.5 text-[8px] shrink-0">●</span>
+                        <span className="text-text-subtle mt-1.5 text-[8px] shrink-0" aria-hidden="true">●</span>
                         <span className="text-text-muted text-sm">{item}</span>
                       </li>
                     ))}
@@ -721,9 +721,9 @@ export default function GoogleMapsTeardownPage() {
           <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
             <table className="w-full text-sm min-w-[480px]">
               <thead>
-                <tr className="bg-violet-600/20 border-b border-violet-500/30">
+                <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
                   {['Tier', 'Requirement', 'Revenue Share'].map((h) => (
-                    <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
+                    <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-secondary font-semibold">
                       {h}
                     </th>
                   ))}
@@ -749,7 +749,7 @@ export default function GoogleMapsTeardownPage() {
         {/* Wireframe */}
         <div className="mb-6">
           <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Wireframe — Creator Dashboard</p>
-          <div className="rounded-2xl p-1 bg-gradient-to-b from-violet-500/10 to-transparent border border-violet-500/20">
+          <div className="rounded-2xl p-1 bg-[var(--surface)] border border-[var(--border)]">
             <div className="bg-[var(--background)] rounded-2xl p-5 space-y-5">
               {/* Header */}
               <div className="text-center">
@@ -798,7 +798,7 @@ export default function GoogleMapsTeardownPage() {
                 <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">🎯 Contribution Opportunities</p>
                 <div className="space-y-2">
                   <div className="flex items-start gap-3 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-3">
-                    <span className="text-violet-400 text-base shrink-0">⚡</span>
+                    <span className="text-base shrink-0" aria-hidden="true">⚡</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-medium text-white">New restaurant: Honest Burgers, Park St</p>
                       <p className="text-[10px] text-text-muted">Be first to review</p>
@@ -806,7 +806,7 @@ export default function GoogleMapsTeardownPage() {
                     <span className="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full px-2 py-0.5 shrink-0">3x multiplier</span>
                   </div>
                   <div className="flex items-start gap-3 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-3">
-                    <span className="text-violet-400 text-base shrink-0">📸</span>
+                    <span className="text-base shrink-0" aria-hidden="true">📸</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-medium text-white">Photos needed: The Downs Café</p>
                       <p className="text-[10px] text-text-muted">Interior photos missing</p>
@@ -876,10 +876,10 @@ export default function GoogleMapsTeardownPage() {
             {/* Step 3 — Wireframe mock */}
             <div>
               <p className="text-[10px] uppercase tracking-widest text-text-muted mb-3">Step 3 — Collaborative Planning</p>
-              <div className="rounded-2xl p-1 bg-gradient-to-b from-violet-500/10 to-transparent border border-violet-500/20">
+              <div className="rounded-2xl p-1 bg-[var(--surface)] border border-[var(--border)]">
                 <div className="bg-[var(--background)] rounded-2xl overflow-hidden">
                   {/* Header band */}
-                  <div className="bg-gradient-to-r from-violet-600/20 to-blue-600/20 px-4 py-3">
+                  <div className="bg-[var(--surface-raised)] border-b border-[var(--border)] px-4 py-3">
                     <p className="text-sm font-semibold text-white">🗺️ Bristol Weekend · 4 people</p>
                   </div>
                   <div className="p-4 space-y-3">
@@ -914,7 +914,7 @@ export default function GoogleMapsTeardownPage() {
                       <span className="text-base shrink-0">💬</span>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-semibold text-white">Ask Maps suggestion</p>
-                        <div className="mt-2 bg-violet-500/5 border border-violet-500/20 rounded-lg p-3">
+                        <div className="mt-2 bg-[var(--surface)] border border-[var(--border)] rounded-lg p-3">
                           <p className="text-xs text-text-muted italic">AI suggests: Banksy walking tour, paddle boarding, Arnolfini gallery</p>
                         </div>
                       </div>
@@ -1003,9 +1003,9 @@ export default function GoogleMapsTeardownPage() {
           <div className="overflow-x-auto rounded-2xl border border-[var(--border)] mb-6">
             <table className="w-full text-sm min-w-[400px]">
               <thead>
-                <tr className="bg-violet-600/20 border-b border-violet-500/30">
+                <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
                   {['Data Point', 'Google Source'].map((h) => (
-                    <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
+                    <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-secondary font-semibold">
                       {h}
                     </th>
                   ))}
@@ -1036,7 +1036,7 @@ export default function GoogleMapsTeardownPage() {
         {/* Wireframe */}
         <div className="mb-6">
           <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Wireframe — Neighbourhood Profile</p>
-          <div className="rounded-2xl p-1 bg-gradient-to-b from-violet-500/10 to-transparent border border-violet-500/20">
+          <div className="rounded-2xl p-1 bg-[var(--surface)] border border-[var(--border)]">
             <div className="bg-[var(--background)] rounded-2xl p-5 space-y-5">
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -1044,7 +1044,7 @@ export default function GoogleMapsTeardownPage() {
                 <p className="text-2xl font-bold text-violet-400">8.4 / 10</p>
               </div>
               {/* Map placeholder */}
-              <div className="relative h-32 rounded-xl bg-gradient-to-br from-emerald-500/10 to-blue-500/10 border border-[var(--border)] overflow-hidden">
+              <div className="relative h-32 rounded-xl bg-[var(--surface)] border border-[var(--border)] overflow-hidden">
                 <div className="absolute bottom-2 left-2 flex flex-wrap gap-1">
                   {[
                     { emoji: '🟢', label: 'Walkability' },
@@ -1084,7 +1084,7 @@ export default function GoogleMapsTeardownPage() {
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-[10px] text-text-muted shrink-0">🔄 Compare with:</span>
                 {['Redland', 'Bedminster', 'Bishopston'].map((area) => (
-                  <button key={area} className="text-[10px] bg-[var(--surface)] border border-[var(--border)] hover:border-violet-500/50 rounded-full px-3 py-1 text-text-muted transition-colors">
+                  <button key={area} className="text-[10px] bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] rounded-full px-3 py-1 text-text-muted transition-colors">
                     {area}
                   </button>
                 ))}
@@ -1097,8 +1097,8 @@ export default function GoogleMapsTeardownPage() {
                 <span>🚲 12 min</span>
               </div>
               {/* Ask Maps result */}
-              <div className="border-l-4 border-violet-500 pl-4 bg-violet-500/5 rounded-r-xl p-4">
-                <p className="text-[10px] text-violet-400 mb-1 font-semibold">Ask Maps</p>
+              <div className="border-l-4 border-[var(--border-strong)] pl-4 bg-[var(--surface)] rounded-r-xl p-4">
+                <p className="text-[10px] text-text-secondary mb-1 font-semibold">Ask Maps</p>
                 <p className="text-xs text-text-muted italic leading-relaxed">
                   &quot;Clifton scores 9.1 for walkability and has 3 supermarkets within 10 min walk. However, parking is limited and rents average £1,200/month for a 1-bed. Consider Bedminster for 30% lower rent with similar walkability scores.&quot;
                 </p>
@@ -1146,9 +1146,9 @@ export default function GoogleMapsTeardownPage() {
         <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
           <table className="w-full text-sm min-w-[540px]">
             <thead>
-              <tr className="bg-violet-600/20 border-b border-violet-500/30">
+              <tr className="bg-[var(--surface-raised)] border-b border-[var(--border)]">
                 {['Feature', 'RICE (illustrative)', 'Build Order', 'Rationale'].map((h) => (
-                  <th key={h} scope="col" className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
+                  <th key={h} scope="col" className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-text-secondary font-semibold">
                     {h}
                   </th>
                 ))}
@@ -1158,8 +1158,8 @@ export default function GoogleMapsTeardownPage() {
               {ranked.map((row, i) => (
                 <tr key={row.id} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
                   <th scope="row" className="px-4 py-3 text-left font-medium text-text-primary">{row.id}: {row.name}</th>
-                  <td className="px-4 py-3 font-bold text-violet-300 tabular-nums">{formatRice(row.score)}</td>
-                  <td className={`px-4 py-3 font-semibold ${i === 0 ? 'text-emerald-400' : i === 1 ? 'text-violet-400' : 'text-text-muted'}`}>
+                  <td className="px-4 py-3 font-bold text-text-primary tabular-nums">{formatRice(row.score)}</td>
+                  <td className={`px-4 py-3 font-semibold ${i === 0 ? 'text-emerald-400' : i === 1 ? 'text-text-secondary' : 'text-text-muted'}`}>
                     {BUILD_ORDER[i]}
                   </td>
                   <td className="px-4 py-3 text-text-secondary">{row.note}</td>
@@ -1249,9 +1249,9 @@ export default function GoogleMapsTeardownPage() {
               body: 'Architecture thinking (AI integration, data sources, platform constraints) grounded in real experience building GenBI and data products at enterprise scale.',
             },
           ].map((card) => (
-            <div key={card.num} className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[2px] transition-all duration-300">
+            <div key={card.num} className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 hover:border-[var(--border-strong)] hover:-translate-y-[2px] transition-all duration-300">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-7 h-7 rounded-full bg-violet-600/20 border border-violet-500/30 flex items-center justify-center text-violet-400 text-xs font-bold shrink-0">
+                <div className="w-7 h-7 rounded-full bg-[var(--surface-raised)] border border-[var(--border-strong)] flex items-center justify-center text-text-primary text-xs font-bold shrink-0">
                   {card.num}
                 </div>
                 <h4 className="text-sm font-bold text-text-primary">{card.title}</h4>
@@ -1277,7 +1277,7 @@ export default function GoogleMapsTeardownPage() {
                 href="https://akashjindal.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-violet-400 hover:text-violet-300 transition-colors border border-violet-500/30 px-3 py-1.5 rounded-lg"
+                className="text-xs text-violet-400 hover:text-violet-300 transition-colors border border-[var(--border-strong)] px-3 py-1.5 rounded-lg"
               >
                 Portfolio →
               </a>
@@ -1285,7 +1285,7 @@ export default function GoogleMapsTeardownPage() {
                 href="https://linkedin.com/in/akash--jindal"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-violet-400 hover:text-violet-300 transition-colors border border-violet-500/30 px-3 py-1.5 rounded-lg"
+                className="text-xs text-violet-400 hover:text-violet-300 transition-colors border border-[var(--border-strong)] px-3 py-1.5 rounded-lg"
               >
                 LinkedIn →
               </a>

@@ -34,7 +34,7 @@ function SuggestedQuestions({ asked, onPick }: { asked: string | null; onPick: (
             type="button"
             onClick={() => onPick(q)}
             aria-pressed={asked === q}
-            className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-left text-sm text-text-secondary hover:border-violet-500/40 hover:text-violet-400 aria-pressed:border-violet-500/60 aria-pressed:text-violet-300 transition-all duration-200"
+            className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-left text-sm text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary aria-pressed:border-violet-500/60 aria-pressed:text-violet-300 transition-all duration-200"
           >
             {q}
           </button>
@@ -89,7 +89,7 @@ export default function GenBiDemo() {
           />
           <button
             type="submit"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-violet-600 px-5 py-3 font-semibold text-white hover:bg-violet-500 transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-violet-600 px-5 py-3 font-semibold text-white hover:bg-violet-700 transition-all duration-200"
           >
             <Send className="h-4 w-4" aria-hidden="true" />
             Ask
@@ -119,7 +119,7 @@ export default function GenBiDemo() {
               <GenBiChart key={outcome.result.title} result={outcome.result} />
             </div>
             <details className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 text-sm">
-              <summary className="cursor-pointer text-text-secondary hover:text-violet-400 transition-colors duration-200">
+              <summary className="cursor-pointer text-text-secondary hover:text-text-primary transition-colors duration-200">
                 How this was answered
               </summary>
               <p className="mt-3 text-text-secondary">
