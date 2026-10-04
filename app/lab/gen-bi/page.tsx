@@ -1,11 +1,12 @@
 import Breadcrumbs from '@/components/shared/Breadcrumbs'
 import GenBiDemo from '@/components/lab/GenBiDemo'
+import { DATA_YEAR } from '@/lib/lab/genbi'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata = pageMetadata({
   title: 'Gen BI Demo',
   description:
-    'Ask a plain-English question about a fictional retailer and get a chart and a one-line answer. A Gen BI demo by Akash Jindal using synthetic data and deterministic matching, with no AI calls.',
+    'A rule-based Gen BI prototype by Akash Jindal over fictional 2025 retail data, with no AI model. Ask a plain-English question and see the answer, a chart and how the question was read; unsupported questions get a clarification.',
   path: '/lab/gen-bi',
 })
 
@@ -22,9 +23,13 @@ export default function GenBiPage() {
       <p className="text-violet-400 text-xs uppercase tracking-widest mb-3">Lab · Gen BI</p>
       <h1 className="text-4xl md:text-5xl font-bold text-text-primary leading-tight">Ask the data in plain English</h1>
       <p className="text-text-secondary text-lg mt-4 max-w-2xl leading-relaxed">
-        Gen BI replaces &ldquo;raise a ticket and wait for a report&rdquo; with a question anyone can ask. This demo shows
-        the shape of that experience: a question goes in, it is mapped to a defined metric, and a chart and a one-line
-        answer come back.
+        Gen BI replaces &ldquo;raise a ticket and wait for a report&rdquo; with a question anyone can ask. This page is a
+        rule-based prototype of that experience over fictional {DATA_YEAR} data. There is no AI model: fixed rules turn
+        your question into a query, and every answer shows how the question was read.
+      </p>
+      <p className="text-text-secondary mt-3 max-w-2xl leading-relaxed">
+        If any part of a question is unsupported or ambiguous, such as another year, profit or an exclusion, you get a
+        clarification that says what the demo can answer, not an answer to a different question.
       </p>
       <div className="mt-10">
         <GenBiDemo />
@@ -32,16 +37,16 @@ export default function GenBiPage() {
       <section className="mt-12 grid gap-4 sm:grid-cols-3">
         {[
           {
-            title: 'Deterministic by design',
-            body: 'Keyword rules map each question to one of six metrics, so the same question always gives the same answer. No model, no API key, nothing leaves your browser.',
+            title: 'Rules, not a model',
+            body: 'Fixed rules read the measure, period, breakdown, filters and sort from your question. The same question always gives the same answer. No AI model, no API key, nothing leaves your browser.',
           },
           {
-            title: 'The semantic layer is the product',
-            body: 'The quality of a Gen BI answer depends on well-defined metrics and dimensions underneath. "How this was answered" shows the query each question maps to.',
+            title: 'One table, consistent totals',
+            body: 'Every figure comes from a single 240-row table (12 months × 4 regions × 5 categories), so totals agree whichever way you slice them. “How this was answered” shows the equivalent SQL.',
           },
           {
-            title: 'Honest about limits',
-            body: 'Questions outside the model get a clear "can’t answer that yet" and suggestions, rather than a confident guess.',
+            title: 'Clarifies instead of guessing',
+            body: 'Questions about other years, missing measures such as profit, exclusions or vague dates get a clarification listing what the demo can answer.',
           },
         ].map((c) => (
           <div key={c.title} className="rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-5">

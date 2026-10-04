@@ -10,7 +10,7 @@ import { SUGGESTED_QUESTIONS, ask } from '@/lib/lab/genbi'
 const preview = ask(SUGGESTED_QUESTIONS[0])
 
 export default function LabFeature() {
-  if (!preview.ok) return null
+  if (preview.kind !== 'answer') return null
   const { result } = preview
   return (
     <SectionWrapper id="lab">
@@ -30,8 +30,8 @@ export default function LabFeature() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-5 sm:p-8">
           <div className="lg:col-span-2 flex flex-col">
             <p className="text-text-secondary leading-relaxed">
-              Ask a plain-English question about a fictional retailer and get a chart plus a one-line answer. It is the
-              experience I work on with Gen BI, rebuilt as a small browser demo.
+              Ask a plain-English question about a fictional retailer and get a chart, a one-line answer and the scope it
+              was read as. A rule-based prototype of the Gen BI experience, with no AI model.
             </p>
             <p className="mt-6 text-xs uppercase tracking-widest text-text-subtle">Example question</p>
             <p className="mt-1 text-text-primary">&ldquo;{result.question}&rdquo;</p>

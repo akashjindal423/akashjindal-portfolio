@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useId, useRef, useState } from 'react'
-import type { DataPoint, GenBiResult } from '@/lib/lab/genbi'
-import { formatValue } from '@/lib/lab/genbi'
+import type { DataPoint, GenBiResult, Unit } from '@/lib/lab/genbi'
+import { formatTick, formatValue } from '@/lib/lab/genbi'
 
 /*
  * Lightweight SVG charts for the Gen BI demo (no chart library).
@@ -19,13 +19,12 @@ const GRID = '#2A2A50'
 const HEIGHT = 240
 const MARGIN = { top: 28, right: 12, bottom: 30, left: 52 }
 
-type Unit = GenBiResult['unit']
-
 interface ChartProps {
   title: string
   data: DataPoint[]
   unit: Unit
-  highlight: number
+  /** Indexes of the points the answer is about */
+  highlight: number[]
 }
 
 /** Tracks the rendered width so text stays at its real size instead of being scaled by a viewBox. */
@@ -50,11 +49,7 @@ function niceMax(max: number) {
   return step * mag * 4
 }
 
-function tickLabel(value: number, unit: Unit) {
-  if (unit === 'pct') return `${value}%`
-  if (unit === 'gbp') return `£${value}`
-  return value >= 1000 ? `£${value / 1000}m` : `£${value}k`
-}
+const tickLabel = formatTick
 
 function Frame({
   width,
@@ -183,7 +178,7 @@ export function BarChart({ title, data, unit, highlight }: ChartProps) {
           })}
           {bars.map((b, i) => {
             const r = Math.min(4, b.w)
-            const fill = i === highlight ? COLOR_HIGHLIGHT : COLOR_BASE
+            const fill = highlight.includes(i) ? COLOR_HIGHLIGHT : COLOR_BASE
             return (
               <g key={b.label}>
                 <text x={m.left - 10} y={b.y + BAR / 2} dy="0.32em" textAnchor="end" className="fill-text-secondary text-xs">
@@ -195,7 +190,7 @@ export function BarChart({ title, data, unit, highlight }: ChartProps) {
                   fill={fill}
                   opacity={active === null || active === i ? 1 : 0.75}
                 />
-                {i === highlight && (
+                {highlight.includes(i) && (
                   <text x={b.end + 8} y={b.y + BAR / 2} dy="0.32em" className="fill-text-primary text-xs font-semibold tabular-nums">
                     {formatValue(b.value, unit)}
                   </text>
@@ -250,7 +245,7 @@ export function LineChart({ title, data, unit, highlight }: ChartProps) {
   const area = `${line} L${pts[pts.length - 1].x},${baseline} L${pts[0].x},${baseline} Z`
   // Thin out x labels when space is tight
   const labelEvery = step < 34 ? 2 : 1
-  const hl = pts[highlight]
+  const hls = highlight.map((i) => pts[i]).filter(Boolean)
 
   function nearest(clientX: number, rect: DOMRect) {
     const x = clientX - rect.left - MARGIN.left
@@ -295,17 +290,21 @@ export function LineChart({ title, data, unit, highlight }: ChartProps) {
               ) : null,
             )}
             {a && <line x1={a.x} x2={a.x} y1={MARGIN.top} y2={baseline} stroke="#8A88B0" strokeWidth={1} />}
-            {/* Highlighted point: dot with a 2px surface ring and a direct label */}
-            <circle cx={hl.x} cy={hl.y} r={5} fill={COLOR_HIGHLIGHT} stroke={SURFACE} strokeWidth={2} />
-            <text
-              x={Math.min(hl.x, width - MARGIN.right - 24)}
-              y={hl.y - 12}
-              textAnchor="middle"
-              className="fill-text-primary text-xs font-semibold tabular-nums"
-            >
-              {formatValue(hl.value, unit)}
-            </text>
-            {a && active !== highlight && <circle cx={a.x} cy={a.y} r={4} fill={COLOR_LINE} stroke={SURFACE} strokeWidth={2} />}
+            {/* Highlighted points: dot with a 2px surface ring and a direct label */}
+            {hls.map((hl) => (
+              <g key={hl.label}>
+                <circle cx={hl.x} cy={hl.y} r={5} fill={COLOR_HIGHLIGHT} stroke={SURFACE} strokeWidth={2} />
+                <text
+                  x={Math.max(MARGIN.left + 24, Math.min(hl.x, width - MARGIN.right - 24))}
+                  y={hl.y - 12}
+                  textAnchor="middle"
+                  className="fill-text-primary text-xs font-semibold tabular-nums"
+                >
+                  {formatValue(hl.value, unit)}
+                </text>
+              </g>
+            ))}
+            {a && active !== null && !highlight.includes(active) && <circle cx={a.x} cy={a.y} r={4} fill={COLOR_LINE} stroke={SURFACE} strokeWidth={2} />}
             {/* Crosshair capture layer: snaps to the nearest month */}
             <rect
               x={MARGIN.left - step / 2}
@@ -331,7 +330,18 @@ export function LineChart({ title, data, unit, highlight }: ChartProps) {
   )
 }
 
+/** A single total: no chart, just the figure. */
+export function StatTile({ title, data, unit }: Omit<ChartProps, 'highlight'>) {
+  return (
+    <figure className="m-0 rounded-lg border border-[#2A2A50] bg-[var(--background)] p-5">
+      <figcaption className="text-sm font-medium text-text-secondary">{title}</figcaption>
+      <p className="mt-2 text-3xl font-bold text-text-primary tabular-nums">{formatValue(data[0].value, unit)}</p>
+    </figure>
+  )
+}
+
 export function GenBiChart({ result }: { result: GenBiResult }) {
   const props = { title: result.title, data: result.data, unit: result.unit, highlight: result.highlight }
+  if (result.chart === 'stat') return <StatTile {...props} />
   return result.chart === 'bar' ? <BarChart {...props} /> : <LineChart {...props} />
 }
