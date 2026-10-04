@@ -1061,21 +1061,22 @@ export default function GoogleMapsTeardownPage() {
               {/* Score bars */}
               <div className="space-y-2.5">
                 {[
-                  { emoji: '🚶', label: 'Walkability', score: 9.1, pct: '91%', color: 'bg-violet-500' },
-                  { emoji: '🚌', label: 'Public Transport', score: 7.8, pct: '78%', color: 'bg-blue-400' },
-                  { emoji: '🛒', label: 'Daily Amenities', score: 8.5, pct: '85%', color: 'bg-violet-500' },
-                  { emoji: '🌳', label: 'Green Space', score: 9.3, pct: '93%', color: 'bg-emerald-400' },
-                  { emoji: '🍽️', label: 'Food & Drink', score: 8.9, pct: '89%', color: 'bg-violet-500' },
-                  { emoji: '🏫', label: 'Schools', score: 7.2, pct: '72%', color: 'bg-amber-400' },
-                  { emoji: '🔇', label: 'Quietness', score: 6.1, pct: '61%', color: 'bg-blue-400' },
-                  { emoji: '💷', label: 'Cost of Living', score: 4.8, pct: '48%', color: 'bg-red-400' },
+                  { emoji: '🚶', label: 'Walkability', score: 9.1, pct: '91%' },
+                  { emoji: '🚌', label: 'Public Transport', score: 7.8, pct: '78%' },
+                  { emoji: '🛒', label: 'Daily Amenities', score: 8.5, pct: '85%' },
+                  { emoji: '🌳', label: 'Green Space', score: 9.3, pct: '93%' },
+                  { emoji: '🍽️', label: 'Food & Drink', score: 8.9, pct: '89%' },
+                  { emoji: '🏫', label: 'Schools', score: 7.2, pct: '72%' },
+                  { emoji: '🔇', label: 'Quietness', score: 6.1, pct: '61%' },
+                  { emoji: '💷', label: 'Cost of Living', score: 4.8, pct: '48%' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3">
                     <span className="text-sm shrink-0 w-5">{item.emoji}</span>
                     <span className="text-[10px] text-text-muted w-28 shrink-0">{item.label}</span>
                     <span className="text-[10px] font-semibold text-text-primary w-6 shrink-0">{item.score}</span>
                     <div className="flex-1 bg-[var(--surface)] rounded-full h-2">
-                      <div className={`h-2 rounded-full ${item.color}`} style={{ width: item.pct }} />
+                      {/* One series of scores, so one hue (chart palette slot 1) */}
+                      <div className="h-2 rounded-full bg-[#3987e5]" style={{ width: item.pct }} />
                     </div>
                   </div>
                 ))}

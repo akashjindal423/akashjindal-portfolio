@@ -6,13 +6,20 @@ import { formatTick, formatValue } from '@/lib/lab/genbi'
 
 /*
  * Lightweight SVG charts for the Gen BI demo (no chart library).
- * Single series, so no legend: the title names what is plotted.
- * Colours: base #7461C9 and highlight #C4B5FD both clear 3:1 against the #13132A
- * surface; the highlighted mark also carries a direct value label.
+ *
+ * Colour: a colour-blind-safe categorical palette (dark-mode steps, fixed order).
+ * Series differ by hue, never by two shades of one hue. Every chart here is a single
+ * series, so it takes slot 1 and the title names it. The point the answer is about
+ * is marked with a second hue from the same palette (slot 4) AND a direct value
+ * label, plus a key, so colour is never the only cue.
+ *
+ * Validated with the dataviz palette checker on #0E0F12, #16181D and #1D2026:
+ * #3987e5 vs #c98500 passes lightness band, chroma, CVD separation (worst ΔE 27.4,
+ * protanopia) and the normal-vision floor (ΔE 30.7), and both marks clear 3:1.
  */
-const COLOR_BASE = '#7461C9'
-const COLOR_HIGHLIGHT = '#C4B5FD'
-const COLOR_LINE = '#A78BFA'
+export const CHART_PALETTE = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767'] as const
+const COLOR_SERIES = CHART_PALETTE[0]
+const COLOR_HIGHLIGHT = CHART_PALETTE[3]
 const SURFACE = '#16181D'
 const GRID = '#2A2E37'
 
@@ -50,6 +57,21 @@ function niceMax(max: number) {
 }
 
 const tickLabel = formatTick
+
+/** Title plus a key for the highlight colour, so the emphasis is never colour alone. */
+function ChartHeading({ id, title, highlighted }: { id: string; title: string; highlighted: boolean }) {
+  return (
+    <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+      <figcaption id={id} className="text-sm font-medium text-text-primary">{title}</figcaption>
+      {highlighted && (
+        <p className="flex items-center gap-1.5 text-xs text-text-secondary">
+          <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ background: COLOR_HIGHLIGHT }} aria-hidden="true" />
+          Labelled: what the answer is about
+        </p>
+      )}
+    </div>
+  )
+}
 
 function Frame({
   width,
@@ -162,7 +184,7 @@ export function BarChart({ title, data, unit, highlight }: ChartProps) {
 
   return (
     <figure className="m-0">
-      <figcaption id={titleId} className="text-sm font-medium text-text-primary mb-2">{title}</figcaption>
+      <ChartHeading id={titleId} title={title} highlighted={highlight.length > 0 && highlight.length < data.length} />
       <div ref={ref} className="relative w-full">
         <svg width={width} height={height} role="group" aria-labelledby={titleId} className="block max-w-full overflow-visible">
           {ticks.map((t) => {
@@ -178,7 +200,8 @@ export function BarChart({ title, data, unit, highlight }: ChartProps) {
           })}
           {bars.map((b, i) => {
             const r = Math.min(4, b.w)
-            const fill = highlight.includes(i) ? COLOR_HIGHLIGHT : COLOR_BASE
+            // When every bar is the answer (top N), all stay in the series hue and all carry labels
+            const fill = highlight.includes(i) && highlight.length < data.length ? COLOR_HIGHLIGHT : COLOR_SERIES
             return (
               <g key={b.label}>
                 <text x={m.left - 10} y={b.y + BAR / 2} dy="0.32em" textAnchor="end" className="fill-text-secondary text-xs">
@@ -266,7 +289,7 @@ export function LineChart({ title, data, unit, highlight }: ChartProps) {
 
   return (
     <figure className="m-0">
-      <figcaption id={titleId} className="text-sm font-medium text-text-primary mb-2">{title}</figcaption>
+      <ChartHeading id={titleId} title={title} highlighted={highlight.length > 0 && highlight.length < data.length} />
       <div ref={ref} className="relative w-full">
         <svg
           width={width}
@@ -280,8 +303,8 @@ export function LineChart({ title, data, unit, highlight }: ChartProps) {
           className="block max-w-full overflow-visible rounded-md outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60"
         >
           <Frame width={width} yMax={yMax} unit={unit}>
-            <path d={area} fill={COLOR_LINE} opacity={0.1} />
-            <path d={line} fill="none" stroke={COLOR_LINE} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+            <path d={area} fill={COLOR_SERIES} opacity={0.1} />
+            <path d={line} fill="none" stroke={COLOR_SERIES} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
             {pts.map((p, i) =>
               i % labelEvery === 0 || i === data.length - 1 ? (
                 <text key={p.label} x={p.x} y={baseline + 18} textAnchor="middle" className="fill-text-secondary text-xs">
@@ -304,7 +327,7 @@ export function LineChart({ title, data, unit, highlight }: ChartProps) {
                 </text>
               </g>
             ))}
-            {a && active !== null && !highlight.includes(active) && <circle cx={a.x} cy={a.y} r={4} fill={COLOR_LINE} stroke={SURFACE} strokeWidth={2} />}
+            {a && active !== null && !highlight.includes(active) && <circle cx={a.x} cy={a.y} r={4} fill={COLOR_SERIES} stroke={SURFACE} strokeWidth={2} />}
             {/* Crosshair capture layer: snaps to the nearest month */}
             <rect
               x={MARGIN.left - step / 2}
