@@ -22,8 +22,6 @@ export function renderOgImage({ eyebrow, title, subtitle }: OgImageInput) {
           justifyContent: 'space-between',
           padding: '72px 80px',
           backgroundColor: '#0E0F12',
-          backgroundImage:
-            'radial-gradient(ellipse at 15% 0%, rgba(124,58,237,0.35) 0%, rgba(14,15,18,0) 60%)',
           color: '#F3F4F6',
         }}
       >
@@ -52,7 +50,7 @@ export function renderOgImage({ eyebrow, title, subtitle }: OgImageInput) {
               fontSize: 26,
               letterSpacing: 4,
               textTransform: 'uppercase',
-              color: '#A78BFA',
+              color: '#F5B544',
               marginBottom: 20,
             }}
           >
@@ -64,7 +62,7 @@ export function renderOgImage({ eyebrow, title, subtitle }: OgImageInput) {
           </div>
         </div>
 
-        <div style={{ display: 'flex', height: 6, width: 160, borderRadius: 3, backgroundColor: '#7C3AED' }} />
+        <div style={{ display: 'flex', height: 6, width: 160, borderRadius: 3, backgroundColor: '#F5B544' }} />
       </div>
     ),
     OG_SIZE,
