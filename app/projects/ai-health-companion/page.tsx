@@ -163,7 +163,7 @@ export default function AIHealthCompanionPage() {
         <p className="text-xs uppercase tracking-widest text-highlight mb-2">Problem Space</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">What is broken today</h2>
         <p className="text-sm text-text-muted mb-6">Working assumptions behind the concept, not research findings.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {[
             { title: 'One-size-fits-all health apps', body: 'Health apps often use the same templates regardless of cultural background, dietary norms, religion, or lifestyle. The assumption is that users disengage when advice feels irrelevant or unachievable.' },
             { title: 'No real-time physical feedback', body: 'Most apps give static exercise instructions with no live feedback. Poor form leads to injury, discouragement, and dropout — especially for beginners.' },
@@ -214,7 +214,7 @@ export default function AIHealthCompanionPage() {
         <p className="text-xs uppercase tracking-widest text-highlight mb-2">Personas</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">Hypothetical personas</h2>
         <p className="text-sm text-text-muted mb-6">Invented archetypes to frame the problem. They are not real people or research participants.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {personas.map((p) => <PersonaCard key={p.name} {...p} />)}
         </div>
       </section>
@@ -303,7 +303,7 @@ export default function AIHealthCompanionPage() {
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-highlight mb-2">MoSCoW</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Prioritisation framework</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {moscowCols.map((col) => (
             <div key={col.label} className={`rounded-2xl border ${col.borderColor} ${col.bg} p-5`}>
               <p className={`text-[11px] uppercase tracking-widest font-bold mb-4 ${col.headingColor}`}>{col.label}</p>
@@ -382,7 +382,7 @@ export default function AIHealthCompanionPage() {
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-highlight mb-2">Metrics</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">How success would be measured</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {metrics.map((m) => <MetricCard key={m.name} {...m} />)}
         </div>
       </section>
@@ -434,7 +434,7 @@ export default function AIHealthCompanionPage() {
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-highlight mb-2">Roadmap</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Illustrative phased plan</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {roadmapPhases.map((p) => <RoadmapPhase key={p.phase} {...p} />)}
         </div>
       </section>

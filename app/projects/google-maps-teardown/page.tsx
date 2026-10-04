@@ -281,7 +281,7 @@ export default function GoogleMapsTeardownPage() {
           Google Maps does not charge consumers. Instead, it monetises through three revenue streams that collectively generated an estimated $11B+ in 2023.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-10">
           {[
             {
               label: 'Revenue Stream 1',

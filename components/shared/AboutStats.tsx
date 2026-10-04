@@ -9,7 +9,7 @@ const STATS = [
 
 export default function AboutStats() {
   return (
-    <div className="grid grid-cols-2 gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-3">
 
       {STATS.map(({ value, label }) => (
         <div

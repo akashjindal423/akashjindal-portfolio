@@ -240,7 +240,7 @@ export default function PromptLabPage() {
         <p className="text-xs uppercase tracking-widest text-highlight mb-2">How It Works</p>
         <h2 className="text-2xl font-bold text-text-primary mb-8">Three Commands. End to End.</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {[
             {
               num: '01', icon: '🔍', title: 'Analyse',
@@ -281,7 +281,7 @@ export default function PromptLabPage() {
           Every prompt is scored 1–5 across these dimensions.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {dimensions.map((d) => (
             <div
               key={d.name}

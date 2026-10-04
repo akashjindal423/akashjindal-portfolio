@@ -31,7 +31,7 @@ export default function RecommendationsPage() {
       </SectionWrapper>
 
       <SectionWrapper className="pt-10 sm:pt-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {testimonials.map((t) => (
             <div
               key={t.slug}

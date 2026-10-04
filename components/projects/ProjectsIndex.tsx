@@ -23,7 +23,7 @@ export default function ProjectsIndex() {
           <span className="text-xs uppercase tracking-widest text-text-subtle">Official Projects</span>
           <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {official.map((project, i) => (
             <motion.div
               key={project.slug}
@@ -69,7 +69,7 @@ export default function ProjectsIndex() {
           <span className="text-xs uppercase tracking-widest text-text-subtle">Passion Projects</span>
           <div className="flex-1 h-px bg-[var(--border)]" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {passion.map((project, i) => {
             const cardContent = (
               <motion.div
