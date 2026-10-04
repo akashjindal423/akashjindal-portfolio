@@ -31,16 +31,27 @@ const DESCRIPTIONS: Record<Command, string> = {
   clear: 'reset the terminal',
 }
 
-const ALIASES: Record<string, Command> = {
-  '?': 'help',
-  ls: 'help',
-  whoami: 'about',
-  cls: 'clear',
-  'why': 'why-hire',
-  'whyhire': 'why-hire',
-  'why hire': 'why-hire',
-  work: 'projects',
-  cv: 'experience',
+// A Map, not a plain object: a plain-object lookup would resolve "constructor",
+// "__proto__", "toString" and other inherited keys to built-ins.
+const ALIASES = new Map<string, Command>([
+  ['?', 'help'],
+  ['ls', 'help'],
+  ['whoami', 'about'],
+  ['cls', 'clear'],
+  ['why', 'why-hire'],
+  ['whyhire', 'why-hire'],
+  ['why hire', 'why-hire'],
+  ['work', 'projects'],
+  ['cv', 'experience'],
+])
+
+const COMMAND_SET: ReadonlySet<string> = new Set(COMMANDS)
+
+/** Normalise input and map it to a command, or undefined if it isn't one. */
+export function resolveCommand(input: string): Command | undefined {
+  const key = input.trim().toLowerCase().replace(/\s+/g, ' ')
+  if (COMMAND_SET.has(key)) return key as Command
+  return ALIASES.get(key)
 }
 
 function year(ym: string) {
@@ -114,20 +125,31 @@ function run(command: Command): TermLine[] {
     }
     case 'clear':
       return []
+    default:
+      return []
   }
 }
 
-export type TermResult = { kind: 'clear' } | { kind: 'output'; lines: TermLine[] }
+export type TermResult = { kind: 'empty' } | { kind: 'clear' } | { kind: 'output'; lines: TermLine[] }
 
-export function execute(input: string): TermResult {
-  const raw = input.trim().toLowerCase()
-  const command = (COMMANDS as readonly string[]).includes(raw) ? (raw as Command) : ALIASES[raw]
-  if (command === 'clear') return { kind: 'clear' }
-  if (!command) {
-    return {
-      kind: 'output',
-      lines: [{ text: `command not found: ${input.trim().slice(0, 40)}. Type "help" for the list.`, tone: 'error' }],
-    }
+function notFound(text: string): TermResult {
+  return {
+    kind: 'output',
+    lines: [{ text: `command not found: ${text.slice(0, 40)}. Type "help" for the list.`, tone: 'error' }],
   }
-  return { kind: 'output', lines: run(command) }
+}
+
+/** Run one line of terminal input. Always returns a result; never throws. */
+export function execute(input: string): TermResult {
+  const text = typeof input === 'string' ? input.trim() : ''
+  if (!text) return { kind: 'empty' }
+  const command = resolveCommand(text)
+  if (!command) return notFound(text)
+  if (command === 'clear') return { kind: 'clear' }
+  try {
+    const lines = run(command)
+    return Array.isArray(lines) ? { kind: 'output', lines } : notFound(text)
+  } catch {
+    return { kind: 'output', lines: [{ text: 'Something went wrong running that command. Try "help".', tone: 'error' }] }
+  }
 }

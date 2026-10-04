@@ -3,6 +3,7 @@
 import { useId, useRef, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import ErrorBoundary from '@/components/shared/ErrorBoundary'
 import { COMMANDS, execute, type TermLine, type Tone } from '@/lib/terminal'
 
 const sections = [
@@ -86,12 +87,38 @@ function OutputLine({ line }: { line: TermLine }) {
   )
 }
 
+/** Shown if the terminal throws while rendering: the rest of the page keeps working. */
+function TerminalFallback({ reset }: { reset: () => void }) {
+  return (
+    <div role="alert" className="w-full max-w-md rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 text-sm">
+      <p className="font-semibold text-text-primary">The terminal hit an error.</p>
+      <p className="mt-1 text-text-secondary">The rest of the page still works.</p>
+      <button
+        type="button"
+        onClick={reset}
+        className="mt-4 rounded-lg border border-[var(--border)] px-4 py-2 text-text-secondary hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
+      >
+        Restart the terminal
+      </button>
+    </div>
+  )
+}
+
+/** The terminal, isolated in its own error boundary. */
+export default function ProductBriefCard() {
+  return (
+    <ErrorBoundary fallback={(reset) => <TerminalFallback reset={reset} />}>
+      <TerminalCard />
+    </ErrorBoundary>
+  )
+}
+
 /**
- * Hero "product_brief.md" card. The brief itself is static markup, so it renders
+ * "product_brief.md" card. The brief itself is static markup, so it renders
  * without JavaScript. Once hydrated it gains a command line (help, about, projects,
  * experience, skills, contact, why-hire, clear) that works with the keyboard alone.
  */
-export default function ProductBriefCard() {
+function TerminalCard() {
   const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false)
   const [entries, setEntries] = useState<Entry[]>([])
   const [draft, setDraft] = useState('')
@@ -116,6 +143,7 @@ export default function ProductBriefCard() {
     if (!trimmed) return
     history.current = [...history.current, trimmed].slice(-20)
     const result = execute(trimmed)
+    if (result.kind === 'empty') return
     if (result.kind === 'clear') {
       setEntries([])
       bodyRef.current?.scrollTo({ top: 0 })
