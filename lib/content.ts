@@ -239,9 +239,9 @@ export function getProjects(): ProjectsData {
       {
         slug: 'ai-health-companion',
         title: 'AI Health Companion',
-        description: 'A wellness product combining AI-guided exercise, real-time posture feedback, and culturally relevant nutrition — built around how people actually live.',
+        description: 'A concept study for a wellness product combining AI-guided exercise, real-time posture feedback and culturally relevant nutrition. Personas are hypothetical; nothing has been built or tested.',
         tags: ['AI/ML', 'Health Tech', 'Computer Vision', 'Personalisation'],
-        status: 'Concept',
+        status: 'Concept study',
         statusColor: 'violet',
         clickable: true,
       },

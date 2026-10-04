@@ -9,7 +9,7 @@ import { pageMetadata } from '@/lib/seo'
 export const metadata = pageMetadata({
   title: 'AI Health Companion',
   description:
-    'A passion project exploring AI-powered personalised wellness — posture-aware exercise guidance, culturally relevant nutrition, and preventive health coaching.',
+    'A concept study exploring AI-powered personalised wellness: posture-aware exercise guidance, culturally relevant nutrition and preventive coaching. Personas are hypothetical; nothing has been built or tested with users.',
   path: '/projects/ai-health-companion',
   image: '/projects/ai-health-companion/opengraph-image',
 })
@@ -36,17 +36,17 @@ const personas = [
 ]
 
 const features = [
-  { feature: 'Cultural Onboarding Engine', what: 'Captures background, religion, dietary requirements, location, and food habits', user: 'Advice feels relevant from day one', product: 'Drives activation and trust; core differentiator' },
-  { feature: 'AI Posture & Form Feedback', what: 'Uses camera to detect body position during exercises; flags issues in real time', user: 'Reduces injury risk; builds confidence', product: 'Increases session completion; reduces dropout' },
-  { feature: 'Culturally Relevant Nutrition', what: 'Generates meal suggestions based on cultural food profile, not calorie templates', user: 'Suggestions use ingredients the user knows', product: 'Primary retention driver; tackles #1 abandonment reason' },
-  { feature: 'Work-Pattern Wellness Nudges', what: 'Desk stretches, posture resets, and hydration reminders based on work schedule', user: 'Passive health improvement without disruption', product: 'High-frequency engagement; daily active user driver' },
-  { feature: 'Apple Health Integration', what: 'Reads activity, sleep, and heart rate data', user: 'Unified view without manual logging', product: 'Reduces friction; positions app as intelligence layer' },
-  { feature: 'Weekly Preventive Digest', what: 'Summarises patterns with one key insight', user: 'Awareness of trends before they become problems', product: 'Retention and perceived value driver' },
-  { feature: 'Adaptive AI Profile', what: 'Refines recommendations as behaviour is captured', user: 'Guidance improves the longer you use it', product: 'Core product moat; builds switching cost' },
+  { feature: 'Cultural Onboarding Engine', what: 'Captures background, religion, dietary requirements, location, and food habits', user: 'Advice feels relevant from day one', product: 'Intended to drive activation and trust; the main differentiator' },
+  { feature: 'AI Posture & Form Feedback', what: 'Uses camera to detect body position during exercises; flags issues in real time', user: 'Aims to reduce injury risk and build confidence', product: 'Expected to raise session completion and reduce dropout' },
+  { feature: 'Culturally Relevant Nutrition', what: 'Generates meal suggestions based on cultural food profile, not calorie templates', user: 'Suggestions use ingredients the user knows', product: 'Expected retention driver, if irrelevant advice is a main reason people abandon health apps (an assumption to test)' },
+  { feature: 'Work-Pattern Wellness Nudges', what: 'Desk stretches, posture resets, and hydration reminders based on work schedule', user: 'Small, regular prompts that fit the working day', product: 'Expected to drive frequent, daily engagement' },
+  { feature: 'Apple Health Connection (optional)', what: 'Read-only import of activity and sleep. No heart rate or other biometrics. The app works fully without it', user: 'Less manual logging for people who already use Apple Health', product: 'Reduces friction without making the product depend on one platform' },
+  { feature: 'Weekly Preventive Digest', what: 'Summarises patterns with one key insight', user: 'Awareness of trends before they become problems', product: 'Expected to support retention and perceived value' },
+  { feature: 'Adaptive AI Profile', what: 'Refines recommendations as behaviour is captured', user: 'Guidance improves the longer you use it', product: 'Intended to build a moat through switching cost' },
 ]
 
 const moscowCols = [
-  { label: 'Must', headingColor: 'text-violet-400', borderColor: 'border-violet-500/30', bg: 'bg-violet-500/5', items: ['Cultural onboarding', 'Culturally aware nutrition engine', 'Basic posture tracking', 'Wellness nudges', 'Apple Health integration'] },
+  { label: 'Must', headingColor: 'text-violet-400', borderColor: 'border-violet-500/30', bg: 'bg-violet-500/5', items: ['Cultural onboarding', 'Culturally aware nutrition engine', 'Basic posture tracking', 'Wellness nudges', 'Optional Apple Health read (activity, sleep)'] },
   { label: 'Should', headingColor: 'text-amber-400', borderColor: 'border-amber-500/30', bg: 'bg-amber-500/5', items: ['Personalised meal planning', 'Progress dashboard', 'Form correction library', 'Adaptive difficulty'] },
   { label: 'Could', headingColor: 'text-emerald-400', borderColor: 'border-emerald-500/30', bg: 'bg-emerald-500/5', items: ['AI coach chat interface', 'Social accountability features', 'Gamification layer'] },
   { label: "Won't (v1)", headingColor: 'text-text-muted', borderColor: 'border-[var(--border)]', bg: 'bg-[var(--surface)]', items: ['Medical diagnosis', 'Guaranteed outcome claims', 'Live consultation'] },
@@ -58,7 +58,7 @@ const journeySteps = [
   { step: '3', label: 'First Workout', desc: 'User films via camera; AI gives real-time posture feedback during a guided session.' },
   { step: '4', label: 'Nutrition Feed', desc: 'Personalised meal suggestions based on cultural profile — suggestions, not a rigid plan.' },
   { step: '5', label: 'Daily Nudges', desc: 'Desk stretch reminders, hydration prompts, and mobility flows timed to work pattern.' },
-  { step: '6', label: 'Weekly Digest', desc: 'Activity, sleep (via Apple Health), and one preventive insight based on patterns.' },
+  { step: '6', label: 'Weekly Digest', desc: 'Activity and sleep (if Apple Health is connected), and one preventive insight based on patterns.' },
   { step: '7', label: 'Adaptive Loop', desc: 'AI refines suggestions as user feedback and behaviour is tracked over time.' },
 ]
 
@@ -95,15 +95,15 @@ const risks = [
   { risk: 'Camera permission and lighting dependency', impact: 'High', impactColor: 'text-red-400', mitigation: 'Clear onboarding permission flow; graceful degradation to static tips if camera unavailable' },
   { risk: 'Cultural nutrition data gaps at launch', impact: 'Medium', impactColor: 'text-amber-400', mitigation: 'Launch with high-prevalence dietary cultures (South Asian, Middle Eastern, East African); expand iteratively' },
   { risk: 'Medical liability from health recommendations', impact: 'High', impactColor: 'text-red-400', mitigation: 'Legal review of all copy; no diagnostic language anywhere; clear disclaimer on every guidance screen' },
-  { risk: 'Apple Health API changes', impact: 'Low', impactColor: 'text-emerald-400', mitigation: 'Abstraction layer; Apple Health is optional not core' },
+  { risk: 'Apple Health API changes', impact: 'Low', impactColor: 'text-emerald-400', mitigation: 'Abstraction layer; the connection is optional and read-only, and the app works without it' },
   { risk: 'User privacy concerns around camera usage', impact: 'High', impactColor: 'text-red-400', mitigation: 'On-device ML processing; no footage stored or transmitted; explicit consent screen' },
 ]
 
 const roadmapPhases = [
-  { phase: 'Phase 1', period: 'M1–3', label: 'Foundation', items: ['Core onboarding', 'Cultural nutrition engine', 'Basic wellness nudges', 'Apple Health read'] },
+  { phase: 'Phase 1', period: 'M1–3', label: 'Foundation', items: ['Core onboarding', 'Cultural nutrition engine', 'Basic wellness nudges', 'Optional Apple Health read (activity, sleep)'] },
   { phase: 'Phase 2', period: 'M4–6', label: 'Movement', items: ['Camera-based posture feedback', 'Bodyweight exercise library', 'Form correction alerts', 'Progress tracking'] },
   { phase: 'Phase 3', period: 'M7–9', label: 'Personalisation', items: ['Adaptive AI model', 'Meal planning depth', 'Weekly digest', 'User feedback loop'] },
-  { phase: 'Phase 4', period: 'M10–12', label: 'Expansion', items: ['Wearable integration', 'Community layer', 'Expanded exercise library', 'Coach interface'] },
+  { phase: 'Phase 4', period: 'M10–12', label: 'Expansion', items: ['Wearables beyond Apple Health', 'Community layer', 'Expanded exercise library', 'Coach interface'] },
 ]
 
 export default function AIHealthCompanionPage() {
@@ -121,7 +121,7 @@ export default function AIHealthCompanionPage() {
       {/* HERO */}
       <section>
         <div className="flex flex-wrap gap-2 mb-5">
-          {['Passion Project', 'Health Tech', 'AI/ML', 'Concept Stage'].map((pill) => (
+          {['Concept study', 'Health Tech', 'AI/ML', 'Not built or tested'].map((pill) => (
             <Badge key={pill} variant="accent">{pill}</Badge>
           ))}
         </div>
@@ -132,8 +132,13 @@ export default function AIHealthCompanionPage() {
           Wellness that actually fits your life — not a generic plan
         </p>
         <p className="text-lg text-text-secondary mt-4 leading-relaxed max-w-3xl">
-          A product concept exploring how AI can make preventive health personal, culturally aware,
+          A concept study exploring how AI could make preventive health personal, culturally aware,
           and genuinely usable for everyday people.
+        </p>
+        <p className="mt-6 max-w-3xl rounded-xl border border-amber-500/30 bg-amber-500/10 px-5 py-4 text-sm leading-relaxed text-amber-100">
+          <strong className="font-semibold">This is a concept study, not a product.</strong> Nothing has been built,
+          and no users have been interviewed or tested. The personas and interview themes are hypothetical, written to
+          structure the thinking. Claims about what features would achieve are assumptions to test.
         </p>
       </section>
 
@@ -144,22 +149,23 @@ export default function AIHealthCompanionPage() {
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Overview</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">The Premise</h2>
         <p className="text-base text-text-secondary leading-relaxed max-w-3xl">
-          Most wellness apps tell you to eat chicken and broccoli and do a 5am run. They ignore that
+          Many wellness apps tell you to eat chicken and broccoli and do a 5am run. They ignore that
           you might eat dal and roti, work a 9-hour desk shift, follow intermittent fasting for
           religious reasons, or simply have never exercised before. AI Health Companion is a product
           concept built around a different premise: that health guidance only works when it reflects
-          how someone actually lives. This case study documents the product thinking, discovery
-          approach, feature set, and delivery structure behind that idea.
+          how someone actually lives. This concept study documents the product thinking, proposed
+          discovery approach, feature set, and delivery structure behind that idea.
         </p>
       </section>
 
       {/* PROBLEM SPACE */}
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Problem Space</p>
-        <h2 className="text-2xl font-bold text-text-primary mb-6">What is broken today</h2>
+        <h2 className="text-2xl font-bold text-text-primary mb-2">What is broken today</h2>
+        <p className="text-sm text-text-muted mb-6">Working assumptions behind the concept, not research findings.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
-            { title: 'One-size-fits-all health apps', body: '90% of health apps use the same templates regardless of cultural background, dietary norms, religion, or lifestyle. Users disengage when advice feels irrelevant or unachievable.' },
+            { title: 'One-size-fits-all health apps', body: 'Health apps often use the same templates regardless of cultural background, dietary norms, religion, or lifestyle. The assumption is that users disengage when advice feels irrelevant or unachievable.' },
             { title: 'No real-time physical feedback', body: 'Most apps give static exercise instructions with no live feedback. Poor form leads to injury, discouragement, and dropout — especially for beginners.' },
             { title: 'Reactive, not preventive', body: 'Existing tools log activity but do not connect lifestyle patterns to longer-term health trends. There is no guidance layer that says "you have been sedentary 5 days — here is what that means."' },
           ].map((card) => (
@@ -206,7 +212,8 @@ export default function AIHealthCompanionPage() {
       {/* PERSONAS */}
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Personas</p>
-        <h2 className="text-2xl font-bold text-text-primary mb-6">Representative users</h2>
+        <h2 className="text-2xl font-bold text-text-primary mb-2">Hypothetical personas</h2>
+        <p className="text-sm text-text-muted mb-6">Invented archetypes to frame the problem. They are not real people or research participants.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {personas.map((p) => <PersonaCard key={p.name} {...p} />)}
         </div>
@@ -220,7 +227,7 @@ export default function AIHealthCompanionPage() {
           <table className="w-full text-sm min-w-[640px]">
             <thead>
               <tr className="bg-violet-600/20 border-b border-violet-500/30">
-                {['Feature', 'What it does', 'Why it matters to user', 'Why it matters for product'].map((h) => (
+                {['Feature', 'What it does', 'Why it matters to user', 'Expected product value (assumption)'].map((h) => (
                   <th key={h} className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-violet-300 font-semibold">
                     {h}
                   </th>
@@ -248,9 +255,9 @@ export default function AIHealthCompanionPage() {
         <ul className="space-y-3 max-w-3xl">
           {[
             'Desk research into cultural health disparities and health app dropout rates',
-            'Hypothetical user interviews mapped to 3 persona archetypes representing underserved segments',
+            'Hypothetical interview themes (no real interviews) mapped to 3 invented persona archetypes',
             'Jobs-to-be-done mapping: "When I [situation], I want to [motivation], so I can [outcome]"',
-            'Assumption mapping: highest-risk assumptions identified and tested through low-fidelity concept validation',
+            'Assumption mapping: highest-risk assumptions identified, with low-fidelity tests proposed to check them (not yet run)',
             'RICE scoring applied across feature candidates to define MVP boundaries',
             'Ethical guardrails defined early: no medical diagnosis language, no prescriptive outcome claims',
           ].map((item) => (
@@ -265,12 +272,12 @@ export default function AIHealthCompanionPage() {
       {/* MVP SCOPE */}
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">MVP Scope</p>
-        <h2 className="text-2xl font-bold text-text-primary mb-6">What ships first</h2>
+        <h2 className="text-2xl font-bold text-text-primary mb-6">Proposed first release</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-2xl p-6">
             <p className="text-[11px] uppercase tracking-widest text-emerald-400 font-semibold mb-4">In Scope</p>
             <ul className="space-y-2.5">
-              {['Cultural onboarding flow', 'Culturally aware meal suggestions', 'AI posture feedback on selected bodyweight exercises', 'Work-pattern wellness nudges', 'Apple Health read integration'].map((item) => (
+              {['Cultural onboarding flow', 'Culturally aware meal suggestions', 'AI posture feedback on selected bodyweight exercises', 'Work-pattern wellness nudges', 'Optional Apple Health read (activity and sleep only)'].map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-text-secondary leading-snug">
                   <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                   {item}
@@ -281,7 +288,7 @@ export default function AIHealthCompanionPage() {
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <p className="text-[11px] uppercase tracking-widest text-text-muted font-semibold mb-4">Out of Scope</p>
             <ul className="space-y-2.5">
-              {['Full wearable biometric analysis', 'Mental health layer', 'Community features', 'Live nutritionist consultation', 'Advanced diagnostics'].map((item) => (
+              {['Heart rate and other biometric data', 'Full wearable biometric analysis', 'Mental health layer', 'Community features', 'Live nutritionist consultation', 'Advanced diagnostics'].map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-text-secondary leading-snug">
                   <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-[#3D3B60] shrink-0" />
                   {item}
@@ -339,7 +346,7 @@ export default function AIHealthCompanionPage() {
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Delivery Structure</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Epics and stories</h2>
         <div className="flex flex-wrap gap-2 mb-8">
-          {['EP-01 Onboarding & Profile', 'EP-02 Cultural Nutrition Engine', 'EP-03 Movement & Posture', 'EP-04 Wellness Nudges', 'EP-05 Apple Health Integration', 'EP-06 Weekly Digest'].map((epic) => (
+          {['EP-01 Onboarding & Profile', 'EP-02 Cultural Nutrition Engine', 'EP-03 Movement & Posture', 'EP-04 Wellness Nudges', 'EP-05 Apple Health Read (optional)', 'EP-06 Weekly Digest'].map((epic) => (
             <span key={epic} className="text-xs bg-[var(--surface)] border border-[var(--border)] text-text-subtle px-3 py-1.5 rounded-lg font-mono">
               {epic}
             </span>
@@ -374,7 +381,7 @@ export default function AIHealthCompanionPage() {
       {/* METRICS */}
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Metrics</p>
-        <h2 className="text-2xl font-bold text-text-primary mb-6">How success is measured</h2>
+        <h2 className="text-2xl font-bold text-text-primary mb-6">How success would be measured</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {metrics.map((m) => <MetricCard key={m.name} {...m} />)}
         </div>
@@ -414,7 +421,7 @@ export default function AIHealthCompanionPage() {
         <h2 className="text-2xl font-bold text-text-primary mb-6">Scope of guidance</h2>
         <div className="border-l-4 border-amber-500/60 bg-amber-500/5 rounded-r-2xl px-6 py-5">
           <p className="text-sm text-amber-200/75 leading-relaxed">
-            This product does not provide medical diagnosis, clinical advice, or guaranteed health
+            The product would not provide medical diagnosis, clinical advice, or guaranteed health
             outcomes. All guidance is informational and based on general wellness research. Users with
             existing medical conditions should consult a qualified healthcare professional. Posture
             feedback is provided as general movement guidance only — not physiotherapy or clinical
@@ -426,7 +433,7 @@ export default function AIHealthCompanionPage() {
       {/* ROADMAP */}
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Roadmap</p>
-        <h2 className="text-2xl font-bold text-text-primary mb-6">Phased delivery plan</h2>
+        <h2 className="text-2xl font-bold text-text-primary mb-6">Illustrative phased plan</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {roadmapPhases.map((p) => <RoadmapPhase key={p.phase} {...p} />)}
         </div>
@@ -435,7 +442,7 @@ export default function AIHealthCompanionPage() {
       {/* PO REFLECTION */}
       <section className="mt-20">
         <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">PO Reflection</p>
-        <h2 className="text-2xl font-bold text-text-primary mb-6">What I learned building this</h2>
+        <h2 className="text-2xl font-bold text-text-primary mb-6">What I learned from this concept study</h2>
         <div className="space-y-4 max-w-3xl text-text-muted leading-relaxed text-base">
           <p>
             The most interesting constraint in this concept is the ethical boundary. The product must
@@ -443,9 +450,10 @@ export default function AIHealthCompanionPage() {
             in copy, onboarding, and feature design — was as important as the features themselves.
           </p>
           <p>
-            Culturally aware personalisation is a rarely explored space in health tech. Most products
-            default to western dietary models because it is simpler. This concept challenges that
-            default, and I believe there is a real underserved market here.
+            My hypothesis is that culturally aware personalisation is under-served in mainstream health
+            apps, many of which default to western dietary models because it is simpler. This concept
+            challenges that default. Whether there is a real underserved market here is the first thing
+            discovery would need to test.
           </p>
           <p>
             The technical complexity of real-time posture tracking is genuine, but the harder problem
