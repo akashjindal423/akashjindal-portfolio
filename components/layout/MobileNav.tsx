@@ -4,16 +4,8 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { X, Menu } from 'lucide-react'
+import { PRIMARY_NAV, isActive } from '@/lib/nav'
 
-const NAV_LINKS = [
-  { label: 'Projects', href: '/projects' },
-  { label: 'Experience', href: '/experience' },
-  { label: 'Skills', href: '/skills' },
-  { label: 'Toolkit', href: '/toolkit' },
-  { label: 'Lab', href: '/lab' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'About', href: '/about' },
-]
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false)
@@ -62,13 +54,13 @@ export default function MobileNav() {
           open ? 'translate-x-0 visible' : 'translate-x-full invisible'
         }`}
       >
-        {NAV_LINKS.map(({ label, href }) => (
+        {PRIMARY_NAV.map(({ label, href }) => (
           <Link
             key={href}
             href={href}
             onClick={() => setOpen(false)}
             className={`py-3 text-sm font-medium border-b border-[var(--border)] transition-colors duration-200 ${
-              pathname === href || pathname.startsWith(`${href}/`)
+              isActive(pathname, href)
                 ? 'text-violet-400'
                 : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
             }`}

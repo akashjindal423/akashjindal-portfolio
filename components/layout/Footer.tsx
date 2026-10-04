@@ -1,20 +1,9 @@
 import Link from 'next/link'
 import { ExternalLink, Github, Mail } from 'lucide-react'
 import { GITHUB_URL, LINKEDIN_URL } from '@/lib/structured-data'
+import { PRIMARY_NAV, SECONDARY_NAV } from '@/lib/nav'
 
-const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Experience', href: '/experience' },
-  { label: 'Skills', href: '/skills' },
-  { label: 'Toolkit', href: '/toolkit' },
-  { label: 'Lab', href: '/lab' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'About', href: '/about' },
-  { label: 'Training', href: '/training' },
-  { label: 'Recommendations', href: '/recommendations' },
-  { label: 'Contact', href: '/contact' },
-]
+const MAIN_LINKS = [{ label: 'Home', href: '/' }, ...PRIMARY_NAV, { label: 'Contact', href: '/contact' }]
 
 const CONNECT_LINKS = [
   { label: 'LinkedIn', href: LINKEDIN_URL, icon: ExternalLink, external: true },
@@ -27,7 +16,7 @@ export default function Footer() {
     <footer className="bg-[var(--background)] border-t border-[var(--border)] py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 3-col grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Col 1 — Brand */}
           <div>
             <div className="flex items-center gap-2.5">
@@ -42,11 +31,11 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Col 2 — Navigation */}
-          <div>
+          {/* Col 2 — Main pages */}
+          <nav aria-label="Footer">
             <p className="text-xs uppercase tracking-widest text-text-subtle mb-4">Navigation</p>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-2 sm:max-w-xs">
-              {NAV_LINKS.map(({ label, href }) => (
+            <ul className="flex flex-col gap-2">
+              {MAIN_LINKS.map(({ label, href }) => (
                 <li key={href}>
                   <Link
                     href={href}
@@ -57,9 +46,26 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Col 3 — Connect */}
+          {/* Col 3 — Pages linked from About rather than the main navigation */}
+          <nav aria-label="More about me">
+            <p className="text-xs uppercase tracking-widest text-text-subtle mb-4">More about me</p>
+            <ul className="flex flex-col gap-2">
+              {SECONDARY_NAV.map(({ label, href }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-[#A09EC0] hover:text-violet-400 text-sm transition-colors duration-200"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Col 4 — Connect */}
           <div>
             <p className="text-xs uppercase tracking-widest text-text-subtle mb-4">Connect</p>
             <ul className="flex flex-col gap-2">

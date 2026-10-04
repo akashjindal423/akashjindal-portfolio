@@ -7,6 +7,7 @@ import AboutStats from '@/components/shared/AboutStats'
 import JsonLd from '@/components/shared/JsonLd'
 import { pageMetadata } from '@/lib/seo'
 import { personSchema } from '@/lib/structured-data'
+import { SECONDARY_NAV } from '@/lib/nav'
 
 export const metadata = pageMetadata({
   title: 'About',
@@ -83,6 +84,26 @@ export default function AboutPage() {
             <AboutStats />
           </div>
         </div>
+
+        {/* Pages that sit outside the main navigation */}
+        <section aria-labelledby="more-about-me" className="mt-16">
+          <h2 id="more-about-me" className="text-xl font-semibold text-text-primary mb-4">More about me</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {SECONDARY_NAV.map(({ label, href, blurb }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="group block h-full rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 transition-all duration-300 hover:-translate-y-[2px] hover:border-violet-500/30"
+                >
+                  <span className="font-semibold text-text-primary group-hover:text-violet-400 transition-colors duration-200">
+                    {label} →
+                  </span>
+                  {blurb && <span className="mt-1 block text-sm text-text-secondary">{blurb}</span>}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {/* Currently Open To */}
         <div className="mt-16 bg-violet-600/10 border border-violet-500/20 rounded-xl p-6 flex items-start gap-4">
