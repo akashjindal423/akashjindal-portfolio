@@ -104,8 +104,8 @@ function TerminalFallback({ reset }: { reset: () => void }) {
   )
 }
 
-/** The terminal, isolated in its own error boundary. */
-export default function ProductBriefCard() {
+/** The /lab terminal, isolated in its own error boundary. */
+export default function Terminal() {
   return (
     <ErrorBoundary fallback={(reset) => <TerminalFallback reset={reset} />}>
       <TerminalCard />

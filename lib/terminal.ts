@@ -1,5 +1,5 @@
 /**
- * Commands for the interactive hero terminal. Output is built only from
+ * Commands for the interactive terminal on /lab. Output is built only from
  * lib/content.ts and lib/lab/items.ts so it never says anything the rest of
  * the site doesn't.
  */
