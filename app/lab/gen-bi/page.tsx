@@ -20,7 +20,7 @@ export default function GenBiPage() {
           { label: 'Gen BI demo', href: '/lab/gen-bi' },
         ]}
       />
-      <p className="text-violet-400 text-xs uppercase tracking-widest mb-3">Lab · Gen BI</p>
+      <p className="text-highlight text-xs uppercase tracking-widest mb-3">Lab · Gen BI</p>
       <h1 className="text-4xl md:text-5xl font-bold text-text-primary leading-tight">Ask the data in plain English</h1>
       <p className="text-text-secondary text-lg mt-4 max-w-2xl leading-relaxed">
         Gen BI replaces &ldquo;raise a ticket and wait for a report&rdquo; with a question anyone can ask. This page is a

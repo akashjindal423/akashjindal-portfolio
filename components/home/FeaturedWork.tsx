@@ -55,7 +55,7 @@ export default function FeaturedWork() {
     <SectionWrapper id="work">
       <div className="flex flex-wrap justify-between items-end gap-4 mb-10">
         <div>
-          <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">Work</span>
+          <span className="block text-highlight text-xs uppercase tracking-widest mb-2">Work</span>
           <h2 className="text-3xl font-bold text-text-primary">Things you can open and check</h2>
         </div>
         <Link

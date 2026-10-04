@@ -46,7 +46,7 @@ function RiceTable({ proposal: p }: { proposal: RiceProposal }) {
   ]
   return (
     <div>
-      <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">RICE Score (illustrative)</p>
+      <p className="text-[10px] uppercase tracking-widest text-highlight mb-3">RICE Score (illustrative)</p>
       <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
         <table className="w-full text-sm min-w-[480px]">
           <thead>
@@ -66,9 +66,9 @@ function RiceTable({ proposal: p }: { proposal: RiceProposal }) {
                 <td className="px-4 py-3 text-text-secondary">{reasoning}</td>
               </tr>
             ))}
-            <tr className={`border-t ${p.id === top.id ? 'bg-emerald-600/10 border-emerald-500/30' : 'bg-[var(--surface-raised)] border-[var(--border)]'}`}>
+            <tr className={`border-t ${p.id === top.id ? 'bg-highlight/10 border-highlight/40' : 'bg-[var(--surface-raised)] border-[var(--border)]'}`}>
               <th scope="row" className="px-4 py-3 text-left font-bold text-text-primary">RICE Score</th>
-              <td className={`px-4 py-3 font-bold text-base tabular-nums ${p.id === top.id ? 'text-emerald-400' : 'text-text-primary'}`}>
+              <td className={`px-4 py-3 font-bold text-base tabular-nums ${p.id === top.id ? 'text-highlight' : 'text-text-primary'}`}>
                 {formatRice(riceScore(p))}
               </td>
               <td className="px-4 py-3 text-text-muted text-xs">{riceFormula(p)}</td>
@@ -115,9 +115,9 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── EXECUTIVE SUMMARY ────────────────────────────────────────────── */}
       <section className="mt-16">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Executive Summary</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Executive Summary</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Overview</h2>
-        <div className="border-l-4 border-violet-500 pl-6 py-2 max-w-3xl">
+        <div className="border-l-4 border-highlight pl-6 py-2 max-w-3xl">
           <p className="text-base text-text-secondary leading-relaxed">
             Google Maps is the most dominant consumer product in the navigation and local discovery space, with over 2 billion monthly active users, approximately 67–70% global market share, and estimated annual revenue exceeding $11 billion. This teardown analyses the product through a product management lens — examining its competitive moat, monetisation flywheel, the Local Guides community ecosystem, and the recently launched Gemini-powered features (Ask Maps and Immersive Navigation). I conclude with three feature proposals I would build next if I were a PM on the Maps team, complete with wireframes, prioritisation rationale, and success metrics.
           </p>
@@ -126,7 +126,7 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── PRODUCT OVERVIEW ─────────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 1</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 1</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Product Overview</h2>
 
         <h3 className="text-lg font-semibold text-text-primary mb-3">What Google Maps Actually Is</h3>
@@ -176,7 +176,7 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── COMPETITIVE LANDSCAPE ────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 2</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 2</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Competitive Landscape</h2>
 
         <h3 className="text-lg font-semibold text-text-primary mb-4">Market Position</h3>
@@ -275,7 +275,7 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── MONETISATION ─────────────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 3</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 3</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Monetisation Strategy Deep Dive</h2>
         <p className="text-base text-text-secondary leading-relaxed max-w-3xl mb-8">
           Google Maps does not charge consumers. Instead, it monetises through three revenue streams that collectively generated an estimated $11B+ in 2023.
@@ -303,7 +303,7 @@ export default function GoogleMapsTeardownPage() {
             },
           ].map((card) => (
             <div key={card.name} className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex flex-col">
-              <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-1">{card.label}</p>
+              <p className="text-[10px] uppercase tracking-widest text-highlight mb-1">{card.label}</p>
               <h4 className="text-sm font-bold text-text-primary mb-1 leading-snug">{card.name}</h4>
               <p className="text-xs text-emerald-400 font-semibold mb-3">{card.share}</p>
               <p className="text-sm text-text-secondary leading-relaxed">{card.body}</p>
@@ -311,9 +311,9 @@ export default function GoogleMapsTeardownPage() {
           ))}
         </div>
 
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Monetisation Flywheel</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-3">Monetisation Flywheel</p>
         <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8">
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 text-center mb-6">Monetisation Flywheel</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight text-center mb-6">Monetisation Flywheel</p>
           {/* Rows 1 & 2 — core flywheel loop */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center mb-2">
             <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">2B+ Users</div>
@@ -357,7 +357,7 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── LOCAL GUIDES ─────────────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 4</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 4</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Local Guides Ecosystem — A Product Analysis</h2>
 
         <h3 className="text-lg font-semibold text-text-primary mb-3">How the Programme Works</h3>
@@ -479,12 +479,12 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── RECENT PRODUCT STRATEGY ──────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 5</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 5</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Recent Product Strategy: The March 2026 Gemini Integration</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex flex-col">
-            <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">Ask Maps</p>
+            <p className="text-[10px] uppercase tracking-widest text-highlight mb-2">Ask Maps</p>
             <h3 className="text-base font-bold text-text-primary mb-3">Conversational AI Search</h3>
             <div className="space-y-3 flex-1">
               <div>
@@ -509,7 +509,7 @@ export default function GoogleMapsTeardownPage() {
           </div>
 
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex flex-col">
-            <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">Immersive Navigation</p>
+            <p className="text-[10px] uppercase tracking-widest text-highlight mb-2">Immersive Navigation</p>
             <h3 className="text-base font-bold text-text-primary mb-3">3D AI-Powered Navigation</h3>
             <div className="space-y-3 flex-1">
               <div>
@@ -531,12 +531,12 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── USER JOURNEY MAPPING ─────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 6</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 6</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">User Journey Mapping</h2>
 
         <div className="space-y-8">
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
-            <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Journey 1</p>
+            <p className="text-xs uppercase tracking-widest text-highlight mb-3">Journey 1</p>
             <h3 className="text-base font-bold text-text-primary mb-6">&quot;Finding a Restaurant for Tonight&quot; — Discovery Flow</h3>
             <p className="text-xs text-text-muted mb-6 italic">User goal: Find a good restaurant nearby for dinner tonight</p>
             <div className="relative">
@@ -622,7 +622,7 @@ export default function GoogleMapsTeardownPage() {
           </div>
 
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
-            <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Journey 2</p>
+            <p className="text-xs uppercase tracking-widest text-highlight mb-3">Journey 2</p>
             <h3 className="text-base font-bold text-text-primary mb-6">&quot;Daily Commute&quot; — Navigation Flow</h3>
             <p className="text-xs text-text-muted mb-6 italic">User goal: Get to work efficiently</p>
             <div className="relative">
@@ -689,7 +689,7 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── FEATURE PROPOSALS HEADER ─────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 7</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 7</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">What I Would Build Next: Three Feature Proposals</h2>
         <p className="text-base text-text-muted">Each proposal includes problem definition, solution, ASCII wireframe, success metrics, and RICE prioritisation.</p>
         <p className="text-sm text-text-muted mt-3">{RICE_NOTE}</p>
@@ -699,14 +699,14 @@ export default function GoogleMapsTeardownPage() {
       <section className="mt-16">
         <div className="flex items-center gap-4 mb-8">
           <div className="h-px flex-1 bg-[var(--border)]" />
-          <span className="text-xs uppercase tracking-widest text-violet-400 font-semibold px-3 py-1 border border-violet-500/30 rounded-full">Feature Proposal A</span>
+          <span className="text-xs uppercase tracking-widest text-highlight font-semibold px-3 py-1 border border-highlight/40 rounded-full">Feature Proposal A</span>
           <div className="h-px flex-1 bg-[var(--border)]" />
         </div>
         <h3 className="text-xl font-bold text-text-primary mb-6">&quot;Local Guide Creator Fund&quot;</h3>
 
         {/* Problem */}
         <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 mb-6">
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">The Problem</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight mb-2">The Problem</p>
           <p className="text-sm text-text-secondary leading-relaxed">
             Google Maps&apos; competitive moat depends on 30M+ Local Guides contributing free content. But contributor motivation is declining — perks have been reduced, and competing platforms now pay creators. The average Local Guide at Level 6+ has contributed hundreds of hours of work. If even 10% of high-level guides become inactive, it would measurably impact data freshness.
           </p>
@@ -714,7 +714,7 @@ export default function GoogleMapsTeardownPage() {
 
         {/* Solution */}
         <div className="mb-6">
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">The Solution</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight mb-2">The Solution</p>
           <p className="text-sm text-text-secondary leading-relaxed max-w-3xl mb-4">
             Launch a &quot;Local Guide Creator Fund&quot; — a revenue-sharing programme for the top tier of contributors (Level 7+). Eligible guides earn a share of ad revenue generated from places they have reviewed or photographed. The mechanism would work similarly to YouTube&apos;s Partner Programme: Google already knows which business listings drive ad clicks, and which reviews/photos appear on those listings. Connecting these data points is an engineering task, not a conceptual leap.
           </p>
@@ -748,7 +748,7 @@ export default function GoogleMapsTeardownPage() {
 
         {/* Wireframe */}
         <div className="mb-6">
-          <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Wireframe — Creator Dashboard</p>
+          <p className="text-xs uppercase tracking-widest text-highlight mb-3">Wireframe — Creator Dashboard</p>
           <div className="rounded-2xl p-1 bg-[var(--surface)] border border-[var(--border)]">
             <div className="bg-[var(--background)] rounded-2xl p-5 space-y-5">
               {/* Header */}
@@ -773,7 +773,7 @@ export default function GoogleMapsTeardownPage() {
               </div>
               {/* Top Performing Contributions */}
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">📝 Top Performing Contributions</p>
+                <p className="text-[10px] uppercase tracking-widest text-highlight mb-3">📝 Top Performing Contributions</p>
                 <div className="space-y-0">
                   {[
                     { name: '"Pipal Tree Cafe" review', detail: '4.5★ · 347 words · 12 photos', views: '1,240 views', earned: '£8.30 earned' },
@@ -795,7 +795,7 @@ export default function GoogleMapsTeardownPage() {
               </div>
               {/* Contribution Opportunities */}
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">🎯 Contribution Opportunities</p>
+                <p className="text-[10px] uppercase tracking-widest text-highlight mb-3">🎯 Contribution Opportunities</p>
                 <div className="space-y-2">
                   <div className="flex items-start gap-3 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-3">
                     <span className="text-base shrink-0" aria-hidden="true">⚡</span>
@@ -821,7 +821,7 @@ export default function GoogleMapsTeardownPage() {
 
         {/* Metrics */}
         <div className="mb-6">
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">Success Metrics</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight mb-3">Success Metrics</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { label: 'Primary', text: 'Monthly active contributors among Level 7+ (target: +25% within 6 months)' },
@@ -829,7 +829,7 @@ export default function GoogleMapsTeardownPage() {
               { label: 'Guardrail', text: 'Spam/low-quality review rate (must not increase)' },
             ].map((m) => (
               <div key={m.label} className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4">
-                <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-1">{m.label}</p>
+                <p className="text-[10px] uppercase tracking-widest text-highlight mb-1">{m.label}</p>
                 <p className="text-sm text-text-secondary leading-relaxed">{m.text}</p>
               </div>
             ))}
@@ -843,14 +843,14 @@ export default function GoogleMapsTeardownPage() {
       <section className="mt-16">
         <div className="flex items-center gap-4 mb-8">
           <div className="h-px flex-1 bg-[var(--border)]" />
-          <span className="text-xs uppercase tracking-widest text-violet-400 font-semibold px-3 py-1 border border-violet-500/30 rounded-full">Feature Proposal B</span>
+          <span className="text-xs uppercase tracking-widest text-highlight font-semibold px-3 py-1 border border-highlight/40 rounded-full">Feature Proposal B</span>
           <div className="h-px flex-1 bg-[var(--border)]" />
         </div>
         <h3 className="text-xl font-bold text-text-primary mb-6">&quot;Group Trip Planner&quot; with Collaborative Itinerary</h3>
 
         {/* Problem */}
         <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 mb-6">
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">The Problem</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight mb-2">The Problem</p>
           <p className="text-sm text-text-secondary leading-relaxed">
             Planning a trip with multiple people is one of the most common Maps-adjacent use cases, yet Google Maps has no collaborative planning feature. Users currently resort to shared Google Docs, WhatsApp threads, or third-party tools like Wanderlog. This is a missed opportunity to increase Maps engagement time and capture trip-planning ad revenue. Ask Maps (launched March 2026) can answer individual planning questions, but it cannot coordinate preferences across a group.
           </p>
@@ -858,7 +858,7 @@ export default function GoogleMapsTeardownPage() {
 
         {/* Solution */}
         <div className="mb-6">
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">The Solution</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight mb-2">The Solution</p>
           <p className="text-sm text-text-secondary leading-relaxed max-w-3xl mb-6">
             Build a &quot;Group Trip&quot; feature within Maps that lets users create a shared trip, invite friends/family, and collaboratively build an itinerary. Integrate with Ask Maps so the AI can reconcile different preferences (&quot;Priya wants vegetarian food, Raj wants a pub, and you want somewhere walkable from the hotel — here are 3 options that work for everyone&quot;).
           </p>
@@ -866,7 +866,7 @@ export default function GoogleMapsTeardownPage() {
 
         {/* User Flow + Wireframe */}
         <div className="mb-6">
-          <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">User Flow & Wireframe</p>
+          <p className="text-xs uppercase tracking-widest text-highlight mb-3">User Flow & Wireframe</p>
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 space-y-5">
             {/* Steps 1 & 2 */}
             <div className="space-y-2 text-sm text-text-secondary">
@@ -903,8 +903,8 @@ export default function GoogleMapsTeardownPage() {
                         <div className="flex flex-wrap gap-1.5 mt-1.5">
                           <span className="text-[10px] bg-[var(--surface)] border border-[var(--border)] rounded-full px-2 py-0.5 text-text-muted">Pipal Tree Cafe</span>
                           <span className="text-[10px] bg-[var(--surface)] border border-[var(--border)] rounded-full px-2 py-0.5 text-text-muted">The Ox</span>
-                          <span className="text-[10px] bg-violet-600 text-white rounded-full px-2 py-0.5">Cargo Cantina</span>
-                          <span className="text-[10px] text-violet-400">← Winner</span>
+                          <span className="text-[10px] bg-highlight text-[#0E0F12] font-semibold rounded-full px-2 py-0.5">Cargo Cantina</span>
+                          <span className="text-[10px] text-highlight">← Winner</span>
                         </div>
                       </div>
                     </div>
@@ -956,7 +956,7 @@ export default function GoogleMapsTeardownPage() {
 
         {/* Metrics */}
         <div className="mb-6">
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">Success Metrics</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight mb-3">Success Metrics</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { label: 'Primary', text: 'Trips created per week (target: 1M within 3 months of launch)' },
@@ -965,7 +965,7 @@ export default function GoogleMapsTeardownPage() {
               { label: 'Engagement', text: 'Time spent in Maps during trip planning vs current baseline' },
             ].map((m) => (
               <div key={m.label} className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4">
-                <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-1">{m.label}</p>
+                <p className="text-[10px] uppercase tracking-widest text-highlight mb-1">{m.label}</p>
                 <p className="text-sm text-text-secondary leading-relaxed">{m.text}</p>
               </div>
             ))}
@@ -979,14 +979,14 @@ export default function GoogleMapsTeardownPage() {
       <section className="mt-16">
         <div className="flex items-center gap-4 mb-8">
           <div className="h-px flex-1 bg-[var(--border)]" />
-          <span className="text-xs uppercase tracking-widest text-violet-400 font-semibold px-3 py-1 border border-violet-500/30 rounded-full">Feature Proposal C</span>
+          <span className="text-xs uppercase tracking-widest text-highlight font-semibold px-3 py-1 border border-highlight/40 rounded-full">Feature Proposal C</span>
           <div className="h-px flex-1 bg-[var(--border)]" />
         </div>
         <h3 className="text-xl font-bold text-text-primary mb-6">&quot;Neighbourhood Intelligence&quot; — Hyperlocal Insights for Relocators</h3>
 
         {/* Problem */}
         <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 mb-6">
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">The Problem</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight mb-2">The Problem</p>
           <p className="text-sm text-text-secondary leading-relaxed">
             One of the most consequential location decisions people make is where to live. Google Maps has all the data needed to answer this question — commute times, nearby amenities, school ratings, crime proximity, green space density, noise levels, restaurant density — but presents none of it in a unified way. Users currently cobble together insights from Rightmove, CrimeRate, OFSTED, and Google Maps separately. This is especially painful for immigrants and relocators who lack local knowledge (a demographic I understand personally).
           </p>
@@ -994,12 +994,12 @@ export default function GoogleMapsTeardownPage() {
 
         {/* Solution */}
         <div className="mb-6">
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-2">The Solution</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight mb-2">The Solution</p>
           <p className="text-sm text-text-secondary leading-relaxed max-w-3xl mb-6">
             Build a &quot;Neighbourhood Score&quot; layer in Maps that aggregates existing Google data into a unified, interactive neighbourhood profile.
           </p>
 
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">Data Sources (All Already Available to Google)</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight mb-3">Data Sources (All Already Available to Google)</p>
           <div className="overflow-x-auto rounded-2xl border border-[var(--border)] mb-6">
             <table className="w-full text-sm min-w-[400px]">
               <thead>
@@ -1035,13 +1035,13 @@ export default function GoogleMapsTeardownPage() {
 
         {/* Wireframe */}
         <div className="mb-6">
-          <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Wireframe — Neighbourhood Profile</p>
+          <p className="text-xs uppercase tracking-widest text-highlight mb-3">Wireframe — Neighbourhood Profile</p>
           <div className="rounded-2xl p-1 bg-[var(--surface)] border border-[var(--border)]">
             <div className="bg-[var(--background)] rounded-2xl p-5 space-y-5">
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <p className="text-sm font-bold text-white">🏘️ Neighbourhood: Clifton, Bristol</p>
-                <p className="text-2xl font-bold text-violet-400">8.4 / 10</p>
+                <p className="text-2xl font-bold text-highlight">8.4 / 10</p>
               </div>
               {/* Map placeholder */}
               <div className="relative h-32 rounded-xl bg-[var(--surface)] border border-[var(--border)] overflow-hidden">
@@ -1117,7 +1117,7 @@ export default function GoogleMapsTeardownPage() {
 
         {/* Metrics */}
         <div className="mb-6">
-          <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-3">Success Metrics</p>
+          <p className="text-[10px] uppercase tracking-widest text-highlight mb-3">Success Metrics</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { label: 'Primary', text: 'Neighbourhood profile views per month' },
@@ -1126,7 +1126,7 @@ export default function GoogleMapsTeardownPage() {
               { label: 'Engagement', text: 'Ask Maps queries within neighbourhood context' },
             ].map((m) => (
               <div key={m.label} className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4">
-                <p className="text-[10px] uppercase tracking-widest text-violet-400 mb-1">{m.label}</p>
+                <p className="text-[10px] uppercase tracking-widest text-highlight mb-1">{m.label}</p>
                 <p className="text-sm text-text-secondary leading-relaxed">{m.text}</p>
               </div>
             ))}
@@ -1138,7 +1138,7 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── PRIORITISATION SUMMARY ───────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 8</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 8</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">Feature Proposal Prioritisation Summary</h2>
         <p className="text-sm text-text-muted mb-6 max-w-3xl">
           Ordered by RICE score. {top.name} ranks first: {top.note.charAt(0).toLowerCase() + top.note.slice(1)}. {RICE_NOTE}
@@ -1159,7 +1159,7 @@ export default function GoogleMapsTeardownPage() {
                 <tr key={row.id} className={`border-b border-[var(--border)] last:border-0 ${i % 2 === 0 ? 'bg-[var(--background)]/50' : 'bg-[var(--surface)]/70'}`}>
                   <th scope="row" className="px-4 py-3 text-left font-medium text-text-primary">{row.id}: {row.name}</th>
                   <td className="px-4 py-3 font-bold text-text-primary tabular-nums">{formatRice(row.score)}</td>
-                  <td className={`px-4 py-3 font-semibold ${i === 0 ? 'text-emerald-400' : i === 1 ? 'text-text-secondary' : 'text-text-muted'}`}>
+                  <td className={`px-4 py-3 font-semibold ${i === 0 ? 'text-highlight' : i === 1 ? 'text-text-secondary' : 'text-text-muted'}`}>
                     {BUILD_ORDER[i]}
                   </td>
                   <td className="px-4 py-3 text-text-secondary">{row.note}</td>
@@ -1172,7 +1172,7 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── RISKS ────────────────────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 9</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 9</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Risks & Open Questions</h2>
         <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
           <table className="w-full text-sm min-w-[540px]">
@@ -1216,7 +1216,7 @@ export default function GoogleMapsTeardownPage() {
 
       {/* ── WHAT THIS TEARDOWN DEMONSTRATES ─────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Section 10</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Section 10</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">What This Teardown Demonstrates About My Product Thinking</h2>
         <p className="text-base text-text-secondary leading-relaxed max-w-3xl mb-8">
           I wrote this teardown not just to analyse Google Maps, but to demonstrate five product management capabilities:
@@ -1266,7 +1266,7 @@ export default function GoogleMapsTeardownPage() {
       <section className="mt-20">
         <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex flex-col sm:flex-row gap-6 items-start">
           <div className="flex-1">
-            <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">About the Author</p>
+            <p className="text-xs uppercase tracking-widest text-highlight mb-2">About the Author</p>
             <h3 className="text-base font-bold text-text-primary mb-1">Akash Jindal</h3>
             <p className="text-sm text-text-muted mb-3">AI Product Owner · AI Centre of Excellence · Lloyds Banking Group</p>
             <p className="text-sm text-text-secondary leading-relaxed mb-4">

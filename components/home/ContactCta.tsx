@@ -8,7 +8,7 @@ export default function ContactCta() {
   return (
     <SectionWrapper id="contact">
       <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-10">
-        <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">Contact</span>
+        <span className="block text-highlight text-xs uppercase tracking-widest mb-2">Contact</span>
         <h2 className="text-3xl font-bold text-text-primary">Let&apos;s talk</h2>
         <p className="mt-3 max-w-2xl text-text-secondary leading-relaxed">
           Open to AI Product Manager roles. Email or LinkedIn is the quickest way to reach me.

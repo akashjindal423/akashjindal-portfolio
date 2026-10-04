@@ -14,7 +14,7 @@ export default function LatestPosts() {
       {/* Header */}
       <div className="flex flex-wrap justify-between items-end gap-4 mb-12">
         <div>
-          <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">
+          <span className="block text-highlight text-xs uppercase tracking-widest mb-2">
             Writing
           </span>
           <h2 className="text-3xl font-bold text-text-primary">Latest Writing</h2>

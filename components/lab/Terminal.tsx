@@ -43,7 +43,7 @@ const sections = [
 
 const TONE: Record<Tone, string> = {
   default: 'text-text-secondary',
-  key: 'text-violet-400',
+  key: 'text-highlight',
   muted: 'text-text-subtle',
   ok: 'text-green-400',
   error: 'text-rose-300',
@@ -209,7 +209,7 @@ function TerminalCard() {
               <dl className="space-y-1.5">
                 {section.lines.map((line) => (
                   <div key={line.key} className="flex gap-3 items-baseline">
-                    <dt className="text-violet-400 min-w-[96px] sm:min-w-[110px] shrink-0 text-xs">{line.key}:</dt>
+                    <dt className="text-highlight min-w-[96px] sm:min-w-[110px] shrink-0 text-xs">{line.key}:</dt>
                     <dd className={`${line.highlight ? 'text-green-400' : 'text-text-secondary'} text-xs leading-relaxed`}>
                       {line.value}
                     </dd>

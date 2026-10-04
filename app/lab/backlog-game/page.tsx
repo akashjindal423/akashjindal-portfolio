@@ -19,7 +19,7 @@ export default function BacklogGamePage() {
           { label: 'Backlog game', href: '/lab/backlog-game' },
         ]}
       />
-      <p className="text-violet-400 text-xs uppercase tracking-widest mb-3">Lab · Prioritisation</p>
+      <p className="text-highlight text-xs uppercase tracking-widest mb-3">Lab · Prioritisation</p>
       <h1 className="text-4xl md:text-5xl font-bold text-text-primary leading-tight">Can you beat RICE in 60 seconds?</h1>
       <p className="text-text-secondary text-lg mt-4 max-w-2xl leading-relaxed">
         Every quarter starts the same way: more good ideas than capacity. Pick a plan, then see how it compares with

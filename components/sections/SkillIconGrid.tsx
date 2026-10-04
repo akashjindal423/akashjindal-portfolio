@@ -44,9 +44,9 @@ const ICONS: Record<string, LucideIcon> = {
 
 // Visual treatment per group, in the order getSkillGroups() returns them
 const STYLES = [
-  { accent: 'border-[var(--border)] bg-[var(--surface)]', headerColor: 'text-violet-400', iconColor: 'text-text-primary', wide: true },
-  { accent: 'border-[var(--border)] bg-[var(--surface)]', headerColor: 'text-violet-400', iconColor: 'text-text-primary', wide: false },
-  { accent: 'border-[var(--border)] bg-[var(--surface)]', headerColor: 'text-violet-400', iconColor: 'text-text-primary', wide: false },
+  { accent: 'border-[var(--border)] bg-[var(--surface)]', headerColor: 'text-highlight', iconColor: 'text-text-primary', wide: true },
+  { accent: 'border-[var(--border)] bg-[var(--surface)]', headerColor: 'text-highlight', iconColor: 'text-text-primary', wide: false },
+  { accent: 'border-[var(--border)] bg-[var(--surface)]', headerColor: 'text-highlight', iconColor: 'text-text-primary', wide: false },
 ]
 
 interface SkillGroupView {

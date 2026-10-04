@@ -16,7 +16,7 @@ export default function AboutStats() {
           key={label}
           className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3"
         >
-          <span className="text-3xl font-bold text-violet-400 shrink-0">{value}</span>
+          <span className="text-3xl font-bold text-highlight shrink-0">{value}</span>
           <span className="text-sm text-text-secondary leading-snug">{label}</span>
         </div>
       ))}

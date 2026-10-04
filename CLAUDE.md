@@ -28,14 +28,26 @@ Personal portfolio for Akash Jindal, deployed on Vercel at https://akashjindal.c
 - Canonical domain is `akashjindal.com` (use `SITE_URL` from `lib/site.ts`).
 
 ## Design system
-- Theme: deep indigo + violet (#0D0D1A background, #13132A surface)
-- Accent: violet (#7C3AED / violet-600). Never use blue as a primary colour.
+- Theme: near-neutral dark greys, no purple tint. Tokens in `app/globals.css`:
+  background #0E0F12, surface #16181D, raised surface #1D2026, border #2A2E37,
+  strong border #3E4350
+- Violet (#7C3AED / violet-600) is the single brand accent: primary buttons, links,
+  focus rings and the logo only. No violet glows, gradients or tinted cards.
+  Never use blue as a primary colour.
+- Amber (`highlight` token, #F5B544) is the warm second accent: eyebrow labels,
+  highlights and selected states (with #0E0F12 text on amber fills)
+- Charts: one hue per series from the colour-blind-safe categorical palette
+  (`components/lab/Charts.tsx`); emphasis by a second validated hue plus a direct
+  label, never two shades of one colour
 - Fonts: Fraunces (hero H1 only), Inter (everything else), JetBrains Mono (code)
 - Radius: `rounded-xl` cards, `rounded-lg` inputs and buttons
-- Cards: `border border-[#2A2A50]`; hover `border-violet-500/30` + `-translate-y-[2px]` + glow shadow
-- Buttons: primary `bg-violet-600 text-white`; secondary is a ghost border
-- Muted text must meet WCAG AA (4.5:1) on both background and surface; use the
-  `text-text-muted` token rather than hard-coded greys.
+- Cards: `border border-[var(--border)]`; hover `border-[var(--border-strong)]` +
+  `-translate-y-[2px]`, no glow
+- Buttons: primary `bg-violet-600 text-white hover:bg-violet-700` (violet-500 fails
+  contrast with white); secondary is a ghost border
+- All text must meet WCAG AA (4.5:1) on background, surface and raised surface; use
+  the text tokens (`text-text-primary`, `-secondary`, `-muted`, `-subtle`) rather than
+  hard-coded greys.
 
 ## Engineering rules
 - Mobile-first: add responsive classes on every component; check 375px, 768px, 1440px.

@@ -22,7 +22,7 @@ export default function HeroSection() {
         <div className="flex flex-col justify-center">
           <motion.span
             {...fadeUp(0)}
-            className="block text-violet-400 text-sm uppercase tracking-[0.2em] font-medium mb-4"
+            className="block text-highlight text-sm uppercase tracking-[0.2em] font-medium mb-4"
           >
             AI Product Owner
           </motion.span>
@@ -36,7 +36,7 @@ export default function HeroSection() {
 
           <motion.p
             {...fadeUp(0.22)}
-            className="text-xl md:text-2xl text-violet-400 font-semibold mb-4"
+            className="text-xl md:text-2xl text-highlight font-semibold mb-4"
           >
             Generative AI and Gen BI in banking
           </motion.p>

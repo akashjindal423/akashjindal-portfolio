@@ -48,7 +48,7 @@ export default function ToolkitPage() {
     <div className="min-h-screen bg-[var(--background)]">
       {/* ── HERO ── */}
       <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-        <span className="inline-block text-violet-400 text-xs font-semibold uppercase tracking-widest mb-6 px-3 py-1 border border-violet-500/30 rounded-full">
+        <span className="inline-block text-highlight text-xs font-semibold uppercase tracking-widest mb-6 px-3 py-1 border border-highlight/40 rounded-full">
           FREE RESOURCE
         </span>
 
@@ -141,7 +141,7 @@ export default function ToolkitPage() {
               onClick={() => setFilter(cat)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
                 filter === cat
-                  ? "bg-violet-600 border-violet-600 text-white"
+                  ? "bg-highlight border-highlight text-[#0E0F12] font-semibold"
                   : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-muted)] hover:border-[var(--border-strong)] hover:text-[var(--text-primary)]"
               }`}
             >

@@ -46,7 +46,7 @@ const features = [
 ]
 
 const moscowCols = [
-  { label: 'Must', headingColor: 'text-violet-400', borderColor: 'border-[var(--border-strong)]', bg: 'bg-[var(--surface)]', items: ['Cultural onboarding', 'Culturally aware nutrition engine', 'Basic posture tracking', 'Wellness nudges', 'Optional Apple Health read (activity, sleep)'] },
+  { label: 'Must', headingColor: 'text-highlight', borderColor: 'border-[var(--border-strong)]', bg: 'bg-[var(--surface)]', items: ['Cultural onboarding', 'Culturally aware nutrition engine', 'Basic posture tracking', 'Wellness nudges', 'Optional Apple Health read (activity, sleep)'] },
   { label: 'Should', headingColor: 'text-text-primary', borderColor: 'border-[var(--border)]', bg: 'bg-[var(--surface)]', items: ['Personalised meal planning', 'Progress dashboard', 'Form correction library', 'Adaptive difficulty'] },
   { label: 'Could', headingColor: 'text-text-secondary', borderColor: 'border-[var(--border)]', bg: 'bg-[var(--surface)]', items: ['AI coach chat interface', 'Social accountability features', 'Gamification layer'] },
   { label: "Won't (v1)", headingColor: 'text-text-muted', borderColor: 'border-[var(--border)]', bg: 'bg-[var(--surface)]', items: ['Medical diagnosis', 'Guaranteed outcome claims', 'Live consultation'] },
@@ -146,7 +146,7 @@ export default function AIHealthCompanionPage() {
 
       {/* OVERVIEW */}
       <section className="mt-16">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Overview</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Overview</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">The Premise</h2>
         <p className="text-base text-text-secondary leading-relaxed max-w-3xl">
           Many wellness apps tell you to eat chicken and broccoli and do a 5am run. They ignore that
@@ -160,7 +160,7 @@ export default function AIHealthCompanionPage() {
 
       {/* PROBLEM SPACE */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Problem Space</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Problem Space</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">What is broken today</h2>
         <p className="text-sm text-text-muted mb-6">Working assumptions behind the concept, not research findings.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -179,9 +179,9 @@ export default function AIHealthCompanionPage() {
 
       {/* PRODUCT VISION */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Product Vision</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Product Vision</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">The guiding statement</h2>
-        <div className="border-l-4 border-violet-500 pl-6 py-2">
+        <div className="border-l-4 border-highlight pl-6 py-2">
           <p className="text-xl md:text-2xl text-text-primary leading-relaxed italic">
             &quot;An AI health companion that learns your culture, lifestyle, and goals — then gives you
             guidance that is realistic, relevant, and respectful of how you actually live.&quot;
@@ -191,7 +191,7 @@ export default function AIHealthCompanionPage() {
 
       {/* TARGET USERS */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Target Users</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Target Users</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Who this is for</h2>
         <ul className="space-y-3 max-w-2xl">
           {[
@@ -211,7 +211,7 @@ export default function AIHealthCompanionPage() {
 
       {/* PERSONAS */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Personas</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Personas</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">Hypothetical personas</h2>
         <p className="text-sm text-text-muted mb-6">Invented archetypes to frame the problem. They are not real people or research participants.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -221,7 +221,7 @@ export default function AIHealthCompanionPage() {
 
       {/* CORE FEATURES */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Core Features</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Core Features</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">What the product does</h2>
         <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
           <table className="w-full text-sm min-w-[640px]">
@@ -250,7 +250,7 @@ export default function AIHealthCompanionPage() {
 
       {/* DISCOVERY */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Discovery</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Discovery</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">How the thinking was structured</h2>
         <ul className="space-y-3 max-w-3xl">
           {[
@@ -271,7 +271,7 @@ export default function AIHealthCompanionPage() {
 
       {/* MVP SCOPE */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">MVP Scope</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">MVP Scope</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Proposed first release</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-[var(--surface)] border border-[var(--border-strong)] rounded-2xl p-6">
@@ -301,7 +301,7 @@ export default function AIHealthCompanionPage() {
 
       {/* MOSCOW */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">MoSCoW</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">MoSCoW</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Prioritisation framework</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {moscowCols.map((col) => (
@@ -319,7 +319,7 @@ export default function AIHealthCompanionPage() {
 
       {/* USER JOURNEY */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">User Journey</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">User Journey</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">End-to-end flow</h2>
         <div>
           {journeySteps.map((item, i) => (
@@ -343,7 +343,7 @@ export default function AIHealthCompanionPage() {
 
       {/* DELIVERY STRUCTURE */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Delivery Structure</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Delivery Structure</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Epics and stories</h2>
         <div className="flex flex-wrap gap-2 mb-8">
           {['EP-01 Onboarding & Profile', 'EP-02 Cultural Nutrition Engine', 'EP-03 Movement & Posture', 'EP-04 Wellness Nudges', 'EP-05 Apple Health Read (optional)', 'EP-06 Weekly Digest'].map((epic) => (
@@ -356,7 +356,7 @@ export default function AIHealthCompanionPage() {
           {sampleStories.map((s) => (
             <div key={s.epic} className="border border-[var(--border)] rounded-2xl overflow-hidden">
               <div className="bg-[var(--surface)] px-5 py-3 border-b border-[var(--border)]">
-                <span className="text-[11px] uppercase tracking-widest text-violet-500 font-semibold">
+                <span className="text-[11px] uppercase tracking-widest text-highlight font-semibold">
                   Sample Story — {s.epic}
                 </span>
               </div>
@@ -380,7 +380,7 @@ export default function AIHealthCompanionPage() {
 
       {/* METRICS */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Metrics</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Metrics</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">How success would be measured</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {metrics.map((m) => <MetricCard key={m.name} {...m} />)}
@@ -389,7 +389,7 @@ export default function AIHealthCompanionPage() {
 
       {/* RISKS */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Risks</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Risks</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Known risks and mitigations</h2>
         <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
           <table className="w-full text-sm min-w-[540px]">
@@ -417,7 +417,7 @@ export default function AIHealthCompanionPage() {
 
       {/* ETHICAL DISCLAIMER */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Ethical Disclaimer</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Ethical Disclaimer</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Scope of guidance</h2>
         <div className="border-l-4 border-amber-500/60 bg-amber-500/5 rounded-r-2xl px-6 py-5">
           <p className="text-sm text-amber-200/75 leading-relaxed">
@@ -432,7 +432,7 @@ export default function AIHealthCompanionPage() {
 
       {/* ROADMAP */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Roadmap</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Roadmap</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Illustrative phased plan</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {roadmapPhases.map((p) => <RoadmapPhase key={p.phase} {...p} />)}
@@ -441,7 +441,7 @@ export default function AIHealthCompanionPage() {
 
       {/* PO REFLECTION */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">PO Reflection</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">PO Reflection</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">What I learned from this concept study</h2>
         <div className="space-y-4 max-w-3xl text-text-muted leading-relaxed text-base">
           <p>

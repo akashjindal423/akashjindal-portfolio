@@ -93,7 +93,7 @@ export default function PromptLabPage() {
 
       {/* ── THE PROBLEM ───────────────────────────────────────────────────────── */}
       <section className="mt-16">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Why I built it</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Why I built it</p>
         <h2 className="text-2xl font-bold text-text-primary mb-8">Three problems I kept hitting</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -135,7 +135,7 @@ export default function PromptLabPage() {
 
       {/* ── TERMINAL DEMO ─────────────────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Recorded example</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Recorded example</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">What the analysis looks like</h2>
         <p className="text-sm text-text-muted mb-6">
           A recorded example of <code className="font-mono text-text-primary">promptlab analyse</code> on a weak prompt,
@@ -237,7 +237,7 @@ export default function PromptLabPage() {
 
       {/* ── HOW IT WORKS ──────────────────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">How It Works</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">How It Works</p>
         <h2 className="text-2xl font-bold text-text-primary mb-8">Three Commands. End to End.</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -275,7 +275,7 @@ export default function PromptLabPage() {
 
       {/* ── THE 12 DIMENSIONS ─────────────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Diagnostic Framework</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Diagnostic Framework</p>
         <h2 className="text-2xl font-bold text-text-primary mb-2">The 12 Dimensions</h2>
         <p className="text-sm text-text-muted mb-8">
           Every prompt is scored 1–5 across these dimensions.
@@ -297,7 +297,7 @@ export default function PromptLabPage() {
 
       {/* ── TECH STACK ────────────────────────────────────────────────────────── */}
       <section className="mt-20">
-        <p className="text-xs uppercase tracking-widest text-violet-400 mb-2">Stack</p>
+        <p className="text-xs uppercase tracking-widest text-highlight mb-2">Stack</p>
         <h2 className="text-2xl font-bold text-text-primary mb-6">Built With</h2>
 
         <div className="flex flex-wrap gap-2">

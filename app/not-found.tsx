@@ -18,7 +18,7 @@ export default function NotFound() {
   return (
     <main>
       <SectionWrapper className="min-h-[70vh] flex flex-col justify-center">
-        <p className="text-violet-400 text-xs uppercase tracking-widest mb-3 font-mono">404</p>
+        <p className="text-highlight text-xs uppercase tracking-widest mb-3 font-mono">404</p>
         <h1 className="text-4xl md:text-5xl font-bold text-text-primary">Page not found</h1>
         <p className="text-text-secondary text-lg mt-4 max-w-xl leading-relaxed">
           This page doesn&apos;t exist or has moved. Blog posts are published on LinkedIn, so older

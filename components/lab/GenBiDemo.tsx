@@ -34,7 +34,7 @@ function SuggestedQuestions({ asked, onPick }: { asked: string | null; onPick: (
             type="button"
             onClick={() => onPick(q)}
             aria-pressed={asked === q}
-            className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-left text-sm text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary aria-pressed:border-violet-500/60 aria-pressed:text-violet-300 transition-all duration-200"
+            className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-left text-sm text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary aria-pressed:border-highlight aria-pressed:text-highlight transition-all duration-200"
           >
             {q}
           </button>
@@ -140,7 +140,7 @@ export default function GenBiDemo() {
 function AnswerSummary({ result }: { result: GenBiResult }) {
   return (
     <>
-      <p className="text-xs uppercase tracking-widest text-violet-400 mb-1">Answer</p>
+      <p className="text-xs uppercase tracking-widest text-highlight mb-1">Answer</p>
       <p className="text-sm text-text-subtle mb-2">&ldquo;{result.question}&rdquo;</p>
       <p className="text-lg font-semibold text-text-primary leading-snug">{result.answer}</p>
       <div className="mt-4 rounded-lg border border-[var(--border)] bg-[var(--background)] p-4">
@@ -162,7 +162,7 @@ function Clarification({ question, issues, onPick }: { question: string; issues:
   return (
     <div>
       <p className="flex items-center gap-2 text-lg font-semibold text-text-primary">
-        <CircleHelp className="h-5 w-5 text-violet-400" aria-hidden="true" />
+        <CircleHelp className="h-5 w-5 text-highlight" aria-hidden="true" />
         This question needs clarifying
       </p>
       <p className="mt-1 text-sm text-text-subtle">&ldquo;{question}&rdquo;</p>

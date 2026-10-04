@@ -142,7 +142,7 @@ export default function BacklogGame() {
           <div className="sticky top-16 z-20 rounded-xl border border-[var(--border)] bg-[var(--surface)]/95 backdrop-blur p-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="flex items-center gap-2 font-mono text-lg text-text-primary tabular-nums" aria-label={`${remaining} seconds left`}>
-                <Timer className="h-5 w-5 text-violet-400" aria-hidden="true" />
+                <Timer className="h-5 w-5 text-highlight" aria-hidden="true" />
                 0:{String(remaining).padStart(2, '0')}
               </p>
               <p className="text-sm text-text-secondary">
@@ -165,7 +165,7 @@ export default function BacklogGame() {
               aria-valuenow={used}
             >
               <div
-                className="h-full rounded-full bg-violet-500 transition-[width] duration-200 motion-reduce:transition-none"
+                className="h-full rounded-full bg-highlight transition-[width] duration-200 motion-reduce:transition-none"
                 style={{ width: `${(used / CAPACITY) * 100}%` }}
               />
             </div>
@@ -185,7 +185,7 @@ export default function BacklogGame() {
                     aria-describedby={!fits ? `${item.id}-nofit` : undefined}
                     className={`w-full rounded-xl border p-4 text-left transition-all duration-200 ${
                       on
-                        ? 'border-violet-500/70 bg-violet-500/10'
+                        ? 'border-highlight bg-highlight/10'
                         : 'border-[var(--border)] bg-[var(--surface)] hover:border-[var(--border-strong)] hover:-translate-y-[2px]'
                     } aria-disabled:cursor-not-allowed aria-disabled:opacity-50 aria-disabled:hover:translate-y-0 aria-disabled:hover:border-[var(--border)]`}
                   >
@@ -193,7 +193,7 @@ export default function BacklogGame() {
                       <span className="font-semibold text-text-primary">{item.title}</span>
                       <span
                         className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border ${
-                          on ? 'border-violet-400 bg-violet-500 text-white' : 'border-[var(--border)]'
+                          on ? 'border-highlight bg-highlight text-[#0E0F12]' : 'border-[var(--border-strong)]'
                         }`}
                         aria-hidden="true"
                       >
@@ -238,7 +238,7 @@ function Results({
   return (
     <div className="flex flex-col gap-6">
       <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6">
-        <h2 ref={resultRef} tabIndex={-1} className="text-xs uppercase tracking-widest text-violet-400 outline-none">
+        <h2 ref={resultRef} tabIndex={-1} className="text-xs uppercase tracking-widest text-highlight outline-none">
           Your result
         </h2>
         <p className="mt-2 text-5xl font-bold text-text-primary">{result.score}%</p>
@@ -253,7 +253,7 @@ function Results({
         <ul className="mt-5 space-y-2">
           {result.insights.map((text) => (
             <li key={text} className="flex gap-2 text-sm leading-relaxed text-text-secondary">
-              <span className="text-violet-400" aria-hidden="true">›</span>
+              <span className="text-highlight" aria-hidden="true">›</span>
               <span>{text}</span>
             </li>
           ))}

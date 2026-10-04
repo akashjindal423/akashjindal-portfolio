@@ -12,7 +12,7 @@ export default function AboutSnippet() {
     <SectionWrapper id="about">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
         <AnimatedEntry>
-          <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">About</span>
+          <span className="block text-highlight text-xs uppercase tracking-widest mb-2">About</span>
           <h2 className="text-3xl font-bold text-text-primary mb-6">Product thinking meets technical fluency</h2>
           <p className="text-text-secondary leading-relaxed">
             Currently a Team Product Owner in the AI Centre of Excellence at Lloyds Banking Group, driving Generative AI

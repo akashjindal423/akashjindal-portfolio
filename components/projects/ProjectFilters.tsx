@@ -16,7 +16,7 @@ export default function ProjectFilters({ categories, activeFilter, onFilter }: P
           onClick={() => onFilter(cat)}
           className={`px-4 py-2 rounded-full text-sm transition-all duration-200 ${
             activeFilter === cat
-              ? 'bg-violet-600 text-white font-semibold'
+              ? 'bg-highlight text-[#0E0F12] font-semibold'
               : 'bg-[var(--surface)] border border-[var(--border)] text-text-secondary hover:border-[var(--border-strong)]'
           }`}
         >

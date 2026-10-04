@@ -42,7 +42,7 @@ export default function ExperiencePage() {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6">
-              <p className="text-violet-400 text-xs uppercase tracking-widest font-semibold mb-4">
+              <p className="text-highlight text-xs uppercase tracking-widest font-semibold mb-4">
                 Skills &amp; Tools
               </p>
               <div className="flex flex-wrap gap-2">
