@@ -198,7 +198,7 @@ function TerminalCard() {
       {/* Content: the brief, then any command output */}
       <div
         ref={bodyRef}
-        className={`p-5 font-mono text-sm ${entries.length ? 'max-h-[30rem] overflow-y-auto' : ''}`}
+        className={`p-5 font-mono text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-violet-500 ${entries.length ? 'max-h-[30rem] overflow-y-auto' : ''}`}
         tabIndex={entries.length ? 0 : undefined}
         aria-label={entries.length ? 'Terminal output' : undefined}
       >
@@ -246,7 +246,7 @@ function TerminalCard() {
               submit(draft)
               inputRef.current?.focus()
             }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--background)] pl-3 pr-1 py-1 focus-within:border-violet-500 focus-within:ring-2 focus-within:ring-violet-500/50"
           >
             <span className="text-green-400 text-sm" aria-hidden="true">$</span>
             <label htmlFor={inputId} className="sr-only">
@@ -263,9 +263,12 @@ function TerminalCard() {
               autoCapitalize="off"
               spellCheck={false}
               maxLength={60}
-              className="flex-1 min-w-0 bg-transparent text-sm text-text-primary placeholder:text-text-subtle focus:outline-none"
+              className="flex-1 min-w-0 bg-transparent py-1 text-sm text-text-primary placeholder:text-text-subtle focus:outline-none"
             />
-            <button type="submit" className="sr-only focus:not-sr-only text-xs text-violet-300">
+            <button
+              type="submit"
+              className="shrink-0 rounded-md bg-violet-600 px-3 py-1.5 font-sans text-xs font-semibold text-white hover:bg-violet-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors duration-200"
+            >
               Run
             </button>
           </form>
@@ -275,7 +278,7 @@ function TerminalCard() {
                 key={c}
                 type="button"
                 onClick={() => submit(c)}
-                className="rounded-md border border-[var(--border)] px-2 py-0.5 text-[11px] text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 transition-colors duration-200"
+                className="rounded-md border border-[var(--border)] px-2 py-0.5 text-[11px] text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 transition-colors duration-200"
               >
                 {c}
               </button>
