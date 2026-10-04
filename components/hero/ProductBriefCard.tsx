@@ -28,7 +28,7 @@ const sections = [
     lines: [
       { key: 'lloyds', value: 'Gen AI · Gen BI · AI CoE' },
       { key: 'dyson', value: 'CleanTrace AR · WashG1 NPI' },
-      { key: 'sony', value: 'PS5 platform launch' },
+      { key: 'sony', value: 'ITSM · ServiceNow (via Infosys)' },
       { key: 'infosys', value: 'Fortune 500 · IoT · Azure' },
     ],
   },

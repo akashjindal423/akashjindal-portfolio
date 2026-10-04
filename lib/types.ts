@@ -11,6 +11,8 @@ export interface Experience {
   tools: string[]
   order: number
   note?: string
+  /** Consultancy that placed the role, e.g. "Infosys" for client placements */
+  via?: string
 }
 
 export interface Project {
@@ -43,6 +45,8 @@ export interface OfficialProject {
   badgeColor: string
   clickable: boolean
   externalUrl?: string
+  /** Consultancy that placed the work, e.g. "Infosys" */
+  via?: string
 }
 
 export interface PassionProject {

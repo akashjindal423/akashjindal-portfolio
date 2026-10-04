@@ -38,6 +38,11 @@ export interface Testimonial {
   featured: boolean
 }
 
+/** Employer name with the placing consultancy, e.g. "SSE plc (via Infosys)". */
+export function employerName(item: { company: string; via?: string }): string {
+  return item.via ? `${item.company} (via ${item.via})` : item.company
+}
+
 export function getTestimonials(): Testimonial[] {
   return [
     {
@@ -125,6 +130,7 @@ export function getExperience(): Experience[] {
       slug: 'sse-po',
       role: 'Product Owner',
       company: 'SSE plc',
+      via: 'Infosys',
       location: 'Reading, England · Hybrid',
       startDate: '2021-04',
       endDate: '2022-08',
@@ -143,15 +149,16 @@ export function getExperience(): Experience[] {
       slug: 'sony-po',
       role: 'Product Owner',
       company: 'Sony Interactive Entertainment',
+      via: 'Infosys',
       location: 'London · Hybrid',
       startDate: '2020-04',
       endDate: '2021-04',
       current: false,
       summary:
-        'Contributed to the successful PlayStation 5 launch by leading service delivery and tech product initiatives within the ITSM and ServiceNow ecosystem.',
+        'Product Owner for ITSM and ServiceNow enhancements in the run-up to the PlayStation 5 launch, placed by Infosys.',
       achievements: [
         'Delivered ITSM & ServiceNow enhancements — global collaboration across UX/UI, engineering, and research teams',
-        'Orchestrated planning and execution of key platform features aligned with PS5 launch timeline',
+        'Planned ITSM and ServiceNow work to the PS5 launch timeline',
         'Directed EPIC and Story backlog refinement for automation testing and quality assurance',
       ],
       tools: ['ServiceNow', 'Scrum', 'Jira', 'Microsoft Outlook', 'ITSM'],
@@ -216,13 +223,14 @@ export function getProjects(): ProjectsData {
       {
         slug: 'sony-ps5',
         company: 'Sony Interactive Entertainment',
-        title: 'PlayStation 5 Platform Launch',
-        description: 'Contributed to the PS5 launch by leading ITSM and ServiceNow product initiatives. Orchestrated planning of launch-critical platform features ensuring reliability and readiness for global release.',
-        tags: ['PS5', 'ITSM', 'ServiceNow', 'Platform', 'Launch'],
+        via: 'Infosys',
+        title: 'ITSM and ServiceNow for the PS5 launch',
+        description: 'Product Owner for ITSM and ServiceNow enhancements in the run-up to the PlayStation 5 launch, placed by Infosys: planned the work to the launch timeline and refined epics and stories for automation testing and QA.',
+        tags: ['ITSM', 'ServiceNow', 'Backlog', 'PS5 launch'],
         period: 'Apr 2020 – Apr 2021',
         companyColor: 'from-blue-500/10 to-indigo-500/10',
         border: 'border-blue-500/20',
-        badge: 'Platform Launch',
+        badge: 'ITSM · ServiceNow',
         badgeColor: 'bg-blue-500/20 text-blue-400',
         clickable: false,
       },

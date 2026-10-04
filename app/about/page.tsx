@@ -11,7 +11,7 @@ import { personSchema } from '@/lib/structured-data'
 export const metadata = pageMetadata({
   title: 'About',
   description:
-    "Akash Jindal is an AI Product Owner in Lloyds Banking Group's AI Centre of Excellence, with earlier product roles at Dyson, SSE and Sony Interactive Entertainment. Based in Bristol, UK.",
+    "Akash Jindal is an AI Product Owner in Lloyds Banking Group's AI Centre of Excellence, with earlier product roles at Dyson, and at SSE and Sony Interactive Entertainment via Infosys. Based in Bristol, UK.",
   path: '/about',
 })
 
@@ -37,14 +37,15 @@ export default function AboutPage() {
                 for Fortune 500 clients across financial services, manufacturing, and agri-tech —
                 including GDPR-compliant cloud migrations and AI-led agriculture pilots. That
                 foundation gave me a strong grounding in enterprise delivery and technical thinking.
+                Through Infosys I then worked as a Product Owner at Sony Interactive Entertainment and SSE.
               </p>
               <p className="text-text-secondary leading-relaxed">
                 I am currently a Team Product Owner in the AI Centre of Excellence at Lloyds Banking
                 Group, working on Generative AI and Gen BI initiatives to transform banking for both
                 colleagues and customers. Before that, I pioneered Dyson&apos;s first Augmented Reality
-                product (CleanTrace) and contributed to the PlayStation 5 platform launch at Sony
-                Interactive Entertainment — giving me a rare blend of enterprise data, consumer tech,
-                and innovation experience.
+                product (CleanTrace), and at Sony Interactive Entertainment (via Infosys) I was Product
+                Owner for ITSM and ServiceNow enhancements in the run-up to the PlayStation 5 launch —
+                giving me a rare blend of enterprise data, consumer tech, and innovation experience.
               </p>
             </div>
 

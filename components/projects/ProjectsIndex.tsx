@@ -1,6 +1,6 @@
 'use client'
 import PageHeader from '@/components/shared/PageHeader'
-import { getProjects } from '@/lib/content'
+import { employerName, getProjects } from '@/lib/content'
 import { ExternalLink, Lock } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -55,7 +55,7 @@ export default function ProjectsIndex() {
                   <Lock size={14} className="text-text-subtle" role="img" aria-label="Confidential — details private" />
                 )}
               </div>
-              <p className="text-xs text-text-subtle mb-1">{project.company}</p>
+              <p className="text-xs text-text-subtle mb-1">{employerName(project)}</p>
               <h3 className="text-base font-bold text-[#F8F8FF] mb-3 leading-snug">{project.title}</h3>
               <p className="text-sm text-[#A09EC0] leading-relaxed flex-1">{project.description}</p>
               <div className="flex flex-wrap gap-1.5 mt-4">

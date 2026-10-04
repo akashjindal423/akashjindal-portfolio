@@ -94,7 +94,7 @@ export default function ToolkitPage() {
 
         <p className="text-sm text-[var(--text-muted)] max-w-xl mx-auto">
           Built by Akash Jindal — AI Product Owner at Lloyds Banking Group&apos;s AI Centre of Excellence.
-          Previously shipped AR at Dyson and contributed to the PS5 launch at Sony.
+          Previously shipped AR at Dyson and, via Infosys, worked on ITSM for the PS5 launch at Sony.
         </p>
       </section>
 

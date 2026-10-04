@@ -56,7 +56,8 @@ export default function HeroSection() {
             {...fadeUp(0.3)}
             className="text-text-secondary text-lg md:text-xl max-w-2xl leading-relaxed mb-10"
           >
-            Team Product Owner in the AI Centre of Excellence at Lloyds. Previously AR at Dyson, PS5 at Sony.
+            Team Product Owner in the AI Centre of Excellence at Lloyds. Previously AR at Dyson, and ITSM for the PS5
+            launch at Sony via Infosys.
             Building products that matter across banking, tech, and innovation.
           </motion.p>
 

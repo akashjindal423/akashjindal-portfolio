@@ -8,6 +8,6 @@ export default function Image() {
   return renderOgImage({
     eyebrow: 'AI Product Owner',
     title: 'Akash Jindal',
-    subtitle: "Generative AI and Gen BI in Lloyds Banking Group's AI Centre of Excellence. Previously Dyson and Sony PlayStation.",
+    subtitle: "Generative AI and Gen BI in Lloyds Banking Group's AI Centre of Excellence. Previously Dyson, and Sony PlayStation via Infosys.",
   })
 }

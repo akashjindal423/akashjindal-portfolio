@@ -3,7 +3,7 @@
  * lib/content.ts and lib/lab/items.ts so it never says anything the rest of
  * the site doesn't.
  */
-import { getExperience, getProjects, getSkillGroups, getTraining } from './content'
+import { employerName, getExperience, getProjects, getSkillGroups, getTraining } from './content'
 import { LAB_ITEMS } from './lab/items'
 import { CONTACT_EMAIL } from './site'
 import { GITHUB_URL, LINKEDIN_URL } from './structured-data'
@@ -73,7 +73,7 @@ function run(command: Command): TermLine[] {
         {
           text: `${current.role} in the AI Centre of Excellence at ${current.company}, working on Generative AI and Gen BI.`,
         },
-        { text: 'Previously Dyson, SSE, Sony Interactive Entertainment and Infosys.' },
+        { text: 'Previously Dyson, and Infosys, including SSE and Sony Interactive Entertainment via Infosys.' },
         { text: '', link: { label: 'Read the full story', href: '/about' } },
       ]
     }
@@ -82,7 +82,7 @@ function run(command: Command): TermLine[] {
       return [
         { text: 'Work', tone: 'heading' },
         ...official.map((p) => ({
-          text: `${p.company}: ${p.title}`,
+          text: `${employerName(p)}: ${p.title}`,
           link: p.externalUrl ? { label: 'press', href: p.externalUrl } : undefined,
         })),
         { text: 'Side projects', tone: 'heading' },
@@ -93,7 +93,7 @@ function run(command: Command): TermLine[] {
     case 'experience':
       return [
         ...getExperience().map((e) => ({
-          text: `${year(e.startDate)}–${e.current ? 'now ' : year(e.endDate ?? e.startDate)}  ${e.role} · ${e.company}`,
+          text: `${year(e.startDate)}–${e.current ? 'now ' : year(e.endDate ?? e.startDate)}  ${e.role} · ${employerName(e)}`,
         })),
         { text: '', link: { label: 'Full history', href: '/experience' } },
       ]
@@ -117,7 +117,7 @@ function run(command: Command): TermLine[] {
         { text: 'The short version:', tone: 'heading' },
         { text: "› Product Owner for Gen BI in Lloyds Banking Group's AI Centre of Excellence, replacing manual reports with reporting colleagues can question in plain English, across four business areas." },
         { text: '› 9+ years in tech, 6+ as a Product Owner, across banking, energy, gaming and consumer tech.' },
-        { text: "› Led Dyson's first Augmented Reality experience (CleanTrace) and contributed to the PlayStation 5 launch at Sony." },
+        { text: "› Led Dyson's first Augmented Reality experience (CleanTrace). Via Infosys, Product Owner for ITSM and ServiceNow at Sony in the run-up to the PlayStation 5 launch." },
         { text: '› Builds things too: PromptLab, an open-source prompt diagnosis CLI.' },
         { text: `› ${certs.join(', ')}.` },
         { text: '', link: { label: 'Get in touch', href: '/contact' } },

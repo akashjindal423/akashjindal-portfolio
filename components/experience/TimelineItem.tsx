@@ -1,6 +1,7 @@
 import { Briefcase, ChevronRight } from 'lucide-react'
 import Badge from '@/components/shared/Badge'
 import { Experience } from '@/lib/types'
+import { employerName } from '@/lib/content'
 
 interface Props {
   experience: Experience
@@ -18,7 +19,7 @@ function formatDate(ym: string) {
 }
 
 export default function TimelineItem({ experience, isLast, compact = false }: Props) {
-  const { role, company, location, startDate, endDate, current, summary, achievements, tools } =
+  const { role, location, startDate, endDate, current, summary, achievements, tools } =
     experience
 
   const dateRange = `${formatDate(startDate)} – ${current ? 'Present' : endDate ? formatDate(endDate) : ''}`
@@ -49,7 +50,7 @@ export default function TimelineItem({ experience, isLast, compact = false }: Pr
 
         {/* Company + location */}
         <p className="text-violet-400 text-sm font-medium mt-1">
-          {company} · {location}
+          {employerName(experience)} · {location}
         </p>
 
         {/* Dates */}
