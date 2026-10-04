@@ -28,6 +28,9 @@ export default function BlogPage() {
       />
 
       <TagFilter tags={allTags} activeTag={activeTag} onTag={setActiveTag} />
+      <p className="sr-only" aria-live="polite">
+        {filtered.length} {filtered.length === 1 ? 'article' : 'articles'} shown
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         {filtered.map((post, i) => (

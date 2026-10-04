@@ -134,11 +134,13 @@ export default function ToolkitPage() {
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter by category">
           {categories.map(cat => (
             <button
               key={cat}
+              type="button"
               onClick={() => setFilter(cat)}
+              aria-pressed={filter === cat}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
                 filter === cat
                   ? "bg-highlight border-highlight text-[#0E0F12] font-semibold"
@@ -150,6 +152,10 @@ export default function ToolkitPage() {
           ))}
         </div>
       </section>
+
+      <p className="sr-only" aria-live="polite">
+        {filtered.length} {filtered.length === 1 ? 'tool' : 'tools'} shown
+      </p>
 
       {/* ── TOOLS GRID ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">

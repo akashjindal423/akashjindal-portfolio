@@ -72,28 +72,29 @@ export default function GenBiDemo() {
             e.preventDefault()
             run(draft)
           }}
-          className="flex flex-col sm:flex-row gap-3"
         >
-          <label htmlFor={inputId} className="sr-only">
+          <label htmlFor={inputId} className="block text-sm font-medium text-text-secondary mb-1.5">
             Ask a question in plain English
           </label>
-          <input
-            id={inputId}
-            type="text"
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            placeholder={`e.g. Which region sold the most in Q2 ${DATA_YEAR}?`}
-            autoComplete="off"
-            maxLength={200}
-            className="flex-1 min-w-0 rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-3 text-text-primary placeholder:text-text-subtle focus:border-violet-500 focus:outline-none transition"
-          />
-          <button
-            type="submit"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-violet-600 px-5 py-3 font-semibold text-white hover:bg-violet-700 transition-all duration-200"
-          >
-            <Send className="h-4 w-4" aria-hidden="true" />
-            Ask
-          </button>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              id={inputId}
+              type="text"
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              placeholder={`e.g. Which region sold the most in Q2 ${DATA_YEAR}?`}
+              autoComplete="off"
+              maxLength={200}
+              className="flex-1 min-w-0 rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-3 text-text-primary placeholder:text-text-subtle focus:border-violet-500 focus:outline-none transition"
+            />
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-violet-600 px-5 py-3 font-semibold text-white hover:bg-violet-700 transition-all duration-200"
+            >
+              <Send className="h-4 w-4" aria-hidden="true" />
+              Ask
+            </button>
+          </div>
         </form>
 
         <div className="mt-4">
