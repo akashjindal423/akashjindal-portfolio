@@ -2,9 +2,11 @@
  * Backlog prioritisation game. Eight items for a fictional grocery-delivery app,
  * each with RICE inputs, and a fixed team capacity.
  *
- * Value delivered = Reach x Impact x Confidence. Effort is the cost.
- * RICE score = value / effort, i.e. value per person-week.
- * The RICE-optimal set is the selection with the most total value that fits in
+ * Modelled value = Reach x Impact x Confidence. Effort is the cost.
+ * RICE score = modelled value / effort, i.e. modelled value per person-week.
+ * The player's result is a modelled score on fictional data: their plan's total
+ * modelled value as a share of the best plan's. It is not value delivered.
+ * The RICE-optimal set is the selection with the most total modelled value that fits in
  * capacity (a small knapsack, solved exactly by checking all 256 subsets).
  * Ranking by RICE score and filling from the top is a good heuristic, but it is
  * not always optimal, which is the point of the game.
@@ -85,7 +87,7 @@ export interface Evaluation {
   optimal: string[]
   pickedValue: number
   optimalValue: number
-  /** Share of the optimal value delivered, 0-100 */
+  /** Modelled score: the plan's modelled value as a share of the optimal plan's, 0-100 */
   score: number
   unused: number
   missed: string[]
@@ -104,18 +106,18 @@ export function evaluate(picked: string[]): Evaluation {
   const insights: string[] = []
 
   if (picked.length === 0) {
-    insights.push('Nothing was selected, so nothing shipped. Even a rough pick beats an empty sprint.')
+    insights.push('Nothing was selected, so the plan scores zero. Even a rough pick beats an empty plan.')
   } else if (sameSet(picked, optimal)) {
-    insights.push('You found the RICE-optimal set: the most value that fits in the team’s capacity.')
+    insights.push('You found the RICE-optimal set: the highest modelled value that fits in the team’s capacity.')
   } else {
     if (sameSet(picked, greedy(riceScore))) {
       insights.push(
-        `You ranked by RICE score and filled from the top. That is a strong heuristic, but it left ${weeks(unused)} unused. The optimal plan swaps ${list(titles(extra))} for ${list(titles(missed))}, which fit the capacity exactly and deliver more in total.`,
+        `You ranked by RICE score and filled from the top. That is a strong heuristic, but it left ${weeks(unused)} unused. The optimal plan swaps ${list(titles(extra))} for ${list(titles(missed))}, which fit the capacity exactly and score higher in total.`,
       )
     } else if (sameSet(picked, greedy((i) => i.reach))) {
-      insights.push('You prioritised by reach. Reach alone ignores impact, confidence and cost, so big-audience items crowded out better-value work.')
+      insights.push('You prioritised by reach. Reach alone ignores impact, confidence and cost, so big-audience items crowded out higher-scoring work.')
     } else if (sameSet(picked, greedy(value))) {
-      insights.push('You chose the biggest-value items first. Without dividing by effort, a few large items used up the capacity that several cheaper ones would have used better.')
+      insights.push('You chose the highest-value items first. Without dividing by effort, a few large items used up the capacity that several cheaper ones would have used better.')
     }
     if (missed.length) {
       insights.push(
@@ -133,13 +135,13 @@ export function evaluate(picked: string[]): Evaluation {
     }
     const lowConfidence = picked.filter((id) => byId(id).confidence <= 0.5)
     if (lowConfidence.length) {
-      insights.push(`${list(titles(lowConfidence))} ${lowConfidence.length > 1 ? 'have' : 'has'} only 50% confidence. Low confidence halves the expected value; that is a cue to run discovery before committing a sprint to ${lowConfidence.length > 1 ? 'them' : 'it'}.`)
+      insights.push(`${list(titles(lowConfidence))} ${lowConfidence.length > 1 ? 'have' : 'has'} only 50% confidence. Low confidence halves the modelled value; that is a cue to run discovery before committing a sprint to ${lowConfidence.length > 1 ? 'them' : 'it'}.`)
     }
     if (unused > 0 && !sameSet(picked, greedy(riceScore))) {
       insights.push(`${weeks(unused)} of capacity went unused.`)
     }
   }
-  insights.push('RICE score is value per person-week. The best plan is not always the top of the ranking: it is the combination that delivers the most value within capacity.')
+  insights.push('RICE score is modelled value per person-week. The best plan is not always the top of the ranking: it is the combination with the highest modelled value within capacity.')
 
   return { picked, optimal, pickedValue, optimalValue, score, unused, missed, extra, insights }
 }

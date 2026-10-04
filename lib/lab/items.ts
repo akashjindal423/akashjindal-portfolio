@@ -21,7 +21,7 @@ export const LAB_ITEMS: LabItem[] = [
     href: '/lab/backlog-game',
     title: 'Backlog game: beat RICE in 60 seconds',
     summary:
-      'Eight backlog items, a fixed team capacity and one minute to choose. Your plan is scored against the RICE-optimal set, with an explanation of the difference.',
+      'Eight fictional backlog items, a fixed team capacity and one minute to choose. Your plan gets a modelled score against the RICE-optimal set, with an explanation of the difference.',
     tags: ['Prioritisation', 'RICE', 'Game'],
   },
 ]

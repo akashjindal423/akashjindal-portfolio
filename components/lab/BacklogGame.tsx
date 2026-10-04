@@ -95,7 +95,7 @@ export default function BacklogGame() {
   }
 
   async function copyScore(r: Evaluation) {
-    const text = `I delivered ${r.score}% of the optimal value in Akash Jindal's 60-second RICE backlog game. Can you beat it? ${SITE_URL}/lab/backlog-game`
+    const text = `I scored ${r.score}% of the best possible plan in Akash Jindal's RICE backlog game (a model on fictional data). Can you beat it? ${SITE_URL}/lab/backlog-game`
     try {
       await navigator.clipboard.writeText(text)
       setCopy('copied')
@@ -243,8 +243,12 @@ function Results({
         </h2>
         <p className="mt-2 text-5xl font-bold text-text-primary">{result.score}%</p>
         <p className="mt-1 text-sm text-text-secondary">
-          of the optimal value delivered ({fmt(result.pickedValue)} of {fmt(result.optimalValue)} expected impact points,{' '}
-          {CAPACITY - result.unused}/{CAPACITY} person-weeks used)
+          modelled score: your plan&apos;s {fmt(result.pickedValue)} modelled impact points as a share of the best
+          plan&apos;s {fmt(result.optimalValue)} ({CAPACITY - result.unused}/{CAPACITY} person-weeks used)
+        </p>
+        <p className="mt-2 text-xs text-text-subtle">
+          A model on fictional data, not a measure of value delivered: each item&apos;s modelled impact is Reach × Impact ×
+          Confidence, using the made-up figures for {PRODUCT}.
         </p>
         <ul className="mt-5 space-y-2">
           {result.insights.map((text) => (
@@ -276,7 +280,7 @@ function Results({
         </p>
         {copy === 'failed' && (
           <p className="mt-2 text-xs text-text-subtle" role="status">
-            Couldn&apos;t access the clipboard. Your score: {result.score}% of the optimal value.
+            Couldn&apos;t access the clipboard. Your modelled score: {result.score}% of the best possible plan.
           </p>
         )}
       </div>
@@ -284,14 +288,14 @@ function Results({
       <div className="rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-5 sm:p-6">
         <h2 className="text-lg font-semibold text-text-primary">The numbers behind it</h2>
         <p className="mt-1 text-sm text-text-secondary">
-          Expected impact = Reach × Impact × Confidence. RICE score = expected impact ÷ effort.
+          Modelled impact = Reach × Impact × Confidence. RICE score = modelled impact ÷ effort. All figures are fictional.
         </p>
         <div className="mt-4 overflow-x-auto rounded-lg border border-[#2A2A50]">
           <table className="w-full min-w-[520px] text-left text-sm">
             <thead>
               <tr className="border-b border-[#2A2A50] text-[11px] uppercase tracking-wider text-text-subtle">
                 <th scope="col" className="px-3 py-2 font-medium">Item</th>
-                <th scope="col" className="px-3 py-2 font-medium text-right">Impact pts</th>
+                <th scope="col" className="px-3 py-2 font-medium text-right">Modelled impact</th>
                 <th scope="col" className="px-3 py-2 font-medium text-right">Effort</th>
                 <th scope="col" className="px-3 py-2 font-medium text-right">RICE</th>
                 <th scope="col" className="px-3 py-2 font-medium">You</th>
