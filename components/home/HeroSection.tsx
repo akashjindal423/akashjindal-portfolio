@@ -18,7 +18,7 @@ export default function HeroSection() {
       className="relative overflow-hidden"
       style={{
         background:
-          'radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.12) 0%, transparent 60%), #0D0D1A',
+          'radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.12) 0%, transparent 60%), #0E0F12',
       }}
     >
       <CursorGlow />

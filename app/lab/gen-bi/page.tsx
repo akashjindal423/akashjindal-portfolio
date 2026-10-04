@@ -49,7 +49,7 @@ export default function GenBiPage() {
             body: 'Questions about other years, missing measures such as profit, exclusions or vague dates get a clarification listing what the demo can answer.',
           },
         ].map((c) => (
-          <div key={c.title} className="rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-5">
+          <div key={c.title} className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5">
             <h2 className="text-sm font-semibold text-text-primary">{c.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-text-secondary">{c.body}</p>
           </div>

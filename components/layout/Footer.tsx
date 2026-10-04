@@ -25,7 +25,7 @@ export default function Footer() {
               </span>
               <span className="font-medium text-[var(--text-primary)]">Akash Jindal</span>
             </div>
-            <p className="text-[#A09EC0] text-sm mt-2">AI Product Owner</p>
+            <p className="text-text-secondary text-sm mt-2">AI Product Owner</p>
             <p className="text-text-subtle text-sm mt-3">
               Open to AI Product Manager roles, contract or permanent.
             </p>
@@ -39,7 +39,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-[#A09EC0] hover:text-violet-400 text-sm transition-colors duration-200"
+                    className="text-text-secondary hover:text-violet-400 text-sm transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -56,7 +56,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-[#A09EC0] hover:text-violet-400 text-sm transition-colors duration-200"
+                    className="text-text-secondary hover:text-violet-400 text-sm transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -75,7 +75,7 @@ export default function Footer() {
                     href={href}
                     target={external ? '_blank' : undefined}
                     rel={external ? 'noopener noreferrer' : undefined}
-                    className="inline-flex items-center gap-2 text-[#A09EC0] hover:text-violet-400 text-sm transition-colors duration-200"
+                    className="inline-flex items-center gap-2 text-text-secondary hover:text-violet-400 text-sm transition-colors duration-200"
                   >
                     <Icon size={14} aria-hidden="true" />
                     {label}

@@ -290,7 +290,7 @@ export default function AIHealthCompanionPage() {
             <ul className="space-y-2.5">
               {['Heart rate and other biometric data', 'Full wearable biometric analysis', 'Mental health layer', 'Community features', 'Live nutritionist consultation', 'Advanced diagnostics'].map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-text-secondary leading-snug">
-                  <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-[#3D3B60] shrink-0" />
+                  <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-[var(--border-strong)] shrink-0" />
                   {item}
                 </li>
               ))}
@@ -367,7 +367,7 @@ export default function AIHealthCompanionPage() {
                 </p>
                 <div className="bg-[var(--background)] rounded-lg px-4 py-3 space-y-2">
                   {s.ac.map((c) => (
-                    <p key={c} className="text-sm text-[#A09EC0] font-mono leading-relaxed">
+                    <p key={c} className="text-sm text-text-secondary font-mono leading-relaxed">
                       <span className="text-violet-500 mr-2">✓</span>{c}
                     </p>
                   ))}

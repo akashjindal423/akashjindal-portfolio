@@ -11,19 +11,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#0D0D1A',
-        surface: '#13132A',
-        'surface-raised': '#1A1A38',
-        'border-subtle': '#2A2A50',
+        // Legacy names kept for existing classes; values match the .dark tokens in globals.css
+        background: '#0E0F12',
+        surface: '#16181D',
+        'surface-raised': '#1D2026',
+        'border-subtle': '#2A2E37',
+        'border-strong': '#3E4350',
         accent: {
           DEFAULT: '#7C3AED',
           light: '#A78BFA',
         },
-        'text-primary': '#F8F8FF',
-        'text-secondary': '#A09EC0',
-        'text-muted': '#9B99BB',
-        // AA-compliant tertiary text: 5.72:1 on #0D0D1A, 5.40:1 on #13132A
-        'text-subtle': '#8A88B0',
+        highlight: '#F5B544',
+        'text-primary': '#F3F4F6',
+        'text-secondary': '#B4BAC4',
+        'text-muted': '#A6ADB8',
+        // AA tertiary text: 6.21:1 on #0E0F12, 5.75:1 on #16181D, 5.28:1 on #1D2026
+        'text-subtle': '#8D939E',
       },
       fontFamily: {
         display: ['var(--font-fraunces)', 'serif'],
@@ -32,8 +35,8 @@ const config: Config = {
       },
       boxShadow: {
         card: '0 1px 3px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4)',
-        elevated: '0 8px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(124,58,237,0.08)',
-        glow: '0 0 32px rgba(124,58,237,0.2)',
+        elevated: '0 8px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.3)',
+        glow: '0 8px 24px rgba(0,0,0,0.35)',
       },
     },
   },

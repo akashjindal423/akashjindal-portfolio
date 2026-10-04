@@ -14,9 +14,9 @@ const variantStyles: Record<Variant, string> = {
   primary:
     'bg-violet-600 text-white font-semibold hover:bg-violet-500 hover:scale-[1.02]',
   secondary:
-    'border border-[var(--border)] text-[#A09EC0] hover:border-violet-500/60 hover:text-violet-400',
+    'border border-[var(--border)] text-text-secondary hover:border-violet-500/60 hover:text-violet-400',
   ghost:
-    'text-[#A09EC0] hover:text-violet-400',
+    'text-text-secondary hover:text-violet-400',
 }
 
 const sizeStyles: Record<Size, string> = {

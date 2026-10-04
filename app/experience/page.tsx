@@ -66,12 +66,12 @@ export default function ExperiencePage() {
             <div className="flex items-start justify-between mb-3">
               <div>
                 <p className="text-xs text-text-subtle mb-1">Apr 2024 – Oct 2024 · London · Remote</p>
-                <h3 className="text-base font-bold text-[#F8F8FF]">Vice President of Membership</h3>
+                <h3 className="text-base font-bold text-text-primary">Vice President of Membership</h3>
                 <p className="text-sm text-violet-400 mt-0.5">Toastmasters International · Part-time</p>
               </div>
               <span className="text-xs bg-violet-500/10 border border-violet-500/20 text-violet-400 px-2.5 py-1 rounded-full shrink-0 ml-3">Leadership</span>
             </div>
-            <p className="text-sm text-[#A09EC0] mb-4">Empowering individuals through confident communication and leadership within a globally recognised public speaking community.</p>
+            <p className="text-sm text-text-secondary mb-4">Empowering individuals through confident communication and leadership within a globally recognised public speaking community.</p>
             <ul className="space-y-2">
               {[
                 'Reignited member engagement — spearheaded initiatives improving participation and community bonding',
@@ -79,7 +79,7 @@ export default function ExperiencePage() {
                 'Designed structured onboarding journey with mentorship support, improving retention and integration',
                 'Built a scalable membership framework ensuring consistent communication and long-term development',
               ].map((bullet, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-[#A09EC0]">
+                <li key={i} className="flex items-start gap-2 text-sm text-text-secondary">
                   <span className="text-violet-400 mt-0.5 shrink-0">›</span>
                   {bullet}
                 </li>
@@ -97,19 +97,19 @@ export default function ExperiencePage() {
             <div className="flex items-start justify-between mb-3">
               <div>
                 <p className="text-xs text-text-subtle mb-1">Dec 2019 – Jul 2023 · 3 yrs 8 mos</p>
-                <h3 className="text-base font-bold text-[#F8F8FF]">Mentor</h3>
+                <h3 className="text-base font-bold text-text-primary">Mentor</h3>
                 <p className="text-sm text-violet-400 mt-0.5">SOCH (अंत ही आरम्भ) · Part-time</p>
               </div>
               <span className="text-xs bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full shrink-0 ml-3">Social Impact</span>
             </div>
-            <p className="text-sm text-[#A09EC0] mb-4">Supported high-impact social initiatives focused on health, inclusion, and sustainable development for underprivileged communities.</p>
+            <p className="text-sm text-text-secondary mb-4">Supported high-impact social initiatives focused on health, inclusion, and sustainable development for underprivileged communities.</p>
             <ul className="space-y-2">
               {[
                 'Led frontline Covid-19 relief — mentored volunteers delivering essentials to 1,000+ families. Recognised as "Covid Frontline Warrior" (Alert Award 2020)',
                 'Guided NGO registration under Section 8 of the Companies Act, unlocking public donations and government partnerships',
                 'Initiated Project Pride — delivered gender-neutral washrooms with local governments and launched LGBTQIA+ mental health and vocational programmes',
               ].map((bullet, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-[#A09EC0]">
+                <li key={i} className="flex items-start gap-2 text-sm text-text-secondary">
                   <span className="text-emerald-400 mt-0.5 shrink-0">›</span>
                   {bullet}
                 </li>

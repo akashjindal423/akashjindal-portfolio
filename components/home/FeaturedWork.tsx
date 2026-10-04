@@ -72,7 +72,7 @@ export default function FeaturedWork() {
             <AnimatedEntry delay={i * 0.08} className="h-full">
               <Link
                 href={card.href}
-                className="group flex h-full flex-col rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-6 transition-all duration-300 hover:-translate-y-[2px] hover:border-violet-500/30 hover:shadow-glow"
+                className="group flex h-full flex-col rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:-translate-y-[2px] hover:border-violet-500/30 hover:shadow-glow"
               >
                 <span className="text-xs uppercase tracking-widest text-text-subtle">{card.kind}</span>
                 <h3 className="mt-2 text-lg font-semibold text-text-primary leading-snug group-hover:text-violet-400 transition-colors duration-200">
@@ -98,7 +98,7 @@ export default function FeaturedWork() {
       {/* The day job, as context rather than a clickable case study */}
       {lloyds && (
         <AnimatedEntry delay={0.2}>
-          <div className="mt-5 rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-6 sm:flex sm:items-start sm:gap-8">
+          <div className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 sm:flex sm:items-start sm:gap-8">
             <div className="sm:w-56 sm:shrink-0">
               <span className="text-xs uppercase tracking-widest text-text-subtle">Context: day job</span>
               <p className="mt-2 text-sm text-text-secondary">{employerName(lloyds)}</p>

@@ -13,8 +13,8 @@ import { formatTick, formatValue } from '@/lib/lab/genbi'
 const COLOR_BASE = '#7461C9'
 const COLOR_HIGHLIGHT = '#C4B5FD'
 const COLOR_LINE = '#A78BFA'
-const SURFACE = '#13132A'
-const GRID = '#2A2A50'
+const SURFACE = '#16181D'
+const GRID = '#2A2E37'
 
 const HEIGHT = 240
 const MARGIN = { top: 28, right: 12, bottom: 30, left: 52 }
@@ -104,7 +104,7 @@ function Tooltip({
       : { left: Math.min(x + 12, width - 112), top: y }
   return (
     <div
-      className={`pointer-events-none absolute z-10 rounded-lg border border-[#2A2A50] bg-[var(--background)] px-3 py-2 shadow-elevated ${
+      className={`pointer-events-none absolute z-10 rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 shadow-elevated ${
         placement === 'above' ? '-translate-x-1/2 -translate-y-full' : '-translate-y-1/2'
       }`}
       style={style}
@@ -122,12 +122,12 @@ export function DataTable({ title, data, unit }: Omit<ChartProps, 'highlight'>) 
       <summary className="cursor-pointer text-text-secondary hover:text-violet-400 transition-colors duration-200 w-fit">
         Show data table
       </summary>
-      <div className="mt-2 overflow-x-auto rounded-lg border border-[#2A2A50]">
+      <div className="mt-2 overflow-x-auto rounded-lg border border-[var(--border)]">
         <table className="w-full text-left text-sm">
           <caption className="sr-only">{title}</caption>
           <tbody>
             {data.map((d) => (
-              <tr key={d.label} className="border-b border-[#2A2A50] last:border-0">
+              <tr key={d.label} className="border-b border-[var(--border)] last:border-0">
                 <th scope="row" className="px-3 py-1.5 font-normal text-text-secondary">{d.label}</th>
                 <td className="px-3 py-1.5 text-right text-text-primary tabular-nums">{formatValue(d.value, unit)}</td>
               </tr>
@@ -289,7 +289,7 @@ export function LineChart({ title, data, unit, highlight }: ChartProps) {
                 </text>
               ) : null,
             )}
-            {a && <line x1={a.x} x2={a.x} y1={MARGIN.top} y2={baseline} stroke="#8A88B0" strokeWidth={1} />}
+            {a && <line x1={a.x} x2={a.x} y1={MARGIN.top} y2={baseline} stroke="#8D939E" strokeWidth={1} />}
             {/* Highlighted points: dot with a 2px surface ring and a direct label */}
             {hls.map((hl) => (
               <g key={hl.label}>
@@ -333,7 +333,7 @@ export function LineChart({ title, data, unit, highlight }: ChartProps) {
 /** A single total: no chart, just the figure. */
 export function StatTile({ title, data, unit }: Omit<ChartProps, 'highlight'>) {
   return (
-    <figure className="m-0 rounded-lg border border-[#2A2A50] bg-[var(--background)] p-5">
+    <figure className="m-0 rounded-lg border border-[var(--border)] bg-[var(--background)] p-5">
       <figcaption className="text-sm font-medium text-text-secondary">{title}</figcaption>
       <p className="mt-2 text-3xl font-bold text-text-primary tabular-nums">{formatValue(data[0].value, unit)}</p>
     </figure>

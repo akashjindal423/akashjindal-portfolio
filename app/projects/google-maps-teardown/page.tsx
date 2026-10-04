@@ -316,11 +316,11 @@ export default function GoogleMapsTeardownPage() {
           <p className="text-[10px] uppercase tracking-widest text-violet-400 text-center mb-6">Monetisation Flywheel</p>
           {/* Rows 1 & 2 — core flywheel loop */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center mb-2">
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">2B+ Users</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">2B+ Users</div>
             <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">High Commercial Intent</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">High Commercial Intent</div>
             <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Premium Ad Inventory ($11B+/yr)</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Premium Ad Inventory ($11B+/yr)</div>
           </div>
           <div className="hidden md:grid grid-cols-[1fr_28px_1fr_28px_1fr] gap-x-1 items-center my-1">
             <div className="text-violet-400 text-sm text-center">↑</div>
@@ -330,27 +330,27 @@ export default function GoogleMapsTeardownPage() {
             <div className="text-violet-400 text-sm text-center">↓</div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center mb-8">
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Better Product (AI/3D)</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Better Product (AI/3D)</div>
             <span className="text-violet-400 text-sm text-center hidden md:block">←</span>
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">More Street View, Data, AI Models</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">More Street View, Data, AI Models</div>
             <span className="text-violet-400 text-sm text-center hidden md:block">←</span>
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Revenue Reinvested in Infra</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Revenue Reinvested in Infra</div>
           </div>
           {/* Row 3 */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center mb-3">
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">5M+ Apps</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">5M+ Apps</div>
             <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Developer Lock-in</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Developer Lock-in</div>
             <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">API Revenue (~$2B+/yr)</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">API Revenue (~$2B+/yr)</div>
           </div>
           {/* Row 4 */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_28px_1fr_28px_1fr] gap-y-2 gap-x-1 items-center">
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">200M Listed Businesses</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">200M Listed Businesses</div>
             <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Free GBP Creates Dependency</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Free GBP Creates Dependency</div>
             <span className="text-violet-400 text-sm text-center hidden md:block">→</span>
-            <div className="rounded-xl bg-[#0D0D1A] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Upsell to Google Ads</div>
+            <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-4 text-center text-xs text-text-primary font-medium">Upsell to Google Ads</div>
           </div>
         </div>
       </section>
@@ -750,7 +750,7 @@ export default function GoogleMapsTeardownPage() {
         <div className="mb-6">
           <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Wireframe — Creator Dashboard</p>
           <div className="rounded-2xl p-1 bg-gradient-to-b from-violet-500/10 to-transparent border border-violet-500/20">
-            <div className="bg-[#0A0A1A] rounded-2xl p-5 space-y-5">
+            <div className="bg-[var(--background)] rounded-2xl p-5 space-y-5">
               {/* Header */}
               <div className="text-center">
                 <div className="inline-flex items-center gap-1.5 bg-[var(--surface)] border border-[var(--border)] rounded-full px-3 py-1 text-xs text-text-muted mb-1">
@@ -877,7 +877,7 @@ export default function GoogleMapsTeardownPage() {
             <div>
               <p className="text-[10px] uppercase tracking-widest text-text-muted mb-3">Step 3 — Collaborative Planning</p>
               <div className="rounded-2xl p-1 bg-gradient-to-b from-violet-500/10 to-transparent border border-violet-500/20">
-                <div className="bg-[#0A0A1A] rounded-2xl overflow-hidden">
+                <div className="bg-[var(--background)] rounded-2xl overflow-hidden">
                   {/* Header band */}
                   <div className="bg-gradient-to-r from-violet-600/20 to-blue-600/20 px-4 py-3">
                     <p className="text-sm font-semibold text-white">🗺️ Bristol Weekend · 4 people</p>
@@ -1037,7 +1037,7 @@ export default function GoogleMapsTeardownPage() {
         <div className="mb-6">
           <p className="text-xs uppercase tracking-widest text-violet-400 mb-3">Wireframe — Neighbourhood Profile</p>
           <div className="rounded-2xl p-1 bg-gradient-to-b from-violet-500/10 to-transparent border border-violet-500/20">
-            <div className="bg-[#0A0A1A] rounded-2xl p-5 space-y-5">
+            <div className="bg-[var(--background)] rounded-2xl p-5 space-y-5">
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <p className="text-sm font-bold text-white">🏘️ Neighbourhood: Clifton, Bristol</p>
@@ -1052,7 +1052,7 @@ export default function GoogleMapsTeardownPage() {
                     { emoji: '🟡', label: 'Food' },
                     { emoji: '⬜', label: 'Residential' },
                   ].map((item) => (
-                    <span key={item.label} className="text-[9px] bg-[#0A0A1A]/80 rounded-full px-2 py-0.5 text-text-muted">
+                    <span key={item.label} className="text-[9px] bg-[var(--background)]/80 rounded-full px-2 py-0.5 text-text-muted">
                       {item.emoji} {item.label}
                     </span>
                   ))}

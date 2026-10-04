@@ -42,7 +42,7 @@ const sections = [
 ]
 
 const TONE: Record<Tone, string> = {
-  default: 'text-[#A09EC0]',
+  default: 'text-text-secondary',
   key: 'text-violet-400',
   muted: 'text-text-subtle',
   ok: 'text-green-400',
@@ -181,7 +181,7 @@ function TerminalCard() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.3 }}
-      className="relative w-full max-w-md rounded-2xl border border-[var(--border)] bg-[#0A0A1B]/95 backdrop-blur-md shadow-2xl overflow-hidden"
+      className="relative w-full max-w-md rounded-2xl border border-[var(--border)] bg-[var(--background)]/95 backdrop-blur-md shadow-2xl overflow-hidden"
     >
       {/* Mac-style title bar */}
       <div className="flex items-center gap-2 border-b border-[var(--border)] bg-[var(--background)] px-4 py-3">
@@ -210,7 +210,7 @@ function TerminalCard() {
                 {section.lines.map((line) => (
                   <div key={line.key} className="flex gap-3 items-baseline">
                     <dt className="text-violet-400 min-w-[96px] sm:min-w-[110px] shrink-0 text-xs">{line.key}:</dt>
-                    <dd className={`${line.highlight ? 'text-green-400' : 'text-[#A09EC0]'} text-xs leading-relaxed`}>
+                    <dd className={`${line.highlight ? 'text-green-400' : 'text-text-secondary'} text-xs leading-relaxed`}>
                       {line.value}
                     </dd>
                   </div>

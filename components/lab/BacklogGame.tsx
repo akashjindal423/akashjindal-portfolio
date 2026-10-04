@@ -111,7 +111,7 @@ export default function BacklogGame() {
       </p>
 
       {phase === 'intro' && (
-        <div className="rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-5 sm:p-6">
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6">
           <h2 className="text-lg font-semibold text-text-primary">How it works</h2>
           <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-sm text-text-secondary">
             <li>
@@ -139,7 +139,7 @@ export default function BacklogGame() {
 
       {phase === 'playing' && (
         <>
-          <div className="sticky top-16 z-20 rounded-xl border border-[#2A2A50] bg-[var(--surface)]/95 backdrop-blur p-4">
+          <div className="sticky top-16 z-20 rounded-xl border border-[var(--border)] bg-[var(--surface)]/95 backdrop-blur p-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="flex items-center gap-2 font-mono text-lg text-text-primary tabular-nums" aria-label={`${remaining} seconds left`}>
                 <Timer className="h-5 w-5 text-violet-400" aria-hidden="true" />
@@ -157,7 +157,7 @@ export default function BacklogGame() {
               </button>
             </div>
             <div
-              className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-[#2A2A50]"
+              className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-[var(--border)]"
               role="progressbar"
               aria-label="Capacity used"
               aria-valuemin={0}
@@ -186,14 +186,14 @@ export default function BacklogGame() {
                     className={`w-full rounded-xl border p-4 text-left transition-all duration-200 ${
                       on
                         ? 'border-violet-500/70 bg-violet-500/10'
-                        : 'border-[#2A2A50] bg-[var(--surface)] hover:border-violet-500/30 hover:-translate-y-[2px]'
-                    } aria-disabled:cursor-not-allowed aria-disabled:opacity-50 aria-disabled:hover:translate-y-0 aria-disabled:hover:border-[#2A2A50]`}
+                        : 'border-[var(--border)] bg-[var(--surface)] hover:border-violet-500/30 hover:-translate-y-[2px]'
+                    } aria-disabled:cursor-not-allowed aria-disabled:opacity-50 aria-disabled:hover:translate-y-0 aria-disabled:hover:border-[var(--border)]`}
                   >
                     <span className="flex items-start justify-between gap-3">
                       <span className="font-semibold text-text-primary">{item.title}</span>
                       <span
                         className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border ${
-                          on ? 'border-violet-400 bg-violet-500 text-white' : 'border-[#2A2A50]'
+                          on ? 'border-violet-400 bg-violet-500 text-white' : 'border-[var(--border)]'
                         }`}
                         aria-hidden="true"
                       >
@@ -237,7 +237,7 @@ function Results({
   const rows = [...ITEMS].sort((a, b) => riceScore(b) - riceScore(a))
   return (
     <div className="flex flex-col gap-6">
-      <div className="rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-5 sm:p-6">
+      <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6">
         <h2 ref={resultRef} tabIndex={-1} className="text-xs uppercase tracking-widest text-violet-400 outline-none">
           Your result
         </h2>
@@ -285,15 +285,15 @@ function Results({
         )}
       </div>
 
-      <div className="rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-5 sm:p-6">
+      <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6">
         <h2 className="text-lg font-semibold text-text-primary">The numbers behind it</h2>
         <p className="mt-1 text-sm text-text-secondary">
           Modelled impact = Reach × Impact × Confidence. RICE score = modelled impact ÷ effort. All figures are fictional.
         </p>
-        <div className="mt-4 overflow-x-auto rounded-lg border border-[#2A2A50]">
+        <div className="mt-4 overflow-x-auto rounded-lg border border-[var(--border)]">
           <table className="w-full min-w-[520px] text-left text-sm">
             <thead>
-              <tr className="border-b border-[#2A2A50] text-[11px] uppercase tracking-wider text-text-subtle">
+              <tr className="border-b border-[var(--border)] text-[11px] uppercase tracking-wider text-text-subtle">
                 <th scope="col" className="px-3 py-2 font-medium">Item</th>
                 <th scope="col" className="px-3 py-2 font-medium text-right">Modelled impact</th>
                 <th scope="col" className="px-3 py-2 font-medium text-right">Effort</th>
@@ -304,7 +304,7 @@ function Results({
             </thead>
             <tbody>
               {rows.map((item) => (
-                <tr key={item.id} className="border-b border-[#2A2A50] last:border-0">
+                <tr key={item.id} className="border-b border-[var(--border)] last:border-0">
                   <th scope="row" className="px-3 py-2 font-normal text-text-primary">{item.title}</th>
                   <td className="px-3 py-2 text-right font-mono tabular-nums text-text-secondary">{fmt(value(item))}</td>
                   <td className="px-3 py-2 text-right font-mono tabular-nums text-text-secondary">{item.effort}</td>

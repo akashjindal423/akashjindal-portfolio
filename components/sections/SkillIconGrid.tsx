@@ -82,7 +82,7 @@ function GroupCard({ group }: { group: SkillGroupView }) {
             <div className="w-14 h-14 rounded-xl bg-[var(--background)] border border-[var(--border)] flex items-center justify-center">
               <Icon className={cn('w-6 h-6', group.iconColor)} aria-hidden="true" strokeWidth={1.75} />
             </div>
-            <span className="text-[11px] font-medium text-[#A09EC0] text-center leading-tight px-0.5">
+            <span className="text-[11px] font-medium text-text-secondary text-center leading-tight px-0.5">
               {name}
             </span>
           </li>

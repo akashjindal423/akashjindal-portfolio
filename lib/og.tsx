@@ -9,7 +9,7 @@ interface OgImageInput {
   subtitle: string
 }
 
-/** Shared 1200x630 Open Graph card in the site's indigo + violet palette. */
+/** Shared 1200x630 Open Graph card in the site's neutral palette with a violet logo. */
 export function renderOgImage({ eyebrow, title, subtitle }: OgImageInput) {
   return new ImageResponse(
     (
@@ -21,10 +21,10 @@ export function renderOgImage({ eyebrow, title, subtitle }: OgImageInput) {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '72px 80px',
-          backgroundColor: '#0D0D1A',
+          backgroundColor: '#0E0F12',
           backgroundImage:
-            'radial-gradient(ellipse at 15% 0%, rgba(124,58,237,0.35) 0%, rgba(13,13,26,0) 60%)',
-          color: '#F8F8FF',
+            'radial-gradient(ellipse at 15% 0%, rgba(124,58,237,0.35) 0%, rgba(14,15,18,0) 60%)',
+          color: '#F3F4F6',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -43,7 +43,7 @@ export function renderOgImage({ eyebrow, title, subtitle }: OgImageInput) {
           >
             AJ
           </div>
-          <div style={{ fontSize: 28, color: '#A09EC0' }}>akashjindal.com</div>
+          <div style={{ fontSize: 28, color: '#B4BAC4' }}>akashjindal.com</div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -59,7 +59,7 @@ export function renderOgImage({ eyebrow, title, subtitle }: OgImageInput) {
             {eyebrow}
           </div>
           <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.1, maxWidth: 1000 }}>{title}</div>
-          <div style={{ fontSize: 30, color: '#A09EC0', marginTop: 24, maxWidth: 1000, lineHeight: 1.35 }}>
+          <div style={{ fontSize: 30, color: '#B4BAC4', marginTop: 24, maxWidth: 1000, lineHeight: 1.35 }}>
             {subtitle}
           </div>
         </div>

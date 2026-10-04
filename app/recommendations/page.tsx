@@ -38,7 +38,7 @@ export default function RecommendationsPage() {
               className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8"
             >
               <span className="text-5xl text-violet-600 opacity-30 font-display leading-none">&ldquo;</span>
-              <p className="italic text-[#A09EC0] leading-relaxed mt-2">{t.quote}</p>
+              <p className="italic text-text-secondary leading-relaxed mt-2">{t.quote}</p>
               <div className="flex items-center gap-3 mt-6">
                 <div className="w-10 h-10 rounded-full bg-violet-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
                   {initials(t.author)}

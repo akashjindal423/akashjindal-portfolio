@@ -70,7 +70,7 @@ export default function PromptLabPage() {
             href="https://github.com/akashjindal423/Promptlab#readme"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-[#2A2A50] hover:border-violet-500/40 text-text-secondary hover:text-violet-300 text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200"
+            className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-violet-500/40 text-text-secondary hover:text-violet-300 text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200"
           >
             Install instructions
           </a>
@@ -80,7 +80,7 @@ export default function PromptLabPage() {
           {stats.map((s) => (
             <span
               key={s}
-              className="text-xs px-3 py-1.5 rounded-full bg-[var(--surface)] border border-[#2A2A50] text-[#A09EC0]"
+              className="text-xs px-3 py-1.5 rounded-full bg-[var(--surface)] border border-[var(--border)] text-text-secondary"
             >
               {s}
             </span>
@@ -142,9 +142,9 @@ export default function PromptLabPage() {
         </p>
 
         {/* Terminal window */}
-        <div className="rounded-2xl overflow-hidden border border-[#2A2A50] shadow-2xl">
+        <div className="rounded-2xl overflow-hidden border border-[var(--border)] shadow-2xl">
           {/* Title bar */}
-          <div className="bg-[#161b22] px-4 py-3 flex items-center gap-2 border-b border-[#2A2A50]">
+          <div className="bg-[#161b22] px-4 py-3 flex items-center gap-2 border-b border-[var(--border)]">
             <span className="w-3 h-3 rounded-full bg-[#FF5F57]" />
             <span className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
             <span className="w-3 h-3 rounded-full bg-[#28C840]" />
@@ -173,7 +173,7 @@ export default function PromptLabPage() {
             {/* Table */}
             <div className="mt-5 overflow-x-auto">
               {/* Header */}
-              <div className="flex text-[11px] text-text-subtle border-b border-[#2A2A50] pb-1.5 mb-0.5">
+              <div className="flex text-[11px] text-text-subtle border-b border-[var(--border)] pb-1.5 mb-0.5">
                 <span className="w-52 shrink-0">Dimension</span>
                 <span className="w-16 shrink-0">Score</span>
                 <span>Status</span>
@@ -257,13 +257,13 @@ export default function PromptLabPage() {
               desc: 'Generates test cases from your prompt, runs the original and the 3 variants against them, and scores each output with its reasoning. Use the result to decide what to review by hand: generated test cases and model-graded scores are not proof of real-world quality.',
             },
           ].map((card) => (
-            <div key={card.num} className="bg-[var(--surface)] border border-[#2A2A50] hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[2px] transition-all duration-300 rounded-2xl p-6 flex flex-col">
+            <div key={card.num} className="bg-[var(--surface)] border border-[var(--border)] hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[2px] transition-all duration-300 rounded-2xl p-6 flex flex-col">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-2xl">{card.icon}</span>
                 <span className="text-[11px] font-mono font-bold text-violet-500/60 bg-violet-500/10 px-2 py-0.5 rounded">{card.num}</span>
               </div>
               <h3 className="text-base font-bold text-text-primary mb-3">{card.title}</h3>
-              <div className="bg-[#0d1117] border border-[#2A2A50] rounded-lg px-3 py-2 mb-4">
+              <div className="bg-[#0d1117] border border-[var(--border)] rounded-lg px-3 py-2 mb-4">
                 <code className="text-xs text-emerald-400 font-mono break-all">{card.cmd}</code>
               </div>
               <p className="text-sm text-text-secondary leading-relaxed flex-1">{card.desc}</p>
@@ -284,7 +284,7 @@ export default function PromptLabPage() {
           {dimensions.map((d) => (
             <div
               key={d.name}
-              className="bg-[var(--surface)] border border-[#2A2A50] hover:border-violet-500/30 hover:-translate-y-[2px] hover:shadow-glow transition-all duration-300 rounded-xl p-4"
+              className="bg-[var(--surface)] border border-[var(--border)] hover:border-violet-500/30 hover:-translate-y-[2px] hover:shadow-glow transition-all duration-300 rounded-xl p-4"
             >
               <span className="text-xl mb-2 block">{d.icon}</span>
               <p className="text-sm font-semibold text-text-primary mb-1">{d.name}</p>
@@ -303,7 +303,7 @@ export default function PromptLabPage() {
           {techStack.map((t) => (
             <span
               key={t}
-              className="text-sm px-3 py-1.5 rounded-full bg-[var(--surface)] border border-[#2A2A50] hover:border-violet-500/30 text-[#A09EC0] transition-colors duration-200"
+              className="text-sm px-3 py-1.5 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-violet-500/30 text-text-secondary transition-colors duration-200"
             >
               {t}
             </span>
@@ -313,7 +313,7 @@ export default function PromptLabPage() {
 
       {/* ── CTA ───────────────────────────────────────────────────────────────── */}
       <section className="mt-20">
-        <div className="relative overflow-hidden rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-600/10 via-[#13132A] to-violet-900/10 p-8 md:p-10">
+        <div className="relative overflow-hidden rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-600/10 via-[var(--surface)] to-violet-900/10 p-8 md:p-10">
           {/* Subtle glow */}
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-violet-600/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -336,7 +336,7 @@ export default function PromptLabPage() {
             </a>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 border border-[#2A2A50] hover:border-violet-500/40 text-text-secondary hover:text-violet-300 text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200"
+              className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-violet-500/40 text-text-secondary hover:text-violet-300 text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200"
             >
               ← Back to Projects
             </Link>
