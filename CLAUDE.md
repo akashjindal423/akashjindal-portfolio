@@ -20,7 +20,8 @@ Personal portfolio for Akash Jindal, deployed on Vercel at https://akashjindal.c
 ## Commands
 - `npm run dev` — local dev server
 - `npm run lint` — ESLint (flat config, `eslint-config-next`)
-- `npm run build` — production build; run lint and build before every push
+- `npm test` — vitest unit tests (`lib/**/*.test.ts`)
+- `npm run build` — production build; run lint, tests and build before every push
 
 ## Content rules
 - Do not invent facts, employers, metrics, quotes or testimonials. Only use what is

@@ -20,6 +20,7 @@ project write-ups are pages under `app/projects/`.
 npm install
 npm run dev     # http://localhost:3000
 npm run lint
+npm test        # vitest: Gen BI engine, terminal, RICE, structured data
 npm run build
 ```
 
@@ -32,4 +33,4 @@ npm run build
 | `lib/content.ts` | All site content |
 | `public/downloads/pm-toolkit/` | PDFs served by the `/toolkit` page |
 | `scripts/` | Python generator for the toolkit PDFs |
-| `docs/` | Overhaul plan and report |
+| `docs/` | Overhaul and re-audit plans and reports, before/after screenshots |
