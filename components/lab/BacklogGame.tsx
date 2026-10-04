@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Check, Copy, Play, RotateCcw, Timer } from 'lucide-react'
+import { Check, Copy, Hourglass, Play, RotateCcw, Timer } from 'lucide-react'
 import {
   CAPACITY,
   IMPACT_LABEL,
@@ -19,6 +19,8 @@ import {
 import { SITE_URL } from '@/lib/site'
 
 type Phase = 'intro' | 'playing' | 'done'
+/** Timed: 60-second countdown. Practice: no time limit (WCAG 2.2.1). */
+type Mode = 'timed' | 'practice'
 
 const fmt = (n: number) => Math.round(n).toLocaleString('en-GB')
 
@@ -42,6 +44,7 @@ function ItemFacts({ item }: { item: BacklogItem }) {
 
 export default function BacklogGame() {
   const [phase, setPhase] = useState<Phase>('intro')
+  const [mode, setMode] = useState<Mode>('timed')
   const [picked, setPicked] = useState<string[]>([])
   const [remaining, setRemaining] = useState(ROUND_SECONDS)
   const [result, setResult] = useState<Evaluation | null>(null)
@@ -51,18 +54,24 @@ export default function BacklogGame() {
   // Mirror of `picked` for the timer callback, which must not read stale state
   const pickedRef = useRef<string[]>([])
   const resultRef = useRef<HTMLHeadingElement>(null)
+  const boardRef = useRef<HTMLHeadingElement>(null)
 
   const used = effortOf(picked)
 
   const finish = useCallback((ids: string[]) => {
     setResult(evaluate(ids))
     setPhase('done')
-    requestAnimationFrame(() => resultRef.current?.focus())
   }, [])
+
+  // Move focus to the board when a round starts, and to the result when it ends
+  useEffect(() => {
+    if (phase === 'playing') boardRef.current?.focus()
+    if (phase === 'done') resultRef.current?.focus()
+  }, [phase])
 
   // Countdown from a fixed deadline so the timer stays accurate if a tick is delayed
   useEffect(() => {
-    if (phase !== 'playing') return
+    if (phase !== 'playing' || mode !== 'timed') return
     const id = setInterval(() => {
       const left = Math.max(0, Math.ceil((deadline.current - Date.now()) / 1000))
       setRemaining(left)
@@ -74,15 +83,16 @@ export default function BacklogGame() {
       }
     }, 250)
     return () => clearInterval(id)
-  }, [phase, finish])
+  }, [phase, mode, finish])
 
-  function start() {
+  function start(nextMode: Mode) {
     deadline.current = Date.now() + ROUND_SECONDS * 1000
     pickedRef.current = []
+    setMode(nextMode)
     setPicked([])
     setResult(null)
     setRemaining(ROUND_SECONDS)
-    setAnnouncement(`Round started. ${ROUND_SECONDS} seconds.`)
+    setAnnouncement(nextMode === 'timed' ? `Round started. ${ROUND_SECONDS} seconds.` : 'Practice round started. No time limit.')
     setCopy('idle')
     setPhase('playing')
   }
@@ -95,7 +105,8 @@ export default function BacklogGame() {
   }
 
   async function copyScore(r: Evaluation) {
-    const text = `I scored ${r.score}% of the best possible plan in Akash Jindal's RICE backlog game (a model on fictional data). Can you beat it? ${SITE_URL}/lab/backlog-game`
+    const round = mode === 'timed' ? '60-second round' : 'practice round'
+    const text = `I scored ${r.score}% of the best possible plan in a ${round} of Akash Jindal's RICE backlog game (a model on fictional data). Can you beat it? ${SITE_URL}/lab/backlog-game`
     try {
       await navigator.clipboard.writeText(text)
       setCopy('copied')
@@ -120,17 +131,27 @@ export default function BacklogGame() {
             </li>
             <li>Pick the items to build. Each shows Reach, Impact, Confidence and Effort. Selections can&apos;t exceed capacity.</li>
             <li>
-              You have <strong className="text-text-primary">{ROUND_SECONDS} seconds</strong>. When time runs out, your plan is
-              scored against the RICE-optimal set.
+              In the timed round you have <strong className="text-text-primary">{ROUND_SECONDS} seconds</strong>; when time runs
+              out, your plan is scored against the RICE-optimal set. Prefer no clock? Practise with no time limit and submit
+              when you&apos;re ready.
             </li>
           </ol>
-          <button
-            type="button"
-            onClick={start}
-            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white hover:bg-violet-700 transition-all duration-200"
-          >
-            <Play className="h-4 w-4" aria-hidden="true" /> Start the 60-second round
-          </button>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => start('timed')}
+              className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white hover:bg-violet-700 transition-all duration-200"
+            >
+              <Play className="h-4 w-4" aria-hidden="true" /> Start the 60-second round
+            </button>
+            <button
+              type="button"
+              onClick={() => start('practice')}
+              className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] px-6 py-3 font-semibold text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary transition-all duration-200"
+            >
+              <Hourglass className="h-4 w-4" aria-hidden="true" /> Practise without a timer
+            </button>
+          </div>
           <noscript>
             <p className="mt-3 text-sm text-text-subtle">The game needs JavaScript to run.</p>
           </noscript>
@@ -140,11 +161,21 @@ export default function BacklogGame() {
       {phase === 'playing' && (
         <>
           <div className="sticky top-16 z-20 rounded-xl border border-[var(--border)] bg-[var(--surface)]/95 backdrop-blur p-4">
+            <h2 ref={boardRef} tabIndex={-1} className="mb-2 text-sm font-semibold text-text-primary outline-none">
+              {mode === 'timed' ? 'Timed round: pick your plan' : 'Practice round: pick your plan, then submit'}
+            </h2>
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="flex items-center gap-2 font-mono text-lg text-text-primary tabular-nums" aria-label={`${remaining} seconds left`}>
-                <Timer className="h-5 w-5 text-highlight" aria-hidden="true" />
-                0:{String(remaining).padStart(2, '0')}
-              </p>
+              {mode === 'timed' ? (
+                <p className="flex items-center gap-2 font-mono text-lg text-text-primary tabular-nums">
+                  <Timer className="h-5 w-5 text-highlight" aria-hidden="true" />
+                  <span className="sr-only">Time left: </span>0:{String(remaining).padStart(2, '0')}
+                </p>
+              ) : (
+                <p className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Hourglass className="h-5 w-5 text-highlight" aria-hidden="true" />
+                  No time limit
+                </p>
+              )}
               <p className="text-sm text-text-secondary">
                 Capacity <span className="font-mono text-text-primary tabular-nums">{used}/{CAPACITY}</span> person-weeks
               </p>
@@ -215,7 +246,7 @@ export default function BacklogGame() {
       )}
 
       {phase === 'done' && result && (
-        <Results result={result} resultRef={resultRef} copy={copy} onCopy={() => copyScore(result)} onReplay={start} />
+        <Results result={result} resultRef={resultRef} mode={mode} copy={copy} onCopy={() => copyScore(result)} onStart={start} />
       )}
     </div>
   )
@@ -224,22 +255,24 @@ export default function BacklogGame() {
 function Results({
   result,
   resultRef,
+  mode,
   copy,
   onCopy,
-  onReplay,
+  onStart,
 }: {
   result: Evaluation
   resultRef: React.RefObject<HTMLHeadingElement | null>
+  mode: Mode
   copy: 'idle' | 'copied' | 'failed'
   onCopy: () => void
-  onReplay: () => void
+  onStart: (mode: Mode) => void
 }) {
   const rows = [...ITEMS].sort((a, b) => riceScore(b) - riceScore(a))
   return (
     <div className="flex flex-col gap-6">
       <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6">
         <h2 ref={resultRef} tabIndex={-1} className="text-xs uppercase tracking-widest text-highlight outline-none">
-          Your result
+          Your result{mode === 'practice' ? ' (practice round)' : ''}
         </h2>
         <p className="mt-2 text-5xl font-bold text-text-primary">{result.score}%</p>
         <p className="mt-1 text-sm text-text-secondary">
@@ -269,10 +302,25 @@ function Results({
           </button>
           <button
             type="button"
-            onClick={onReplay}
+            onClick={() => onStart(mode)}
             className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] px-5 py-2.5 text-sm text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary transition-all duration-200"
           >
             <RotateCcw className="h-4 w-4" aria-hidden="true" /> Play again
+          </button>
+          <button
+            type="button"
+            onClick={() => onStart(mode === 'timed' ? 'practice' : 'timed')}
+            className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] px-5 py-2.5 text-sm text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary transition-all duration-200"
+          >
+            {mode === 'timed' ? (
+              <>
+                <Hourglass className="h-4 w-4" aria-hidden="true" /> Practise without a timer
+              </>
+            ) : (
+              <>
+                <Timer className="h-4 w-4" aria-hidden="true" /> Try the 60-second round
+              </>
+            )}
           </button>
         </div>
         <p className="sr-only" aria-live="polite">
