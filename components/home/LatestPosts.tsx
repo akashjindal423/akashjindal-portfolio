@@ -10,11 +10,11 @@ const posts = getBlogPosts().filter((p) => !p.draft).slice(0, 3)
 
 export default function LatestPosts() {
   return (
-    <SectionWrapper id="blog">
+    <SectionWrapper id="writing">
       {/* Header */}
       <div className="flex flex-wrap justify-between items-end gap-4 mb-12">
         <div>
-          <span className="block text-violet-400 text-xs uppercase tracking-widest mb-2">
+          <span className="block text-highlight text-xs uppercase tracking-widest mb-2">
             Writing
           </span>
           <h2 className="text-3xl font-bold text-text-primary">Latest Writing</h2>
@@ -28,7 +28,7 @@ export default function LatestPosts() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post, i) => (
           <AnimatedEntry key={post.slug} delay={i * 0.1} className="group">
             <PostCard {...post} />

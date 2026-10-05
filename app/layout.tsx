@@ -75,10 +75,19 @@ export default function RootLayout({
         </noscript>
       </head>
       <body suppressHydrationWarning className="bg-[var(--background)] text-[var(--text-primary)] font-sans antialiased">
+        {/* First focusable element on every page */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-violet-600 focus:px-4 focus:py-3 focus:font-semibold focus:text-white focus:outline-none focus:ring-2 focus:ring-white"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider>
           <MotionProvider>
             <Navbar />
-            {children}
+            <div id="main-content" tabIndex={-1} className="outline-none">
+              {children}
+            </div>
             <Footer />
           </MotionProvider>
         </ThemeProvider>

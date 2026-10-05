@@ -6,19 +6,20 @@ import SectionWrapper from '@/components/shared/SectionWrapper'
 import AboutStats from '@/components/shared/AboutStats'
 import JsonLd from '@/components/shared/JsonLd'
 import { pageMetadata } from '@/lib/seo'
-import { personSchema } from '@/lib/structured-data'
+import { profilePageSchema } from '@/lib/structured-data'
+import { SECONDARY_NAV } from '@/lib/nav'
 
 export const metadata = pageMetadata({
   title: 'About',
   description:
-    "Akash Jindal is an AI Product Owner in Lloyds Banking Group's AI Centre of Excellence, with earlier product roles at Dyson, SSE and Sony Interactive Entertainment. Based in Bristol, UK.",
+    "Akash Jindal is an AI Product Owner in Lloyds Banking Group's AI Centre of Excellence, with earlier product roles at Dyson, and at SSE and Sony Interactive Entertainment via Infosys. Based in Bristol, UK.",
   path: '/about',
 })
 
 export default function AboutPage() {
   return (
     <main>
-      <JsonLd data={personSchema()} />
+      <JsonLd data={profilePageSchema()} />
       <SectionWrapper className="pb-0 sm:pb-0">
         <PageHeader
           eyebrow="ABOUT"
@@ -37,14 +38,15 @@ export default function AboutPage() {
                 for Fortune 500 clients across financial services, manufacturing, and agri-tech —
                 including GDPR-compliant cloud migrations and AI-led agriculture pilots. That
                 foundation gave me a strong grounding in enterprise delivery and technical thinking.
+                Through Infosys I then worked as a Product Owner at Sony Interactive Entertainment and SSE.
               </p>
               <p className="text-text-secondary leading-relaxed">
                 I am currently a Team Product Owner in the AI Centre of Excellence at Lloyds Banking
                 Group, working on Generative AI and Gen BI initiatives to transform banking for both
                 colleagues and customers. Before that, I pioneered Dyson&apos;s first Augmented Reality
-                product (CleanTrace) and contributed to the PlayStation 5 platform launch at Sony
-                Interactive Entertainment — giving me a rare blend of enterprise data, consumer tech,
-                and innovation experience.
+                product (CleanTrace), and at Sony Interactive Entertainment (via Infosys) I was Product
+                Owner for ITSM and ServiceNow enhancements in the run-up to the PlayStation 5 launch —
+                giving me a rare blend of enterprise data, consumer tech, and innovation experience.
               </p>
             </div>
 
@@ -83,9 +85,29 @@ export default function AboutPage() {
           </div>
         </div>
 
+        {/* Pages that sit outside the main navigation */}
+        <section aria-labelledby="more-about-me" className="mt-16">
+          <h2 id="more-about-me" className="text-xl font-semibold text-text-primary mb-4">More about me</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {SECONDARY_NAV.map(({ label, href, blurb }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="group block h-full rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 transition-all duration-300 hover:-translate-y-[2px] hover:border-[var(--border-strong)]"
+                >
+                  <span className="font-semibold text-text-primary group-hover:text-violet-400 transition-colors duration-200">
+                    {label} →
+                  </span>
+                  {blurb && <span className="mt-1 block text-sm text-text-secondary">{blurb}</span>}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         {/* Currently Open To */}
-        <div className="mt-16 bg-violet-600/10 border border-violet-500/20 rounded-xl p-6 flex items-start gap-4">
-          <Briefcase className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
+        <div className="mt-16 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex items-start gap-4">
+          <Briefcase className="w-5 h-5 text-text-secondary flex-shrink-0 mt-0.5" aria-hidden="true" />
           <div>
             <p className="text-text-primary font-semibold mb-1">Currently Open To</p>
             <p className="text-text-secondary text-sm leading-relaxed mb-3">

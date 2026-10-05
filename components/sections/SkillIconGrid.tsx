@@ -44,9 +44,9 @@ const ICONS: Record<string, LucideIcon> = {
 
 // Visual treatment per group, in the order getSkillGroups() returns them
 const STYLES = [
-  { accent: 'border-violet-500/30 bg-violet-500/5', headerColor: 'text-violet-400', iconColor: 'text-violet-400', wide: true },
-  { accent: 'border-purple-500/30 bg-purple-500/5', headerColor: 'text-purple-400', iconColor: 'text-purple-400', wide: false },
-  { accent: 'border-emerald-500/30 bg-emerald-500/5', headerColor: 'text-emerald-400', iconColor: 'text-emerald-400', wide: false },
+  { accent: 'border-[var(--border)] bg-[var(--surface)]', headerColor: 'text-highlight', iconColor: 'text-text-primary', wide: true },
+  { accent: 'border-[var(--border)] bg-[var(--surface)]', headerColor: 'text-highlight', iconColor: 'text-text-primary', wide: false },
+  { accent: 'border-[var(--border)] bg-[var(--surface)]', headerColor: 'text-highlight', iconColor: 'text-text-primary', wide: false },
 ]
 
 interface SkillGroupView {
@@ -68,9 +68,9 @@ const skillGroups: SkillGroupView[] = getSkillGroups().map((g, i) => ({
 function GroupCard({ group }: { group: SkillGroupView }) {
   return (
     <div className={cn('rounded-2xl border p-5 h-full', group.accent)}>
-      <h3 className={cn('text-sm font-semibold uppercase tracking-widest mb-5', group.headerColor)}>
+      <h2 className={cn('text-sm font-semibold uppercase tracking-widest mb-5', group.headerColor)}>
         {group.category}
-      </h3>
+      </h2>
       <ul
         className={cn(
           'grid gap-x-2 gap-y-4',
@@ -82,7 +82,7 @@ function GroupCard({ group }: { group: SkillGroupView }) {
             <div className="w-14 h-14 rounded-xl bg-[var(--background)] border border-[var(--border)] flex items-center justify-center">
               <Icon className={cn('w-6 h-6', group.iconColor)} aria-hidden="true" strokeWidth={1.75} />
             </div>
-            <span className="text-[11px] font-medium text-[#A09EC0] text-center leading-tight px-0.5">
+            <span className="text-[11px] font-medium text-text-secondary text-center leading-tight px-0.5">
               {name}
             </span>
           </li>

@@ -61,10 +61,10 @@ export default function TrainingPage() {
         </div>
 
         {/* In Progress */}
-        <p className="text-violet-400 text-xs uppercase tracking-widest mb-4">In Progress</p>
+        <p className="text-highlight text-xs uppercase tracking-widest mb-4">In Progress</p>
         <div className="max-w-sm">
           <div className="bg-[var(--surface)] border border-dashed border-[var(--border)] rounded-xl p-6">
-            <span className="inline-block bg-violet-600/20 text-violet-400 text-xs px-2 py-1 rounded-full mb-3">
+            <span className="inline-block bg-[var(--surface-raised)] border border-[var(--border)] text-text-secondary text-xs px-2 py-1 rounded-full mb-3">
               In Progress
             </span>
             <p className="font-semibold text-text-primary text-sm leading-snug mb-1">

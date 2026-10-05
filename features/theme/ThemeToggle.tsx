@@ -23,7 +23,7 @@ export function ThemeToggle() {
         border border-[var(--border)]
         bg-[var(--surface)] hover:bg-[var(--surface-secondary)]
         transition-all duration-200
-        text-violet-500 hover:text-violet-400
+        text-text-secondary hover:text-text-primary
       "
     >
       {isDark ? (

@@ -9,15 +9,15 @@ const STATS = [
 
 export default function AboutStats() {
   return (
-    <div className="grid grid-cols-2 gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-3">
 
       {STATS.map(({ value, label }) => (
         <div
           key={label}
           className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 flex items-center gap-3"
         >
-          <span className="text-3xl font-bold text-violet-400 shrink-0">{value}</span>
-          <span className="text-sm text-[#A09EC0] leading-snug">{label}</span>
+          <span className="text-3xl font-bold text-highlight shrink-0">{value}</span>
+          <span className="text-sm text-text-secondary leading-snug">{label}</span>
         </div>
       ))}
 
@@ -38,7 +38,7 @@ export default function AboutStats() {
         </div>
         <div>
           <p className="text-[10px] text-text-subtle uppercase tracking-wider font-normal leading-none mb-1">Google Cloud</p>
-          <p className="text-sm text-[#A09EC0] font-normal leading-snug">Assoc. Cloud Engineer</p>
+          <p className="text-sm text-text-secondary font-normal leading-snug">Assoc. Cloud Engineer</p>
         </div>
       </div>
 
@@ -54,7 +54,7 @@ export default function AboutStats() {
         </div>
         <div>
           <p className="text-[10px] text-text-subtle uppercase tracking-wider font-normal leading-none mb-1">Scrum.org</p>
-          <p className="text-sm text-[#A09EC0] font-normal leading-snug">PSPO II Certified</p>
+          <p className="text-sm text-text-secondary font-normal leading-snug">PSPO II Certified</p>
         </div>
       </div>
 

@@ -3,13 +3,14 @@ import { ArrowRight } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import AnimatedEntry from '@/components/shared/AnimatedEntry'
+import Terminal from '@/components/lab/Terminal'
 import { LAB_ITEMS } from '@/lib/lab/items'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata = pageMetadata({
   title: 'Lab',
   description:
-    'Small interactive experiments by Akash Jindal: a Gen BI question-answering demo on synthetic data, a RICE prioritisation game and more.',
+    'Small interactive experiments by Akash Jindal: a rule-based Gen BI demo on fictional data, a RICE prioritisation game and a terminal for the CV.',
   path: '/lab',
 })
 
@@ -34,7 +35,7 @@ export default function LabPage() {
                 <AnimatedEntry delay={i * 0.08} className="h-full">
                   <Link
                     href={item.href}
-                    className="group flex h-full flex-col rounded-xl border border-[#2A2A50] bg-[var(--surface)] p-6 transition-all duration-300 hover:-translate-y-[2px] hover:border-violet-500/30 hover:shadow-glow"
+                    className="group flex h-full flex-col rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:-translate-y-[2px] hover:border-[var(--border-strong)]"
                   >
                     <h2 className="text-lg font-semibold text-text-primary group-hover:text-violet-400 transition-colors duration-200">
                       {item.title}
@@ -59,13 +60,25 @@ export default function LabPage() {
             ))}
           </ul>
         )}
-        <p className="mt-8 text-sm text-text-secondary">
-          One more: the <span className="font-mono text-text-primary">product_brief.md</span> card on the{' '}
-          <Link href="/" className="text-violet-400 hover:text-violet-300 transition-colors duration-200">
-            homepage
-          </Link>{' '}
-          is a working terminal. Type <span className="font-mono text-text-primary">help</span> to see what it can do.
-        </p>
+      </SectionWrapper>
+
+      <SectionWrapper id="terminal" className="pt-0 sm:pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div>
+            <h2 className="text-2xl font-bold text-text-primary">Terminal: the CV as a command line</h2>
+            <p className="mt-3 text-text-secondary leading-relaxed">
+              The <span className="font-mono text-text-primary">product_brief.md</span> card is a small terminal. Type{' '}
+              <span className="font-mono text-text-primary">help</span>, or use the quick commands under the prompt. Every
+              answer is built from the same content as the rest of the site.
+            </p>
+            <p className="mt-3 text-sm text-text-subtle">
+              Keyboard: Tab to the prompt, Enter to run, ↑ and ↓ for history, Esc to clear the line.
+            </p>
+          </div>
+          <div className="flex justify-center lg:justify-end">
+            <Terminal />
+          </div>
+        </div>
       </SectionWrapper>
     </main>
   )

@@ -5,7 +5,7 @@ import { Project } from '@/lib/types'
 
 export default function ProjectCard({ slug, title, summary, category, tags, date, impact }: Project) {
   return (
-    <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex flex-col transition-all duration-300 hover:border-violet-500/30 hover:shadow-glow hover:-translate-y-[3px]">
+    <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex flex-col transition-all duration-300 hover:border-[var(--border-strong)] hover:-translate-y-[3px]">
       {/* Top row */}
       <div className="flex justify-end">
         <Badge variant="accent">{category}</Badge>
@@ -19,7 +19,7 @@ export default function ProjectCard({ slug, title, summary, category, tags, date
 
       {/* Impact */}
       {impact && (
-        <div className="mt-4 border-l-2 border-violet-500 pl-3">
+        <div className="mt-4 border-l-2 border-[var(--border-strong)] pl-3">
           <p className="text-sm text-text-secondary italic">{impact}</p>
         </div>
       )}

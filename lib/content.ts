@@ -38,6 +38,11 @@ export interface Testimonial {
   featured: boolean
 }
 
+/** Employer name with the placing consultancy, e.g. "SSE plc (via Infosys)". */
+export function employerName(item: { company: string; via?: string }): string {
+  return item.via ? `${item.company} (via ${item.via})` : item.company
+}
+
 export function getTestimonials(): Testimonial[] {
   return [
     {
@@ -125,6 +130,7 @@ export function getExperience(): Experience[] {
       slug: 'sse-po',
       role: 'Product Owner',
       company: 'SSE plc',
+      via: 'Infosys',
       location: 'Reading, England · Hybrid',
       startDate: '2021-04',
       endDate: '2022-08',
@@ -143,15 +149,16 @@ export function getExperience(): Experience[] {
       slug: 'sony-po',
       role: 'Product Owner',
       company: 'Sony Interactive Entertainment',
+      via: 'Infosys',
       location: 'London · Hybrid',
       startDate: '2020-04',
       endDate: '2021-04',
       current: false,
       summary:
-        'Contributed to the successful PlayStation 5 launch by leading service delivery and tech product initiatives within the ITSM and ServiceNow ecosystem.',
+        'Product Owner for ITSM and ServiceNow enhancements in the run-up to the PlayStation 5 launch, placed by Infosys.',
       achievements: [
         'Delivered ITSM & ServiceNow enhancements — global collaboration across UX/UI, engineering, and research teams',
-        'Orchestrated planning and execution of key platform features aligned with PS5 launch timeline',
+        'Planned ITSM and ServiceNow work to the PS5 launch timeline',
         'Directed EPIC and Story backlog refinement for automation testing and quality assurance',
       ],
       tools: ['ServiceNow', 'Scrum', 'Jira', 'Microsoft Outlook', 'ITSM'],
@@ -193,10 +200,7 @@ export function getProjects(): ProjectsData {
         description: 'Product Owner for Gen BI in the AI Centre of Excellence: replacing manual reports with reporting colleagues can question in plain English, supporting use cases for four business areas, and moving recurring requests to self-serve answers.',
         tags: ['Gen BI', 'AI', 'GCP', 'Data', 'Banking'],
         period: 'Aug 2023 – Present',
-        companyColor: 'from-green-500/10 to-emerald-500/10',
-        border: 'border-green-500/20',
         badge: 'Current Role',
-        badgeColor: 'bg-green-500/20 text-green-400',
         clickable: false,
       },
       {
@@ -206,24 +210,19 @@ export function getProjects(): ProjectsData {
         description: "Led end-to-end development of Dyson's first in-home Augmented Reality cleaning guidance tool. International assignment across Singapore, Malaysia, and China bridging cross-cultural UX, hardware, and software teams.",
         tags: ['AR', 'Innovation', 'NPI', 'SAFe', 'APAC'],
         period: 'Sep 2022 – Aug 2023',
-        companyColor: 'from-violet-500/10 to-purple-500/10',
-        border: 'border-violet-500/20',
         badge: 'AR Innovation',
-        badgeColor: 'bg-violet-500/20 text-violet-400',
         clickable: true,
         externalUrl: 'https://www.dyson.com.sg/newsroom/dyson-cleantrace',
       },
       {
         slug: 'sony-ps5',
         company: 'Sony Interactive Entertainment',
-        title: 'PlayStation 5 Platform Launch',
-        description: 'Contributed to the PS5 launch by leading ITSM and ServiceNow product initiatives. Orchestrated planning of launch-critical platform features ensuring reliability and readiness for global release.',
-        tags: ['PS5', 'ITSM', 'ServiceNow', 'Platform', 'Launch'],
+        via: 'Infosys',
+        title: 'ITSM and ServiceNow for the PS5 launch',
+        description: 'Product Owner for ITSM and ServiceNow enhancements in the run-up to the PlayStation 5 launch, placed by Infosys: planned the work to the launch timeline and refined epics and stories for automation testing and QA.',
+        tags: ['ITSM', 'ServiceNow', 'Backlog', 'PS5 launch'],
         period: 'Apr 2020 – Apr 2021',
-        companyColor: 'from-blue-500/10 to-indigo-500/10',
-        border: 'border-blue-500/20',
-        badge: 'Platform Launch',
-        badgeColor: 'bg-blue-500/20 text-blue-400',
+        badge: 'ITSM · ServiceNow',
         clickable: false,
       },
     ],
@@ -231,10 +230,9 @@ export function getProjects(): ProjectsData {
       {
         slug: 'ai-health-companion',
         title: 'AI Health Companion',
-        description: 'A wellness product combining AI-guided exercise, real-time posture feedback, and culturally relevant nutrition — built around how people actually live.',
+        description: 'A concept study for a wellness product combining AI-guided exercise, real-time posture feedback and culturally relevant nutrition. Personas are hypothetical; nothing has been built or tested.',
         tags: ['AI/ML', 'Health Tech', 'Computer Vision', 'Personalisation'],
-        status: 'Concept',
-        statusColor: 'violet',
+        status: 'Concept study',
         clickable: true,
       },
       {
@@ -243,16 +241,14 @@ export function getProjects(): ProjectsData {
         description: 'A deep-dive PM analysis of Google Maps — competitive moat, monetisation flywheel, Local Guides ecosystem, Gemini integration, and three feature proposals with RICE prioritisation.',
         tags: ['Product Teardown', 'Strategy', 'AI/ML', 'Monetisation'],
         status: 'Published',
-        statusColor: 'emerald',
         clickable: true,
       },
       {
         slug: 'promptlab',
         title: 'PromptLab',
-        description: 'Open-source Python CLI that diagnoses prompts across 12 dimensions, generates targeted improvements using distinct strategies, and auto-tests all variants to find the winner — no dataset required.',
+        description: 'Open-source Python CLI that scores prompts across 12 dimensions, suggests improved variants and compares their outputs on generated test cases: a starting point for review, not proof of real-world quality.',
         tags: ['Python', 'CLI', 'AI', 'Open Source'],
         status: 'v0.1.0 · Open Source',
-        statusColor: 'emerald',
         clickable: true,
       },
     ],
@@ -351,7 +347,6 @@ export function getCommunityInvolvement() {
       organisation: 'Toastmasters International',
       period: 'Apr 2024 – Oct 2024',
       type: 'Leadership',
-      typeColor: 'violet',
       location: 'London · Remote',
       summary: 'Empowering individuals through confident communication and leadership within a globally recognised public speaking community.',
       bullets: [
@@ -368,7 +363,6 @@ export function getCommunityInvolvement() {
       organisation: 'SOCH (अंत ही आरम्भ)',
       period: 'Dec 2019 – Jul 2023',
       type: 'Social Impact',
-      typeColor: 'emerald',
       location: 'India',
       summary: 'Supported high-impact social initiatives focused on health, inclusion, and sustainable development for underprivileged communities.',
       bullets: [

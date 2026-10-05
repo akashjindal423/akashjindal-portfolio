@@ -4,16 +4,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import MobileNav from './MobileNav'
+import { PRIMARY_NAV, isActive } from '@/lib/nav'
 
-const NAV_LINKS = [
-  { label: 'Projects', href: '/projects' },
-  { label: 'Experience', href: '/experience' },
-  { label: 'Skills', href: '/skills' },
-  { label: 'Toolkit', href: '/toolkit' },
-  { label: 'Lab', href: '/lab' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'About', href: '/about' },
-]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -44,13 +36,14 @@ export default function Navbar() {
           </Link>
 
           {/* Centre: Desktop nav */}
-          <nav className="hidden md:flex items-center gap-5 lg:gap-8">
-            {NAV_LINKS.map(({ label, href }) => (
+          <nav aria-label="Main" className="hidden md:flex items-center gap-6 lg:gap-8">
+            {PRIMARY_NAV.map(({ label, href }) => (
               <Link
                 key={href}
                 href={href}
+                aria-current={isActive(pathname, href) ? 'page' : undefined}
                 className={`text-sm transition-colors duration-200 ${
-                  pathname === href || pathname.startsWith(`${href}/`)
+                  isActive(pathname, href)
                     ? 'text-violet-400'
                     : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                 }`}
@@ -64,7 +57,8 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className="hidden md:inline-flex bg-violet-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-violet-500 transition-all duration-200"
+              aria-current={pathname === '/contact' ? 'page' : undefined}
+              className="hidden md:inline-flex bg-violet-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-violet-700 transition-all duration-200"
             >
               Contact →
             </Link>

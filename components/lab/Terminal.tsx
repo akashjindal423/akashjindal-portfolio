@@ -3,6 +3,7 @@
 import { useId, useRef, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import ErrorBoundary from '@/components/shared/ErrorBoundary'
 import { COMMANDS, execute, type TermLine, type Tone } from '@/lib/terminal'
 
 const sections = [
@@ -27,7 +28,7 @@ const sections = [
     lines: [
       { key: 'lloyds', value: 'Gen AI · Gen BI · AI CoE' },
       { key: 'dyson', value: 'CleanTrace AR · WashG1 NPI' },
-      { key: 'sony', value: 'PS5 platform launch' },
+      { key: 'sony', value: 'ITSM · ServiceNow (via Infosys)' },
       { key: 'infosys', value: 'Fortune 500 · IoT · Azure' },
     ],
   },
@@ -41,8 +42,8 @@ const sections = [
 ]
 
 const TONE: Record<Tone, string> = {
-  default: 'text-[#A09EC0]',
-  key: 'text-violet-400',
+  default: 'text-text-secondary',
+  key: 'text-highlight',
   muted: 'text-text-subtle',
   ok: 'text-green-400',
   error: 'text-rose-300',
@@ -86,12 +87,38 @@ function OutputLine({ line }: { line: TermLine }) {
   )
 }
 
+/** Shown if the terminal throws while rendering: the rest of the page keeps working. */
+function TerminalFallback({ reset }: { reset: () => void }) {
+  return (
+    <div role="alert" className="w-full max-w-md rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 text-sm">
+      <p className="font-semibold text-text-primary">The terminal hit an error.</p>
+      <p className="mt-1 text-text-secondary">The rest of the page still works.</p>
+      <button
+        type="button"
+        onClick={reset}
+        className="mt-4 rounded-lg border border-[var(--border)] px-4 py-2 text-text-secondary hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
+      >
+        Restart the terminal
+      </button>
+    </div>
+  )
+}
+
+/** The /lab terminal, isolated in its own error boundary. */
+export default function Terminal() {
+  return (
+    <ErrorBoundary fallback={(reset) => <TerminalFallback reset={reset} />}>
+      <TerminalCard />
+    </ErrorBoundary>
+  )
+}
+
 /**
- * Hero "product_brief.md" card. The brief itself is static markup, so it renders
+ * "product_brief.md" card. The brief itself is static markup, so it renders
  * without JavaScript. Once hydrated it gains a command line (help, about, projects,
  * experience, skills, contact, why-hire, clear) that works with the keyboard alone.
  */
-export default function ProductBriefCard() {
+function TerminalCard() {
   const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false)
   const [entries, setEntries] = useState<Entry[]>([])
   const [draft, setDraft] = useState('')
@@ -116,6 +143,7 @@ export default function ProductBriefCard() {
     if (!trimmed) return
     history.current = [...history.current, trimmed].slice(-20)
     const result = execute(trimmed)
+    if (result.kind === 'empty') return
     if (result.kind === 'clear') {
       setEntries([])
       bodyRef.current?.scrollTo({ top: 0 })
@@ -153,7 +181,7 @@ export default function ProductBriefCard() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.3 }}
-      className="relative w-full max-w-md rounded-2xl border border-[var(--border)] bg-[#0A0A1B]/95 backdrop-blur-md shadow-2xl overflow-hidden"
+      className="relative w-full max-w-md rounded-2xl border border-[var(--border)] bg-[var(--background)]/95 backdrop-blur-md shadow-2xl overflow-hidden"
     >
       {/* Mac-style title bar */}
       <div className="flex items-center gap-2 border-b border-[var(--border)] bg-[var(--background)] px-4 py-3">
@@ -170,7 +198,7 @@ export default function ProductBriefCard() {
       {/* Content: the brief, then any command output */}
       <div
         ref={bodyRef}
-        className={`p-5 font-mono text-sm ${entries.length ? 'max-h-[30rem] overflow-y-auto' : ''}`}
+        className={`p-5 font-mono text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-violet-500 ${entries.length ? 'max-h-[30rem] overflow-y-auto' : ''}`}
         tabIndex={entries.length ? 0 : undefined}
         aria-label={entries.length ? 'Terminal output' : undefined}
       >
@@ -181,8 +209,8 @@ export default function ProductBriefCard() {
               <dl className="space-y-1.5">
                 {section.lines.map((line) => (
                   <div key={line.key} className="flex gap-3 items-baseline">
-                    <dt className="text-violet-400 min-w-[96px] sm:min-w-[110px] shrink-0 text-xs">{line.key}:</dt>
-                    <dd className={`${line.highlight ? 'text-green-400' : 'text-[#A09EC0]'} text-xs leading-relaxed`}>
+                    <dt className="text-highlight min-w-[96px] sm:min-w-[110px] shrink-0 text-xs">{line.key}:</dt>
+                    <dd className={`${line.highlight ? 'text-green-400' : 'text-text-secondary'} text-xs leading-relaxed`}>
                       {line.value}
                     </dd>
                   </div>
@@ -218,7 +246,7 @@ export default function ProductBriefCard() {
               submit(draft)
               inputRef.current?.focus()
             }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--background)] pl-3 pr-1 py-1 focus-within:border-violet-500 focus-within:ring-2 focus-within:ring-violet-500/50"
           >
             <span className="text-green-400 text-sm" aria-hidden="true">$</span>
             <label htmlFor={inputId} className="sr-only">
@@ -235,9 +263,12 @@ export default function ProductBriefCard() {
               autoCapitalize="off"
               spellCheck={false}
               maxLength={60}
-              className="flex-1 min-w-0 bg-transparent text-sm text-text-primary placeholder:text-text-subtle focus:outline-none"
+              className="flex-1 min-w-0 bg-transparent py-1 text-sm text-text-primary placeholder:text-text-subtle focus:outline-none"
             />
-            <button type="submit" className="sr-only focus:not-sr-only text-xs text-violet-300">
+            <button
+              type="submit"
+              className="shrink-0 rounded-md bg-violet-600 px-3 py-1.5 font-sans text-xs font-semibold text-white hover:bg-violet-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors duration-200"
+            >
               Run
             </button>
           </form>
@@ -247,7 +278,7 @@ export default function ProductBriefCard() {
                 key={c}
                 type="button"
                 onClick={() => submit(c)}
-                className="rounded-md border border-[var(--border)] px-2 py-0.5 text-[11px] text-text-secondary hover:border-violet-500/40 hover:text-violet-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 transition-colors duration-200"
+                className="rounded-md border border-[var(--border)] px-2 py-0.5 text-[11px] text-text-secondary hover:border-[var(--border-strong)] hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 transition-colors duration-200"
               >
                 {c}
               </button>
@@ -256,14 +287,6 @@ export default function ProductBriefCard() {
         </div>
       ) : null}
 
-      {/* Bottom glow line */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" aria-hidden="true" />
-      {/* Subtle inner glow */}
-      <div
-        className="pointer-events-none absolute inset-0 rounded-2xl"
-        style={{ boxShadow: 'inset 0 0 40px rgba(124,58,237,0.04)' }}
-        aria-hidden="true"
-      />
     </motion.div>
   )
 }

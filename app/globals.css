@@ -11,6 +11,8 @@
   --color-border-subtle: var(--border-subtle);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
+  --color-highlight: var(--highlight);
+  --color-border-strong: var(--border-strong);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
@@ -38,71 +40,89 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --shadow-card: 0 1px 3px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4);
-  --shadow-elevated: 0 8px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(124,58,237,0.08);
-  --shadow-glow: 0 0 32px rgba(124,58,237,0.2);
+  --shadow-elevated: 0 8px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.3);
+  /* Kept as a neutral lift; violet glows are retired */
+  --shadow-glow: 0 8px 24px rgba(0,0,0,0.35);
 }
 
 :root {
   --radius: 0.625rem;
 
-  /* Design system tokens — light (default) */
-  --background: #F8F7FF;
+  /* Design system tokens — light. The site renders dark only (class="dark" on <html>);
+     these neutral values keep the light set coherent if it is ever re-enabled. */
+  --background: #F7F7F8;
   --surface: #FFFFFF;
-  --surface-secondary: #F0EFF9;
-  --surface-raised: #F0EFF9;
-  --border: #E2E0F0;
-  --border-subtle: #E2E0F0;
-  --text-primary: #0F0E1A;
-  --text-secondary: #2E2C48;
-  --text-muted: #4A4869;
-  --text-subtle: #5F5D80; /* 5.87:1 on #F8F7FF */
+  --surface-secondary: #EEEFF1;
+  --surface-raised: #EEEFF1;
+  --border: #D9DBE0;
+  --border-subtle: #D9DBE0;
+  --border-strong: #B9BDC5;
+  --text-primary: #111317;
+  --text-secondary: #3A3F48;
+  --text-muted: #4B515B;
+  --text-subtle: #5B616C;
   --accent: #7C3AED;
   --accent-light: #6D28D9;
+  --highlight: #8A5A00;
 
   /* shadcn/ui compatibility — light */
-  --foreground: #0F0E1A;
+  --foreground: #111317;
   --card: #FFFFFF;
-  --card-foreground: #0F0E1A;
+  --card-foreground: #111317;
   --popover: #FFFFFF;
-  --popover-foreground: #0F0E1A;
+  --popover-foreground: #111317;
   --primary: #7C3AED;
-  --primary-foreground: #F8F8FF;
-  --secondary: #F0EFF9;
-  --secondary-foreground: #0F0E1A;
-  --muted: #F0EFF9;
-  --muted-foreground: #4A4869;
+  --primary-foreground: #FFFFFF;
+  --secondary: #EEEFF1;
+  --secondary-foreground: #111317;
+  --muted: #EEEFF1;
+  --muted-foreground: #4B515B;
   --destructive: oklch(0.577 0.245 27.325);
-  --input: #E2E0F0;
+  --input: #D9DBE0;
   --ring: #7C3AED;
 }
 
+/*
+ * Dark palette: near-neutral greys with no purple tint. Violet (#7C3AED family) is the
+ * single brand accent: primary buttons, links, focus rings and the logo. Amber is the
+ * warm second accent for eyebrow labels and highlights.
+ * WCAG contrast on background #0E0F12 / surface #16181D / raised #1D2026:
+ *   text-primary   #F3F4F6  17.41 / 16.14 / 14.83
+ *   text-secondary #B4BAC4   9.82 /  9.10 /  8.36
+ *   text-muted     #A6ADB8   8.48 /  7.86 /  7.22
+ *   text-subtle    #8D939E   6.21 /  5.75 /  5.28
+ *   highlight      #F5B544  10.56 /  9.79 /  9.00
+ *   link violet-400 #A78BFA  7.04 /  6.53 /  6.00
+ *   white on violet-600 button 5.70, on violet-700 hover 7.10
+ */
 .dark {
-  --background: #0D0D1F;
-  --surface: #13132A;
-  --surface-secondary: #1A1A35;
-  --surface-raised: #1A1A38;
-  --border: #2A2A50;
-  --border-subtle: #2A2A50;
-  --text-primary: #F8F7FF;
-  /* 7.48:1 on #0D0D1A, 7.06:1 on #13132A */
-  --text-secondary: #A09EC0;
-  --text-muted: #9B99BB;
-  /* Tertiary text. 5.72:1 on #0D0D1A, 5.40:1 on #13132A, 4.99:1 on #1A1A38 (WCAG AA) */
-  --text-subtle: #8A88B0;
-  --accent: #8B5CF6;
+  --background: #0E0F12;
+  --surface: #16181D;
+  --surface-secondary: #1D2026;
+  --surface-raised: #1D2026;
+  --border: #2A2E37;
+  --border-subtle: #2A2E37;
+  --border-strong: #3E4350;
+  --text-primary: #F3F4F6;
+  --text-secondary: #B4BAC4;
+  --text-muted: #A6ADB8;
+  --text-subtle: #8D939E;
+  --accent: #7C3AED;
   --accent-light: #A78BFA;
+  --highlight: #F5B544;
 
   /* shadcn/ui compatibility — dark */
-  --foreground: #F8F7FF;
-  --card: #13132A;
-  --card-foreground: #F8F7FF;
-  --popover: #13132A;
-  --popover-foreground: #F8F7FF;
-  --secondary: #1A1A35;
-  --secondary-foreground: #F8F7FF;
-  --muted: #1A1A35;
-  --muted-foreground: #9B99BB;
-  --input: #2A2A50;
+  --foreground: #F3F4F6;
+  --card: #16181D;
+  --card-foreground: #F3F4F6;
+  --popover: #16181D;
+  --popover-foreground: #F3F4F6;
+  --secondary: #1D2026;
+  --secondary-foreground: #F3F4F6;
+  --muted: #1D2026;
+  --muted-foreground: #A6ADB8;
+  --input: #2A2E37;
+  --ring: #8B5CF6;
 }
 
 html {
@@ -128,28 +148,28 @@ html {
   background: var(--surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: #7C3AED;
+  background: var(--border-strong);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A78BFA;
+  background: var(--text-subtle);
 }
 
 /* Text selection */
 ::selection {
-  background: #7C3AED;
-  color: #F8F8FF;
+  background: var(--highlight);
+  color: #0E0F12;
 }
 
 /* MDX prose styles */
-.prose { color: #A09EC0; }
-.prose h1, .prose h2, .prose h3 { color: #F8F8FF; font-weight: 700; }
-.prose h2 { border-left: 3px solid #7C3AED; padding-left: 1rem; margin-top: 2.5rem; }
+.prose { color: var(--text-secondary); }
+.prose h1, .prose h2, .prose h3 { color: var(--text-primary); font-weight: 700; }
+.prose h2 { border-left: 3px solid var(--highlight); padding-left: 1rem; margin-top: 2.5rem; }
 .prose a { color: #A78BFA; text-decoration: underline; }
-.prose strong { color: #F8F8FF; }
-.prose blockquote { border-left: 3px solid #7C3AED; padding-left: 1rem; color: #A09EC0; font-style: italic; }
-.prose code { background: #13132A; color: #A78BFA; padding: 2px 6px; border-radius: 4px; font-size: 0.875em; }
-.prose pre { background: #13132A; border: 1px solid #2A2A50; border-radius: 12px; padding: 1.5rem; overflow-x: auto; }
+.prose strong { color: var(--text-primary); }
+.prose blockquote { border-left: 3px solid var(--border-strong); padding-left: 1rem; color: var(--text-secondary); font-style: italic; }
+.prose code { background: var(--surface-raised); color: var(--text-primary); padding: 2px 6px; border-radius: 4px; font-size: 0.875em; }
+.prose pre { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; overflow-x: auto; }
 
 @layer base {
   * {
