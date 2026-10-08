@@ -182,3 +182,9 @@ html {
     color: var(--text-primary);
   }
 }
+
+/* CleanTrace mode: dust layer fades in on start */
+@keyframes cleantrace-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

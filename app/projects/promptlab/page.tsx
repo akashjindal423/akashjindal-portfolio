@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Star } from 'lucide-react'
 import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import CopyCommand from '@/components/projects/CopyCommand'
 import { STATUS, counts, overallScore, recordedScores, scoreTotal, terminalRows } from '@/lib/projects/promptlab-example'
 
 // ── Dimension cards ────────────────────────────────────────────────────────────
@@ -68,12 +69,10 @@ export default function PromptLabPage() {
           </a>
 
           <a
-            href="https://github.com/akashjindal423/Promptlab#readme"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#install"
             className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--border-strong)] text-text-secondary hover:text-text-primary text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200"
           >
-            Install instructions
+            How to install
           </a>
         </div>
 
@@ -87,6 +86,23 @@ export default function PromptLabPage() {
             </span>
           ))}
         </div>
+      </section>
+
+      {/* ── INSTALL ───────────────────────────────────────────────────────────── */}
+      <section id="install" className="mt-12 scroll-mt-24 max-w-3xl">
+        <h2 className="text-xl font-bold text-text-primary mb-3">Install</h2>
+        <p className="text-sm text-text-secondary leading-relaxed mb-4">
+          Install it straight from GitHub. It needs Python 3.10 or later and an API key for your model
+          provider: Anthropic by default, with OpenAI and local Ollama models also supported. A different
+          project already uses the name <code className="font-mono text-text-primary">promptlab</code> on
+          PyPI, so <code className="font-mono text-text-primary">pip install promptlab</code> installs that
+          one, not this.
+        </p>
+        <CopyCommand command="pip install git+https://github.com/akashjindal423/promptlab.git" />
+        <p className="text-sm text-text-secondary leading-relaxed mt-5 mb-3">Then set your key and analyse a prompt:</p>
+        <pre className="overflow-x-auto rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 font-mono text-sm text-text-primary">
+          <code>{'export ANTHROPIC_API_KEY=your-key\npromptlab analyse "You are a helpful assistant. Answer questions."'}</code>
+        </pre>
       </section>
 
       <div className="border-t border-[var(--border)] mt-12" />

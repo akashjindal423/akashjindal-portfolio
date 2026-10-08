@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import MobileNav from './MobileNav'
+import CleanTraceButton from '@/components/cleantrace/CleanTraceButton'
 import { PRIMARY_NAV, isActive } from '@/lib/nav'
 
 
@@ -53,8 +54,9 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right: Contact button (desktop) + Menu icon (mobile) */}
+          {/* Right: CleanTrace replay + Contact button (desktop); the mobile menu button is fixed top right */}
           <div className="flex items-center gap-3">
+            <CleanTraceButton className="mr-11 md:mr-0" />
             <Link
               href="/contact"
               aria-current={pathname === '/contact' ? 'page' : undefined}
