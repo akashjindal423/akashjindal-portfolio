@@ -4,7 +4,7 @@ import { pageMetadata } from '@/lib/seo'
 export const metadata = pageMetadata({
   title: 'Projects',
   description:
-    'Selected work by Akash Jindal: Gen BI at Lloyds Banking Group, Dyson CleanTrace AR, ITSM and ServiceNow at Sony for the PS5 launch (via Infosys), PromptLab and a Google Maps product teardown.',
+    'Selected work by Akash Jindal: Gen BI at Lloyds Banking Group, Dyson CleanTrace AR, ITSM and ServiceNow for Sony Interactive Entertainment ahead of the PS5 launch, PromptLab and a Google Maps product teardown.',
   path: '/projects',
 })
 

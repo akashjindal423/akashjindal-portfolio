@@ -106,6 +106,34 @@ const roadmapPhases = [
   { phase: 'Phase 4', period: 'M10–12', label: 'Expansion', items: ['Wearables beyond Apple Health', 'Community layer', 'Expanded exercise library', 'Coach interface'] },
 ]
 
+const sources = [
+  {
+    cite: 'Meyerowitz-Katz G, Ravi S, Arnolda L, Feng X, Maberly G, Astell-Burt T. Rates of Attrition and Dropout in App-Based Interventions for Chronic Disease: Systematic Review and Meta-Analysis. J Med Internet Res 2020;22(9):e20283.',
+    href: 'https://doi.org/10.2196/20283',
+    shows: 'Pooled dropout of 43% (95% CI 29 to 57) across 17 studies of app-based interventions for chronic disease.',
+  },
+  {
+    cite: 'Baumel A, Muench F, Edan S, Kane JM. Objective User Engagement With Mental Health Apps: Systematic Search and Panel-Based Usage Analysis. J Med Internet Res 2019;21(9):e14567.',
+    href: 'https://doi.org/10.2196/14567',
+    shows: 'Median 30-day retention of 3.3% across 93 mental health apps. These are mental health apps, not fitness or nutrition apps, so it is indicative only.',
+  },
+  {
+    cite: 'NICE. Overweight and obesity management (NG246), recommendation 1.9.11. 2025.',
+    href: 'https://www.nice.org.uk/guidance/ng246/chapter/Identifying-and-assessing-overweight-obesity-and-central-adiposity',
+    shows: 'Advises lower BMI thresholds (overweight from 23, obesity from 27.5) for people with a South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean background, because cardiometabolic risk occurs at a lower BMI.',
+  },
+  {
+    cite: 'Diabetes UK. Ethnicity and type 2 diabetes.',
+    href: 'https://www.diabetes.org.uk/preventing-type-2-diabetes/diabetes-ethnicity',
+    shows: 'States that Black African, African Caribbean and South Asian people are at risk of type 2 diabetes from age 25, compared with 40 for the white population.',
+  },
+  {
+    cite: 'Ang SM, Chen J, Liew JH, et al. Efficacy of Interventions That Incorporate Mobile Apps in Facilitating Weight Loss and Health Behavior Change in the Asian Population: Systematic Review and Meta-analysis. J Med Internet Res 2021;23(11):e28185.',
+    href: 'https://doi.org/10.2196/28185',
+    shows: 'Across 21 studies, app-based interventions produced a small to moderate weight-loss effect, and most of the apps were culturally adapted or locally developed. The review did not test whether cultural adaptation itself improves results.',
+  },
+]
+
 export default function AIHealthCompanionPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
@@ -254,7 +282,7 @@ export default function AIHealthCompanionPage() {
         <h2 className="text-2xl font-bold text-text-primary mb-6">How the thinking was structured</h2>
         <ul className="space-y-3 max-w-3xl">
           {[
-            'Desk research into cultural health disparities and health app dropout rates',
+            'Desk research into health app dropout and ethnic differences in health risk (sources listed below)',
             'Hypothetical interview themes (no real interviews) mapped to 3 invented persona archetypes',
             'Jobs-to-be-done mapping: "When I [situation], I want to [motivation], so I can [outcome]"',
             'Assumption mapping: highest-risk assumptions identified, with low-fidelity tests proposed to check them (not yet run)',
@@ -267,6 +295,28 @@ export default function AIHealthCompanionPage() {
             </li>
           ))}
         </ul>
+
+        <h3 className="text-base font-semibold text-text-primary mt-10 mb-2">Sources</h3>
+        <p className="text-sm text-text-muted mb-4 max-w-3xl">
+          Published evidence read for this study. It supports two points: people often stop using health apps,
+          and health risk differs by ethnic background. It does not show that culturally relevant advice improves
+          retention. That remains the assumption this concept would need to test.
+        </p>
+        <ol className="space-y-4 max-w-3xl list-decimal pl-5">
+          {sources.map((source) => (
+            <li key={source.href} className="text-sm text-text-secondary leading-relaxed">
+              <a
+                href={source.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-violet-400 hover:text-violet-300 underline underline-offset-2"
+              >
+                {source.cite}
+              </a>
+              <span className="block text-text-muted mt-1">{source.shows}</span>
+            </li>
+          ))}
+        </ol>
       </section>
 
       {/* MVP SCOPE */}

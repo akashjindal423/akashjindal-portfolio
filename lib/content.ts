@@ -38,9 +38,12 @@ export interface Testimonial {
   featured: boolean
 }
 
-/** Employer name with the placing consultancy, e.g. "SSE plc (via Infosys)". */
-export function employerName(item: { company: string; via?: string }): string {
-  return item.via ? `${item.company} (via ${item.via})` : item.company
+/** Shown beside roles and projects delivered as a consulting engagement for a client. */
+export const CLIENT_ENGAGEMENT_LABEL = 'Client engagement'
+
+/** Organisation name, with the engagement label where the work was done for a client. */
+export function employerName(item: { company: string; engagement?: 'client' }): string {
+  return item.engagement ? `${item.company} · ${CLIENT_ENGAGEMENT_LABEL}` : item.company
 }
 
 export function getTestimonials(): Testimonial[] {
@@ -130,7 +133,7 @@ export function getExperience(): Experience[] {
       slug: 'sse-po',
       role: 'Product Owner',
       company: 'SSE plc',
-      via: 'Infosys',
+      engagement: 'client',
       location: 'Reading, England · Hybrid',
       startDate: '2021-04',
       endDate: '2022-08',
@@ -149,13 +152,13 @@ export function getExperience(): Experience[] {
       slug: 'sony-po',
       role: 'Product Owner',
       company: 'Sony Interactive Entertainment',
-      via: 'Infosys',
+      engagement: 'client',
       location: 'London · Hybrid',
       startDate: '2020-04',
       endDate: '2021-04',
       current: false,
       summary:
-        'Product Owner for ITSM and ServiceNow enhancements in the run-up to the PlayStation 5 launch, placed by Infosys.',
+        'Product Owner for ITSM and ServiceNow enhancements in the run-up to the PlayStation 5 launch.',
       achievements: [
         'Delivered ITSM & ServiceNow enhancements — global collaboration across UX/UI, engineering, and research teams',
         'Planned ITSM and ServiceNow work to the PS5 launch timeline',
@@ -181,6 +184,7 @@ export function getExperience(): Experience[] {
         'Standardised operational workflows across three major business lines',
       ],
       tools: ['Azure', 'IoT', 'DevOps', 'SQL', 'Agile', 'Cloud Migration'],
+      note: 'Followed by Product Owner client engagements with Sony Interactive Entertainment and SSE, listed above.',
       order: 5,
     },
   ]
@@ -217,9 +221,9 @@ export function getProjects(): ProjectsData {
       {
         slug: 'sony-ps5',
         company: 'Sony Interactive Entertainment',
-        via: 'Infosys',
+        engagement: 'client',
         title: 'ITSM and ServiceNow for the PS5 launch',
-        description: 'Product Owner for ITSM and ServiceNow enhancements in the run-up to the PlayStation 5 launch, placed by Infosys: planned the work to the launch timeline and refined epics and stories for automation testing and QA.',
+        description: 'Product Owner for ITSM and ServiceNow enhancements in the run-up to the PlayStation 5 launch: planned the work to the launch timeline and refined epics and stories for automation testing and QA.',
         tags: ['ITSM', 'ServiceNow', 'Backlog', 'PS5 launch'],
         period: 'Apr 2020 – Apr 2021',
         badge: 'ITSM · ServiceNow',

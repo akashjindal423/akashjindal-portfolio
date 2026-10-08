@@ -45,8 +45,8 @@ export default function HeroSection() {
             {...fadeUp(0.3)}
             className="text-text-secondary text-lg max-w-xl leading-relaxed mb-8"
           >
-            Team Product Owner in the AI Centre of Excellence at Lloyds. Previously AR at Dyson, and ITSM for the PS5
-            launch at Sony via Infosys. I also build small public tools, like PromptLab.
+            Team Product Owner in the AI Centre of Excellence at Lloyds. Previously AR at Dyson, with earlier
+            product work for Sony Interactive Entertainment and SSE. I also build small public tools, like PromptLab.
           </motion.p>
 
           <motion.div {...fadeUp(0.45)} className="flex gap-3 flex-wrap">
