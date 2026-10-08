@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { ThemeProvider } from '@/features/theme'
 import MotionProvider from '@/components/shared/MotionProvider'
+import CleanTraceProvider from '@/components/cleantrace/CleanTraceProvider'
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/site'
 
 const inter = Inter({
@@ -84,11 +85,13 @@ export default function RootLayout({
         </a>
         <ThemeProvider>
           <MotionProvider>
-            <Navbar />
-            <div id="main-content" tabIndex={-1} className="outline-none">
-              {children}
-            </div>
-            <Footer />
+            <CleanTraceProvider>
+              <Navbar />
+              <div id="main-content" tabIndex={-1} className="outline-none">
+                {children}
+              </div>
+              <Footer />
+            </CleanTraceProvider>
           </MotionProvider>
         </ThemeProvider>
       </body>

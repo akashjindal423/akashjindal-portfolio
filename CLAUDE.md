@@ -61,3 +61,16 @@ Personal portfolio for Akash Jindal, deployed on Vercel at https://akashjindal.c
 - Every route needs its own title, description and canonical URL. Client-component
   pages get metadata from a sibling `layout.tsx` or a server wrapper.
 - One `<h1>` per page; meaningful `alt` text on every image.
+- CleanTrace mode (`components/cleantrace/`, rules in `lib/cleantrace.ts`) auto-plays only on a
+  first desktop visit that lands on the homepage, never with reduced motion, and otherwise only
+  from the header button. Skip, Escape, any key, scroll or five idle seconds must always clear it.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
