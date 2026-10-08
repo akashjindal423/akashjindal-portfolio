@@ -11,8 +11,8 @@ export interface Experience {
   tools: string[]
   order: number
   note?: string
-  /** Consultancy that placed the role, e.g. "Infosys" for client placements */
-  via?: string
+  /** Set for roles delivered as a consulting engagement for a client */
+  engagement?: 'client'
 }
 
 export interface Project {
@@ -42,8 +42,8 @@ export interface OfficialProject {
   badge: string
   clickable: boolean
   externalUrl?: string
-  /** Consultancy that placed the work, e.g. "Infosys" */
-  via?: string
+  /** Set for work delivered as a consulting engagement for a client */
+  engagement?: 'client'
 }
 
 export interface PassionProject {

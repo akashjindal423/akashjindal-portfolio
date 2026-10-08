@@ -8,7 +8,7 @@ import { pageMetadata } from '@/lib/seo'
 export const metadata = pageMetadata({
   title: 'Experience',
   description:
-    'Career history of Akash Jindal: Product Owner at Lloyds Banking Group and Dyson, and at SSE and Sony Interactive Entertainment via Infosys, after consulting at Infosys.',
+    'Career history of Akash Jindal: Product Owner at Lloyds Banking Group and Dyson, Product Owner client engagements for SSE and Sony Interactive Entertainment, and consulting at Infosys.',
   path: '/experience',
 })
 

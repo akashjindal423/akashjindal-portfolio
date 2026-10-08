@@ -16,8 +16,8 @@ export default function AboutSnippet() {
           <h2 className="text-3xl font-bold text-text-primary mb-6">Product thinking meets technical fluency</h2>
           <p className="text-text-secondary leading-relaxed">
             Currently a Team Product Owner in the AI Centre of Excellence at Lloyds Banking Group, driving Generative AI
-            and Gen BI transformation. Previously shipped AR at Dyson and, via Infosys, worked on ITSM and ServiceNow at
-            Sony for the PS5 launch. 9+ years in tech across banking, energy, gaming, and consumer tech.
+            and Gen BI transformation. Previously led Dyson&apos;s first AR product, with earlier product work for Sony
+            Interactive Entertainment and SSE. 9+ years in tech across banking, energy, gaming, and consumer tech.
           </p>
           <Link
             href="/about"

@@ -1,7 +1,7 @@
 import { Briefcase, ChevronRight } from 'lucide-react'
 import Badge from '@/components/shared/Badge'
 import { Experience } from '@/lib/types'
-import { employerName } from '@/lib/content'
+import { CLIENT_ENGAGEMENT_LABEL } from '@/lib/content'
 
 interface Props {
   experience: Experience
@@ -19,7 +19,7 @@ function formatDate(ym: string) {
 }
 
 export default function TimelineItem({ experience, isLast, compact = false }: Props) {
-  const { role, location, startDate, endDate, current, summary, achievements, tools } =
+  const { role, company, engagement, note, location, startDate, endDate, current, summary, achievements, tools } =
     experience
 
   const dateRange = `${formatDate(startDate)} – ${current ? 'Present' : endDate ? formatDate(endDate) : ''}`
@@ -46,11 +46,16 @@ export default function TimelineItem({ experience, isLast, compact = false }: Pr
               Current
             </span>
           )}
+          {engagement && (
+            <span className="border border-[var(--border)] text-text-muted text-xs px-2 py-1 rounded-full">
+              {CLIENT_ENGAGEMENT_LABEL}
+            </span>
+          )}
         </div>
 
         {/* Company + location */}
         <p className="text-text-secondary text-sm font-medium mt-1">
-          {employerName(experience)} · {location}
+          {company} · {location}
         </p>
 
         {/* Dates */}
@@ -68,6 +73,8 @@ export default function TimelineItem({ experience, isLast, compact = false }: Pr
             </li>
           ))}
         </ul>
+
+        {note && !compact && <p className="text-text-muted text-sm mt-3 leading-relaxed">{note}</p>}
 
         {/* Tools */}
         <div className="flex flex-wrap gap-2 mt-4">

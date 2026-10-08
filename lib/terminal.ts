@@ -73,7 +73,7 @@ function run(command: Command): TermLine[] {
         {
           text: `${current.role} in the AI Centre of Excellence at ${current.company}, working on Generative AI and Gen BI.`,
         },
-        { text: 'Previously Dyson, and Infosys, including SSE and Sony Interactive Entertainment via Infosys.' },
+        { text: 'Earlier product work for Dyson, Sony Interactive Entertainment and SSE, after starting at Infosys.' },
         { text: '', link: { label: 'Read the full story', href: '/about' } },
       ]
     }
@@ -117,7 +117,7 @@ function run(command: Command): TermLine[] {
         { text: 'The short version:', tone: 'heading' },
         { text: "› Product Owner for Gen BI in Lloyds Banking Group's AI Centre of Excellence, replacing manual reports with reporting colleagues can question in plain English, across four business areas." },
         { text: '› 9+ years in tech, 6+ as a Product Owner, across banking, energy, gaming and consumer tech.' },
-        { text: "› Led Dyson's first Augmented Reality experience (CleanTrace). Via Infosys, Product Owner for ITSM and ServiceNow at Sony in the run-up to the PlayStation 5 launch." },
+        { text: "› Led Dyson's first Augmented Reality experience (CleanTrace). Product Owner for ITSM and ServiceNow work for Sony Interactive Entertainment in the run-up to the PlayStation 5 launch." },
         { text: '› Builds things too: PromptLab, an open-source prompt diagnosis CLI.' },
         { text: `› ${certs.join(', ')}.` },
         { text: '', link: { label: 'Get in touch', href: '/contact' } },
